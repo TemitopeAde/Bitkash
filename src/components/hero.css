@@ -105,6 +105,10 @@
         height: 65vh;
         gap: 40%;
     }
+
+    .css-1oqqzyl-MuiContainer-root {
+        max-width: 1500px !important;
+    }
 }
 
 
@@ -115,6 +119,10 @@
 
     .hero-flex {
         gap: 30%;
+    }
+
+    .css-1oqqzyl-MuiContainer-root {
+        max-width: 1800px !important;
     }
 }
 
