@@ -1,4 +1,5 @@
-.hero-flex {
+.hero-flex,
+.hero-grid {
     display: flex;
     align-items: center;
     height: 70vh;
@@ -63,7 +64,7 @@
 
 .hero {
     background-image: url('../assets/images/girl.png');
-    background-position: right center;
+    background-position: 399px center;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: rgba(51, 51, 51, 0.2);
@@ -80,3 +81,63 @@
 .hero input {
     height: 57px !important;
 }
+
+
+
+@media screen and (min-width: 1440px) {
+    .hero {
+        background-position: 450px center;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .hero {
+        background-position: 460px center;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .hero {
+        background-position: 680px 90px;
+    }
+
+    .hero-flex {
+        height: 65vh;
+        gap: 40%;
+    }
+}
+
+
+@media screen and (min-width: 2256px) {
+    .hero {
+        background-position: 690px 140px;
+    }
+
+    .hero-flex {
+        gap: 30%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
