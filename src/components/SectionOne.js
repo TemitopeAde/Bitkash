@@ -3,19 +3,25 @@ import React from "react";
 import {Stack} from "@mui/material";
 import HeroImage from "../assets/images/phone.svg";
 import { Container } from "@mui/system";
+import Logo from '../assets/icons/header.png';
+
+import './section.css';
 
 const SectionOne = () => {
   return (
     <Box>
-      <Container>
+      <Container className="p-4">
         <Box className="hero-grid">
-          <Box>
-            <img src={HeroImage} alt="hero" />
+          <Box position="relative">
+            <img className="phone-img" src={HeroImage} alt="hero" />
+            <Box >
+                <img postion="absolute" className="logo-img" src={Logo} alt="logo" />
+            </Box>
           </Box>
 
           <Box>
             <Stack spacing={2}>
-              <h3>
+              <h3 style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <span className="hero-brown">About</span> Bitkash
               </h3>
 

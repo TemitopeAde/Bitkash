@@ -15,7 +15,7 @@
   --border-brown: #F16A23;
   --brown-btn: #FF9924;
   --white: #FFFFFF;
-  
+
 }
 
 body {
@@ -33,4 +33,19 @@ img {
 ul li,
 li {
   list-style: none;
+}
+
+@media screen and (min-width: 1920px) {
+
+  .css-1oqqzyl-MuiContainer-root {
+      max-width: 1500px !important;
+  }
+}
+
+
+@media screen and (min-width: 2256px) {
+
+  .css-1oqqzyl-MuiContainer-root {
+      max-width: 1900px !important;
+  }
 }

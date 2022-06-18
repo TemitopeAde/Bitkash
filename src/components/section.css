@@ -1,0 +1,56 @@
+.hero-grid {
+    /* height: 720px; */
+    overflow-y: hidden;
+    display: flex;
+    justify-content: space-between;
+    gap: 20%;
+    height: 60vh;
+    padding: 4rem 0 !important;
+}
+
+.hero-grid h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+}
+
+.hero-grid p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.phone-img {
+    width: 321px;
+    height: 696px;
+}
+
+.logo-img {
+    position: absolute;
+    top: 50%;
+    width: 240px;
+    left: 30px;
+}
+
+
+@media screen and (min-width: 1600px) {
+    .hero-grid {
+        height: 45vh;
+    }
+}
+
+@media screen and (min-width: 2256px) {
+    .hero-grid {
+        height: 35vh;
+    }
+}
+
+@media screen and (min-width: 2736px) {
+    .hero-grid {
+        height: 30vh;
+    }
+}

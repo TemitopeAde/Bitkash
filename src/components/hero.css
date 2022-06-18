@@ -1,5 +1,4 @@
-.hero-flex,
-.hero-grid {
+.hero-flex{
     display: flex;
     align-items: center;
     height: 70vh;
@@ -115,6 +114,21 @@
 @media screen and (min-width: 2256px) {
     .hero {
         background-position: 690px 140px;
+    }
+
+    .hero-flex {
+        gap: 30%;
+    }
+
+    .css-1oqqzyl-MuiContainer-root {
+        max-width: 1800px !important;
+    }
+}
+
+
+@media screen and (min-width: 2736px) {
+    .hero {
+        background-position: 900px 200px;
     }
 
     .hero-flex {
