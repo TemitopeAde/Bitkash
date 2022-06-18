@@ -85,6 +85,17 @@
 
 
 
+@media screen and (min-width: 2256px) {
+    .number img {
+        top: 135px;
+        left: -50px;
+        width: 150px;
+    }
+
+    .flexitems {
+        padding: 9rem;
+    }
+}
 
 
 

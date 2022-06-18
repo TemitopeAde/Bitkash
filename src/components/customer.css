@@ -21,7 +21,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 5rem;
-    
+
 }
 
 .customer-items {
@@ -54,4 +54,23 @@
     font-size: 18px;
     line-height: 30px;
     color: #A6A6A6;
+}
+
+
+@media screen and (min-width: 1920px) {
+    .customer-items {
+        padding: 3rem;
+    }
+
+    .customer-flex {
+        gap: 60px;
+    }
+}
+
+
+@media screen and (min-width: 2256px) {
+    .customer-items {
+        padding: 6rem;
+    }
+
 }

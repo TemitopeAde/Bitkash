@@ -5,6 +5,7 @@ import SectionOne from '../components/SectionOne';
 import HowItWorks from '../components/HowItWorks';
 import NeedUs from '../components/NeedUs';
 import CustomerLove from '../components/CustomerLove';
+import BuyBitcoin from '../components/BuyBitcoin';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <HowItWorks />
       <NeedUs />
       <CustomerLove />
+      <BuyBitcoin />
     </Box>
   )
 }

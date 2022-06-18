@@ -1,0 +1,68 @@
+.buy-bitcoin {
+    padding: 5rem;
+    background-color: rgba(241, 106, 35, 0.06);
+    font-family: 'Poppins';
+}
+
+.buy-bitcoin h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    color: #000000;
+}
+
+.buy-bitcoin p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 40px;
+    color: #000000;
+}
+
+.buy-bitcoin button {
+    background: rgba(255, 153, 36, 1);
+    color: rgba(0, 0, 0, 1);
+    width: 284px;
+    height: 64px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+    color: #000000;
+}
+
+.buy-flex {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.buy-flex div:first-of-type {
+    width: 70%;
+}
+
+
+@media screen and (min-width: 1920px) {
+    .buy-flex {
+        gap: 20%;
+    }
+
+    .buy-flex div:first-of-type {
+        width: 50%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
