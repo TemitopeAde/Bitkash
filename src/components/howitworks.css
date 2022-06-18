@@ -1,6 +1,6 @@
 .section-2 {
     background-color: var(--dark-background);
-    padding: 4rem;
+    padding: 5.5rem;
 }
 
 .title {
@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
 }
 
 .flexitems p {
@@ -49,11 +49,38 @@
 }
 
 .number img {
-    width: 50px;
-    height: 70px;
+    width: 90px;
+    height: 109px;
     position: absolute;
-    left: -25px;
-    top: 80px;
+    left: -55px;
+    top: 90px;
+}
+
+@media screen and (min-width: 1366px) {
+    .number img {
+        top: 95px;
+        left: -50px;
+    }
+
+    .flexitems {
+        padding: 5rem;
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+    .flexitems {
+        padding: 6.5rem;
+    }
+
+    .number img {
+        top: 105px;
+        width: 140px;
+    }
+
+    .flex-box {
+        gap: 0;
+    }
 }
 
 
