@@ -37,7 +37,9 @@ li {
 
 @media screen and (min-width: 1920px) {
 
-  .css-1oqqzyl-MuiContainer-root {
+  .css-1oqqzyl-MuiContainer-root,
+  .css-1qsxih2
+  {
       max-width: 1500px !important;
   }
 }
@@ -45,7 +47,9 @@ li {
 
 @media screen and (min-width: 2256px) {
 
-  .css-1oqqzyl-MuiContainer-root {
+  .css-1oqqzyl-MuiContainer-root,
+  .css-1qsxih2
+  {
       max-width: 1900px !important;
   }
 }
