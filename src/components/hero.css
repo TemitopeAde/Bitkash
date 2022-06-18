@@ -1,0 +1,82 @@
+.hero-flex {
+    display: flex;
+    align-items: center;
+    height: 70vh;
+    justify-content: space-between;
+    gap: 30%;
+}
+
+.hero-flex h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+}
+
+.hero-brown {
+    color: var(--border-brown);
+}
+
+.form-header {
+    background-color: var(--dark-background);
+}
+
+.form-header p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.form-body {
+    background-color: var(--border-brown);
+    border-radius: 10px;
+    line-height: 50px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.hero-text {
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 24px !important;
+    line-height: 40px !important;
+}
+
+.form-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-full {
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: var(--white) !important;
+    width: 100%;
+    height: 57px;
+    background-color: var(--dark-btn-background) !important;
+}
+
+.hero {
+    background-image: url('../assets/images/girl.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba(51, 51, 51, 0.2);
+}
+
+.hero label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.hero input {
+    height: 57px !important;
+}

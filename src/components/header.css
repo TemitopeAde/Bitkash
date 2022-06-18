@@ -1,0 +1,31 @@
+.navlist ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.navlist ul li a {
+    text-decoration: none;
+    color: var(--black-text);
+    font-weight: 400;
+    font-family: 'Poppins';
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+
+
+.btn-primary {
+    background: var(--dark-btn-background) !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 5px !important;
+    width: 143px !important;
+    height: 57px !important;
+}
