@@ -81,7 +81,23 @@
     height: 57px !important;
 }
 
+.form-body .drop-down {
+    position: relative;
+}
 
+.form-body .arrow-down {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+}
+
+
+.select-div {
+    height: 57px;
+}
+.select-icon {
+   
+}
 
 @media screen and (min-width: 1440px) {
     .hero {

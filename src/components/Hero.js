@@ -1,6 +1,6 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
-
+import arrow from "../assets/images/arrow.png";
 import "./hero.css";
 
 const Hero = () => {
@@ -33,7 +33,15 @@ const Hero = () => {
             <Box className="form-body p-4">
               <form>
                 <label htmlFor="amount">Amount</label>
-                <input type="number" className="form-control" />
+                <Box position="relative">
+                  <select style={{ textAlign: "end", paddingRight: '30px' }} className="custom-select select-div form-control">
+                    <option>USD</option>
+                    <option>EUR</option>
+                  </select>
+                  <div className="arrow-down">
+                    <img src={arrow} alt="arrow" className="select-icon" />
+                  </div>
+                </Box>
 
                 <label htmlFor="email">Email</label>
                 <input type="email" className="form-control" />
@@ -44,8 +52,6 @@ const Hero = () => {
           </Box>
         </Box>
       </Container>
-
-     
     </Box>
   );
 };

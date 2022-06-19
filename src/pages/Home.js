@@ -18,6 +18,7 @@ const Home = () => {
       <CustomerLove />
       <BuyBitcoin />
       <Newsletter />
+
     </Box>
   )
 }
