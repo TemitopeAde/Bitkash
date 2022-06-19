@@ -11,8 +11,8 @@ const Newsletter = () => {
         <Box position="relative">
           <Stack spacing={2}>
             <h6 className="title-news">Subscribe</h6>
-            <h3 className="para-news">Stay informed never missed an update!</h3>
-            <img src={Line} alt="" className="line" />
+            <h3 className="para-news">Stay informed never missed an <span style={{position: 'relative'}}>update! <img src={Line} alt="" className="line" /></span></h3>
+            
           </Stack>
         </Box>
 

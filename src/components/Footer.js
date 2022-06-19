@@ -33,7 +33,7 @@ const Footer = () => {
             </Stack>
           </Box>
           <Box>
-            <Stack spacing={2}>
+            <Stack spacing={1}>
               <Link to="/">Home</Link>
               <Link to="/">Product</Link>
               <Link to="/">Industries</Link>
@@ -42,7 +42,7 @@ const Footer = () => {
             </Stack>
           </Box>
           <Box>
-            <Stack spacing={2}>
+            <Stack spacing={1}>
               <Link to="/">FAQ</Link>
               <Link to="/">Community</Link>
               <Link to="/">Join the team</Link>
@@ -51,7 +51,7 @@ const Footer = () => {
             </Stack>
           </Box>
           <Box>
-            <Stack spacing={2}>
+            <Stack spacing={1}>
               <Link to="/">FAQ</Link>
               <Link to="/">Community</Link>
               <Link to="/">Join the team</Link>

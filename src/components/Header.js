@@ -1,11 +1,9 @@
 import React from "react";
-import { Container} from "@mui/material";
+import { Container } from "@mui/material";
 import { Box } from "@mui/material";
 import Logo from "../assets/icons/header.png";
 import { Link } from "react-router-dom";
-
-import './header.css';
-
+import "./header.css";
 
 const Header = () => {
   return (
@@ -13,7 +11,7 @@ const Header = () => {
       <Container>
         <Box className="header">
           <Link to="/">
-            <img style={{width: '200px'}} src={Logo} alt="Logo" />
+            <img style={{ width: "200px" }} src={Logo} alt="Logo" />
           </Link>
 
           <Box>

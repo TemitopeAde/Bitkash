@@ -1,28 +1,49 @@
 import { Box } from "@mui/material";
 import React from "react";
-import {Stack} from "@mui/material";
+import { Stack } from "@mui/material";
 import HeroImage from "../assets/images/phone.svg";
 import { Container } from "@mui/system";
-import Logo from '../assets/icons/header.png';
+import Logo from "../assets/icons/header.png";
 
-import './section.css';
+import "./section.css";
 
 const SectionOne = () => {
   return (
     <Box>
       <Container className="p-4">
         <Box className="hero-grid">
-          <Box position="relative">
+          <Box
+            position="relative"
+            data-aos="fade-up"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="600"
+            data-aos-offset="0"
+            data-aos-duration="1500"
+          >
             <img className="phone-img" src={HeroImage} alt="hero" />
-            <Box >
-                <img postion="absolute" className="logo-img" src={Logo} alt="logo" />
+            <Box>
+              <img
+                postion="absolute"
+                className="logo-img"
+                src={Logo}
+                alt="logo"
+              />
             </Box>
           </Box>
 
-          <Box>
+          <Box
+            data-aos="fade-down"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="600"
+            data-aos-offset="0"
+            data-aos-duration="1500"
+          >
             <Stack spacing={2}>
-              <h3 style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <span className="hero-brown" style={{ marginRight: '20px'}}>About</span>Bitkash
+              <h3 style={{ display: "flex", justifyContent: "flex-end" }}>
+                <span className="hero-brown" style={{ marginRight: "10px" }}>
+                  About
+                </span>
+                Bitkash
               </h3>
 
               <p id="section-one-text">
