@@ -6,6 +6,7 @@ import HowItWorks from '../components/HowItWorks';
 import NeedUs from '../components/NeedUs';
 import CustomerLove from '../components/CustomerLove';
 import BuyBitcoin from '../components/BuyBitcoin';
+import Newsletter from '../components/Newsletter';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <NeedUs />
       <CustomerLove />
       <BuyBitcoin />
+      <Newsletter />
     </Box>
   )
 }
