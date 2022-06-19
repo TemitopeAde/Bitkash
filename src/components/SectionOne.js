@@ -22,10 +22,10 @@ const SectionOne = () => {
           <Box>
             <Stack spacing={2}>
               <h3 style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <span className="hero-brown">About</span> Bitkash
+                <span className="hero-brown" style={{ marginRight: '20px'}}>About</span>Bitkash
               </h3>
 
-              <p>
+              <p id="section-one-text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Adipiscing enim elementum tincidunt eget. Ac suspendisse
                 facilisi odio ultrices in. Vulputate mauris scelerisque ac sed

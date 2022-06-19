@@ -10,7 +10,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 33px;
     line-height: 60px;
 }
 
@@ -35,14 +35,20 @@
     line-height: 50px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    width: 300px;
+}
+
+.form-header {
+    width: 300px;
 }
 
 .hero-text {
     font-family: 'Poppins' !important;
     font-style: normal !important;
     font-weight: 400 !important;
-    font-size: 24px !important;
-    line-height: 40px !important;
+    font-size: 16px !important;
+    line-height: 25px !important;
+    font-weight: bold !important;
 }
 
 .form-flex {
@@ -126,7 +132,7 @@
 
 @media screen and (min-width: 2256px) {
     .hero {
-        background-position: 690px 140px;
+        background-position: 900px 140px;
     }
 
     .hero-flex {

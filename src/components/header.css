@@ -8,17 +8,24 @@
 .navlist ul li a {
     text-decoration: none;
     color: var(--black-text);
-    font-weight: 400;
+    font-weight: bold;
     font-family: 'Poppins';
+    transition: .7s;
+
+}
+
+.navlist ul li a:hover {
+    text-decoration: underline;
+    color: var(--brown);
 }
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 0px 0;
+    padding-top: 10px;
 }
-
 
 
 .btn-primary {
@@ -26,6 +33,16 @@
     border: none !important;
     outline: none !important;
     border-radius: 5px !important;
-    width: 143px !important;
-    height: 57px !important;
+    width: 100px !important;
+    height: 40px !important;
+    transition: .7s;
+    font-weight: 600 !important;
 }
+
+.btn-primary:hover {
+    background-color: var(--brown) !important;
+    color: #000 !important;
+}
+
+
+

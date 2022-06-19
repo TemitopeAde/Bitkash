@@ -13,7 +13,7 @@ const Hero = () => {
               Buy <span className="hero-brown">Bitcoin</span> in a minute with
               your bank
             </h3>
-            <Typography variant="body1" className="hero-text">
+            <Typography style={{width: '80%'}} variant="body1" className="hero-text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
               voluptatem unde blanditiis?
             </Typography>
@@ -21,7 +21,7 @@ const Hero = () => {
 
           <Box className="form-flex">
             <Box
-              className="form-header p-4"
+              className="form-header p-3"
               sx={{ borderRadius: "10px 10px 0px 0px", color: "#fff" }}
             >
               <p>

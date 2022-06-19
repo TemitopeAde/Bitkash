@@ -13,7 +13,7 @@ const Header = () => {
       <Container>
         <Box className="header">
           <Link to="/">
-            <img src={Logo} alt="Logo" />
+            <img style={{width: '200px'}} src={Logo} alt="Logo" />
           </Link>
 
           <Box>

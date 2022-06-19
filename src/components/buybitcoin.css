@@ -7,7 +7,7 @@
 .buy-bitcoin h3 {
     font-style: normal;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 33px;
     line-height: 56px;
     color: #000000;
 }
@@ -15,7 +15,7 @@
 .buy-bitcoin p {
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 40px;
     color: #000000;
 }
@@ -27,7 +27,7 @@
     height: 64px;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 40px;
     color: #000000;
 }
@@ -63,7 +63,7 @@
 .title-news {
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 60px;
     letter-spacing: -0.03em;
     color: #F16A23;
@@ -72,7 +72,7 @@
 .para-news {
     font-style: normal;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 33px;
     line-height: 72px;
     letter-spacing: -0.03em;
 
@@ -122,7 +122,7 @@
 ::placeholder {
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 26px;
     letter-spacing: -0.02em;
     color: #999999;
