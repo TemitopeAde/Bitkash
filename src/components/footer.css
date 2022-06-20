@@ -18,6 +18,11 @@
 
 .social-icons img {
     width: 20px;
+    transition: .7s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
 }
 
 .footer a {
@@ -43,6 +48,7 @@
     font-size: 16px;
     line-height: 36px;
     letter-spacing: -0.02em;
+    font-family: 'Lexend Deca'
 }
 
 .footer2 {

@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "../assets/icons/header.png";
 import instagram from "../assets/icons/instagram.png";
 import phone from "../assets/icons/phone.png";
+import facebook from '../assets/icons/facebook.png';
 import "./footer.css";
 
 const Footer = () => {
@@ -24,7 +25,7 @@ const Footer = () => {
                   <img src={instagram} alt="instagram" />
                 </Link>
                 <Link to="/">
-                  <img src={phone} alt="facebook" />
+                  <img src={facebook} alt="facebook" />
                 </Link>
                 <Link to="/">
                   <img src={phone} alt="telephone" />

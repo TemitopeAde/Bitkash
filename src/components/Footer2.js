@@ -4,10 +4,11 @@ import React from 'react';
 import './footer.css';
 
 const Footer2 = () => {
+  let year = new Date()
   return (
     <Box className="footer2">
         <Container>
-            <p>Copyright @Bitkash 2022. All Rights Reserved.</p>
+            <p>Copyright @Bitkash {year.getFullYear()}. All Rights Reserved.</p>
         </Container>
     </Box>
   )
