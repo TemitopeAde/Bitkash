@@ -90,6 +90,10 @@
     top: 60px;
 }
 
+.splide__arrows {
+    display: none !important;
+}
+
 .man {
     position: absolute;
     left: 400px;

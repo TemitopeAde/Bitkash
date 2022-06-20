@@ -8,8 +8,15 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 
 const Hero = () => {
+  const options = {
+    type         : 'loop',
+    autoplay     : true,
+    pauseOnHover : false,
+    resetProgress: false,
+    arrow: false
+  };
   return (
-    <Splide aria-label="My Favorite Images">
+    <Splide options={options} draggable="true">
       <SplideSlide>
         <Box className="hero" position="relative">
           <Box position="absolute" className="man">
