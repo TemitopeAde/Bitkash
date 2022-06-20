@@ -121,15 +121,22 @@
 }
 
 
-select {
+/* select {
     background: var(--border-brown);
-}
+} */
 
 .hero input,
 .hero select {
     height: 37px !important;
     font-size: 12px;
     font-weight: bold;
+}
+
+select {
+    margin-right: 30px;
+    padding-right: 30px;
+    background-position-x: 244px !important;
+    background: url('../assets/images/arrow.png') no-repeat right #ddd;
 }
 
 .form-body .drop-down {
@@ -171,9 +178,7 @@ select {
 }
 
 @media screen and (min-width: 1920px) {
-    .hero {
-        background-position: 400px 90px;
-    }
+  
 
     .hero-flex {
         height: 65vh;
@@ -182,7 +187,6 @@ select {
 
     .hero-flex h3 {
         font-size: 53px;
-
     }
 
     .hero-text {
@@ -192,12 +196,46 @@ select {
     .hero-text {
         line-height: 40px !important;
     }
+
+    .lady {
+        position: absolute;
+        left: 400px;
+        bottom: 0;
+        top: 60px;
+    }
+    
+    .splide__arrows {
+        display: none !important;
+    }
+    
+    .man {
+        position: absolute;
+        bottom: 0;
+        left: 490px
+    }
+    
+    
+    .lady img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero {
+        height: 80vh;
+        padding-top: 0rem;
+    }
 }
 
 
 @media screen and (min-width: 2256px) {
     .hero {
         background-position: 500px 140px;
+    }
+
+    .hero {
+        height: 60vh;
     }
 
     .hero-flex {
@@ -212,13 +250,34 @@ select {
         line-height: 40px !important;
     }
 
+    .lady {
+        position: absolute;
+        left: 400px;
+        bottom: 0;
+        top: 60px;
+    }
+    
+    .splide__arrows {
+        display: none !important;
+    }
+    
+    .man {
+        bottom: 0;
+        left: 690px
+    }
+
 
 }
 
 
 @media screen and (min-width: 2736px) {
+    .man {
+        bottom: 0;
+        left: 990px
+    }
     .hero {
         background-position: 600px 200px;
+        height: 55vh;
     }
 
     .hero-flex {

@@ -8,6 +8,8 @@
   box-sizing: border-box;
 }
 
+
+
 :root {
   --black-text: #281F1E;
   --brown: #FE7E10F5;
@@ -19,6 +21,14 @@
   --white: #FFFFFF;
 
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+
 
 body {
   font-family: 'Poppins', sans-serif;

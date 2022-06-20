@@ -16,7 +16,7 @@
 .navlist ul li a {
     text-decoration: none;
     color: var(--black-text);
-    font-weight: bold;
+    font-weight: 400;
     font-family: 'Poppins';
     transition: .7s;
 

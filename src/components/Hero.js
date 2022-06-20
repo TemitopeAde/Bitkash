@@ -10,10 +10,11 @@ import '@splidejs/react-splide/css';
 const Hero = () => {
   const options = {
     type         : 'loop',
-    autoplay     : true,
-    pauseOnHover : false,
+    // autoplay     : true,
+    pauseOnHover : true,
     resetProgress: false,
-    arrow: false
+    arrow: false,
+
   };
   return (
     <Splide options={options} draggable="true">
@@ -76,9 +77,9 @@ const Hero = () => {
                         <option>USD</option>
                         <option>EUR</option>
                       </select>
-                      <div className="arrow-down">
+                      {/* <div className="arrow-down">
                         <img src={arrow} alt="arrow" className="select-icon" />
-                      </div>
+                      </div> */}
                     </Box>
                     <label htmlFor="email">Amount</label>
                     <input
