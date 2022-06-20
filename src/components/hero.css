@@ -48,7 +48,7 @@
     font-weight: 400 !important;
     font-size: 16px !important;
     line-height: 25px !important;
-    font-weight: bold !important;
+    /* font-weight: bold !important; */
 }
 
 .form-flex {
@@ -290,7 +290,7 @@ select {
     }
 
     .hero-text {
-        font-size: 33px !important;
+        font-size: 43px !important;
 
     }
 }

@@ -4,8 +4,11 @@ import { Box } from "@mui/material";
 import Logo from "../assets/icons/header.png";
 import { Link } from "react-router-dom";
 import "./header.css";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Box className="navbar">
       <Container>
@@ -36,10 +39,10 @@ const Header = () => {
           <Box>
             <Stack justifyContent="space-between" alignItems="center" sapcing={2} direction="row">
               <li style={{ marginRight: '2rem'}}>
-                <Link style={{textDecoration: 'none', color: '#FF9924'}} to="/">Login</Link>
+                <Link style={{textDecoration: 'none', color: '#FF9924'}} to="/login">Login</Link>
               </li>
               <li>
-                <button className="btn btn-primary">Sign Up</button>
+                <button onClick={() => navigate("/signup")} className="btn btn-primary">Sign Up</button>
               </li>
             </Stack>
           </Box>
