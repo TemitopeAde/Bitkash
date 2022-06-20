@@ -10,7 +10,7 @@ import '@splidejs/react-splide/css';
 const Hero = () => {
   const options = {
     type         : 'loop',
-    // autoplay     : true,
+    autoplay     : true,
     pauseOnHover : true,
     resetProgress: false,
     arrow: false,
