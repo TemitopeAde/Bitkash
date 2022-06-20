@@ -18,15 +18,15 @@ const Hero = () => {
             spacing={2}
           >
             <h3 className="box">
-              Buy <span className="hero-brown">Bitcoin</span> in a minute with
-              your bank
+              Buy <span className="hero-brown">Bitcoin</span> in a<br /> minute with
+              your <br />bank
             </h3>
             <Typography
               style={{ width: "80%" }}
               variant="body1"
               className="hero-text"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+              Lorem ipsum dolor sit amet <br />consectetur adipisicing elit. Esse
               voluptatem unde blanditiis?
             </Typography>
           </Stack>
@@ -45,7 +45,7 @@ const Hero = () => {
 
             <Box className="form-body p-3">
               <form>
-                <label htmlFor="amount">Amount</label>
+                <label htmlFor="amount">Currency</label>
                 <Box position="relative">
                   <select
                     style={{

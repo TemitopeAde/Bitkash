@@ -16,9 +16,9 @@ const SectionOne = () => {
             position="relative"
             data-aos="fade-up"
             data-aos-easing="ease-in-back"
-            data-aos-delay="600"
+            
             data-aos-offset="0"
-            data-aos-duration="1500"
+            data-aos-duration="3000"
           >
             <img className="phone-img" src={HeroImage} alt="hero" />
             <Box>
@@ -34,9 +34,9 @@ const SectionOne = () => {
           <Box
             data-aos="fade-down"
             data-aos-easing="ease-in-back"
-            data-aos-delay="600"
+            
             data-aos-offset="0"
-            data-aos-duration="1500"
+            data-aos-duration="3000"
           >
             <Stack spacing={2}>
               <h3 style={{ display: "flex", justifyContent: "flex-end" }}>
