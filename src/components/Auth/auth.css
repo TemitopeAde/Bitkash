@@ -28,7 +28,6 @@
     display: block;
     width: 100%;
     padding: 0 6px;
-    background: #fff;
 }
 
 
@@ -68,4 +67,60 @@ h3 {
     line-height: 27px;
     color: #000000;
     text-align: center;
+}
+
+.signup-grid {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 3rem;
+}
+
+.signup-grid .form-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.sign-up .form-control {
+    height: 60px;
+    border: 1px solid rgba(252, 130, 24, 1) !important;
+    font-size: 20px;
+}
+
+.sign-up label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.signup-grid .form-input {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.sign-up {
+    padding-top: 10rem;
+    background-color: rgba(255, 223, 184, 0.2);
+    padding-bottom: 4rem;
+}
+
+.sign-up .submit {
+    width: 250px;
+    height: 64px;
+    color: #fff;
+    background: #FF9924;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 3.5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 50px;
 }
