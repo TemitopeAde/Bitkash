@@ -1,5 +1,5 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import arrow from "../assets/images/arrow.png";
 import "./hero.css";
 
@@ -51,7 +51,7 @@ const Hero = () => {
                     style={{
                       textAlign: "end",
                       paddingRight: "30px",
-                      borderRadius: "15px",
+                      borderRadius: "5px",
                     }}
                     className="custom-select select-div form-control"
                   >
@@ -64,18 +64,18 @@ const Hero = () => {
                 </Box>
                 <label htmlFor="email">Amount</label>
                 <input
-                  style={{ borderRadius: "15px" }}
+                  style={{ borderRadius: "5px" }}
                   type="number"
                   className="form-control"
                 />
                 <label htmlFor="email">Email</label>
                 <input
-                  style={{ borderRadius: "15px" }}
+                  style={{ borderRadius: "5px" }}
                   type="email"
                   className="form-control"
                 />
 
-                <button className="mt-4 btn btn-full">Buy Bitcoin</button>
+                <button style={{borderColor: '#fff'}} className="mt-4 btn btn-full">Buy Bitcoin</button>
               </form>
             </Box>
           </Box>
