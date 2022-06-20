@@ -27,7 +27,8 @@
 
 
 .login .form-controls {
-    border: #FF9924 !important;
+    border: 2px solid #FF9924 !important;
+    /* outline: 2px solid #FF9924 !important; */
     height: 48px;
     display: block;
     width: 100%;
@@ -49,7 +50,7 @@
 .login-box {
     background-color: var(--white);
     border-radius: 20px;
-    width: 591px;
+    width: 501px;
 }
 
 h3 {

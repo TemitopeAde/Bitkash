@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <Box className="login">
-      <Box className="login-box p-3">
+      <Box className="login-box p-5">
         <h3 className="text-center">Login</h3>
 
         <form>
