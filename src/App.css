@@ -8,8 +8,13 @@
   box-sizing: border-box;
 }
 
+select {
+  cursor: pointer;
+}
 
-
+.shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 :root {
   --black-text: #281F1E;
   --brown: #FE7E10F5;

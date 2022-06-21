@@ -124,3 +124,23 @@ h3 {
     font-size: 32px;
     line-height: 50px;
 }
+
+.select-control {
+    width: 140px !important;
+    background-color: #FF9924 !important;
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.title-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+

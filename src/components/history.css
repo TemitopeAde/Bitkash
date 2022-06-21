@@ -1,0 +1,61 @@
+.history-header {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 0.4fr;
+    column-gap: 40px;
+    align-items: center;
+}
+
+.history-header .wallet {
+    width: 40px;
+    height: 40px;
+}
+
+.history-header select {
+    background-color: none !important;
+}
+
+.history-table-head {
+    text-align: center;
+}
+
+.history-table-head,
+.history-table-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0px;
+    text-align: center;
+}
+
+.dashboard-inner {
+    padding: 3rem 0;
+    background-color: #fff;
+}
+
+.history-table-body {
+    background-color:rgba(255, 249, 241, 1);
+}
+
+.history-table h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 90px;
+    /* identical to box height, or 375% */
+
+    color: #000000;
+}
+
+
+.history-row p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 90px;
+    /* identical to box height, or 375% */
+
+
+    color: #000000;
+
+}

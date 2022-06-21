@@ -9,10 +9,12 @@ import BuyBitcoin from '../components/BuyBitcoin';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import Footer2 from '../components/Footer2';
+import Header from '../components/Header';
 
 const Home = () => {
   return (
     <Box>
+      <Header />
       <Hero />
       <SectionOne />
       <HowItWorks />
