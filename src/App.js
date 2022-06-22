@@ -13,6 +13,7 @@ import Payment from './pages/Payment';
 import RecoverPassword from './pages/RecoverPassword';
 import EmailConfirmation from './pages/Email-confirmation';
 import Register from './pages/Register';
+import {AnimatePresence} from 'framer-motion';
 
 function App() {
   useEffect(() => {
@@ -20,12 +21,12 @@ function App() {
     AOS.refresh();
   }, []);
   return (
-    <div>
+    <AnimatePresence>
       
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/kyc" element={<Signup />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
@@ -34,7 +35,7 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Routes>
 
-    </div>
+    </AnimatePresence>
   );
 }
 

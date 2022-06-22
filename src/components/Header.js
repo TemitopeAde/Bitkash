@@ -42,7 +42,7 @@ const Header = () => {
                 <Link style={{textDecoration: 'none', color: '#FF9924'}} to="/login">Login</Link>
               </li>
               <li>
-                <button onClick={() => navigate("/signup")} className="btn btn-primary">Sign Up</button>
+                <button onClick={() => navigate("/register")} className="btn btn-primary">Sign Up</button>
               </li>
             </Stack>
           </Box>

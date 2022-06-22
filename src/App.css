@@ -52,6 +52,11 @@ li {
   list-style: none;
 }
 
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
 @media screen and (min-width: 1920px) {
 
   .css-1oqqzyl-MuiContainer-root,

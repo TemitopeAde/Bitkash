@@ -76,9 +76,9 @@ const Hero = () => {
                         <option>USD</option>
                         <option>EUR</option>
                       </select>
-                      <div className="arrow-down">
+                      {/* <div className="arrow-down">
                         <img src={arrow} alt="arrow" className="select-icon" />
-                      </div>
+                      </div> */}
                     </Box>
                     <label htmlFor="email">Amount</label>
                     <input

@@ -13,7 +13,9 @@ const Buy = () => {
       <Box className="dashboard-grid">
         <Box className="sidebar">
           <Container>
-            <img className="logo" src={logo} alt="bitkash" />
+            <Link to="/">
+              <img className="logo" src={logo} alt="bitkash" />
+            </Link>
 
             <ul className="nav-icons">
               <li>
@@ -100,7 +102,7 @@ const Buy = () => {
 
         <Box className="dashboard-content">
           <Box className="dashboard-header">
-            <Container style={{display: 'flex', justifyContent: 'flex-end'}}>
+            <Container style={{ display: "flex", justifyContent: "flex-end" }}>
               <Box className="dashboard-container">
                 <Stack spacing={2} direction="row">
                   <img className="user" src={user} alt="" />

@@ -18,7 +18,9 @@ const Dashboard = () => {
       <Box className="dashboard-grid">
         <Box className="sidebar">
           <Container>
-            <img className="logo" src={logo} alt="bitkash" />
+            <Link to="/">
+              <img className="logo" src={logo} alt="bitkash" />
+            </Link>
 
             <ul className="nav-icons">
               <li>
@@ -102,7 +104,7 @@ const Dashboard = () => {
             </ul>
           </Container>
         </Box>
-        
+
         <Box className="dashboard-content">
           <Box className="dashboard-header">
             <Box className="dashboard-container">
@@ -166,7 +168,12 @@ const Dashboard = () => {
                   />
                 </Box>
 
-                <Stack className="mb-4" alignItems="center" direction="row" spacing={5}>
+                <Stack
+                  className="mb-4"
+                  alignItems="center"
+                  direction="row"
+                  spacing={5}
+                >
                   <input type="checkbox" />
                   <h6 className="checkbox-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -174,7 +181,9 @@ const Dashboard = () => {
                   </h6>
                 </Stack>
 
-                <button type="submit" className="dashboard-buy">Buy</button>
+                <button type="submit" className="dashboard-buy">
+                  Buy
+                </button>
               </Box>
             </form>
           </Box>

@@ -8,14 +8,15 @@ import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import Payment from "../components/Payment";
 
-
 const Buy = () => {
   return (
     <Box className="dashboard">
       <Box className="dashboard-grid">
         <Box className="sidebar">
           <Container>
-            <img className="logo" src={logo} alt="bitkash" />
+            <Link to="/">
+              <img className="logo" src={logo} alt="bitkash" />
+            </Link>
 
             <ul className="nav-icons">
               <li>
@@ -102,7 +103,10 @@ const Buy = () => {
 
         <Box className="dashboard-content">
           <Box className="dashboard-header">
-            <Container style={{display: 'flex', justifyContent: 'flex-end'}} className="dashboard-container">
+            <Container
+              style={{ display: "flex", justifyContent: "flex-end" }}
+              className="dashboard-container"
+            >
               <Box className="dashboard-container">
                 <Stack spacing={2} direction="row">
                   <img className="user" src={user} alt="" />

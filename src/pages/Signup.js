@@ -1,83 +1,161 @@
 import { Box, Container } from "@mui/material";
-import React from "react";
-
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "../components/Auth/auth.css";
 import Header from "../components/Header";
 
-const Signup = () => {
+const animations = {
+  initial: { opacity: 0, x: 1000 },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -1000 },
+};
+
+const Signup = ({ children }) => {
+  const defaultValue = () => {
+    const value = "usd";
+    return value;
+  };
+  const [currency, setCurrency] = useState(defaultValue);
+
+  console.log(currency);
+
+  const handleCurrencyChange = (e) => {
+    setCurrency(e.target.value);
+  };
+
   return (
-    <Box>
-      <Header />
-      <Box className="sign-up">
-        <form>
+    <motion.div
+      variants={animations}
+      initial="initial"
+      animate="animate"
+      transition={{ duration: 0.5 }}
+    >
+      <Box>
+        <Header />
+        <Box className="sign-up">
           <Container>
             <Box className="title-flex">
-              <h3 className="mb-5">Complete your KYC Verification</h3>
-              <select className="form-control select-control">
-                <option> £ EUR</option>
-                <option>$ USD</option>
+              <h3 className="mb-5">Complete your bank details</h3>
+              <select
+                value={currency}
+                onChange={handleCurrencyChange}
+                className="form-control select-control"
+              >
+                <option value="eur"> £ EUR</option>
+                <option value="usd">$ USD</option>
               </select>
             </Box>
 
-            <Box className="signup-grid">
-              <Box className="form-input">
-                <Box>
-                  <input className="form-control" />
+            {currency === "eur"? <form>
+              <Box className="signup-grid">
+                <Box className="form-input">
+                  <Box>
+                    <input className="form-control" />
+                  </Box>
+                  <Box>
+                    <input className="form-control" />
+                  </Box>
                 </Box>
-                <Box>
-                  <input className="form-control" />
+                <Box className="form-input">
+                  <Box>
+                    <label htmlFor="holder-name">Account Holders Name</label>
+                    <input id="holder-name" className="form-control" />
+                  </Box>
+                  <Box>
+                    <label htmlFor="bank-name">Bank Name</label>
+                    <input id="bank-name" className="form-control" />
+                  </Box>
+                </Box>
+                <Box className="form-inputs">
+                  <Box>
+                    <label htmlFor="bank-branch-name">Bank branch name</label>
+                    <input id="bank-branch-name" className="form-control" />
+                  </Box>
+                  <Box>
+                    <label htmlFor="iban">IBAN</label>
+                    <input id="iban" className="form-control" />
+                  </Box>
+                  <Box>
+                    <label htmlFor="swift-code">SWIFT/BIC Code</label>
+                    <input id="swift-code" className="form-control" />
+                  </Box>
+                </Box>
+
+                <Box className="form-input">
+                  <Box>
+                    <label htmlFor="bank-address">Bank Address</label>
+                    <input id="bank-address" className="form-control" />
+                  </Box>
+                  <Box>
+                    <label htmlFor="bank-city">Bank City</label>
+                    <input id="bank-city" className="form-control" />
+                  </Box>
+                </Box>
+
+                <Box className="form-zip">
+                  <label htmlFor="zip-code">Zip/Postal Code</label>
+                  <input id="zip-code" className="form-control" />
                 </Box>
               </Box>
 
-              <Box className="form-input">
-                <Box>
-                  <label htmlFor="holder-name">Account Holders Name</label>
-                  <input id="holder-name" className="form-control" />
+              <button type="submit" className="submit">
+                Save
+              </button>
+            </form>: <form>
+              <Box className="signup-grid">
+                <Box className="form-input">
+                  <Box>
+                    <input className="form-control" />
+                  </Box>
+                  <Box>
+                    <input className="form-control" />
+                  </Box>
                 </Box>
-                <Box>
-                  <label htmlFor="bank-name">Bank Name</label>
-                  <input id="bank-name" className="form-control" />
+                <Box className="form-input">
+                  <Box>
+                    <label htmlFor="holder-name">Account Holders Name</label>
+                    <input id="holder-name" className="form-control" />
+                  </Box>
+                  <Box>
+                    <label htmlFor="bank-name">Bank Name</label>
+                    <input id="bank-name" className="form-control" />
+                  </Box>
                 </Box>
-              </Box>
-              <Box className="form-inputs">
-                <Box>
-                  <label htmlFor="bank-branch-name">Bank branch name</label>
-                  <input id="bank-branch-name" className="form-control" />
+                <Box className="form-input">
+                  <Box>
+                    <label htmlFor="bank-2-branch-name">Account Number</label>
+                    <input id="bank-2-branch-name" className="form-control" />
+                  </Box>
+                  <Box>
+                    <label htmlFor="routing-number">Routing Number</label>
+                    <input id="routing-number" className="form-control" />
+                  </Box>
+                  
                 </Box>
-                <Box>
-                  <label htmlFor="iban">IBAN</label>
-                  <input id="iban" className="form-control" />
+
+                <Box className="form-input">
+                <Box className="form-zip">
+                  <label htmlFor="zip-code">Zip/Postal Code</label>
+                  <input id="zip-code" className="form-control" />
                 </Box>
-                <Box>
-                  <label htmlFor="swift-code">SWIFT/BIC Code</label>
-                  <input id="swift-code" className="form-control" />
+                  <Box>
+                    <label htmlFor="zip-postal">Zip/Postal Code</label>
+                    <input type="number" id="zip-postal" className="form-control" />
+                  </Box>
+                  
                 </Box>
               </Box>
 
-              <Box className="form-input">
-                <Box>
-                  <label htmlFor="bank-address">Bank Address</label>
-                  <input id="bank-address" className="form-control" />
-                </Box>
-                <Box>
-                  <label htmlFor="bank-city">Bank City</label>
-                  <input id="bank-city" className="form-control" />
-                </Box>
-              </Box>
+              <button type="submit" className="submit">
+                Save
+              </button>
+            </form>}
 
-              <Box className="form-zip">
-                <label htmlFor="zip-code">Zip/Postal Code</label>
-                <input id="zip-code" className="form-control" />
-              </Box>
-            </Box>
-
-            <button type="submit" className="submit">
-              Submit
-            </button>
+            
           </Container>
-        </form>
+        </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 
