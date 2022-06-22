@@ -9,7 +9,10 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Buy from './pages/Buy';
 import History from './pages/History';
-
+import Payment from './pages/Payment';
+import RecoverPassword from './pages/RecoverPassword';
+import EmailConfirmation from './pages/Email-confirmation';
+import Register from './pages/Register';
 
 function App() {
   useEffect(() => {
@@ -25,10 +28,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/history" element={<History />} />
-        {/* <Route path="/payment" element={<Dasboard />} />
-        <Route path="/password-and-security" element={<Dasboard />} />
-        <Route path="/activities" element={<Dasboard />} />
-        <Route path="/logout" element={<Dasboard />} /> */} */}
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/recover-password" element={<RecoverPassword />} />
+        <Route path="/email-confirmation" element={<EmailConfirmation />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
 
     </div>

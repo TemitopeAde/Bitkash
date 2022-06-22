@@ -1,0 +1,226 @@
+.register-page {
+    font-family: 'Poppins';
+}
+
+.register-sidebar {
+    position: fixed;
+    left: 0;
+    width: 350px;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    background-image: url('../assets/images/login.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.register-sidebar img {
+    width: 260px;
+    height: 48px;
+    margin-top: 3.5rem;
+    margin-left: 1rem;
+}
+
+
+.register-sidebar .register-title h3 {
+    color: #fff;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    color: #FFFFFF;
+}
+
+.register-sidebar .register-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+.register-page .register-content {
+    /* margin-left: 450px; */
+}
+
+.register-page {
+    margin-top: 5rem;
+}
+
+.register-grid {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.register-grid .register-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.register-form {
+    padding-left: 6.5rem;
+}
+
+.register-row .form-control {
+    border: 2px solid rgba(255, 153, 36, 1);
+    height: 50px !important;
+}
+
+.register-row label {
+    margin-bottom: 14px;
+}
+
+.step-one {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FC8218;
+}
+
+.step-one-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    /* identical to box height */
+
+
+    color: #000000;
+
+}
+
+.register-next button {
+    /* width: 250px; */
+    width: 48%;
+    height: 50px;
+    background: #FF9924;
+    border: 1px solid #FC8218;
+    border-radius: 5px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+
+
+
+.register-previous {
+    background-color: #fff !important;
+    border: 2px solid rgba(255, 153, 36, 1) !important;
+}
+
+
+@media screen and (min-width: 1280px) {
+    .register-page .css-1oqqzyl-MuiContainer-root {
+        max-width: 900px !important;
+    }
+
+    .register-form {
+        padding-left: 330px;
+    }
+}
+
+
+@media screen and (min-width: 1366px) {
+    .register-form {
+        padding-left: 350px;
+    }
+
+    .register-page .css-1oqqzyl-MuiContainer-root {
+        max-width: 1000px !important;
+    }
+
+}
+
+@media screen and (max-width: 1600px) {
+    .register-sidebar {
+        width: 380px;
+    }
+
+    .register-form {
+        padding-left: 350px;
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+    .register-page {
+        margin-top: 10rem;
+    }
+
+    .register-form {
+        padding-left: 450px;
+    }
+
+    .register-page .css-1oqqzyl-MuiContainer-root {
+        max-width: 1200px !important;
+    }
+
+    .register-sidebar {
+        width: 550px;
+    }
+
+    .register-sidebar .register-title h3 {
+        font-size: 36px;
+    }
+
+    .register-row label {
+        font-size: 25px;
+    }
+
+    .register-row .form-control {
+        height: 60px !important;
+    }
+}
+
+
+@media screen and (min-width: 2256px) {
+    .register-sidebar .register-title h3 {
+        font-size: 56px;
+    }
+
+    .register-page {
+        margin-top: 10rem;
+    }
+
+    .register-form {
+        padding-left: 650px;
+    }
+
+    .register-page .css-1oqqzyl-MuiContainer-root {
+        max-width: 1500px !important;
+    }
+
+    .register-sidebar {
+        width: 800px;
+    }
+}
+
+
+@media screen and (min-width: 2736px) {
+    .register-page {
+        margin-top: 10rem;
+    }
+
+    .register-form {
+        padding-left: 900px;
+    }
+
+    .register-page .css-1oqqzyl-MuiContainer-root {
+        max-width: 2100px !important;
+    }
+
+    .register-sidebar {
+        width: 1000px;
+    }
+
+    .register-sidebar .register-title h3 {
+        font-size: 76px;
+    }
+}

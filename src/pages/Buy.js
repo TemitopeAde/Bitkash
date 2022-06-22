@@ -97,81 +97,92 @@ const Buy = () => {
             </ul>
           </Container>
         </Box>
-        
+
         <Box className="dashboard-content">
           <Box className="dashboard-header">
-            <Box className="dashboard-container">
-              <Stack spacing={2} direction="row">
-                <img className="user" src={user} alt="" />
-                <Stack>
-                  <h6>Olubanjo Oluseyi</h6>
-                  <p>Verified</p>
+            <Container style={{display: 'flex', justifyContent: 'flex-end'}}>
+              <Box className="dashboard-container">
+                <Stack spacing={2} direction="row">
+                  <img className="user" src={user} alt="" />
+                  <Stack>
+                    <h6>Olubanjo Oluseyi</h6>
+                    <p>Verified</p>
+                  </Stack>
+                  <Box paddingTop="6px">
+                    <img className="notify" src={notification} alt="" />
+                  </Box>
                 </Stack>
-                <Box paddingTop="6px">
-                  <img className="notify" src={notification} alt="" />
-                </Box>
-              </Stack>
-            </Box>
+              </Box>
+            </Container>
           </Box>
 
-          <Box className="dashboard-inner p-5">
-            <Box className="overview">
-              <h4 className="mb-4">
-                You are buying Bitcoin at <span>$24,000</span>{" "}
-              </h4>
-              <p>The Bitcoin exchange rate will refresh in 10 minutes</p>
-            </Box>
-            <form>
-              <Box>
-                <Box className="dashboard-form">
-                  <Box>
-                    <label htmlFor="currency-dashboard">Currency</label>
-                    <select id="currency-dashboard" className="form-control">
-                      <option>USD</option>
-                      <option>EUR</option>
-                    </select>
-                  </Box>
-                  <Box>
-                    <label htmlFor="dashboard-price">Price</label>
-                    <input
-                      type="number"
-                      id="dashboard-price"
-                      className="form-control"
-                    />
-                  </Box>
-
-                  <Box>
-                    <label htmlFor="bitcoin-equ">Bitcoin Equivalent</label>
-                    <input
-                      type="number"
-                      className="form-control"
-                      id="bitcoin-equ"
-                    />
-                  </Box>
-                </Box>
-
-                <Box className="mb-5 mt-5 dashboard-form-single">
-                  <label htmlFor="wallet-adresss">
-                    Bitcoin Wallet Addresss
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="wallet-address"
-                  />
-                </Box>
-
-                <Stack className="mb-4" alignItems="center" direction="row" spacing={5}>
-                  <input type="checkbox" />
-                  <h6 className="checkbox-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Animi libero laboriosam neque ipsam, voluptate omnis non.
-                  </h6>
-                </Stack>
-
-                <button type="submit" className="dashboard-buy">Buy</button>
+          <Box className="dashboard-inner py-5">
+            <Container>
+              <Box className="overview">
+                <h4 className="mb-4">
+                  You are buying Bitcoin at <span>$24,000</span>{" "}
+                </h4>
+                <p>The Bitcoin exchange rate will refresh in 10 minutes</p>
               </Box>
-            </form>
+              <form>
+                <Box>
+                  <Box className="dashboard-form">
+                    <Box>
+                      <label htmlFor="currency-dashboard">Currency</label>
+                      <select id="currency-dashboard" className="form-control">
+                        <option>USD</option>
+                        <option>EUR</option>
+                      </select>
+                    </Box>
+                    <Box>
+                      <label htmlFor="dashboard-price">Price</label>
+                      <input
+                        type="number"
+                        id="dashboard-price"
+                        className="form-control"
+                      />
+                    </Box>
+
+                    <Box>
+                      <label htmlFor="bitcoin-equ">Bitcoin Equivalent</label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="bitcoin-equ"
+                      />
+                    </Box>
+                  </Box>
+
+                  <Box className="mb-5 mt-5 dashboard-form-single">
+                    <label htmlFor="wallet-adresss">
+                      Bitcoin Wallet Addresss
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="wallet-address"
+                    />
+                  </Box>
+
+                  <Stack
+                    className="mb-4"
+                    alignItems="center"
+                    direction="row"
+                    spacing={5}
+                  >
+                    <input type="checkbox" />
+                    <h6 className="checkbox-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Animi libero laboriosam neque ipsam, voluptate omnis non.
+                    </h6>
+                  </Stack>
+
+                  <button type="submit" className="dashboard-buy">
+                    Buy
+                  </button>
+                </Box>
+              </form>
+            </Container>
           </Box>
         </Box>
       </Box>

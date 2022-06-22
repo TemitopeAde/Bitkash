@@ -1,13 +1,25 @@
 .history-header {
     display: grid;
-    grid-template-columns: 1fr 2.5fr 0.4fr;
+    grid-template-columns: 1fr 1.5fr 0.4fr;
     column-gap: 40px;
     align-items: center;
+}
+
+@media screen and (max-width: 1280px) {
+    .history-header {
+        grid-template-columns: 1fr 1fr 0.4fr;
+        column-gap: 30px;
+
+    }
 }
 
 .history-header .wallet {
     width: 40px;
     height: 40px;
+}
+
+.history-table {
+    overflow-x: scroll;
 }
 
 .history-header select {
@@ -31,31 +43,65 @@
     background-color: #fff;
 }
 
-.history-table-body {
-    background-color:rgba(255, 249, 241, 1);
+.h-table {
+    font-family: 'Poppins' !important;
 }
 
-.history-table h5 {
+.h-table th,
+.h-table td {
+    text-align: center;
     font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 90px;
-    /* identical to box height, or 375% */
+}
 
-    color: #000000;
+table,
+tr,
+td {
+    border: none !important;
+}
+
+.h-table table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border: none !important;
+    /* border-spacing: 200px 500px !important; */
+}
+
+thead th {
+    font-weight: 700 !important;
 }
 
 
-.history-row p {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 90px;
-    /* identical to box height, or 375% */
-
-
-    color: #000000;
-
+tbody tr {
+    background-color: rgba(255, 249, 241, 1);
 }
+
+
+
+
+
+/* PAYMENT.JS */
+
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment-header .payment-button {
+    color: #fff;
+    width: 166px;
+    height: 57px;
+    left: 1828px;
+    top: 154px;
+
+    background: #FF9924;
+    border: 1px solid #FF9924;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.h-table td {
+    font-size: 16px;
+}
+
+
+

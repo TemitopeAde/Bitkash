@@ -101,18 +101,20 @@ const Buy = () => {
 
         <Box className="dashboard-content">
           <Box className="dashboard-header">
-            <Box className="dashboard-container">
-              <Stack spacing={2} direction="row">
-                <img className="user" src={user} alt="" />
-                <Stack>
-                  <h6>Olubanjo Oluseyi</h6>
-                  <p>Verified</p>
+            <Container style={{display: 'flex', justifyContent: 'flex-end'}} className="dashboard-container">
+              <Box className="dashboard-container">
+                <Stack spacing={2} direction="row">
+                  <img className="user" src={user} alt="" />
+                  <Stack>
+                    <h6>Olubanjo Oluseyi</h6>
+                    <p>Verified</p>
+                  </Stack>
+                  <Box paddingTop="6px">
+                    <img className="notify" src={notification} alt="" />
+                  </Box>
                 </Stack>
-                <Box paddingTop="6px">
-                  <img className="notify" src={notification} alt="" />
-                </Box>
-              </Stack>
-            </Box>
+              </Box>
+            </Container>
           </Box>
 
           <History />

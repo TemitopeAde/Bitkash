@@ -1,7 +1,7 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import search from "../assets/images/search.png";
-import wallet from "../assets/images/wallet-add.png";
+import wallet from "../assets/icons/money-4.png";
 import "./history.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,7 +9,9 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+
+
+
 
 const History = () => {
   function createData(name, calories, fat, carbs, protein, rice) {
@@ -27,21 +29,14 @@ const History = () => {
   return (
     <Box className="dashboard-inner p-5">
       <Container>
-        <Box className="history-header">
+        <Box className="payment-header">
           <Stack alignItems="center" direction="row" spacing={2}>
             <img className="wallet" src={wallet} alt="" />
-            <h4>Transaction History</h4>
+            <h4>My payments</h4>
           </Stack>
+          
           <Box>
-            <input className="form-control" placeholder="Search" />
-          </Box>
-          <Box>
-            <select className="form-control">
-              <option>Filter by</option>
-              <option>Date</option>
-              <option>Amount</option>
-              <option>ID</option>
-            </select>
+            <button className="payment-button">Add bank</button>
           </Box>
         </Box>
 
