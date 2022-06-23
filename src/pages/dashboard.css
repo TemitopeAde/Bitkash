@@ -186,8 +186,7 @@ ul {
 }
 
 .dashboard .form-control {
-    height: 58px !important;
-    border: 2px solid rgba(255, 153, 36, 1) !important;
+    border: 1px solid rgba(255, 153, 36, 1) !important;
 }
 
 .dashboard .checkbox-text {

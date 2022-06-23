@@ -52,6 +52,10 @@ li {
   list-style: none;
 }
 
+.form-control {
+  padding: 0.375rem .75rem;
+  font-size: 1rem;
+}
 
 .form-control:focus {
   box-shadow: none !important;

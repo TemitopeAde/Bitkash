@@ -28,7 +28,7 @@ const RecoverPassword = () => {
 
               <form>
                 <label htmlFor="email">Email</label>
-                <input type="email" className="form-controls" />
+                <input type="email" className="form-control" />
 
                 <button type="submit" className="btn btn-wide">
                   Recover

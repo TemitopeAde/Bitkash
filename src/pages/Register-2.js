@@ -356,11 +356,8 @@ const Register1 = ({ setform }) => {
                     >
                       <div className="register-name">
                         <label htmlFor="register-street">Street address</label>
-                        <input
-                          id="register-street"
-                          type="text"
-                          className="form-control"
-                        />
+                        <textarea className="form-control"></textarea>
+                        
                       </div>
                     </div>
                     <div
@@ -393,17 +390,17 @@ const Register1 = ({ setform }) => {
                       </Stack>
                     </div>
                     <div
-                      style={{ columnGap: "40px" }}
+                      style={{ columnGap: "20px" }}
                       className="d-flex justify-content-space-between align-items-center mt-3 register-next"
                     >
                       <button
-                        className="register-previous"
+                        className="btn btn-lg register-previous"
                         onClick={() => setform(1)}
                         type="button"
                       >
                         Previous
                       </button>
-                      <button onClick={(e) => e.preventDefault()} type="submit">
+                      <button className="btn btn-lg" onClick={(e) => e.preventDefault()} type="submit">
                         Submit
                       </button>
                     </div>

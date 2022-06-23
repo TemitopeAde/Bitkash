@@ -1,8 +1,13 @@
 import { Box, Container } from "@mui/material";
-import React from "react";
-
+import React, { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "./register.css";
 import { motion } from "framer-motion";
+import CountryPhoneInput, { ConfigProvider } from "antd-country-phone-input";
+import en from "world_countries_lists/data/countries/en/world.json";
+
+import "antd/dist/antd.css";
+import "antd-country-phone-input/dist/index.css";
 
 const animations = {
   initial: { opacity: 0, x: 1000 },
@@ -11,6 +16,15 @@ const animations = {
 };
 
 const Register1 = ({ setform, children }) => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [value, setValue] = useState();
+
+  const togglePassword = (e) => {
+    e.preventDefault();
+    setPasswordShown(!passwordShown);
+  };
+
   return (
     <motion.div
       variants={animations}
@@ -34,6 +48,7 @@ const Register1 = ({ setform, children }) => {
                           id="first-name"
                           type="text"
                           className="form-control"
+                          required
                         />
                       </div>
                       <div className="register-last-name">
@@ -42,6 +57,7 @@ const Register1 = ({ setform, children }) => {
                           id="last-name"
                           type="text"
                           className="form-control"
+                          required
                         />
                       </div>
                     </div>
@@ -52,40 +68,103 @@ const Register1 = ({ setform, children }) => {
                           id="register-email-address"
                           type="email"
                           className="form-control"
+                          required
                         />
                       </div>
                       <div className="register-last-name">
                         <label htmlFor="register-phone">Phone</label>
-                        <input
-                          id="register-phone"
-                          type="number"
-                          className="form-control"
-                        />
+
+                        <ConfigProvider locale={en}>
+                          <CountryPhoneInput />
+                        </ConfigProvider>
                       </div>
                     </div>
                     <div className="register-row">
                       <div className="register-name">
                         <label htmlFor="register-password">Password</label>
-                        <input
-                          id="register-password"
-                          type="password"
-                          className="form-control"
-                        />
+
+                        <Box position="relative">
+                          <input
+                            type={passwordShown ? "text" : "password"}
+                            className="form-control"
+                            id="register-password"
+                          />
+                          <Box
+                            position="absolute"
+                            sx={{ right: "20px", top: "7px" }}
+                          >
+                            {passwordShown ? (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEye />
+                              </button>
+                            ) : (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEyeInvisible />
+                              </button>
+                            )}
+                          </Box>
+                        </Box>
                       </div>
                       <div className="register-last-name">
                         <label htmlFor="regsiter-confirm-password">
                           Confirm password
                         </label>
-                        <input
-                          id="regsiter-confirm-password"
-                          type="text"
-                          className="form-control"
-                        />
+
+                        <Box position="relative">
+                          <input
+                            type={passwordShown ? "text" : "password"}
+                            className="form-control"
+                            id="regsiter-confirm-password"
+                            required
+                          />
+                          <Box
+                            position="absolute"
+                            sx={{ right: "20px", top: "7px" }}
+                          >
+                            {passwordShown ? (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEye />
+                              </button>
+                            ) : (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEyeInvisible />
+                              </button>
+                            )}
+                          </Box>
+                        </Box>
                       </div>
                     </div>
                     <div className="register-row">
                       <div className="register-name">
-                        <label htmlFor="register-currency">First name</label>
+                        <label htmlFor="register-currency">Currency</label>
                         <select className="form-control" id="register-currency">
                           <option>EUR</option>
                           <option>USD</option>
@@ -102,7 +181,9 @@ const Register1 = ({ setform, children }) => {
                       </div>
                     </div>
                     <div className="mt-3 register-next">
-                      <button type="submit">Next</button>
+                      <button className="btn btn-lg" type="submit">
+                        Next
+                      </button>
                     </div>
                   </Box>
                 </Box>

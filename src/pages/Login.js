@@ -1,30 +1,34 @@
-import React from "react";
-import { Box, Stack } from "@mui/material";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
 import "../components/Auth/auth.css";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { motion } from "framer-motion";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const animations = {
-  initial: {opacity: 0, x: 1000},
-  animate: {opacity: 1, x:0},
-  exit: { opacity: 0, x: -1000}
-}
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
-
-const Login = ({children}) => {
-
+const Login = ({ children }) => {
+  const [passwordShown, setPasswordShown] = useState(false);
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
+  const togglePassword = (e) => {
+    e.preventDefault();
+    setPasswordShown(!passwordShown);
+  };
 
   return (
     <motion.div
       variants={animations}
       initial="initial"
       animate="animate"
-      transition={{duration: 0.5}}
+      transition={{ duration: 0.5 }}
     >
       <Box>
         <Header />
@@ -34,15 +38,52 @@ const Login = ({children}) => {
               <h3 className="text-center">Login</h3>
 
               <form>
-                <label htmlFor="email">Email</label>
-                <input type="email" className="form-controls" />
-
+                <Box sx={{ marginBottom: "23px" }}>
+                  <label htmlFor="email">Email</label>
+                  <input type="email" className="form-control" />
+                </Box>
                 <label htmlFor="password">Password</label>
-                <input type="password" className="form-controls" />
+                <Box position="relative">
+                  <input
+                    type={passwordShown ? "text" : "password"}
+                    className="form-control"
+                  />
+                  <Box position="absolute" sx={{ right: "20px", top: "7px" }}>
+                    {passwordShown ? (
+                      <button
+                        style={{
+                          background: "none",
+                          outline: "none",
+                          border: "none",
+                        }}
+                        onClick={togglePassword}
+                      >
+                        <AiFillEye />
+                      </button>
+                    ) : (
+                      <button
+                        style={{
+                          background: "none",
+                          outline: "none",
+                          border: "none",
+                        }}
+                        onClick={togglePassword}
+                      >
+                        <AiFillEyeInvisible />
+                      </button>
+                    )}
+                  </Box>
+                </Box>
 
-                <button onClick={() => handleSubmit} type="submit" className="btn btn-wide">
-                  Login
-                </button>
+                <Box className="d-flex justify-content-center">
+                  <button
+                    onClick={() => handleSubmit}
+                    type="submit"
+                    className="btn-lg btn btn-wide"
+                  >
+                    Login
+                  </button>
+                </Box>
 
                 <Box
                   className="mt-4 mb-4"
@@ -57,24 +98,24 @@ const Login = ({children}) => {
                     justifyContent="space-between"
                   >
                     <input
-                      style={{ transform: "scale(1.6)" }}
+                      style={{ transform: "scale(1)" }}
                       type="checkbox"
                       id="remember-me"
                     />
-                    <label htmlFor="remember-me">Remember me</label>
+                    <label style={{fontSize: '0.8rem'}} htmlFor="remember-me">Remember me</label>
                   </Box>
                   <Box>
-                    <Link style={{ color: "#FF9924" }} to="/recover-password">
+                    <Link style={{ fontSize: '0.8rem', color: "#FF9924" }} to="/recover-password">
                       Forgot password?
                     </Link>
                   </Box>
                 </Box>
 
                 <div className="mt-3">
-                  <p>
+                  <p style={{fontSize: '0.8rem'}}>
                     Don't have an account?{" "}
                     <Link
-                      style={{ color: "#FF9924", textDecoration: "none" }}
+                      style={{ fontSize: '0.8rem',color: "#FF9924", textDecoration: "none" }}
                       to="/register"
                     >
                       Sign up

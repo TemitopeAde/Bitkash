@@ -5,11 +5,11 @@
 
 .login label {
     text-align: left;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     margin-top: 10px;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    /* font-size: 18px; */
     line-height: 27px;
     /* identical to box height */
     color: #000000;
@@ -24,7 +24,6 @@
 
 .login .form-controls {
     border: 1px solid #FF9924 !important;
-    height: 48px;
     display: block;
     width: 100%;
     padding: 0 6px;
@@ -33,9 +32,8 @@
 
 .btn-wide {
     background-color: #FF9924;
+    margin-top: 2.4rem;
     width: 100%;
-    margin-top: 1.4rem;
-    height: 47px;
 }
 
 .login-wrap {
@@ -77,7 +75,7 @@ h3 {
 .signup-grid {
     display: flex;
     flex-direction: column;
-    row-gap: 40px;
+    row-gap: 10px;
 }
 
 .signup-grid .form-inputs {
@@ -87,7 +85,6 @@ h3 {
 }
 
 .sign-up .form-control {
-    height: 57px;
     border: 1px solid rgba(252, 130, 24, 1) !important;
     font-size: 16px;
 }
@@ -99,7 +96,6 @@ h3 {
     font-size: 16px;
     line-height: 36px;
     color: #000000;
-    margin-bottom: 15px;
 }
 
 .signup-grid .form-input {
@@ -110,15 +106,14 @@ h3 {
 
 .sign-up {
     padding-top: 10rem;
-    background-color: rgba(255, 223, 184, 0.2);
+    /* background-color: rgba(255, 223, 184, 0.2); */
     padding-bottom: 4.03rem;
 }
 
 .sign-up .submit {
-    width: 180px;
-    height: 57px;
+    
     color: #fff;
-    background: #FF9924;
+    background: #FF9924 !important;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -127,7 +122,6 @@ h3 {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-    line-height: 50px;
 }
 
 .select-control {
@@ -147,5 +141,15 @@ h3 {
     justify-content: space-between;
 }
 
+.sign-select {
+    background-color: rgb(255, 255, 254);
+    border: 1.3px solid rgba(252, 130, 24, 1);
+    outline: none;
+    color: #000000;
+    padding: 0.4rem 1rem;
+}
 
+.login .form-control {
+    border: 1px solid rgba(252, 130, 24, 1);
+}
 

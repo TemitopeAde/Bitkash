@@ -1,0 +1,51 @@
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-content {
+    width: 600px;
+    background-color: rgba(255, 249, 241, 1);
+    width: 40%;
+    height: 300px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 153, 36, 1);
+}
+
+
+.modal-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-center img {
+    width: 72px;
+
+}
+
+.modal-center p {
+    font-size: .8rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+}
+
+.modal-center h3 {
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    color: #000000;
+}
