@@ -6,15 +6,53 @@ import lady from "../assets/images/girl.png";
 import guy from "../assets/images/back.png";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import EmailValidator from "email-validator";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const Hero = () => {
   const options = {
     type: "loop",
-    autoplay: true,
+    // autoplay: true,
     pauseOnHover: true,
     resetProgress: false,
     arrow: false,
   };
+
+  const initialValues = {
+    amount: "100",
+    email: "",
+    currency: "eur",
+  };
+
+  const validate = (values) => {
+    let errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!regex.test(values.email)) {
+      errors.email = "Invalid Email";
+    }
+
+    if (!values.amount) {
+      errors.amount = "Amount is required";
+    } else if (values.amount.length === 0) {
+      errors.amount = "Amount is required";
+    }
+    return errors;
+  };
+
+  const submitForm = (values) => {
+    console.log(values);
+  };
+
+  const BuySchema = Yup.object().shape({
+    email: Yup.string().email().required("Email is required"),
+
+    amount: Yup.string().required("amount is required"),
+    // .min(4, "Password is too short - should be 4 chars minimum"),
+  });
+
   return (
     <Splide options={options} draggable="true">
       <SplideSlide>
@@ -62,44 +100,110 @@ const Hero = () => {
                 </Box>
 
                 <Box className="form-body p-3">
-                  <form>
-                    <label htmlFor="amount">Currency</label>
-                    <Box position="relative">
-                      <select
-                        style={{
-                          textAlign: "end",
-                          paddingRight: "30px",
-                          borderRadius: "5px",
-                        }}
-                        className="custom-select select-div form-control"
-                      >
-                        <option>USD</option>
-                        <option>EUR</option>
-                      </select>
-                      {/* <div className="arrow-down">
-                        <img src={arrow} alt="arrow" className="select-icon" />
-                      </div> */}
-                    </Box>
-                    <label htmlFor="email">Amount</label>
-                    <input
-                      style={{ borderRadius: "5px" }}
-                      type="number"
-                      className="form-control"
-                    />
-                    <label htmlFor="email">Email</label>
-                    <input
-                      style={{ borderRadius: "5px" }}
-                      type="email"
-                      className="form-control"
-                    />
+                  <Formik
+                    initialValues={initialValues}
+                    validate={validate}
+                    onSubmit={submitForm}
+                  >
+                    {(formik) => {
+                      const {
+                        values,
+                        handleChange,
+                        handleSubmit,
+                        errors,
+                        touched,
+                        handleBlur,
+                        isValid,
+                        dirty,
+                      } = formik;
+                      return (
+                        <div className="container">
+                          {/* <h1>Sign in to continue</h1> */}
+                          <form onSubmit={handleSubmit}>
+                            <label htmlFor="amount">Currency</label>
+                            <Box position="relative">
+                              <select
+                                style={{
+                                  textAlign: "end",
+                                  // paddingRight: "30px",
+                                  borderRadius: "5px",
+                                }}
+                                value={values.currency}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={
+                                  errors.currency && touched.currency
+                                    ? "input-error custom-select select-div form-control"
+                                    : "custom-select select-div form-control"
+                                }
+                                name="currency"
+                              >
+                                <option>USD</option>
+                                <option>EUR</option>
+                              </select>
+                            </Box>
+                            <label htmlFor="amount">Amount</label>
 
-                    <button
-                      style={{ borderColor: "#fff" }}
-                      className="mt-4 btn btn-full"
-                    >
-                      Buy Bitcoin
-                    </button>
-                  </form>
+                            <Field
+                              id="amount"
+                              name="amount"
+                              style={{ borderRadius: "5px" }}
+                              type="number"
+                              // className="form-control"
+                              value={values.amount}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              className={
+                                errors.amount && touched.amount
+                                  ? "input-error custom-select select-div form-control"
+                                  : "custom-select select-div form-control"
+                              }
+                            />
+                            <ErrorMessage
+                              name="amount"
+                              component="div"
+                              className="error"
+                            />
+
+                            <label htmlFor="email">Email</label>
+
+                            <Field
+                              name="email"
+                              style={{ borderRadius: "5px" }}
+                              type="email"
+                              // className="form-control"
+                              value={values.email}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              className={
+                                errors.email && touched.email
+                                  ? "input-error custom-select select-div form-control"
+                                  : "custom-select select-div form-control"
+                              }
+                            />
+                            <ErrorMessage
+                              name="email"
+                              component="div"
+                              className="error"
+                            />
+
+                            <button
+                              style={{ borderColor: "#fff" }}
+                              // className="mt-4 btn btn-full"
+                              className={
+                                dirty && isValid
+                                  ? "mt-4 btn btn-full"
+                                  : "disabled-btn mt-4 btn btn-full"
+                              }
+                              disabled={!(dirty && isValid)}
+                            >
+                              Buy Bitcoin
+                            </button>
+                          </form>
+                        </div>
+                      );
+                    }}
+                  </Formik>
                 </Box>
               </Box>
             </Box>
@@ -152,44 +256,107 @@ const Hero = () => {
                 </Box>
 
                 <Box className="form-body p-3">
-                  <form>
-                    <label htmlFor="amount">Currency</label>
-                    <Box position="relative">
-                      <select
-                        style={{
-                          textAlign: "end",
-                          paddingRight: "30px",
-                          borderRadius: "5px",
-                        }}
-                        className="custom-select select-div form-control"
-                      >
-                        <option>USD</option>
-                        <option>EUR</option>
-                      </select>
-                      {/* <div className="arrow-down">
-                        <img src={arrow} alt="arrow" className="select-icon" />
-                      </div> */}
-                    </Box>
-                    <label htmlFor="email">Amount</label>
-                    <input
-                      style={{ borderRadius: "5px" }}
-                      type="number"
-                      className="form-control"
-                    />
-                    <label htmlFor="email">Email</label>
-                    <input
-                      style={{ borderRadius: "5px" }}
-                      type="email"
-                      className="form-control"
-                    />
+                  <Formik
+                    initialValues={initialValues}
+                    validate={validate}
+                    onSubmit={submitForm}
+                  >
+                    {(formik) => {
+                      const {
+                        values,
+                        handleChange,
+                        handleSubmit,
+                        errors,
+                        touched,
+                        handleBlur,
+                        isValid,
+                        dirty,
+                      } = formik;
+                      return (
+                        <div className="container">
+                          {/* <h1>Sign in to continue</h1> */}
+                          <form onSubmit={handleSubmit}>
+                            <label htmlFor="amount">Currency</label>
+                            <Box position="relative">
+                              <select
+                                // className="custom-select select-div form-control"
+                                style={{
+                                  textAlign: "end",
 
-                    <button
-                      style={{ borderColor: "#fff" }}
-                      className="mt-4 btn btn-full"
-                    >
-                      Buy Bitcoin
-                    </button>
-                  </form>
+                                  borderRadius: "5px",
+                                }}
+                                value={values.currency}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={
+                                  errors.currency && touched.currently
+                                    ? "input-error custom-select select-div form-control"
+                                    : "custom-select select-div form-control"
+                                }
+                                name="currency"
+                              >
+                                <option>USD</option>
+                                <option>EUR</option>
+                              </select>
+                            </Box>
+                            <label htmlFor="email">Amount</label>
+                            <Field
+                              name="amount"
+                              style={{ borderRadius: "5px" }}
+                              type="number"
+                              // className="form-control"
+                              value={values.amount}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              className={
+                                errors.amount && touched.amount
+                                  ? "input-error custom-select select-div form-control"
+                                  : "custom-select select-div form-control"
+                              }
+                            />
+                            <ErrorMessage
+                              name="amount"
+                              component="div"
+                              className="error"
+                            />
+                            <label htmlFor="email">Email</label>
+                            <Field
+                              name="email"
+                              style={{ borderRadius: "5px" }}
+                              type="email"
+                              // className="form-control"
+                              value={values.email}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              className={
+                                errors.email && touched.email
+                                  ? "input-error custom-select select-div form-control"
+                                  : "custom-select select-div form-control"
+                              }
+                            />
+                            <ErrorMessage
+                              name="email"
+                              component="div"
+                              className="error"
+                            />
+
+                            <button
+                              style={{ borderColor: "#fff" }}
+                              // className="mt-4 btn btn-full"
+                              className={
+                                dirty && isValid
+                                  ? "mt-4 btn btn-full"
+                                  : "disabled-btn mt-4 btn btn-full"
+                              }
+                              disabled={!(dirty && isValid)}
+                            >
+                              Buy Bitcoin
+                            </button>
+                          </form>
+                        </div>
+                      );
+                    }}
+                  </Formik>
                 </Box>
               </Box>
             </Box>
