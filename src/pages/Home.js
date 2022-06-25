@@ -21,21 +21,6 @@ const animations = {
 };
 
 
-// const BuySchema = Yup.object().shape({
-//   currency: Yup.string()
-//     .min(3, "Too Short!")
-//     .max(50, "Too Long!")
-//     .required("Currency is required"),
-
-//   amount: Yup.string()
-//     .min(2, "Too Short!")
-//     .max(50, "Too Long!")
-//     .required("Amount is required"),
-
-//   email: Yup.string().email().required("Email is required"),
-
-// });
-
 
 
 

@@ -46,7 +46,7 @@
 }
 
 .register-page .register-content {
-    /* margin-left: 450px; */
+    margin-left: 150px;
 }
 
 .register-page {
@@ -224,6 +224,34 @@ select.form-control {
     height: 38px !important;
 }
 
+.register-name label,
+.register-last-name {
+    font-weight: bold;
+}
+
+.form-one  {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .7s;
+}
+
+.form-two {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .7s;
+}
+
+.form-toggle {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: .7s;
+}
+
+
 
 
 
@@ -315,6 +343,9 @@ select.form-control {
 
     .register-sidebar {
         width: 800px;
+    }
+    .register-page .register-content {
+        margin-left: 250px;
     }
 }
 

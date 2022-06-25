@@ -29,6 +29,17 @@
     padding: 0 6px;
 }
 
+.input-error.form-control {
+    border: 1px solid red !important;
+}
+
+.login-btn {
+    width: 100% !important;
+}
+
+.disabled-btn {
+    width: 100% !important;
+}
 
 .btn-wide {
     background-color: #FF9924;

@@ -1,14 +1,12 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
-import arrow from "../assets/images/arrow.png";
 import "./hero.css";
 import lady from "../assets/images/girl.png";
 import guy from "../assets/images/back.png";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import EmailValidator from "email-validator";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+
 
 const Hero = () => {
   const options = {
@@ -46,12 +44,7 @@ const Hero = () => {
     console.log(values);
   };
 
-  const BuySchema = Yup.object().shape({
-    email: Yup.string().email().required("Email is required"),
-
-    amount: Yup.string().required("amount is required"),
-    // .min(4, "Password is too short - should be 4 chars minimum"),
-  });
+ 
 
   return (
     <Splide options={options} draggable="true">
@@ -119,7 +112,7 @@ const Hero = () => {
                       return (
                         <div className="container">
                           {/* <h1>Sign in to continue</h1> */}
-                          <form onSubmit={handleSubmit}>
+                          <Form onSubmit={handleSubmit}>
                             <label htmlFor="amount">Currency</label>
                             <Box position="relative">
                               <select
@@ -199,7 +192,7 @@ const Hero = () => {
                             >
                               Buy Bitcoin
                             </button>
-                          </form>
+                          </Form>
                         </div>
                       );
                     }}
@@ -275,7 +268,7 @@ const Hero = () => {
                       return (
                         <div className="container">
                           {/* <h1>Sign in to continue</h1> */}
-                          <form onSubmit={handleSubmit}>
+                          <Form onSubmit={handleSubmit}>
                             <label htmlFor="amount">Currency</label>
                             <Box position="relative">
                               <select
@@ -352,7 +345,7 @@ const Hero = () => {
                             >
                               Buy Bitcoin
                             </button>
-                          </form>
+                          </Form>
                         </div>
                       );
                     }}
