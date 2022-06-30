@@ -47,6 +47,7 @@
     font-size: 19px;
     line-height: 24px;
     font-family: 'Inter';
+    color: var(--border-brown);
 }
 
 .customer-flex p {
@@ -87,12 +88,13 @@
     }
 
     .customer-items {
-        flex-direction: column-reverse;
+        flex-direction: column;
         column-gap: 20px;
     }
 
     .customer-items div:first-of-type {
-        display: none;
+        /* display: none; */
+        box-shadow: none;
     }
 
     .customer .cust-title {
@@ -101,7 +103,7 @@
     }
     .customer {
         text-align: center !important;
-        padding: 1rem;
+        padding: 5rem 1rem;
     }
 
 

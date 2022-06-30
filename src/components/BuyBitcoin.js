@@ -1,6 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-import Bitcoin from '../assets/images/bit.png'
+import Bitcoin from "../assets/images/bit.png";
 import "./buybitcoin.css";
 
 const BuyBitcoin = () => {
@@ -14,11 +14,13 @@ const BuyBitcoin = () => {
             eget blandit porttitor in scelerisque. Sem amet at hac vitae orci
             neque enim. Integer egestas mauris sit tincidunt quisque enim.{" "}
           </p>
-          <button className="btn">Buy Bitcoins</button>
+          <Box className="buy-button">
+            <button className="btn">Buy Bitcoins</button>
+          </Box>
         </Stack>
 
         <Box>
-            <img src={Bitcoin} alt="bitcoin" />
+          <img src={Bitcoin} alt="bitcoin" />
         </Box>
       </Container>
     </Box>

@@ -165,6 +165,10 @@
         flex-direction: column;
     }
 
+    .buy-flex img {
+        display: none;
+    }
+
     .buy-bitcoin {
         padding: 1rem;
         text-align: center;
@@ -214,5 +218,9 @@
         border-bottom: 1px solid #fff;
         border-radius: 5px;
         padding-left: 10px;
+    }
+
+    .buy-button {
+        width: 70%;
     }
 }

@@ -74,5 +74,11 @@
         align-items: center;
         display: grid !important;
         grid-template-columns: repeat(5,1fr);
+        gap: 16px;
+    }
+
+    .footer {
+        padding: 2rem 1rem;
+        
     }
 }
