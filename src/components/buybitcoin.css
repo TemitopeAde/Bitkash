@@ -155,3 +155,34 @@
         width: 50%;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .newsletter-flex {
+        grid-template-columns: 1fr;
+    }
+    .buy-flex {
+        flex-direction: column;
+    }
+
+    .buy-bitcoin {
+        padding: 1rem;
+        text-align: center;
+    }
+    .buy-flex div:first-of-type {
+        width: 100%;
+    }
+    .buy-bitcoin h3 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-top: 3rem;
+    }
+    .newsletter {
+        padding: 1rem;
+        /* text-align: center; */
+    }
+    .para-news {
+        font-size: 24px;
+        line-height: 36px;
+        
+    }
+}

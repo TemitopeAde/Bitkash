@@ -60,3 +60,19 @@
     padding: 1rem;
     font-family: 'Poppins';
 }
+
+
+@media screen and (max-width:768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer .hide {
+        display: none;
+    }
+    .footer-flex-mobile {
+        align-items: center;
+        display: grid !important;
+        grid-template-columns: repeat(5,1fr);
+    }
+}

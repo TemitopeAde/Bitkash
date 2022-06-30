@@ -30,6 +30,11 @@
     color: var(--brown);
 }
 
+.mobile-navlist,
+.hamburger {
+    display: none;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -57,3 +62,47 @@
 
 
 
+@media screen and (max-width: 768px) {
+    .web-header {
+        display: none;
+    }
+
+    .hamburger {
+        top: 22px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .mobile-navlist {
+        background-color: white;
+        z-index: 100000;
+        top: 60px;
+        border-radius: 5px;
+        right: 10px;
+    }
+
+    .mobile-navlist a {
+        color: #000;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 50px;
+        /* identical to box height, or 562% */
+        color: #281F1E;
+        transition: .7s;
+    }
+
+    .mobile-navlist a:hover {
+        color: #000;
+    }
+
+    .mobile-navlist,
+    .hamburger {
+        display: block;
+    }
+    .mobile-navlist.toggle {
+        display: none;
+    }
+
+}

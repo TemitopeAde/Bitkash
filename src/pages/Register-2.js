@@ -425,9 +425,7 @@ const Register2 = ({
                         onChange={handleChange}
                         style={{ transform: "scale(1.4)" }}
                         id="register-2-check"
-                      
                       />
-                      
 
                       <label htmlFor="register-2-check">
                         I have read and accepted the{" "}
@@ -444,10 +442,10 @@ const Register2 = ({
                     </Stack>
                   </div>
                   <ErrorMessage
-                        name="terms"
-                        component="span"
-                        className="error"
-                      />
+                    name="terms"
+                    component="span"
+                    className="error"
+                  />
                   <div
                     style={{ columnGap: "20px" }}
                     className="d-flex justify-content-space-between align-items-center mt-3 register-next"
@@ -464,11 +462,9 @@ const Register2 = ({
                       onClick={handleSubmit}
                       type="submit"
                       className={
-                        isValid
-                          ? "btn btn-lg"
-                          : "disabled-btn btn btn-lg"
+                        isValid ? "btn btn-lg" : "disabled-btn btn btn-lg"
                       }
-                      disabled={!(isValid)}
+                      disabled={!isValid}
                     >
                       Submit
                     </button>

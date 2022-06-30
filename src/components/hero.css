@@ -297,3 +297,19 @@ select {
 
     }
 }
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .hero-flex {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .hero .lady {
+        display: none;
+    }
+}

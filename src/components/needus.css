@@ -50,20 +50,23 @@
 }
 
 
+@media screen and (max-width: 768px) {
+    .need-flex {
+        flex-direction: column;
+    }
 
+    .flex-need {
+        flex-direction: column;
+    }
 
+    .hero-grid img {
+        display: none;
+    }
+    .hero-brown {
+        text-align: center;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .hero-grid {
+        height: auto;
+    }
+}

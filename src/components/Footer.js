@@ -34,7 +34,7 @@ const Footer = () => {
             </Stack>
           </Box>
           <Box>
-            <Stack spacing={1}>
+            <Stack spacing={1} className="footer-flex-mobile">
               <Link to="/">Home</Link>
               <Link to="/">Product</Link>
               <Link to="/">Industries</Link>
@@ -42,7 +42,7 @@ const Footer = () => {
               <Link to="/">Blog</Link>
             </Stack>
           </Box>
-          <Box>
+          <Box className="hide">
             <Stack spacing={1}>
               <Link to="/">FAQ</Link>
               <Link to="/">Community</Link>
@@ -51,7 +51,7 @@ const Footer = () => {
               <Link to="/">Terms of service</Link>
             </Stack>
           </Box>
-          <Box>
+          <Box className="hide">
             <Stack spacing={1}>
               <Link to="/">FAQ</Link>
               <Link to="/">Community</Link>

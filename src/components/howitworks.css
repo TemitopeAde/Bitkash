@@ -99,7 +99,11 @@
 
 
 
-
+@media screen and (max-width: 768px) {
+    .flex-box {
+        flex-direction: column;
+    }
+}
 
 
 

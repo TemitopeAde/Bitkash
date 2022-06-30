@@ -75,3 +75,37 @@
     }
 
 }
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .customer-flex {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-items {
+        flex-direction: column-reverse;
+        column-gap: 20px;
+    }
+
+    .customer-items div:first-of-type {
+        display: none;
+    }
+
+    .customer .cust-title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .customer {
+        text-align: center !important;
+        padding: 1rem;
+    }
+
+
+    .customer .cust-title {
+        margin-top: 3rem;
+    }
+}
