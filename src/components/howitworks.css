@@ -107,4 +107,23 @@
     .title {
         font-size: 24px;
     }
+
+    .flexitems {
+        padding: 1rem;
+        border: 1px solid white;
+        background: none;
+        border-radius: 5px;
+    }
+
+    .flexitems .number img {
+        display: none;
+    }
+
+    .section-2 {
+        padding: 1rem;
+    }
+
+    .flexitems h3 {
+        color: white;
+    }
 }

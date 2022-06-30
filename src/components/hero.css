@@ -324,6 +324,7 @@ select {
         font-size: 24px;
         line-height: 30px;
         color: white;
+        padding: 1rem;
     }
 
     .hero {
@@ -339,6 +340,7 @@ select {
 
     .hero-text {
         width: 100%;
+        padding: 1.5rem;
     }
 
     .space {
