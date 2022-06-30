@@ -27,7 +27,7 @@ const Newsletter = () => {
   };
 
   return (
-    <Box className="newsletter">
+    <Box className="newsletter newsletter-mobile">
       <Container className="newsletter-flex">
         <Box position="relative">
           <Stack spacing={2}>
