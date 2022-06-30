@@ -103,9 +103,8 @@
     .flex-box {
         flex-direction: column;
     }
+
+    .title {
+        font-size: 24px;
+    }
 }
-
-
-
-
-

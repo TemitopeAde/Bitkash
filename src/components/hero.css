@@ -162,6 +162,11 @@ select {
     height: 57px;
 }
 
+.hero-text {
+    width: 80%;
+}
+
+
 @media screen and (min-width: 1280px) {
     .hero {
         background-position: 200px 100px;
@@ -251,7 +256,7 @@ select {
         line-height: 40px !important;
     }
 
-    
+
 
     .splide__arrows {
         display: none !important;
@@ -261,6 +266,7 @@ select {
         bottom: 0;
         left: 350px
     }
+
     .man img {
         width: 2200px;
     }
@@ -307,9 +313,35 @@ select {
     .hero-flex {
         flex-direction: column;
         height: auto;
+        gap: 50px
     }
 
     .hero .lady {
+        display: none;
+    }
+
+    .hero-flex h3 {
+        font-size: 24px;
+        line-height: 30px;
+        color: white;
+    }
+
+    .hero {
+        background: linear-gradient(to bottom, rgba(253, 131, 25, 1), rgba(253, 131, 25, 1)), url('../assets/images/girl.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .form-body {
+        background-color: #fff;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .space {
         display: none;
     }
 }

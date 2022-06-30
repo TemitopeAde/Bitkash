@@ -1,5 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
-import React from "react";
+import React, {useRef} from "react";
 import Line from "../assets/images/line.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
@@ -9,6 +9,16 @@ const Newsletter = () => {
   const initialValues = {
     email: "",
   };
+
+  const width = window.innerWidth;
+
+  const inputRef = useRef()
+
+  console.log(inputRef)
+
+  // if (width <= 768) {
+  //   inputRef.setAttribute('placeholder', '')
+  // }
 
   const validate = (values) => {
     let errors = {};
@@ -68,7 +78,7 @@ const Newsletter = () => {
                     dirty,
                   } = formik;
                   return (
-                    <div className="container">
+                    <div ref={inputRef} className="container">
                       <ErrorMessage
                         name="email"
                         component="span"
@@ -83,6 +93,7 @@ const Newsletter = () => {
                           value={values.email}
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          
                           className={
                             errors.email && touched.email ? "input-error" : ""
                           }

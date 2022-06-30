@@ -62,12 +62,12 @@ const Hero = () => {
                 spacing={2}
               >
                 <h3 className="box">
-                  Buy <span className="hero-brown">Bitcoin</span> in a<br />{" "}
-                  minute with your <br />
+                  Buy <span className="hero-brown">Bitcoin</span> in a<br className="space" />{" "}
+                  minute with your <br className="space" />
                   bank
                 </h3>
                 <Typography
-                  style={{ width: "80%" }}
+                  
                   variant="body1"
                   className="hero-text"
                 >
