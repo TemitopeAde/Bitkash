@@ -113,6 +113,7 @@
         border: 1px solid white;
         background: none;
         border-radius: 5px;
+        position: relative;
     }
 
     .flexitems .number img {
@@ -125,5 +126,43 @@
 
     .flexitems h3 {
         color: white;
+        margin-top: 2rem;
+    }
+
+    .flexitems .text-number h6 {
+        margin: 0;
+    }
+
+    .flex-box {
+        gap: 60px
+    }
+
+    .text-number {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 50%;
+        color: black;
+        width: 75px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+    }
+
+    .text-number h6 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 30px;
+        /* identical to box height, or 94% */
+
+        text-align: center;
+
+        color: #514847;
+
     }
 }
