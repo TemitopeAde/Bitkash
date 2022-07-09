@@ -37,7 +37,7 @@ const SectionOne = () => {
             data-aos-duration="1500"
           >
             <Stack spacing={2}>
-              <h3 style={{ display: "flex", justifyContent: "flex-end" }}>
+              <h3 className="about-bitkash-title">
                 <span className="hero-brown" style={{ marginRight: "10px" }}>
                   About
                 </span>
