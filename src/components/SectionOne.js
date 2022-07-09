@@ -9,7 +9,7 @@ import "./section.css";
 
 const SectionOne = () => {
   return (
-    <Box>
+    <Box className="about-bitkash">
       <Container className="p-4">
         <Box className="hero-grid">
           <Box

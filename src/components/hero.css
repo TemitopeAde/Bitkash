@@ -254,7 +254,11 @@ select {
 
     .hero-text {
         line-height: 40px !important;
+        padding-top: 0;
+        padding-bottom: 0;
     }
+
+
 
 
 
@@ -306,17 +310,18 @@ select {
 
 
 
-
-
-
 @media screen and (max-width: 768px) {
+    #section-one-text {
+        text-align: center;
+    }
     .hero-flex {
         flex-direction: column;
         height: auto;
         gap: 50px
     }
 
-    .hero .lady {
+    .hero .lady,
+    .hero .man {
         display: none;
     }
 
@@ -346,4 +351,54 @@ select {
     .space {
         display: none;
     }
+
+    .css-1okj3ks-MuiStack-root>:not(style)+:not(style) {
+        margin-top: 0px !important;
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 360px) and (max-width:600px) {
+    .hero-text {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .css-1p5q5e5-MuiStack-root>:not(style)+:not(style) {
+        margin-top: 0px !important;
+    }
+
+    .hero-flex {
+        gap: 10px;
+        overflow-y: scroll;
+    }
+
+    .hero {
+        overflow: hidden;
+        padding-bottom: 2rem;
+        height: auto;
+    }
+
+    .hero-grid {
+        display: block !important;
+        height: auto !important;
+        padding-top: 0 !important;
+    }
+
+    .footer-grid {
+        gap: 10px !important;
+    }
+
+
+    .footer-flex-mobile {
+        gap: .5rem !important;
+    }
+
+    .customer .cust-title {
+        margin-top: 1rem !important;
+    }
+
 }
