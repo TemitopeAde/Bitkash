@@ -62,8 +62,7 @@ const Login = ({ children }) => {
         <Box className="login">
           <Box className="login-wrap">
             <Box className="login-box p-5">
-              <h3 className="text-center">Login</h3>
-
+              <h3 className="text-center login-title">Login</h3>
               <Formik
                 initialValues={initialValues}
                 validate={validate}
