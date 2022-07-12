@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "./register.css";
 import { Formik, Form } from "formik";
+import { Helmet } from "react-helmet";
+import Header from "../components/Header";
 
 const animations = {
   initial: { opacity: 0 },
@@ -31,7 +33,7 @@ const Register = ({ children }) => {
     city: "",
     zipCode: "",
     streetAddress: "",
-    terms: true
+    terms: true,
   };
 
   const validate = (values) => {
@@ -82,9 +84,8 @@ const Register = ({ children }) => {
     if (!values.zipCode) {
       errors.zipCode = "Enter your zip code";
     } else if (/[a-zA-Z]/.test(values.zipCode)) {
-      errors.zipCode = "Enter a valid zip code"
+      errors.zipCode = "Enter a valid zip code";
     }
-
 
     if (!values.city) {
       errors.city = "Enter your city";
@@ -92,11 +93,10 @@ const Register = ({ children }) => {
       errors.city = "Enter a valid city";
     }
 
-  
     if (values.terms === false) {
-      errors.terms = "Kindly accept the terms and conditions"
+      errors.terms = "Kindly accept the terms and conditions";
     }
-    
+
     return errors;
   };
 
@@ -110,7 +110,8 @@ const Register = ({ children }) => {
       animate="animate"
       transition={{ duration: 0.8 }}
     >
-      <Box className="register-page">
+      <Header />
+      <Box className="register-page web-register-page">
         <Box position="relative">
           <Box className="register-sidebar">
             <Link to="/">
@@ -183,6 +184,84 @@ const Register = ({ children }) => {
           </Box>
         </Box>
       </Box>
+
+      <Helmet>
+        <title>Sign up</title>
+        <meta name="description" content="App Description" />
+        <meta name="theme-color" content="#008f68" />
+        <body class="mobile-background" />
+      </Helmet>
+
+      <div className="mobile-register-page">
+        <Box>
+          <Box>
+            <h3>Sign up</h3>
+
+            <Box>
+              <Box>
+                <Formik initialValues={initialValues} validate={validate}>
+                  {(formik) => {
+                    const {
+                      values,
+                      handleChange,
+                      handleSubmit,
+                      errors,
+                      touched,
+                      handleBlur,
+                      isValid,
+                      dirty,
+                    } = formik;
+                    return (
+                      <Form>
+                        <Box
+                          ref={form1}
+                          className={
+                            form === 1
+                              ? "forms-ref form-one form-toggle"
+                              : "forms-ref form-one"
+                          }
+                          style={{  padding: "3rem 1.5rem" }}
+                        >
+                          <Register1
+                            isValid={isValid}
+                            dirty={dirty}
+                            values={values}
+                            touched={touched}
+                            errors={errors}
+                            handleChange={handleChange}
+                            handleBlur={handleBlur}
+                            setForm={setForm}
+                          />
+                        </Box>
+                        <Box
+                          ref={form2}
+                          className={
+                            form === 2
+                              ? "forms-ref form-two form-toggle"
+                              : "forms-ref form-two"
+                          }
+                        >
+                          <Register2
+                            isValid={isValid}
+                            dirty={dirty}
+                            values={values}
+                            touched={touched}
+                            errors={errors}
+                            handleChange={handleChange}
+                            handleBlur={handleBlur}
+                            handleSubmit={handleSubmit}
+                            setForm={setForm}
+                          />
+                        </Box>
+                      </Form>
+                    );
+                  }}
+                </Formik>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </div>
     </motion.div>
   );
 };

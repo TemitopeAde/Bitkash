@@ -24,7 +24,7 @@ const EmailConfirmation = () => {
         <Header />
         <Box className="login">
           <Box className="login-wrap">
-            <Box className="login-box p-3">
+            <Box className="login-box p-3 email-verification-box">
               <Box className="d-flex justify-content-center align-items-center">
                 <img
                   style={{ width: "72px", height: "72px" }}

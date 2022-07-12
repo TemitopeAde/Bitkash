@@ -183,19 +183,24 @@ h3 {
     .login-box {
         background-color: var(--white);
         border-radius: 20px;
-        width: auto;
+        width: 87vw;
         margin: 0 auto;
         padding: 1.5rem !important;
         /* margin-top: 5rem; */
         
     }
 
-    .login-box .login-title {
+    .login-box .login-title,
+    .login-box .text-center {
         color: #FF9924;
         font-size: 1.5rem
     }
 
     .css-1bbg393 {
         margin-bottom: 6px !important;
+    }
+
+    .login-box.email-verification-box {
+        width: 87vw;
     }
 }

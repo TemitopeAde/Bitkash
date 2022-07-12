@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "./register.css";
@@ -33,7 +33,7 @@ const Register1 = ({
     setPasswordShown(!passwordShown);
   };
 
-  console.log(isValid)
+  console.log(isValid);
 
   return (
     <motion.div
@@ -41,13 +41,17 @@ const Register1 = ({
       initial="initial"
       animate="animate"
       transition={{ duration: 0.5 }}
+      className="mobile-white"
+      style={{borderRadius: '10px', paddingBottom: '0rem'}}
     >
       <Box style={{ paddingBottom: "5rem" }} className="register-content">
         <Container>
           <Box position="relative">
             <Box className="register-form" id="form1">
-              <p className="step-one mb-3">Step 1 of 2</p>
-              <p className="step-one-title mb-5">Personal Details</p>
+              <Stack padding={2} direction="row" justifyContent="space-between">
+                <p className="step-one-title mb-5">Personal Details</p>
+                <p className="step-one mb-3">Step 1 of 2</p>
+              </Stack>
 
               <Box className="register-form-grid">
                 <Box className="register-grid">
@@ -121,12 +125,10 @@ const Register1 = ({
                       <ConfigProvider locale={en}>
                         <CountryPhoneInput
                           // className="form-control"
-                         
+
                           id="register-phone"
                           name="phoneNumber"
-                          
                         />
-                        
                       </ConfigProvider>
                     </div>
                   </div>
@@ -291,12 +293,9 @@ const Register1 = ({
                       // className="btn btn-lg"
                       type="button"
                       className={
-                        isValid
-                          ? "btn btn-lg"
-                          : "disabled-btn btn btn-lg"
+                        isValid ? "btn btn-lg" : "disabled-btn btn btn-lg"
                       }
-                      disabled={!(isValid)}
-                      
+                      disabled={!isValid}
                       onClick={() => setForm(2)}
                     >
                       Next
