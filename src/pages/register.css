@@ -235,6 +235,7 @@ select.form-control {
     opacity: 0;
     visibility: hidden;
     transition: .7s;
+    display: none;
 }
 
 .form-two {
@@ -243,12 +244,14 @@ select.form-control {
     opacity: 0;
     visibility: hidden;
     transition: .7s;
+    display: none;
 }
 
 .form-toggle {
     opacity: 1 !important;
     visibility: visible !important;
     transition: .7s;
+    display: block;
 }
 
 
