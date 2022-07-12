@@ -1,0 +1,68 @@
+.register-content-form {
+    margin-left: 550px;
+    margin-top: 18vh;
+}
+
+.phone-otp-flex {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: 70px;
+    gap: 20px
+}
+
+.phone-otp-flex .form-control {
+    width: 60px;
+    height: 60px;
+
+}
+
+.otp-submit {
+    width: 250px;
+    background-color: #FF9924;
+    height: 50px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #000000;
+}
+
+.input-otp {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: 1px solid rgba(255, 153, 36, 1);
+    font-size: 18px;
+}
+
+.input-otp:focus {
+    border: 1px solid rgba(255, 153, 36, 1);
+
+}
+
+.otp-number-div h6 {
+    color: #FF9924;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.enter-otp-title label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #000000;
+}
+
+.color-yellow {
+    color: #FF9924;
+}
+
+.otp-number-div p {
+    font-size: 16px;
+}

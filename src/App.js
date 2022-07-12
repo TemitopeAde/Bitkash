@@ -16,6 +16,7 @@ import Register from "./pages/Register";
 import { AnimatePresence } from "framer-motion";
 import KycForm from "./pages/BankDetailsForm";
 import VerificationComplete from "./pages/Verification-complete";
+import EmailAndPhone from "./pages/EmailAndPhone";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verification-complete" element={<VerificationComplete />} />
+        <Route path="/email-and-password-sent" element={<EmailAndPhone />} />
       </Routes>
     </AnimatePresence>
   );

@@ -9,11 +9,11 @@
     top: 0;
     bottom: 0;
     height: 100vh;
-    /* background-image: url('../assets/images/login.png'); */
-    background-color: rgba(255, 153, 36, 1);
+    background-image: url('../assets/images/Signup.png');
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-color: #FF9924;
 }
 
 .btn-lg {
@@ -317,12 +317,18 @@ select.form-control {
     }
 
 
+    .register-content-form {
+        margin-left: 800px !important;
+    }
 
 
 }
 
 
 @media screen and (min-width: 2256px) {
+    .register-content-form {
+        margin-left: 1000px !important;
+    }
     .register-sidebar .register-title h3 {
         font-size: 56px;
     }
@@ -350,6 +356,7 @@ select.form-control {
 
 
 @media screen and (min-width: 2736px) {
+
     .register-page {
         margin-top: 10rem;
     }
@@ -368,6 +375,10 @@ select.form-control {
 
     .register-sidebar .register-title h3 {
         font-size: 76px;
+    }
+
+    .register-content-form {
+        margin-left: 1200px !important;
     }
 }
 
@@ -413,7 +424,8 @@ select.form-control {
         text-align: center;
     }
 
-    .mobile-white {
+    .mobile-white,
+    #form1 {
         background: white;
     }
 }

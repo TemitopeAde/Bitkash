@@ -29,12 +29,12 @@ const Register2 = ({
       animate="animate"
       transition={{ duration: 0.5 }}
       // className="mobile-white"
-      style={{ borderRadius: "10px", marginTop: '13rem' }}
+      style={{ borderRadius: "10px" }}
     >
       <Box style={{ paddingBottom: "0rem" }} className="register-content">
         <Container>
           <Box position="relative" style={{paddingBottom: '4rem'}}>
-            <Box style={{background: 'white', borderRadius: '10px', paddingBottom: '3rem'}} className="register-form" id="form1">
+            <Box style={{ borderRadius: '10px', paddingBottom: '3rem'}} className="register-form" id="form1">
               <Stack padding={2} direction="row" justifyContent="space-between">
                 <p className="step-one-title mb-5">Address info</p>
                 <p className="step-one mb-3">Step 2 of 2</p>
@@ -358,7 +358,7 @@ const Register2 = ({
                   </div>
                   <div className="register-row">
                     <div className="register-city">
-                      <label htmlFor="register-city">City</label>
+                      <label style={{fontWeight: 'bold'}} htmlFor="register-city">City</label>
                       <Field
                         id="register-city"
                         type="text"
