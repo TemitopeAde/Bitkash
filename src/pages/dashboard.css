@@ -277,6 +277,12 @@ ul {
         color: #000000;
     }
 
+    .dashboard-form.mobile .form-control {
+        height: 40px;
+        border: 1px solid #FF9924;
+        border-radius: 5px;
+    }
+
     .dashboard-form.mobile label {
         font-style: normal;
         font-weight: 500;
@@ -287,6 +293,9 @@ ul {
 
     #wallet-address {
         width: 100% !important;
+        height: 40px;
+        border: 1px solid #FF9924;
+        border-radius: 5px;
     }
 
     .dashboard-inner .mobile-padding {
@@ -305,5 +314,9 @@ ul {
         line-height: 21px;
 
         color: #000000;
+    }
+
+    .css-111rfow-MuiStack-root>:not(style)+:not(style) {
+        margin-left: 20px !important;
     }
 }
