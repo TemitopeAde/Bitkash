@@ -304,7 +304,7 @@ const Buy = () => {
                   >
                     <input
                       type="checkbox"
-                      style={{ transform: "scale(1.1)" }}
+                      style={{ transform: "scale(1.5)" }}
                     />
                     <h6 className="checkbox-text">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
