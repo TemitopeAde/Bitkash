@@ -128,3 +128,15 @@ body {
         width: 129px;
     }
 }
+
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    .phone-otp-flex {
+        grid-gap: 17px;
+        grid-template-columns: repeat(4,64px);
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    
+}
