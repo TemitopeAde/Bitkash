@@ -1,0 +1,85 @@
+.success-registration-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.success-registration-flex-center h6 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 60px;
+    color: #FF9924;
+}
+
+.mobile-registration-success h6 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    /* or 150% */
+
+    text-align: center;
+
+    color: #FF9924;
+}
+
+
+.success-registration-flex-center p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+    color: #000000;
+}
+
+.mobile-registration-success p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    /* or 200% */
+
+    text-align: center;
+
+    color: #000000;
+}
+
+.success-registration-flex-center img {
+    height: 83px;
+    width: 83px;
+}
+
+
+.mobile-registration-success {
+    margin-top: 7rem;
+    font-family: 'Poppins';
+}
+
+.mobile-success-box {
+    width: 90vw;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+
+.mobile-registration-success .title-mobile {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+    /* identical to box height, or 167% */
+
+
+    color: #FFFFFF;
+}
+
+.mobile-success-box img {
+    width: 70px;
+    height: 70px;
+}

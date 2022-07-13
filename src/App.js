@@ -17,6 +17,8 @@ import { AnimatePresence } from "framer-motion";
 import KycForm from "./pages/BankDetailsForm";
 import VerificationComplete from "./pages/Verification-complete";
 import EmailAndPhone from "./pages/EmailAndPhone";
+import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
+import SucessRegistrationPage from "./pages/SucessRegistrationPage";
 
 function App() {
   useEffect(() => {
@@ -36,9 +38,11 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
+        <Route path="/update-number-email" element={<UpdateEmailAndPhoneInput />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verification-complete" element={<VerificationComplete />} />
         <Route path="/email-and-password-sent" element={<EmailAndPhone />} />
+        <Route path="/success-page" element={<SucessRegistrationPage />} />
       </Routes>
     </AnimatePresence>
   );
