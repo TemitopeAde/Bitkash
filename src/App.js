@@ -32,10 +32,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/test" element={<Signup />} />
-        <Route path="/kyc" element={<KycForm />} />
+        <Route path="/complete-bank-details" element={<Signup />} />
+        {/* <Route path="/kyc" element={<KycForm />} /> */}
         <Route path="/buy" element={<Buy />} />
-        <Route path="/d" element={<MobileNav />} />
         <Route path="/history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
