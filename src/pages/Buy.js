@@ -1,5 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./dashboard.css";
 import logo from "../assets/icons/header-white.png";
@@ -9,6 +9,20 @@ import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 
 const Buy = () => {
+  // const handlePaste = (e) => {
+  //   e.preventDefault();
+  //   document.addEventListener("DOMContentLoaded", function () {
+  //     let pasteButton = document.querySelector(".paste-btn");
+  //     pasteButton.addEventListener("click", function () {
+  //       navigator.clipboard.readText().then(
+  //         (cliptext) =>
+  //           (document.querySelector("#wallet-address").value = cliptext),
+  //         (err) => console.log(err)
+  //       );
+  //     });
+  //   });
+  // };
+
   if (window.innerWidth > 820) {
     return (
       <Box className="dashboard">
@@ -221,16 +235,25 @@ const Buy = () => {
                 <Box>
                   <Box className="dashboard-form mobile">
                     <Box>
-                      <label className="mb-3" htmlFor="currency-dashboard">Currency</label>
+                      <label className="mb-3" htmlFor="currency-dashboard">
+                        Currency
+                      </label>
                       <select id="currency-dashboard" className="form-control">
                         <option>USD</option>
                         <option>EUR</option>
                       </select>
                     </Box>
 
-                    <Stack spacing={2} direction="row" justifyContent="space-between" className="mt-5">
+                    <Stack
+                      spacing={2}
+                      direction="row"
+                      justifyContent="space-between"
+                      className="mt-5"
+                    >
                       <Box>
-                        <label className="mb-3" htmlFor="dashboard-price">Price</label>
+                        <label className="mb-3" htmlFor="dashboard-price">
+                          Price
+                        </label>
                         <input
                           type="number"
                           id="dashboard-price"
@@ -239,7 +262,9 @@ const Buy = () => {
                       </Box>
 
                       <Box>
-                        <label className="mb-3" htmlFor="bitcoin-equ">Bitcoin Equivalent</label>
+                        <label className="mb-3" htmlFor="bitcoin-equ">
+                          Bitcoin Equivalent
+                        </label>
                         <input
                           type="number"
                           className="form-control"
@@ -249,15 +274,26 @@ const Buy = () => {
                     </Stack>
                   </Box>
 
-                  <Box className="mb-5 mt-5 dashboard-form-single">
+                  <Box
+                    className="mb-5 mt-5 dashboard-form-single"
+                    sx={{ position: "relative" }}
+                  >
                     <label className="mb-3" htmlFor="wallet-adresss">
                       Bitcoin Wallet Addresss
                     </label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control paste-container"
                       id="wallet-address"
                     />
+
+                    {/* <button
+                      style={{ position: "absolute", top: "0" }}
+                      className="paste-btn"
+                      // onClick={handlePaste}
+                    >
+                      Paste
+                    </button> */}
                   </Box>
 
                   <Stack
@@ -266,7 +302,10 @@ const Buy = () => {
                     direction="row"
                     spacing={5}
                   >
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      style={{ transform: "scale(1.1)" }}
+                    />
                     <h6 className="checkbox-text">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Animi libero laboriosam neque ipsam, voluptate omnis non.

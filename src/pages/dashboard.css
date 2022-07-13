@@ -319,4 +319,26 @@ ul {
     .css-111rfow-MuiStack-root>:not(style)+:not(style) {
         margin-left: 20px !important;
     }
+
+    .dashboard-form.mobile input[type="checkbox"] {
+        transform: scale(1.06);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
