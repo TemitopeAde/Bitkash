@@ -177,7 +177,7 @@ const EmailAndPhone = ({ children }) => {
             Email and phone <br /> verification
           </h6>
 
-          <Box style={{ width: "90vw", margin: "0 auto" }}>
+          <Box style={{ width: "90vw", margin: "0 auto", paddingBottom: '5rem' }}>
             <Box className="p-2" style={{ background: "white" }}>
               <Box style={{padding: '2rem 1rem'}}>
                 <form>
