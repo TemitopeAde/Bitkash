@@ -19,6 +19,7 @@ import VerificationComplete from "./pages/Verification-complete";
 import EmailAndPhone from "./pages/EmailAndPhone";
 import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
 import SucessRegistrationPage from "./pages/SucessRegistrationPage";
+import MobileNav from "./components/mobileNav";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/test" element={<Signup />} />
         <Route path="/kyc" element={<KycForm />} />
         <Route path="/buy" element={<Buy />} />
+        <Route path="/d" element={<MobileNav />} />
         <Route path="/history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />

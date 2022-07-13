@@ -164,7 +164,7 @@ const EmailAndPhone = ({ children }) => {
           </Helmet>
         </Box>
 
-        <Box style={{  marginTop: "6rem", fontFamily: 'Poppins' }}>
+        <Box style={{  marginTop: "6rem", fontFamily: 'Poppins', textAlign: 'center' }}>
           <h6
             style={{
               color: "white",
@@ -184,7 +184,7 @@ const EmailAndPhone = ({ children }) => {
                   <Box className="otp-number-div mb-5">
                     {/* <h6 className="otp-title">Email and Phone Verification</h6> */}
                     <p>
-                      A 4 digit OTP code has been sent to your mail <br />
+                      A 4 digit OTP code has been sent to your mail 
                       <a
                         style={{ marginRight: "6px" }}
                         className="color-yellow"
