@@ -253,10 +253,11 @@ h3 {
     }
     
     .form-input.radio-input input[type="radio"]:checked+label:after {
-        width: 6px;
-        height: 6px;
-        top: 14.5px;
         left: 23px;
+    }
+
+    .signup-grid .form-inputs {
+        grid-template-columns:  1fr;
     }
 }
 

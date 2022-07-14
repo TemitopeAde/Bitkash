@@ -82,7 +82,7 @@ const Signup = ({ children }) => {
               >
                 <form className="mt-5">
                   <Box className="signup-grid">
-                    <Box className="form-input radio-input">
+                    <Box className="form-input radio-input radio-form-input">
                       <Box>
                         <input
                           type="radio"
@@ -147,7 +147,7 @@ const Signup = ({ children }) => {
                     </Box>
                   </Box>
 
-                  <button type="submit" className="submit">
+                  <button type="submit" className="btn btn-primary submit">
                     Save
                   </button>
                 </form>
