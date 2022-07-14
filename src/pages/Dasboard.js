@@ -1,11 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./dashboard.css";
-import logo from "../assets/icons/header-white.png";
-import icon1 from "../assets/icons/note-2.png";
-import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 import {
   Chart as ChartJS,
@@ -18,14 +13,20 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { Helmet } from "react-helmet";
+import { SplideSlide, Splide } from "@splidejs/react-splide";
+
 import shield from "../assets/images/shield.png";
 import curate from "../assets/images/cuate.png";
 import check from "../assets/images/tick-circle.png";
 import email from "../assets/images/sms.png";
-import shieldNew from '../assets/images/security-user.png';
-import phone from '../assets/images/telephone.png';
-
-
+import shieldNew from "../assets/images/security-user.png";
+import phone from "../assets/images/telephone.png";
+import "./dashboard.css";
+import logo from "../assets/icons/header-white.png";
+import icon1 from "../assets/icons/note-2.png";
+import user from "../assets/images/ellipse.png";
+import notification from "../assets/images/notification.png";
+import cuate2 from '../assets/images/cuate2.png';
 
 ChartJS.register(
   CategoryScale,
@@ -75,6 +76,15 @@ export const data = {
 };
 
 const Dashboard = () => {
+  const options = {
+    type: "loop",
+    autoplay: true,
+    pauseOnHover: true,
+    resetProgress: false,
+    arrow: false,
+  };
+
+
   if (window.innerWidth > 820) {
     return (
       <Box className="dashboard">
@@ -197,38 +207,77 @@ const Dashboard = () => {
             <Box className="dashboard-inner py-5 dashboard-inner-white">
               <Container className="buy-padding dashboard-padding">
                 <Box className="dashboard-container-box">
-                  <Box
-                    padding={{ sm: 2, md: 4 }}
-                    sx={{ background: "#FFF8EE", borderRadius: "5px" }}
-                  >
-                    <Stack
-                      spacing={{ xs: 1, sm: 2, md: 4 }}
-                      direction={{ xs: "column", sm: "row" }}
-                      justifyContent="space-between"
-                    >
-                      <Box>
-                        <Stack>
-                          <h6 className="name-account">
-                            Hello Olubanjo Oluseyi
-                          </h6>
-                          <p className="welcome-account">
-                            Welcome to your dashboard
-                          </p>
-                          <p className="verify-account">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Eligendi sed nemo tenetur ad in error
-                            nesciunt.
-                          </p>
-                          <button className="btn verify-account-button">
-                            Verify account
-                          </button>
+                  <Splide options={options}>
+                    <SplideSlide>
+                      <Box
+                        padding={{ sm: 2, md: 4 }}
+                        sx={{ background: "#FFF8EE", borderRadius: "5px" }}
+                      >
+                        <Stack
+                          spacing={{ xs: 1, sm: 2, md: 4 }}
+                          direction={{ xs: "column", sm: "row" }}
+                          justifyContent="space-between"
+                        >
+                          <Box>
+                            <Stack>
+                              <h6 className="name-account">
+                                Hello Olubanjo Oluseyi
+                              </h6>
+                              <p className="welcome-account">
+                                Welcome to your dashboard
+                              </p>
+                              <p className="verify-account">
+                                Lorem ipsum dolor sit, amet consectetur
+                                adipisicing elit. Eligendi sed nemo tenetur ad
+                                in error nesciunt.
+                              </p>
+                              <button className="btn verify-account-button">
+                                Verify account
+                              </button>
+                            </Stack>
+                          </Box>
+                          <Box>
+                            <img src={curate} alt="" />
+                          </Box>
                         </Stack>
                       </Box>
-                      <Box>
-                        <img src={curate} alt="" />
+                    </SplideSlide>
+
+                    <SplideSlide>
+                      <Box
+                        padding={{ sm: 2, md: 4 }}
+                        sx={{ background: "#FFF8EE", borderRadius: "5px" }}
+                      >
+                        <Stack
+                          spacing={{ xs: 1, sm: 2, md: 4 }}
+                          direction={{ xs: "column", sm: "row" }}
+                          justifyContent="space-between"
+                        >
+                          <Box>
+                            <Stack>
+                              <h6 className="name-account">
+                                Tips on how to strenghten your account
+                              </h6>
+                              <p className="welcome-account">
+                                Welcome to your dashboard
+                              </p>
+                              <p className="verify-account">
+                                Lorem ipsum dolor sit, amet consectetur
+                                adipisicing elit. Eligendi sed nemo tenetur ad
+                                in error nesciunt.
+                              </p>
+                              <button className="btn verify-account-button">
+                                Go to security
+                              </button>
+                            </Stack>
+                          </Box>
+                          <Box>
+                            <img src={cuate2} alt="" />
+                          </Box>
+                        </Stack>
                       </Box>
-                    </Stack>
-                  </Box>
+                    </SplideSlide>
+                  </Splide>
 
                   <Box paddingY="2rem">
                     <Box>
