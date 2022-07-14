@@ -20,8 +20,12 @@ import { Bar } from "react-chartjs-2";
 import { Helmet } from "react-helmet";
 import shield from "../assets/images/shield.png";
 import curate from "../assets/images/cuate.png";
-import check from '../assets/images/tick-circle.png';
-import email from '../assets/images/sms.png'
+import check from "../assets/images/tick-circle.png";
+import email from "../assets/images/sms.png";
+import shieldNew from '../assets/images/security-user.png';
+import phone from '../assets/images/telephone.png';
+
+
 
 ChartJS.register(
   CategoryScale,
@@ -226,7 +230,7 @@ const Dashboard = () => {
                     </Stack>
                   </Box>
 
-                  <Box paddingY="3rem">
+                  <Box paddingY="2rem">
                     <Box>
                       <Box
                         sx={{
@@ -276,7 +280,7 @@ const Dashboard = () => {
                   </Box>
 
                   <Box>
-                    <Box className="chart-flex-container" >
+                    <Box className="chart-flex-container">
                       <Box className="chart-container">
                         <Stack>
                           <Stack direction="row" justifyContent="space-between">
@@ -292,11 +296,15 @@ const Dashboard = () => {
                                 Reports
                               </h6>
                               <form>
-                                <select name="" id="" className="drop-select">
-                                  <option>Monthly</option>
-                                  <option>Weekly</option>
-                                  <option>Daily</option>
-                                </select>
+                                <div className="selectdiv ">
+                                  <label>
+                                    <select>
+                                      <option selected> Monthly </option>
+                                      <option>Weekly</option>
+                                      <option>Daily</option>
+                                    </select>
+                                  </label>
+                                </div>
                               </form>
                             </Box>
 
@@ -352,25 +360,49 @@ const Dashboard = () => {
                           </Box>
                           <Box className="verification-two">
                             <Box className="verification-status-two">
-                              <Stack spacing={2}>
-                                <Stack alignItems="center" direction="row" spacing={1}>
+                              <Stack spacing={3}>
+                                <Stack
+                                  alignItems="center"
+                                  direction="row"
+                                  spacing={1}
+                                >
                                   <img src={email} alt="" />
                                   <p>Email</p>
                                   <img src={check} alt="" />
                                 </Stack>
-                                <Stack alignItems="center" direction="row" spacing={1}>
-                                  <img src={email} alt="" />
+                                <Stack
+                                  alignItems="center"
+                                  direction="row"
+                                  spacing={1}
+                                >
+                                  <img src={phone} alt="" />
                                   <p>Phone Number</p>
                                   <img src={check} alt="" />
                                 </Stack>
-                                <Stack alignItems="center" direction="row" spacing={1}>
-                                  <img src={email} alt="" />
+                                <Stack
+                                  alignItems="center"
+                                  direction="row"
+                                  spacing={1}
+                                >
+                                  <img src={shieldNew} alt="" />
                                   <p>KYC Verification</p>
                                   <img src={check} alt="" />
                                 </Stack>
                               </Stack>
 
-                              <Link className="btn mt-4" style={{color: 'black', background: '#ff9924', borderRadius: '5px', fontSize: '14px', lineHeight: '30px'}} to="/verification">Verification page</Link>
+                              <Link
+                                className="btn mt-5"
+                                style={{
+                                  color: "black",
+                                  background: "#ff9924",
+                                  borderRadius: "5px",
+                                  fontSize: "14px",
+                                  lineHeight: "30px",
+                                }}
+                                to="/verification"
+                              >
+                                Verification page
+                              </Link>
                             </Box>
                           </Box>
                         </Box>

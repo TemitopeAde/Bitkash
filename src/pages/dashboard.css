@@ -315,25 +315,23 @@ ul {
 
 .chart-flex-container {
     display: grid;
-    grid-template-columns: 72% 28%;
+    grid-template-columns: 68% 28%;
     height: 100%;
     gap: 2rem;
 }
 
 
 .chart-flex-container .chart-container {
-    
     background: #FFF8EE;
     border-radius: 5px;
     padding: 2rem;
-}
-
-.chart-container .chart-other {
     
 }
 
 .chart-other {
     background: #FFF8EE;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .drop-select {
@@ -356,6 +354,7 @@ ul {
     background: #FFF8EE;
     border-radius: 5px;
     padding: 1rem 2rem;
+    margin-top: 2rem;
 }
 
 .verification-status-two img {
@@ -369,6 +368,50 @@ ul {
 }
 
 
+.selectdiv {
+    position: relative;
+    /*Don't really need this just for demo styling*/
+    
+  }
+  
+  .selectdiv:after {
+      content: '\f078';
+      font: normal normal normal 17px/1 FontAwesome;
+      color: #807D9B;
+      right: 28px;
+      top: 6px;
+      height: 34px;
+      padding: 15px 0px 0px 8px;
+      border: none;
+      position: absolute;
+      pointer-events: none;
+  }
+  
+  /* IE11 hide native button (thanks Matt!) */
+  select::-ms-expand {
+  display: none;
+  }
+  
+  .selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Add some styling */
+    text-align: left;
+    display: block;
+    width: 100%;
+    /* max-width: 320px; */
+    height: 50px;
+    margin: 5px 0px;
+    padding: 0px 0px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #333;
+    background-image: none;
+    border: none;
+    -ms-word-break: normal;
+    word-break: normal;
+  }
 
 
 
