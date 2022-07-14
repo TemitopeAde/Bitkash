@@ -232,6 +232,8 @@ h3 {
 
     .signup-grid .form-input {
         grid-template-columns: 1fr;
+        margin-bottom: 20px;
+        margin-top: 14px;
     }
 
     .radio-input.radio-form-input {
