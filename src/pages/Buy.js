@@ -1,5 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./dashboard.css";
 import logo from "../assets/icons/header-white.png";
@@ -9,19 +9,7 @@ import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 
 const Buy = () => {
-  // const handlePaste = (e) => {
-  //   e.preventDefault();
-  //   document.addEventListener("DOMContentLoaded", function () {
-  //     let pasteButton = document.querySelector(".paste-btn");
-  //     pasteButton.addEventListener("click", function () {
-  //       navigator.clipboard.readText().then(
-  //         (cliptext) =>
-  //           (document.querySelector("#wallet-address").value = cliptext),
-  //         (err) => console.log(err)
-  //       );
-  //     });
-  //   });
-  // };
+ 
 
   if (window.innerWidth > 820) {
     return (

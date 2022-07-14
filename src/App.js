@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/complete-bank-details" element={<Signup />} />
-        {/* <Route path="/kyc" element={<KycForm />} /> */}
+        
         <Route path="/buy" element={<Buy />} />
         <Route path="/history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
