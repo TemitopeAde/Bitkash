@@ -357,6 +357,11 @@ ul {
     margin-top: 2rem;
 }
 
+.buy-padding.dashboard-padding {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+}
+
 .verification-status-two img {
     width: 15px;
     height: 15px;

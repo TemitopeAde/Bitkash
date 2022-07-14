@@ -195,7 +195,7 @@ const Dashboard = () => {
             </Box>
 
             <Box className="dashboard-inner py-5 dashboard-inner-white">
-              <Container className="buy-padding">
+              <Container className="buy-padding dashboard-padding">
                 <Box className="dashboard-container-box">
                   <Box
                     padding={{ sm: 2, md: 4 }}
