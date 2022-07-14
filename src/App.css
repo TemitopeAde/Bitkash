@@ -15,6 +15,7 @@ select {
 .shadow {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 :root {
   --black-text: #281F1E;
   --brown: #FE7E10F5;
@@ -27,11 +28,28 @@ select {
 
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; 
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #F16A23;
+}
+
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 
@@ -64,9 +82,8 @@ li {
 @media screen and (min-width: 1920px) {
 
   .css-1oqqzyl-MuiContainer-root,
-  .css-1qsxih2
-  {
-      max-width: 1500px !important;
+  .css-1qsxih2 {
+    max-width: 1500px !important;
   }
 }
 
@@ -74,8 +91,7 @@ li {
 @media screen and (min-width: 2256px) {
 
   .css-1oqqzyl-MuiContainer-root,
-  .css-1qsxih2
-  {
-      max-width: 1900px !important;
+  .css-1qsxih2 {
+    max-width: 1900px !important;
   }
 }
