@@ -28,6 +28,11 @@ import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import cuate2 from "../assets/images/cuate2.png";
 import tik from "../assets/images/tik.png";
+import whiteSms from "../assets/images/sms-white.png";
+import whiteTick from "../assets/images/tick-white.png";
+import whitePhone from "../assets/images/phone-white.png";
+import whiteSecurity from "../assets/images/security-white.png";
+// import whiteShield from '../assets/images/'
 
 ChartJS.register(
   CategoryScale,
@@ -41,12 +46,23 @@ ChartJS.register(
 export const options = {
   responsive: true,
   scales: {
-    x: {
-      grid: {
-        display: false,
-      },
+    xAxis : {
+      display: false
+    }
+  }
+};
+
+
+export const mobileOptions = {
+  responsive: true,
+  scales: {
+    xAxis : {
+      display: false
     },
-  },
+    yAxis: {
+      display: true
+    }
+  }
 };
 
 const labels = [
@@ -72,9 +88,27 @@ export const data = {
     {
       data: barData,
       backgroundColor: "#FF9924",
+      barPercentage: 0.7,
+      barThickness: 20,
+      // label: 'Celcius'
     },
   ],
 };
+
+
+export const mobiledata = {
+  labels,
+  datasets: [
+    {
+      data: barData,
+      backgroundColor: "#FF9924",
+      barPercentage: 0.7,
+      barThickness: 7,
+      // label: 'Celcius'
+    },
+  ],
+};
+
 
 const Dashboard = () => {
   const options = {
@@ -340,13 +374,14 @@ const Dashboard = () => {
                                   fontSize: "16px",
                                   lineHeight: "32px",
                                   color: "#000000",
+                                  marginBottom: "0px",
                                 }}
                               >
                                 Reports
                               </h6>
                               <form>
                                 <div className="selectdiv ">
-                                  <label>
+                                  <label style={{ marginBottom: "0px" }}>
                                     <select>
                                       <option selected> Monthly </option>
                                       <option>Weekly</option>
@@ -618,6 +653,100 @@ const Dashboard = () => {
                           </Box>
                         </SplideSlide>
                       </Splide>
+                    </Box>
+                  </Box>
+                </Box>
+
+                <Box
+                  marginBottom="1.5rem"
+                  style={{
+                    border: "1px solid rgba(255, 153, 36, 1)",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <Box
+                    sx={{ background: "rgba(255, 248, 238, 1)" }}
+                    padding="0.1rem"
+                  >
+                    <Bar options={mobileOptions} data={mobiledata} />
+                  </Box>
+                </Box>
+
+                <Box
+                  padding="1.5rem"
+                  sx={{ background: "#ff9924", border: "0.5px solid #ff9924" }}
+                >
+                  <Box>
+                    <Box className="verification-status">
+                      <Box>
+                        <Box
+                          mb="1.3rem"
+                          alignItems="center"
+                          display="flex"
+                          justifyContent="flex-start"
+                          gap="1rem"
+                        >
+                          <img src={whiteSecurity} alt="" />
+                          <h6
+                            style={{
+                              color: "#fff",
+                              fontWeight: "600",
+                              fontSize: "16px",
+                              lineHeight: "30px",
+                            }}
+                          >
+                            Verification status
+                          </h6>
+                        </Box>
+                      </Box>
+                    </Box>
+                    <Box className="verification-two">
+                      <Box className="verification-status-two mobile">
+                        <Box className="verification">
+                          <Stack
+                            alignItems="center"
+                            direction="row"
+                            spacing={1}
+                          >
+                            <img src={whiteSms} alt="" />
+                            <p>Email</p>
+                            <img src={whiteTick} alt="" />
+                          </Stack>
+                          <Stack
+                            alignItems="center"
+                            direction="row"
+                            spacing={1}
+                          >
+                            <img src={whitePhone} alt="" />
+                            <p>Phone Number</p>
+                            <img src={whiteTick} alt="" />
+                          </Stack>
+                          <Stack
+                            alignItems="center"
+                            direction="row"
+                            spacing={1}
+                          >
+                            <img src={whiteSecurity} alt="" />
+                            <p>KYC Verification</p>
+                            <img src={whiteTick} alt="" />
+                          </Stack>
+                        </Box>
+
+                        <Link
+                          className="btn mt-3"
+                          style={{
+                            color: "black",
+                            background: "#ffffff",
+                            borderRadius: "5px",
+                            fontSize: "14px",
+                            lineHeight: "28px",
+                            fontWeight: "400",
+                          }}
+                          to="/verification"
+                        >
+                          Verification page
+                        </Link>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
