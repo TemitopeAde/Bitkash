@@ -26,7 +26,8 @@ import logo from "../assets/icons/header-white.png";
 import icon1 from "../assets/icons/note-2.png";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
-import cuate2 from '../assets/images/cuate2.png';
+import cuate2 from "../assets/images/cuate2.png";
+import tik from '../assets/images/tik.png';
 
 ChartJS.register(
   CategoryScale,
@@ -83,7 +84,6 @@ const Dashboard = () => {
     resetProgress: false,
     arrow: false,
   };
-
 
   if (window.innerWidth > 820) {
     return (
@@ -474,7 +474,76 @@ const Dashboard = () => {
 
         <Box>
           <Box className="dashboard-inner py-5">
-            <Container className="mobile-padding"></Container>
+            <Container>
+              <Box className="mobile-padding">
+                <Box className="mobile-dashboard">
+                  <Splide options={options}>
+                    <SplideSlide>
+                      <Box
+                        padding="1rem"
+                        sx={{ background: "#FFF8EE", borderRadius: "5px" }}
+                      >
+                        <Box>
+                          <Stack>
+                            <h6 className="name-account">
+                              Hello Olubanjo Oluseyi
+                            </h6>
+                            <p className="welcome-account">
+                              Welcome to your dashboard
+                            </p>
+                            <p className="verify-account">
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit. Eligendi sed nemo tenetur ad in
+                              error nesciunt.
+                            </p>
+                          </Stack>
+                          <Stack gap="2rem" justifyContent="space-between" direction="row">
+                            <Box>
+                              <button className="btn btn-overview">Buy Bitcoin</button>
+                            </Box>
+                            <Box className="tiktik">
+                              <img src={tik} alt="" />
+                            </Box>
+                          </Stack>
+                        </Box>
+                      </Box>
+                    </SplideSlide>
+
+                    <SplideSlide>
+                      <Box
+                        padding="1rem"
+                        sx={{ background: "#FFF8EE", borderRadius: "5px" }}
+                      >
+                        <Box>
+                          <Stack>
+                            <h6 className="name-account">
+                              Tips on how to strenghten your account
+                            </h6>
+                            <p className="welcome-account">
+                              Welcome to your dashboard
+                            </p>
+                            <p className="verify-account">
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit. Eligendi sed nemo tenetur ad in
+                              error nesciunt.
+                            </p>
+                          </Stack>
+
+                          <Stack gap="2rem" justifyContent="space-between" direction="row" >
+                            <Box>
+                              <button className="btn btn-overview">Go to Security</button>
+                            </Box>
+                            <Box className="tiktik">
+                              <img src={tik} alt="" />
+                            </Box>
+                          </Stack>
+                        </Box>
+                      </Box>
+                    </SplideSlide>
+                  </Splide>
+                </Box>
+              </Box>
+            </Container>
           </Box>
         </Box>
       </Box>

@@ -419,15 +419,65 @@ select::-ms-expand {
 }
 
 
-.splide__pagination__page.is-active { 
+.splide__pagination__page.is-active {
     border: 1px solid rgba(255, 153, 36, 1);
-    background:rgba(255, 153, 36, 1) !important;
+    background: rgba(255, 153, 36, 1) !important;
 }
 
 .splide__pagination__page {
     background: white;
     border: 1px solid rgba(255, 153, 36, 1);
 }
+
+
+.mobile-dashboard h6 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: #000000;
+}
+
+.mobile-dashboard p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.tiktik img {
+    width: 73px;
+    height: 73px;
+}
+
+.mobile-dashboard .btn-overview {
+    width: 219px;
+    height: 40px;
+    left: 59px;
+    top: 295px;
+    background: #FF9924;
+    border: 1px solid #FC8218;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
