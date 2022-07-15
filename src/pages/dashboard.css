@@ -452,8 +452,6 @@ select::-ms-expand {
 .mobile-dashboard .btn-overview {
     width: 219px;
     height: 40px;
-    left: 59px;
-    top: 295px;
     background: #FF9924;
     border: 1px solid #FC8218;
     border-radius: 5px;
@@ -462,6 +460,11 @@ select::-ms-expand {
     font-size: 14px;
     line-height: 21px;
     color: #000000;
+}
+
+
+.history-div .splide__track--draggable {
+    padding: 0 10rem 0 0 !important;
 }
 
 

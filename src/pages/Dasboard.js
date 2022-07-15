@@ -27,7 +27,7 @@ import icon1 from "../assets/icons/note-2.png";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import cuate2 from "../assets/images/cuate2.png";
-import tik from '../assets/images/tik.png';
+import tik from "../assets/images/tik.png";
 
 ChartJS.register(
   CategoryScale,
@@ -258,9 +258,9 @@ const Dashboard = () => {
                               <h6 className="name-account">
                                 Tips on how to strenghten your account
                               </h6>
-                              <p className="welcome-account">
+                              {/* <p className="welcome-account">
                                 Welcome to your dashboard
-                              </p>
+                              </p> */}
                               <p className="verify-account">
                                 Lorem ipsum dolor sit, amet consectetur
                                 adipisicing elit. Eligendi sed nemo tenetur ad
@@ -484,7 +484,7 @@ const Dashboard = () => {
                         sx={{ background: "#FFF8EE", borderRadius: "5px" }}
                       >
                         <Box>
-                          <Stack>
+                          <Stack spacing={2}>
                             <h6 className="name-account">
                               Hello Olubanjo Oluseyi
                             </h6>
@@ -497,9 +497,15 @@ const Dashboard = () => {
                               error nesciunt.
                             </p>
                           </Stack>
-                          <Stack gap="2rem" justifyContent="space-between" direction="row">
+                          <Stack
+                            margin="1.5rem 0"
+                            justifyContent="space-between"
+                            direction="row"
+                          >
                             <Box>
-                              <button className="btn btn-overview">Buy Bitcoin</button>
+                              <button className="btn btn-overview">
+                                Buy Bitcoin
+                              </button>
                             </Box>
                             <Box className="tiktik">
                               <img src={tik} alt="" />
@@ -515,13 +521,11 @@ const Dashboard = () => {
                         sx={{ background: "#FFF8EE", borderRadius: "5px" }}
                       >
                         <Box>
-                          <Stack>
+                          <Stack spacing={2}>
                             <h6 className="name-account">
                               Tips on how to strenghten your account
                             </h6>
-                            <p className="welcome-account">
-                              Welcome to your dashboard
-                            </p>
+
                             <p className="verify-account">
                               Lorem ipsum dolor sit, amet consectetur
                               adipisicing elit. Eligendi sed nemo tenetur ad in
@@ -529,9 +533,16 @@ const Dashboard = () => {
                             </p>
                           </Stack>
 
-                          <Stack gap="2rem" justifyContent="space-between" direction="row" >
+                          <Stack
+                            margin="1.5rem 0"
+                            gap="2rem"
+                            justifyContent="space-between"
+                            direction="row"
+                          >
                             <Box>
-                              <button className="btn btn-overview">Go to Security</button>
+                              <button className="btn btn-overview">
+                                Go to Security
+                              </button>
                             </Box>
                             <Box className="tiktik">
                               <img src={tik} alt="" />
@@ -541,6 +552,74 @@ const Dashboard = () => {
                       </Box>
                     </SplideSlide>
                   </Splide>
+                </Box>
+
+                <Box margin="1.5rem 0">
+                  <Box>
+                    <Box className="history-div">
+                      <Splide
+                        options={{
+                          rewind: false,
+                          perPage: 1,
+                          perMove: 1,
+                          gap: "2rem",
+                          // padding: '0 5rem 0 0',
+                          padding: "5rem",
+                          pagination: false,
+                          type: "loop",
+                        }}
+                      >
+                        <SplideSlide>
+                          <Box
+                            padding=".7rem"
+                            sx={{
+                              background: "rgba(255, 243, 227, 0.61)",
+                              borderRadius: "5px",
+                              border: "1px solid #FF9924",
+                              width: "200px",
+                              height: "120px",
+                            }}
+                            className="transactions-number"
+                          >
+                            <h6>No of transactions this week</h6>
+                            <p>0</p>
+                          </Box>
+                        </SplideSlide>
+                        <SplideSlide>
+                          <Box
+                            padding=".7rem"
+                            sx={{
+                              background: "rgba(255, 243, 227, 0.61)",
+                              borderRadius: "5px",
+                              border: "1px solid #FF9924",
+
+                              height: "120px",
+                            }}
+                            className="transactions-number"
+                          >
+                            <h6>Bitcoin sent out</h6>
+                            <p>0</p>
+                          </Box>
+                        </SplideSlide>
+                        <SplideSlide>
+                          <Box
+                            padding=".7rem"
+                            sx={{
+                              background: "rgba(255, 243, 227, 0.61)",
+                              borderRadius: "5px",
+                              border: "1px solid #FF9924",
+
+                              height: "120px",
+                            }}
+                            className="transactions-number"
+                          >
+                            <h6>No of transactions this week</h6>
+                            <p>0</p>
+                          </Box>
+                        </SplideSlide>
+                      </Splide>
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
             </Container>
