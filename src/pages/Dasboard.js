@@ -60,7 +60,12 @@ export const mobileOptions = {
       display: false
     },
     yAxis: {
-      display: true
+      display: true,
+      ticks: {
+        callback: function(value, index, ticks) {
+            return '$' + value;
+        }
+    }
     }
   }
 };
