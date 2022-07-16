@@ -46,28 +46,35 @@ ChartJS.register(
 export const options = {
   responsive: true,
   scales: {
-    xAxis : {
-      display: false
-    }
-  }
-};
-
-
-export const mobileOptions = {
-  responsive: true,
-  scales: {
-    xAxis : {
-      display: false
+    xAxis: {
+      display: false,
     },
     yAxis: {
       display: true,
       ticks: {
-        callback: function(value, index, ticks) {
-            return '$' + value;
-        }
-    }
-    }
-  }
+        callback: function (value, index, ticks) {
+          return "$" + value;
+        },
+      },
+    },
+  },
+};
+
+export const mobileOptions = {
+  responsive: true,
+  scales: {
+    xAxis: {
+      display: false,
+    },
+    yAxis: {
+      display: true,
+      ticks: {
+        callback: function (value, index, ticks) {
+          return "$" + value;
+        },
+      },
+    },
+  },
 };
 
 const labels = [
@@ -100,7 +107,6 @@ export const data = {
   ],
 };
 
-
 export const mobiledata = {
   labels,
   datasets: [
@@ -113,7 +119,6 @@ export const mobiledata = {
     },
   ],
 };
-
 
 const Dashboard = () => {
   const options = {
