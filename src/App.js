@@ -21,6 +21,7 @@ import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
 import SucessRegistrationPage from "./pages/SucessRegistrationPage";
 import MobileNav from "./components/mobileNav";
 import Dashboard from "./pages/Dasboard";
+import BuyConfirm from "./pages/BuyConfirm";
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/email-and-password-sent" element={<EmailAndPhone />} />
         <Route path="/success-page" element={<SucessRegistrationPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/payment-details" element={<BuyConfirm />} />
       </Routes>
     </AnimatePresence>
   );
