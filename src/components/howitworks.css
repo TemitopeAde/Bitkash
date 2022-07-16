@@ -56,6 +56,20 @@
     top: 90px;
 }
 
+
+.text-number {
+    display: none;
+}
+
+.flexitems h3 {
+    color: white;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 64px;
+}
+
 @media screen and (min-width: 1366px) {
     .number img {
         top: 110px;
@@ -159,9 +173,9 @@
         line-height: 30px;
         /* identical to box height, or 94% */
 
-        text-align: center;
+    text-align: center;
 
-        color: #514847;
+    color: #514847;
 
-    }
+}
 }
