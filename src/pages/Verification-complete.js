@@ -33,7 +33,7 @@ const Signup = ({ children }) => {
   return (
     <Box>
       <Header />
-      <Box className="sign-up">
+      <Box className="sign-up" style={{ userSelect: 'none'}}>
         <Container style={{ width: "60%" }}>
           <Box className="title-flex" style={{ alignItems: "baseline" }}>
             <h3 className="mb-5">Complete your bank details</h3>

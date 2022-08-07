@@ -14,14 +14,16 @@ import RecoverPassword from "./pages/RecoverPassword";
 import EmailConfirmation from "./pages/Email-confirmation";
 import Register from "./pages/Register";
 import { AnimatePresence } from "framer-motion";
-import KycForm from "./pages/BankDetailsForm";
+// import KycForm from "./pages/BankDetailsForm";
 import VerificationComplete from "./pages/Verification-complete";
 import EmailAndPhone from "./pages/EmailAndPhone";
 import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
 import SucessRegistrationPage from "./pages/SucessRegistrationPage";
-import MobileNav from "./components/mobileNav";
+// import MobileNav from "./components/mobileNav";
 import Dashboard from "./pages/Dasboard";
 import BuyConfirm from "./pages/BuyConfirm";
+import Security from "./pages/Security";
+
 
 function App() {
   useEffect(() => {
@@ -47,6 +49,7 @@ function App() {
         <Route path="/success-page" element={<SucessRegistrationPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/payment-details" element={<BuyConfirm />} />
+        <Route path="/security" element={<Security />} />
       </Routes>
     </AnimatePresence>
   );

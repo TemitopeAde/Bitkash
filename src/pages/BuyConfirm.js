@@ -368,6 +368,7 @@ const BuyConfirm = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-around",
+                  marginBottom: '5rem'
                 }}
               >
                 <button

@@ -102,7 +102,7 @@ export const data = {
       backgroundColor: "#FF9924",
       barPercentage: 0.7,
       barThickness: 20,
-      // label: 'Celcius'
+      // label: 'Celcius '
     },
   ],
 };
