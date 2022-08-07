@@ -13,6 +13,7 @@ import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
 import edit from "../assets/images/edit-2.png";
 import profile from "../assets/images/profile.png";
+import tick from "../assets/images/tick-circle.png";
 
 const Security = () => {
   const [tab, setTab] = useState(0);
@@ -183,9 +184,79 @@ const Security = () => {
 
                   <Box
                     className={
+                      tab === 0 ? "security-box active" : "security-box"
+                    }
+                  >
+                    <Box className="p-5">
+                      <Box className="profile-image-box">
+                        <Box
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            gap: "10px",
+                            textAlign: "center",
+                          }}
+                        >
+                          <img src={profile} alt="" className="pro-img" />
+                          <Box
+                            style={{
+                              display: "flex",
+                              justifyContent: "start",
+                              gap: "1rem",
+                              alignItems: "center",
+                            }}
+                          >
+                            <h6 style={{ color: "#ff9924", margin: "0px" }}>
+                              Upload Picture
+                            </h6>
+                            <button
+                              style={{ background: "none", border: "none" }}
+                            >
+                              <img
+                                style={{ height: "12px", width: "12px" }}
+                                src={edit}
+                                alt=""
+                              />
+                            </button>
+                          </Box>
+                          <Box>
+                            <p>Maximum file size for profile picture is 20MB</p>
+                          </Box>
+                        </Box>
+                      </Box>
+
+                      <form>
+                        <Box className="profile-form">
+                          <Box className="form-items">
+                            <label>First name</label>
+                            <input type="text" className="form-control" />
+                          </Box>
+                          <Box className="form-items">
+                            <label>Last name</label>
+                            <input type="text" className="form-control" />
+                          </Box>
+                          <Box className="form-items">
+                            <label>Email address</label>
+                            <input type="email" className="form-control" />
+                          </Box>
+                          <Box className="form-items">
+                            <label>Phone number</label>
+                            <input type="number" className="form-control" />
+                          </Box>
+
+                          <button className="" type="submit">
+                            Edit
+                          </button>
+                        </Box>
+                      </form>
+                    </Box>
+                  </Box>
+
+                  <Box
+                    className={
                       tab === 1 ? "security-box active" : "security-box"
                     }
-
                   >
                     <Box className="p-5">
                       <Box className="mb-5">
@@ -303,70 +374,64 @@ const Security = () => {
 
                   <Box
                     className={
-                      tab === 0 ? "security-box active" : "security-box"
+                      tab === 2 ? "security-box active" : "security-box"
                     }
                   >
-                    <Box className="p-5">
-                      <Box className="profile-image-box">
+                    <Box className="p-5 verification-security">
+                      <Box>
                         <Box
                           style={{
                             display: "flex",
-                            flexDirection: "column",
+                            justifyContent: "start",
                             alignItems: "center",
-                            gap: "10px",
-                            textAlign: "center",
+                            gap: "2rem",
                           }}
                         >
-                          <img src={profile} alt="" className="pro-img" />
-                          <Box
-                            style={{
-                              display: "flex",
-                              justifyContent: "start",
-                              gap: "1rem",
-                              alignItems: "center",
-                            }}
-                          >
-                            <h6 style={{ color: "#ff9924", margin: "0px" }}>
-                              Upload Picture
-                            </h6>
-                            <button
-                              style={{ background: "none", border: "none" }}
-                            >
-                              <img
-                                style={{ height: "12px", width: "12px" }}
-                                src={edit}
-                                alt=""
-                              />
-                            </button>
-                          </Box>
-                          <Box>
-                            <p>Maximum file size for profile picture is 20MB</p>
-                          </Box>
+                          <h6>Email Verification</h6>
+                          <img src={tick} alt="" className="icon" />
                         </Box>
+
+                        <p>
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Ab beatae veritatis omnis tempora sint quas
+                        </p>
                       </Box>
-
-                      <form>
-                        <Box className="profile-form">
-                          <Box className="form-items">
-                            <label>First name</label>
-                            <input type="text" className="form-control" />
-                          </Box>
-                          <Box className="form-items">
-                            <label>Last name</label>
-                            <input type="text" className="form-control" />
-                          </Box>
-                          <Box className="form-items">
-                            <label>Email address</label>
-                            <input type="email" className="form-control" />
-                          </Box>
-                          <Box className="form-items">
-                            <label>Phone number</label>
-                            <input type="number" className="form-control" />
-                          </Box>
-
-                          <button className="" type="submit">Edit</button>
+                      <Box>
+                        <Box
+                          style={{
+                            display: "flex",
+                            justifyContent: "start",
+                            alignItems: "center",
+                            gap: "2rem",
+                          }}
+                        >
+                          <h6>Phone number</h6>
+                          <img src={tick} alt="" className="icon" />
                         </Box>
-                      </form>
+
+                        <p>
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Ab beatae veritatis omnis tempora sint quas
+                        </p>
+                      </Box>
+                      <Box>
+                        <Box
+                          style={{
+                            display: "flex",
+                            justifyContent: "start",
+                            alignItems: "center",
+                            gap: "2rem",
+                          }}
+                        >
+                          <h6>KYC</h6>
+                          <img src={tick} alt="" className="icon" />
+                        </Box>
+
+                        <p>
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Ab beatae veritatis omnis tempora sint quas
+                        </p>
+                      </Box>
                     </Box>
                   </Box>
                 </Container>

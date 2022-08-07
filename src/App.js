@@ -23,6 +23,7 @@ import SucessRegistrationPage from "./pages/SucessRegistrationPage";
 import Dashboard from "./pages/Dasboard";
 import BuyConfirm from "./pages/BuyConfirm";
 import Security from "./pages/Security";
+import TwoFactor from "./pages/TwoFactor";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/payment-details" element={<BuyConfirm />} />
         <Route path="/security" element={<Security />} />
+        <Route path="/two-factor-authentication" element={<TwoFactor />} />
       </Routes>
     </AnimatePresence>
   );

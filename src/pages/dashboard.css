@@ -399,7 +399,7 @@ button {
 
 .security-box .profile-form {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 1rem;
     row-gap: 2rem;
 }
@@ -417,12 +417,42 @@ button {
     color: white;
 }
 
+.verification-security h6 {
+    color: #FF9924;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    /* identical to box height, or 188% */
 
 
+}
+
+.verification-security p {
+    width: 70%;
+}
+
+.verification-security .icon {
+    width: 13px;
+    height: 13px;
+}
+
+.verification-security h6 {
+    margin: 0;
+}
+
+.verification-security p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    /* or 188% */
 
 
-
-
+    color: #000000;
+}
 
 
 
