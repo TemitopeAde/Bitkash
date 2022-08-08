@@ -319,6 +319,7 @@ button {
 .security-box.active {
     display: block;
     transition: 1.3s;
+    margin-top: 3rem;
 }
 
 .security-box {
@@ -458,6 +459,9 @@ button {
     padding: 5rem !important;
 }
 
+.phone-otp-flex .form-control:focus-visible {
+    border:  1px solid #FF9924 !important;
+}
 
 
 
