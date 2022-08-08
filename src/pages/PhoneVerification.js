@@ -12,7 +12,6 @@ import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
 import phone from "../assets/images/phone-gray.png";
 
-
 const PhoneVerification = () => {
   if (window.innerWidth > 820) {
     return (
@@ -160,7 +159,7 @@ const PhoneVerification = () => {
                           <img
                             src={phone}
                             alt=""
-                            style={{ width: "30px", height: "30px" }}
+                            style={{ width: "12px", height: "17px" }}
                           />
                           <h6
                             style={{
@@ -195,7 +194,14 @@ const PhoneVerification = () => {
 
                       <Box mt="2rem">
                         <form>
-                          <Box style={{display: 'grid', gridTemplateColumns: "repeat(2,197px)", gap: '2rem', gridTemplateRows: "auto auto"}}>
+                          <Box
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "repeat(2,197px)",
+                              gap: "2rem",
+                              gridTemplateRows: "auto auto",
+                            }}
+                          >
                             <Box>
                               <label style={{ color: "#ff9424" }}>
                                 Phone number
@@ -210,7 +216,9 @@ const PhoneVerification = () => {
                             </Box>
 
                             <Box>
-                                <button style={{width: '100%'}} type="submit">Verify</button>
+                              <button style={{ width: "100%" }} type="submit">
+                                Verify
+                              </button>
                             </Box>
                           </Box>
                         </form>
