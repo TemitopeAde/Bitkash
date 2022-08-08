@@ -26,6 +26,7 @@ import Security from "./pages/Security";
 import TwoFactor from "./pages/TwoFactor";
 import GoogleAuth from "./pages/GoogleAuth";
 import PhoneVerification from "./pages/PhoneVerification";
+import PhoneOTP from "./pages/PhoneOTP";
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
         <Route path="/update-number-email" element={<UpdateEmailAndPhoneInput />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verification-complete" element={<VerificationComplete />} />
-        <Route path="/email-and-password-sent" element={<EmailAndPhone />} />
+        <Route path="/email-and-password-sent" element={<PhoneOTP />} />
         <Route path="/success-page" element={<SucessRegistrationPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/payment-details" element={<BuyConfirm />} />
