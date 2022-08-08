@@ -25,6 +25,7 @@ import BuyConfirm from "./pages/BuyConfirm";
 import Security from "./pages/Security";
 import TwoFactor from "./pages/TwoFactor";
 import GoogleAuth from "./pages/GoogleAuth";
+import PhoneVerification from "./pages/PhoneVerification";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path="/security" element={<Security />} />
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
+        <Route path="/phone-verification" element={<PhoneVerification />} />
       </Routes>
     </AnimatePresence>
   );
