@@ -320,6 +320,7 @@ button {
     display: block;
     transition: 1.3s;
     margin-top: 3rem;
+    width: 93%;
 }
 
 .security-box {

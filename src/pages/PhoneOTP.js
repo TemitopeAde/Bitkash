@@ -197,12 +197,12 @@ const PhoneOTP = () => {
 
                       <Box mt="1rem" mb="2rem">
                         <p style={{ fontSize: "16px", fontWeight: "400" }}>
-                          A 4 digit OTP code has been sent to this number
+                          A 4 digit OTP code has been sent to this number {" "}
                           <a
                             style={{ color: "#ff9924" }}
                             href="tel:++1234567890"
                           >
-                            +1234567890
+                             +1234567890
                           </a>
                           , <br />
                           Kindly input the code here
