@@ -24,6 +24,7 @@ import Dashboard from "./pages/Dasboard";
 import BuyConfirm from "./pages/BuyConfirm";
 import Security from "./pages/Security";
 import TwoFactor from "./pages/TwoFactor";
+import GoogleAuth from "./pages/GoogleAuth";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path="/payment-details" element={<BuyConfirm />} />
         <Route path="/security" element={<Security />} />
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
+        <Route path="/goggle-authenticator" element={<GoogleAuth />} />
       </Routes>
     </AnimatePresence>
   );
