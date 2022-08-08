@@ -454,7 +454,9 @@ button {
     color: #000000;
 }
 
-
+.security-box .p-5 {
+    padding: 5rem !important;
+}
 
 
 
