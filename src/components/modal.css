@@ -20,6 +20,13 @@
     border: 1px solid rgba(255, 153, 36, 1);
 }
 
+.modal-center-password {
+    padding: 3rem 3rem;
+}
+
+.modal-center-password label {
+    font-size: 12px;
+}
 
 .modal-center {
     display: flex;

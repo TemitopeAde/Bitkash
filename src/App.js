@@ -28,6 +28,8 @@ import GoogleAuth from "./pages/GoogleAuth";
 import PhoneVerification from "./pages/PhoneVerification";
 import PhoneOTP from "./pages/PhoneOTP";
 import VerificationSuccessful from "./pages/Verification-successful";
+import ChangePassword from "./pages/ChangePassword";
+import Notification from "./pages/Notification";
 
 
 function App() {
@@ -59,6 +61,8 @@ function App() {
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/phone-verification" element={<PhoneVerification />} />
         <Route path="/verification-successful" element={<VerificationSuccessful />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/notification" element={<Notification />} />
       </Routes>
     </AnimatePresence>
   );

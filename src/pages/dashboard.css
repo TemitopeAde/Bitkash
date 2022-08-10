@@ -7,7 +7,7 @@
     position: fixed;
     left: 0px;
     bottom: 0;
-    width: 350px;
+    width: 300px;
 }
 
 .dashboard {
@@ -15,7 +15,7 @@
 }
 
 .dashboard-content {
-    padding-left: 350px;
+    padding-left: 300px;
     display: flex;
     flex-direction: column;
 }
@@ -172,7 +172,7 @@ ul {
 }
 
 .dashboard label {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -194,7 +194,21 @@ ul {
 
 .dashboard .form-control {
     border: 1px solid rgba(255, 153, 36, 1) !important;
-    height: 50px;
+    height: 38px;
+}
+
+.notification-sent h6 {
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+}
+
+.notification-sent {
+    display: grid;
+    grid-template-columns: 98% 2%;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 1rem 3rem;
 }
 
 .dashboard .checkbox-text {

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Box } from "@mui/material";
+
+
 import "./modal.css";
 import mark from "../assets/icons/mark.png";
 
