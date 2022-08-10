@@ -27,6 +27,7 @@ import TwoFactor from "./pages/TwoFactor";
 import GoogleAuth from "./pages/GoogleAuth";
 import PhoneVerification from "./pages/PhoneVerification";
 import PhoneOTP from "./pages/PhoneOTP";
+import VerificationSuccessful from "./pages/Verification-successful";
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/phone-verification" element={<PhoneVerification />} />
+        <Route path="/verification-successful" element={<VerificationSuccessful />} />
       </Routes>
     </AnimatePresence>
   );

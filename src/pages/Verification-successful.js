@@ -10,27 +10,14 @@ import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
-import phone from "../assets/images/phone-gray.png";
+import tick from "../assets/images/tick-circle-2.png";
 
-const PhoneOTP = () => {
-  const [otp, setOtp] = useState(new Array(4).fill(""));
-  
-  const handleChange = (element, index) => {
-    if (isNaN(element.value)) return false;
-
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-    if (element.nextSibling) {
-      element.nextSibling.focus();
-    }
-  };
-
-  
+const VerificationSuccessful = () => {
   if (window.innerWidth > 820) {
     return (
       <Box>
         <Helmet>
-          <title>Phone Verification</title>
+          <title>Verifiaction Successful</title>
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
           <body class="buy-background" />
@@ -160,73 +147,36 @@ const PhoneOTP = () => {
 
                   <Box className="security-box active">
                     <Box className="p-5">
-                      <Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
                         <Box
                           sx={{
                             display: "flex",
-                            alignItems: "center",
-                            justifyContent: "start",
-                            gap: "1rem",
+                            flexDirection: "column",
+                            gap: "3px",
+                            textAlign: "center",
                           }}
                         >
-                          <img
-                            src={phone}
-                            alt=""
-                            style={{ width: "12px", height: "17px" }}
-                          />
-                          <h6
-                            style={{
-                              fontWeight: "400",
-                              fontSize: "16px",
-                              margin: "0px",
-                            }}
-                          >
-                            Phone Verification
+                          <Box>
+                            <img
+                              src={tick}
+                              alt=""
+                              style={{ width: "82px", height: "82px" }}
+                            />
+                          </Box>
+
+                          <h6 style={{ fontSize: "24px", fontWeight: "500" }}>
+                            Verification successful
                           </h6>
-                        </Box>
-                      </Box>
-
-                      <Box mt="1rem" mb="2rem">
-                        <p style={{ fontSize: "16px", fontWeight: "400" }}>
-                          A 4 digit OTP code has been sent to this number {" "}
-                          <a
-                            style={{ color: "#ff9924" }}
-                            href="tel:++1234567890"
-                          >
-                             +1234567890
-                          </a>
-                          , <br />
-                          Kindly input the code here
-                        </p>
-                      </Box>
-
-                      <Box className="enter-otp-title mb-5">
-                        <label htmlFor="phone-otp">
-                          Enter the phone OTP code
-                        </label>
-                        <Box className="phone-otp mt-3">
-                          <form>
-                            <div className="phone-otp-flex">
-                              {otp.map((data, index) => {
-                                return (
-                                  <input
-                                    type="text"
-                                    name="otp"
-                                    maxLength="1"
-                                    className="input-otp"
-                                    key={index}
-                                    value={data}
-                                    onFocus={(e) => e.target.select()}
-                                    onChange={(e) =>
-                                      handleChange(e.target, index)
-                                    }
-                                  />
-                                );
-                              })}
-                            </div>
-
-                            <button className="mt-3" style={{width: '200px'}} type="submit">Verify</button>
-                          </form>
+                          <p style={{fontSize: '16px', lineHeight: '30px'}}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Minus dolores et voluptate.
+                          </p>
                         </Box>
                       </Box>
                     </Box>
@@ -255,4 +205,4 @@ const PhoneOTP = () => {
   }
 };
 
-export default PhoneOTP;
+export default VerificationSuccessful;
