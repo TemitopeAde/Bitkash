@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,12 +15,9 @@ import RecoverPassword from "./pages/RecoverPassword";
 import EmailConfirmation from "./pages/Email-confirmation";
 import Register from "./pages/Register";
 import { AnimatePresence } from "framer-motion";
-// import KycForm from "./pages/BankDetailsForm";
 import VerificationComplete from "./pages/Verification-complete";
-import EmailAndPhone from "./pages/EmailAndPhone";
 import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
 import SucessRegistrationPage from "./pages/SucessRegistrationPage";
-// import MobileNav from "./components/mobileNav";
 import Dashboard from "./pages/Dasboard";
 import BuyConfirm from "./pages/BuyConfirm";
 import Security from "./pages/Security";
@@ -31,12 +29,19 @@ import VerificationSuccessful from "./pages/Verification-successful";
 import ChangePassword from "./pages/ChangePassword";
 import Notification from "./pages/Notification";
 
+import {useSelector} from "react-redux"
+
 
 function App() {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  const state = useSelector((state) => state);
+
+  console.log(state)
+
 
   return (
     <AnimatePresence>

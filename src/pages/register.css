@@ -9,7 +9,7 @@
     top: 0;
     bottom: 0;
     height: 100vh;
-    background-image: url('../assets/images/Signup.png');
+    /* background-image: url('../assets/images/Signup.png'); */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -78,8 +78,29 @@
     box-shadow: none !important;
 }
 
+
+
+.react-tel-input .form-control {
+    border: 1px solid #FF9924 !important;
+    margin-left: 2rem !important;
+    height: 39px !important;
+    width: 88% !important;
+    padding-left: 0 !important;
+}
+
+.react-tel-input .selected-flag {
+    border: 1px solid #FF9924 !important;
+    height: 38px !important;
+}
+
 .register-row label {
     margin-bottom: 14px;
+}
+
+.form-error {
+    color: crimson;
+    font-weight: 500;
+    margin: 0 
 }
 
 .step-one {

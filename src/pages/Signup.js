@@ -34,7 +34,7 @@ const Signup = ({ children }) => {
       <Box>
         <Header />
         <Helmet>
-          <title>Bank Details</title>
+          <title>Sign <i class="fa fa-user-plus" aria-hidden="true"></i></title>
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
           <body class="kyc-background" />

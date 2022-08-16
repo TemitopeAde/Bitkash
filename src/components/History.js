@@ -12,14 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const History = () => {
-  // const rows = [
-  //   createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3),
-  //   createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 6),
-  //   createData("Eclair", 262, 16.0, 24, 6.0, 7),
-  //   createData("Cupcake", 305, 3.7, 67, 4.3, 8),
-  //   createData("Gingerbread", 356, 16.0, 49, 3.9, 3),
-  // ];
-
+  
   const rows = [
     {
       id: 1,
@@ -99,9 +92,9 @@ const History = () => {
             <Box>
               <select className="form-control">
                 <option>Filter by</option>
-                <option>Date</option>
-                <option>Amount</option>
-                <option>ID</option>
+                <option>Approved</option>
+                <option>Pending</option>
+                <option>Failed</option>
               </select>
             </Box>
           </Box>

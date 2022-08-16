@@ -3,11 +3,8 @@ import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "./register.css";
 import { motion } from "framer-motion";
-import CountryPhoneInput, { ConfigProvider } from "antd-country-phone-input";
-import en from "world_countries_lists/data/countries/en/world.json";
-import { Field, ErrorMessage } from "formik";
-import "antd/dist/antd.css";
-import "antd-country-phone-input/dist/index.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const animations = {
   initial: { opacity: 0, x: 1000 },
@@ -16,15 +13,12 @@ const animations = {
 };
 
 const Register1 = ({
-  dirty,
-  isValid,
-  touched,
-  values,
-  errors,
-  handleBlur,
-  handleChange,
-  children,
   setForm,
+  phone,
+  setFormData,
+  formData,
+  handleChange,
+  errors,
 }) => {
   const [passwordShown, setPasswordShown] = useState(false);
 
@@ -33,8 +27,6 @@ const Register1 = ({
     setPasswordShown(!passwordShown);
   };
 
-  console.log(isValid);
-
   return (
     <motion.div
       variants={animations}
@@ -42,15 +34,15 @@ const Register1 = ({
       animate="animate"
       transition={{ duration: 0.5 }}
       className="mobile-white"
-      style={{borderRadius: '10px', paddingBottom: '0rem'}}
+      style={{ borderRadius: "10px", paddingBottom: "0rem" }}
     >
       <Box style={{ paddingBottom: "5rem" }} className="register-content">
         <Container>
           <Box position="relative">
             <Box className="register-form" id="form1">
-              <Stack padding={2} direction="row" justifyContent="space-between">
-                <p className="step-one-title mb-5">Personal Details</p>
+              <Stack>
                 <p className="step-one mb-3">Step 1 of 2</p>
+                <p className="step-one-title mb-5">Personal Details</p>
               </Stack>
 
               <Box className="register-form-grid">
@@ -58,78 +50,56 @@ const Register1 = ({
                   <div className="register-row">
                     <div className="register-name">
                       <label htmlFor="first-name">First name</label>
-                      <Field
+                      <input
                         name="firstName"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={
-                          errors.firstName && touched.firstName
-                            ? "input-error form-control"
-                            : "form-control"
-                        }
+                        className="form-control"
                         id="first-name"
                         type="text"
+                        onChange={handleChange}
+                        value={formData.firstName}
                       />
-                      <ErrorMessage
-                        name="firstName"
-                        component="span"
-                        className="error"
-                      />
+                      <p className="form-error">{errors?.firstName}</p>
                     </div>
                     <div className="register-last-name">
                       <label htmlFor="last-name">Last name</label>
-                      <Field
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={
-                          errors.lastName && touched.lastName
-                            ? "input-error form-control"
-                            : "form-control"
-                        }
+                      <input
+                        className="form-control"
                         name="lastName"
                         id="last-name"
                         type="text"
+                        onChange={handleChange}
+                        value={formData.lastName}
                       />
-                      <ErrorMessage
-                        name="lastName"
-                        component="span"
-                        className="error"
-                      />
+                      <p className="form-error">{errors?.LastName}</p>
                     </div>
                   </div>
                   <div className="register-row">
                     <div className="register-name">
                       <label htmlFor="register-email-address">Email</label>
-                      <Field
+                      <input
                         name="email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={
-                          errors.email && touched.email
-                            ? "input-error form-control"
-                            : "form-control"
-                        }
+                        className="form-control"
                         id="register-email-address"
                         type="email"
+                        onChange={handleChange}
+                        value={formData.email}
                       />
-
-                      <ErrorMessage
-                        name="email"
-                        component="span"
-                        className="error"
-                      />
+                      <p className="form-error">{errors.email}</p>
                     </div>
                     <div className="register-last-name">
                       <label htmlFor="register-phone">Phone</label>
 
-                      <ConfigProvider locale={en}>
-                        <CountryPhoneInput
-                          // className="form-control"
-
-                          id="register-phone"
-                          name="phoneNumber"
-                        />
-                      </ConfigProvider>
+                      <PhoneInput
+                        inputProps={{
+                          name: "phone",
+                        }}
+                        country={"us"}
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e })
+                        }
+                      />
+                      <p className="form-error">{errors?.phone}</p>
                     </div>
                   </div>
                   <div className="register-row">
@@ -137,23 +107,15 @@ const Register1 = ({
                       <label htmlFor="register-password">Password</label>
 
                       <Box position="relative">
-                        <Field
+                        <input
                           name="password"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={
-                            errors.password && touched.password
-                              ? "input-error form-control"
-                              : "form-control"
-                          }
+                          className="form-control"
                           type={passwordShown ? "text" : "password"}
                           id="register-password"
+                          onChange={handleChange}
+                          value={formData.password}
                         />
-                        <ErrorMessage
-                          name="password"
-                          component="span"
-                          className="error"
-                        />
+                        <p className="form-error">{errors?.password}</p>
                         <Box
                           position="absolute"
                           sx={{ right: "20px", top: "7px" }}
@@ -190,23 +152,15 @@ const Register1 = ({
                       </label>
 
                       <Box position="relative">
-                        <Field
+                        <input
                           name="password2"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={
-                            errors.password2 && touched.password2
-                              ? "input-error form-control"
-                              : "form-control"
-                          }
+                          className="form-control"
                           type={passwordShown ? "text" : "password"}
                           id="regsiter-confirm-password"
+                          readOnly
+                          value="123456"
                         />
-                        <ErrorMessage
-                          name="password2"
-                          component="span"
-                          className="error"
-                        />
+                        <p className="form-error">{errors?.password2}</p>
                         <Box
                           position="absolute"
                           sx={{ right: "20px", top: "7px" }}
@@ -241,61 +195,39 @@ const Register1 = ({
                   <div className="register-row">
                     <div className="register-name">
                       <label htmlFor="register-currency">Currency</label>
-                      <Field
-                        as="select"
+                      <select
                         name="currency"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={
-                          errors.currency && touched.currency
-                            ? "input-error form-control"
-                            : "form-control"
-                        }
                         id="register-currency"
+                        className="form-control"
+                        onChange={handleChange}
+                        value={formData.currency}
                       >
                         <option>EUR</option>
                         <option>USD</option>
-                      </Field>
-                      <ErrorMessage
-                        name="currency"
-                        component="span"
-                        className="error"
-                      />
+                      </select>
+                      <p className="form-error">{errors?.currency}</p>
                     </div>
                     <div className="register-last-name">
                       <label htmlFor="register-language">
                         Preffered language
                       </label>
-                      <Field
-                        as="select"
+                      <select
+                        className="form-control"
                         name="language"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={
-                          errors.language && touched.language
-                            ? "input-error form-control"
-                            : "form-control"
-                        }
                         id="register-language"
+                        onChange={handleChange}
+                        value={formData.language}
                       >
                         <option>ENG</option>
                         <option>FRA</option>
-                      </Field>
-                      <ErrorMessage
-                        name="language"
-                        component="span"
-                        className="error"
-                      />
+                      </select>
+                      <p className="form-error">{errors?.language}</p>
                     </div>
                   </div>
                   <div className="mt-3 register-next">
                     <button
-                      // className="btn btn-lg"
+                      className="btn btn-lg"
                       type="button"
-                      className={
-                        isValid ? "btn btn-lg" : "disabled-btn btn btn-lg"
-                      }
-                      disabled={!isValid}
                       onClick={() => setForm(2)}
                     >
                       Next
