@@ -1,6 +1,14 @@
 .register-content-form {
-    margin-left: 550px;
+    margin-left: 40%;
     margin-top: 18vh;
+}
+
+.register-content {
+    padding-right: 30%;
+}
+
+.form-control {
+    height: 50px;
 }
 
 body {

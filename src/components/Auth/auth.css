@@ -34,7 +34,12 @@
 }
 
 .login-btn {
-    width: 100% !important;
+    background-color: #FF9924;
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #000000;
 }
 
 .disabled-btn {

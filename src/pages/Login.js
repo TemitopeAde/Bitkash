@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import "../components/Auth/auth.css";
-import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import { motion } from "framer-motion";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link, Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
+import { Container } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+
+import { showLoader, hideLoader, login } from "../state/action-creators";
+import Header from "../components/Header";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import logo from "../assets/icons/header-white.png";
+import "../components/Auth/auth.css";
+import Spinner from "../components/Spinner";
 
 const animations = {
   initial: { opacity: 0 },
@@ -15,7 +22,8 @@ const animations = {
 
 const Login = ({ children }) => {
   const initialValues = {
-    email: "",
+    email: "adesiyantope2014@gmail.com",
+    password: "",
   };
 
   const validate = (values) => {
@@ -36,197 +44,254 @@ const Login = ({ children }) => {
     return errors;
   };
 
+  const dispatch = useDispatch();
+
   const submitForm = (values) => {
-    console.log(values);
+    dispatch(showLoader());
+    dispatch(login(values));
+    setTimeout(() => {
+      dispatch(hideLoader());
+      console.log("loading...");
+    }, 4000);
   };
 
-  const [passwordShown, setPasswordShown] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const [passwordShown, setPasswordShown] = useState(true);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  console.log(isAuthenticated);
 
   const togglePassword = (e) => {
     e.preventDefault();
     setPasswordShown(!passwordShown);
   };
 
-  return (
-    <motion.div
-      variants={animations}
-      initial="initial"
-      animate="animate"
-      transition={{ duration: 0.5 }}
-    >
-      <Box>
-        <Header />
-        <Box className="login">
-          <Box className="login-wrap">
-            <Box className="login-box p-5">
-              <h3 className="text-center login-title">Login</h3>
-              <Formik
-                initialValues={initialValues}
-                validate={validate}
-                onSubmit={submitForm}
+  const loader = useSelector((state) => state.loader.loading);
+
+  if (loader) {
+    return <Spinner />;
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/buy" />;
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <motion.div
+        variants={animations}
+        initial="initial"
+        animate="animate"
+        transition={{ duration: 0.8 }}
+      >
+        <Helmet>
+          <title>Login</title>
+          <meta name="description" content="App Description" />
+          <meta name="theme-color" content="#008f68" />
+        </Helmet>
+
+        <Box className="register-page web-register-page">
+          <Box position="relative">
+            <Box className="register-sidebar">
+              <Link to="/">
+                <img src={logo} alt="" />
+              </Link>
+
+              <Box className="register-title">
+                <h3>Sign up</h3>
+              </Box>
+            </Box>
+
+            <Box className="register-content-form">
+              <Box
+                style={{ paddingBottom: "5rem" }}
+                className="register-content"
               >
-                {(formik) => {
-                  const {
-                    values,
-                    handleChange,
-                    handleSubmit,
-                    errors,
-                    touched,
-                    handleBlur,
-                    isValid,
-                    dirty,
-                  } = formik;
-                  return (
-                    <Form>
-                      <Box sx={{ marginBottom: "23px" }}>
-                        <label htmlFor="email">Email</label>
-                        <Field
-                          type="email"
-                          // className="form-control"
-                          name="email"
-                          value={values.email}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={
-                            errors.email && touched.email
-                              ? "input-error form-control"
-                              : "form-control"
-                          }
-                        />
-                        <ErrorMessage
-                          name="email"
-                          component="span"
-                          className="error"
-                        />
-                      </Box>
-                      <label htmlFor="password">Password</label>
-                      <Box position="relative">
-                        <Field
-                          type={passwordShown ? "text" : "password"}
-                          // className="form-control"
-                          name="password"
-                          value={values.password}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={
-                            errors.email && touched.email
-                              ? "input-error form-control"
-                              : "form-control"
-                          }
-                        />
-                        <ErrorMessage
-                          name="password"
-                          component="span"
-                          className="error"
-                        />
-                        <Box
-                          position="absolute"
-                          sx={{ right: "20px", top: "7px" }}
-                        >
-                          {passwordShown ? (
-                            <button
-                              style={{
-                                background: "none",
-                                outline: "none",
-                                border: "none",
-                              }}
-                              onClick={togglePassword}
-                            >
-                              <AiFillEye />
-                            </button>
-                          ) : (
-                            <button
-                              style={{
-                                background: "none",
-                                outline: "none",
-                                border: "none",
-                              }}
-                              onClick={togglePassword}
-                            >
-                              <AiFillEyeInvisible />
-                            </button>
-                          )}
-                        </Box>
-                      </Box>
-
-                      <Box className="d-flex justify-content-center">
-                        <button
-                          onClick={() => handleSubmit}
-                          type="submit"
-                          // className="btn-lg btn btn-wide"
-                          className={
-                            dirty && isValid
-                              ? "btn btn-wide login-btn"
-                              : "disabled-btn btn btn-wide login-btn"
-                          }
-                          disabled={!(dirty && isValid)}
-                        >
-                          Login
-                        </button>
-                      </Box>
-
-                      <Box
-                        className="mt-4 mb-4"
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-between"
+                <Container>
+                  <Box position="relative">
+                    <Box className="register-form">
+                      <h6
+                        className="mb-5"
+                        style={{
+                          fontFamily: "Montserrat",
+                          fontWeight: "600",
+                          fontSize: "20px",
+                        }}
                       >
-                        <Box
-                          gap="8px"
-                          display="flex"
-                          alignItems="center"
-                          justifyContent="space-between"
-                        >
-                          <input
-                            style={{ transform: "scale(1)" }}
-                            type="checkbox"
-                            id="remember-me"
-                          />
-                          <label
-                            style={{ fontSize: "0.8rem" }}
-                            htmlFor="remember-me"
-                          >
-                            Remember me
-                          </label>
-                        </Box>
-                        <Box>
-                          <Link
-                            style={{ fontSize: "0.8rem", color: "#FF9924" }}
-                            to="/recover-password"
-                          >
-                            Forgot password?
-                          </Link>
-                        </Box>
-                      </Box>
+                        Login
+                      </h6>
 
-                      <div className="mt-3">
-                        <p style={{ fontSize: "0.8rem" }}>
-                          Don't have an account?{" "}
-                          <Link
-                            style={{
-                              fontSize: "0.8rem",
-                              color: "#FF9924",
-                              textDecoration: "none",
-                            }}
-                            to="/register"
-                          >
-                            Sign up
-                          </Link>
-                        </p>
-                      </div>
-                    </Form>
-                  );
-                }}
-              </Formik>
+                      <Formik
+                        initialValues={initialValues}
+                        validate={validate}
+                        onSubmit={submitForm}
+                      >
+                        {(formik) => {
+                          const {
+                            values,
+                            handleChange,
+                            handleSubmit,
+                            errors,
+                            touched,
+                            handleBlur,
+                            isValid,
+                            dirty,
+                          } = formik;
+                          return (
+                            <Form>
+                              <Box sx={{ marginBottom: "23px" }}>
+                                <label htmlFor="email">Email</label>
+                                <Field
+                                  type="email"
+                                  // className="form-control"
+                                  name="email"
+                                  value={values.email}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  className={
+                                    errors.email && touched.email
+                                      ? "input-error form-control"
+                                      : "form-control"
+                                  }
+                                />
+                                <ErrorMessage
+                                  name="email"
+                                  component="span"
+                                  className="error"
+                                />
+                              </Box>
+                              <label htmlFor="password">Password</label>
+                              <Box position="relative">
+                                <Field
+                                  type={passwordShown ? "text" : "password"}
+                                  // className="form-control"
+                                  name="password"
+                                  value={values.password}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  className={
+                                    errors.email && touched.email
+                                      ? "input-error form-control"
+                                      : "form-control"
+                                  }
+                                />
+                                <ErrorMessage
+                                  name="password"
+                                  component="span"
+                                  className="error"
+                                />
+                                <Box
+                                  position="absolute"
+                                  sx={{ right: "20px", top: "13px" }}
+                                >
+                                  {passwordShown ? (
+                                    <button
+                                      style={{
+                                        background: "none",
+                                        outline: "none",
+                                        border: "none",
+                                      }}
+                                      onClick={togglePassword}
+                                    >
+                                      <AiFillEye />
+                                    </button>
+                                  ) : (
+                                    <button
+                                      style={{
+                                        background: "none",
+                                        outline: "none",
+                                        border: "none",
+                                      }}
+                                      onClick={togglePassword}
+                                    >
+                                      <AiFillEyeInvisible />
+                                    </button>
+                                  )}
+                                </Box>
+                              </Box>
+
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                  alignItems: "center",
+                                  gap: "30%",
+                                  marginTop: "23px",
+                                }}
+                                className="login-button-box"
+                              >
+                                <button
+                                  onClick={() => handleSubmit}
+                                  type="submit"
+                                  // className="btn-lg btn btn-wide"
+                                  className={
+                                    dirty && isValid
+                                      ? "btn login-btn"
+                                      : "login-btn disabled-btn"
+                                  }
+                                  disabled={!(dirty && isValid)}
+                                  style={{ flexBasis: "35%" }}
+                                >
+                                  Login
+                                </button>
+
+                                <Box
+                                  style={{
+                                    flexBasis: "35%",
+                                    textAlign: "end",
+                                    fontSize: "18px",
+                                    lineHeight: "27px",
+                                  }}
+                                >
+                                  <Box
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      gap: "10px",
+                                      justifyContent: "end",
+                                    }}
+                                  >
+                                    <input
+                                      style={{ transform: "scale(1)" }}
+                                      type="checkbox"
+                                      id="remember-me"
+                                    />
+                                    <label style={{ marginBottom: '0'}} htmlFor="remember-me">
+                                      Remember me
+                                    </label>
+                                  </Box>
+                                </Box>
+                              </Box>
+
+                              
+
+                              <div className="mt-5">
+                                <p style={{ fontSize: "16px" }}>
+                                  Don't have an account?{" "}
+                                  <Link
+                                    style={{
+                                      fontSize: "16px",
+                                      color: "#FF9924",
+                                      textDecoration: "none",
+                                    }}
+                                    to="/register"
+                                  >
+                                    Sign up
+                                  </Link>
+                                </p>
+                              </div>
+                            </Form>
+                          );
+                        }}
+                      </Formik>
+                    </Box>
+                  </Box>
+                </Container>
+              </Box>
             </Box>
           </Box>
         </Box>
-      </Box>
-    </motion.div>
-  );
+      </motion.div>
+    );
+  }
 };
 
 export default Login;

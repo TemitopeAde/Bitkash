@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -23,7 +23,7 @@ const animations = {
 
 const Register = () => {
   const dispatch = useDispatch();
-  const [form, setForm] = useState(2);
+  const [form, setForm] = useState(1);
   const [width, setWidth] = useState(window.innerWidth);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ const Register = () => {
 
   const [formData, setFormData] = useState({
     firstName: "djkw",
-    email: "adejk@gmail.com",
+    email: "adesiyantope2014@gmail.com",
     password: "temade123",
     password2: "temade123",
     currency: "USD",
@@ -158,7 +158,7 @@ const Register = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loader = useSelector((state) => state.loader.loading);
 
-  console.log(loader);
+
 
   if (loader) {
     return <Spinner />;
@@ -188,7 +188,7 @@ const Register = () => {
               </Box>
             </Box>
 
-            <Box>
+            <Box className="register-content-form">
               <form onSubmit={handleSubmit}>
                 <Box
                   ref={form1}

@@ -44,7 +44,7 @@ const Register2 = ({
             <Box
               style={{ borderRadius: "10px", paddingBottom: "3rem" }}
               className="register-form"
-              id="form1"
+              id="form2"
             >
               <Stack>
                 <p className="step-one mb-3">Step 2 of 2</p>
@@ -370,7 +370,7 @@ const Register2 = ({
                   </div>
                   <div
                     style={{ gridTemplateColumns: "1fr" }}
-                    className="register-row"
+                    className="register"
                   >
                     <div className="register-name">
                       <label htmlFor="register-street">Street address</label>
@@ -399,6 +399,7 @@ const Register2 = ({
                         onChange={handleChanges}
                         style={{ transform: "scale(1.4)" }}
                         id="register-2-check"
+                        
                       />
 
                       <label htmlFor="register-2-check">

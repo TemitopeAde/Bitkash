@@ -14,7 +14,7 @@ import {
 const initialState = {
     isAuthenticated: false,
     loading: false,
-    token: null
+    token: localStorage.getItem("token")
 }
 
 
@@ -42,7 +42,7 @@ const authReducer = (state = initialState, action) => {
 
     if (action.type === LOGIN_SUCCESS) {
         const {payload} = action 
-        localStorage.setItem()
+        localStorage.setItem("token", payload.token)
         return {
             ...state,
             isAuthenticated: true,

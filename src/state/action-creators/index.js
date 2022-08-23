@@ -13,15 +13,16 @@ import {
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
-  console.log("show loader")
+  console.log("show")
   dispatch({
     type: SHOW_LOADER,
   });
 };
 
-showLoader()
+showLoader();
 
 export const hideLoader = () => async (dispatch) => {
+  console.log("hide")
   dispatch({
     type: HIDE_LOADER,
   });
@@ -64,27 +65,32 @@ export const register = (data) => async (dispatch) => {
     role,
   });
   const url = "https://bitkash.herokuapp.com/user/signup";
+  dispatch({
+    type: SHOW_LOADER
+  })
 
   await axios
     .post(url, body, config)
     .then((data) => {
+      // console.log(data)
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
 
       dispatch({
-        type: HIDE_LOADER
-      })
+        type: HIDE_LOADER,
+      });
     })
     .catch((error) => {
+      // console.log(error)
       dispatch({
         type: SIGNUP_FAIL,
         payload: error,
       });
       dispatch({
-        type: HIDE_LOADER
-      })
+        type: HIDE_LOADER,
+      });
     });
 };
 
@@ -95,7 +101,32 @@ export const login = (data) => async (dispatch) => {
     },
   };
 
-  const url = "https://bitkash.herokuapp.com/user/signup";
-}
+  const { email, password } = data;
 
+  const url = "https://bitkash.herokuapp.com/user/signin";
 
+  const body = JSON.stringify({ email, password });
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: data.data,
+      });
+      dispatch({
+        type: HIDE_LOADER,
+      });
+      console.log(data)
+    })
+    .catch((errors) => {
+      console.log(errors)
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: errors.data,
+      });
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
