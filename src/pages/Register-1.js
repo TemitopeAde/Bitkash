@@ -95,9 +95,7 @@ const Register1 = ({
                         }}
                         country={"us"}
                         value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e })
-                        }
+                        onChange={(e) => setFormData({ ...formData, phone: e })}
                       />
                       <p className="form-error">{errors?.phone}</p>
                     </div>
@@ -157,8 +155,8 @@ const Register1 = ({
                           className="form-control"
                           type={passwordShown ? "text" : "password"}
                           id="regsiter-confirm-password"
-                          readOnly
-                          value="123456"
+                          value={formData.password2}
+                          onChange={handleChange}
                         />
                         <p className="form-error">{errors?.password2}</p>
                         <Box

@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import "./register.css";
 import { Helmet } from "react-helmet";
+import OTPInput, { ResendOTP } from "otp-input-react";
+
+import "./register.css";
 import Header from "../components/Header";
 import "./emailandphone.css";
 
@@ -14,31 +15,7 @@ const animations = {
 };
 
 const EmailAndPhone = ({ children }) => {
-  const form = useRef();
-
-  const [otp, setOtp] = useState(new Array(4).fill(""));
-  const [otp2, setOtp2] = useState(new Array(4).fill(""));
-
-  const handleChange = (element, index) => {
-    if (isNaN(element.value)) return false;
-
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-    if (element.nextSibling) {
-      element.nextSibling.focus();
-    }
-  };
-
-  const handleChange2 = (element, index) => {
-    if (isNaN(element.value)) return false;
-
-    setOtp2([...otp2.map((d, idx) => (idx === index ? element.value : d))]);
-
-    if (element.nextSibling) {
-      element.nextSibling.focus();
-    }
-  };
-
+  const [OTP, setOTP] = useState("");
   if (window.innerWidth > 820) {
     return (
       <motion.div
@@ -47,28 +24,28 @@ const EmailAndPhone = ({ children }) => {
         animate="animate"
         transition={{ duration: 0.8 }}
       >
-        <Header />
         <Box className="register-page">
           <Box position="relative">
             <Box className="register-sidebar">
-              <Box className="register-title">{/* <h3>Sign up</h3> */}</Box>
+              <Box className="register-title">
+                <h3>
+                  Phone <br />
+                  Verification
+                </h3>
+              </Box>
             </Box>
 
             <Box className="otp-register register-content-form">
               <form>
                 <Box className="otp-number-div mb-5">
-                  <h6 className="otp-title">Email and Phone Verification</h6>
+                  <h6 className="otp-title">Phone Verification</h6>
                   <p>
-                    A 4 digit OTP code has been sent to your mail <br />
+                    A 4 digit OTP code has been sent to your <br /> phone number{" "}
                     <a
-                      style={{ marginRight: "6px" }}
+                      style={{ textDecoration: "none" }}
                       className="color-yellow"
-                      href="mailto:bitkash@gmail.com"
+                      href="tel:+123456789"
                     >
-                      bitkash@gmail.com
-                    </a>
-                    and phone number{" "}
-                    <a className="color-yellow" href="tel:+123456789">
                       +123456789
                     </a>
                   </p>
@@ -77,45 +54,23 @@ const EmailAndPhone = ({ children }) => {
                 <Box className="enter-otp-title mb-5">
                   <label htmlFor="phone-otp">Enter the phone OTP code</label>
                   <Box className="phone-otp mt-3">
-                    <form>
-                      <div className="phone-otp-flex">
-                        {otp.map((data, index) => {
-                          return (
-                            <input
-                              type="text"
-                              name="otp"
-                              maxLength="1"
-                              className="input-otp"
-                              key={index}
-                              value={data}
-                              onFocus={(e) => e.target.select()}
-                              onChange={(e) => handleChange(e.target, index)}
-                            />
-                          );
-                        })}
-                      </div>
-                    </form>
-                  </Box>
-                </Box>
-
-                <Box className="enter-otp-title">
-                  <label htmlFor="phone-otp">Enter the Email OTP code</label>
-                  <Box className="phone-otp mt-3">
                     <div className="phone-otp-flex">
-                      {otp2.map((data, index) => {
-                        return (
-                          <input
-                            type="text"
-                            name="otp"
-                            maxLength="1"
-                            className="input-otp"
-                            key={index}
-                            value={data}
-                            onFocus={(e) => e.target.select()}
-                            onChange={(e) => handleChange2(e.target, index)}
-                          />
-                        );
-                      })}
+                      <OTPInput
+                        value={OTP}
+                        onChange={setOTP}
+                        autoFocus
+                        OTPLength={4}
+                        otpType="number"
+                        disabled={false}
+                        secure
+                        inputStyles={{
+                          width: "70px",
+                          height: "70px",
+                          fontSize: "2rem",
+                          borderRadius: "5px",
+                          border: "1px solid #ff9924",
+                        }}
+                      />
                     </div>
                   </Box>
                 </Box>
@@ -124,10 +79,6 @@ const EmailAndPhone = ({ children }) => {
                   <p>
                     Made a mistake in your phone number or <br /> email address?{" "}
                     <button
-                      onClick={() => {
-                        setOtp(new Array(4).fill(""));
-                        setOtp2(new Array(4).fill(""));
-                      }}
                       className="color-yellow"
                       style={{ background: "none", border: "none" }}
                     >
@@ -136,13 +87,41 @@ const EmailAndPhone = ({ children }) => {
                   </p>
                 </div>
 
-                <Box>
-                  <input
-                    type="submit"
-                    value="Submit"
-                    className="btn otp-submit"
-                  />
-                </Box>
+                <div style={{ marginBottom: "2rem" }}>
+                  <p>
+                    If you can't get an OTP code kindly{" "}
+                    <a style={{ color: "#ff9924", textDecoration: 'none' }} href="/">
+                      resend
+                    </a>{" "}
+                  </p>
+                </div>
+
+                <div
+                  style={{ display: "flex", gap: "2rem", marginBottom: "2rem" }}
+                >
+                  <div>
+                    <input
+                      type="submit"
+                      value="confirm"
+                      className="otp-submit btn"
+                    />
+                  </div>
+
+                  <Box>
+                    <button
+                      style={{
+                        border: "1px solid #ff9924",
+                        background: "transparent",
+                      }}
+                      type="submit"
+                      className="btn otp-submit"
+                    >
+                      Back
+                    </button>
+                  </Box>
+                </div>
+
+                <h6>Note: The OTP code expires in 2 minutes</h6>
               </form>
             </Box>
           </Box>
@@ -157,14 +136,20 @@ const EmailAndPhone = ({ children }) => {
         <Header />
         <Box>
           <Helmet>
-            <title>Sign up</title>
+            <title>OTP Verification</title>
             <meta name="description" content="App Description" />
             <meta name="theme-color" content="#008f68" />
             <body class="mobile-background" />
           </Helmet>
         </Box>
 
-        <Box style={{  marginTop: "6rem", fontFamily: 'Poppins', textAlign: 'center' }}>
+        <Box
+          style={{
+            marginTop: "6rem",
+            fontFamily: "Poppins",
+            textAlign: "center",
+          }}
+        >
           <h6
             style={{
               color: "white",
@@ -174,17 +159,19 @@ const EmailAndPhone = ({ children }) => {
             }}
             className="text-center mb-3 mt-4"
           >
-            Email and phone <br /> verification
+            Phone verification
           </h6>
 
-          <Box style={{ width: "90vw", margin: "0 auto", paddingBottom: '5rem' }}>
+          <Box
+            style={{ width: "90vw", margin: "0 auto", paddingBottom: "5rem" }}
+          >
             <Box className="p-2" style={{ background: "white" }}>
-              <Box style={{padding: '2rem 1rem'}}>
+              <Box style={{ padding: "2rem 1rem" }}>
                 <form>
                   <Box className="otp-number-div mb-5">
                     {/* <h6 className="otp-title">Email and Phone Verification</h6> */}
                     <p>
-                      A 4 digit OTP code has been sent to your mail 
+                      A 4 digit OTP code has been sent to your mail
                       <a
                         style={{ marginRight: "6px" }}
                         className="color-yellow"
@@ -203,22 +190,7 @@ const EmailAndPhone = ({ children }) => {
                     <label htmlFor="phone-otp">Enter the phone OTP code</label>
                     <Box className="phone-otp mt-3">
                       <form>
-                        <div className="phone-otp-flex">
-                          {otp.map((data, index) => {
-                            return (
-                              <input
-                                type="text"
-                                name="otp"
-                                maxLength="1"
-                                className="input-otp"
-                                key={index}
-                                value={data}
-                                onFocus={(e) => e.target.select()}
-                                onChange={(e) => handleChange(e.target, index)}
-                              />
-                            );
-                          })}
-                        </div>
+                        <div className="phone-otp-flex"></div>
                       </form>
                     </Box>
                   </Box>
@@ -227,7 +199,7 @@ const EmailAndPhone = ({ children }) => {
                     <label htmlFor="phone-otp">Enter the Email OTP code</label>
                     <Box className="phone-otp mt-3">
                       <div className="phone-otp-flex">
-                        {otp2.map((data, index) => {
+                        {/* {otp2.map((data, index) => {
                           return (
                             <input
                               type="text"
@@ -240,7 +212,7 @@ const EmailAndPhone = ({ children }) => {
                               onChange={(e) => handleChange2(e.target, index)}
                             />
                           );
-                        })}
+                        })} */}
                       </div>
                     </Box>
                   </Box>
@@ -250,10 +222,6 @@ const EmailAndPhone = ({ children }) => {
                       Made a mistake in your phone number or <br /> email
                       address?{" "}
                       <button
-                        onClick={() => {
-                          setOtp(new Array(4).fill(""));
-                          setOtp2(new Array(4).fill(""));
-                        }}
                         className="color-yellow"
                         style={{ background: "none", border: "none" }}
                       >

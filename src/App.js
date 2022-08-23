@@ -30,6 +30,9 @@ import ChangePassword from "./pages/ChangePassword";
 import Notification from "./pages/Notification";
 
 import {useSelector} from "react-redux"
+import ProtectedRoute from "./ProtectedRoute";
+import EmailVerification from "./pages/EmailVerification";
+import EmailAndPhone from "./pages/EmailAndPhone";
 
 
 function App() {
@@ -46,15 +49,17 @@ function App() {
   return (
     <AnimatePresence>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/complete-bank-details" element={<Signup />} />
-        <Route path="/buy" element={<Buy />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/buy" element={<Buy />} />
+        </Route>
         <Route path="/history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
-        <Route path="/update-number-email" element={<UpdateEmailAndPhoneInput />} />
+        <Route path="/user/verify/:token" element={<EmailAndPhone />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verification-complete" element={<VerificationComplete />} />
         <Route path="/email-and-password-sent" element={<PhoneOTP />} />
@@ -68,6 +73,7 @@ function App() {
         <Route path="/verification-successful" element={<VerificationSuccessful />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/email-verification" element={<EmailVerification />} />
       </Routes>
     </AnimatePresence>
   );

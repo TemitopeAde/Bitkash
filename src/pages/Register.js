@@ -3,16 +3,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
-import { actionCreators } from "../state/index";
+import { Navigate } from "react-router-dom";
 
 import Register1 from "./Register-1";
 import Register2 from "./Register-2";
 import "./register.css";
 import logo from "../assets/icons/header-white.png";
 import { register } from "../state/action-creators";
-
+import { showLoader } from "../state/action-creators";
+import { hideLoader } from "../state/action-creators";
+import Spinner from "../components/Spinner";
 
 const animations = {
   initial: { opacity: 0 },
@@ -24,27 +25,27 @@ const Register = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState(2);
   const [width, setWidth] = useState(window.innerWidth);
-  const [errors, setErrors] = useState({
-
-  });
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const form1 = useRef();
   const form2 = useRef();
 
   const [formData, setFormData] = useState({
-    firstName: "TEMI",
-    email: "ade@gmail.com",
-    password: "123456",
+    firstName: "djkw",
+    email: "adejk@gmail.com",
+    password: "temade123",
+    password2: "temade123",
     currency: "USD",
-    lastName: "ade",
+    lastName: "mkkee3",
     phone: "2347038347584",
     language: "ENG",
     country: "nig",
     state: "osun",
     city: "ife",
-    zipCode: "12345",
-    streetAddress: "no 3 ade",
+    zipCode: "23412",
+    streetAddress: "nnnnnnnnnnnnnnnnn",
     role: 1,
+    terms: false,
   });
 
   const {
@@ -61,18 +62,21 @@ const Register = () => {
     city,
     zipCode,
     streetAddress,
+    terms,
   } = formData;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(formData));
-    setIsSubmit(true);
-    dispatch(register(formData))
+    dispatch(showLoader());
+    dispatch(register(formData));
+
+    setTimeout(() => {
+      dispatch(hideLoader());
+    }, 4000);
   };
 
-
   const validate = (values) => {
-    // console.log(values)
     let errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
@@ -130,7 +134,7 @@ const Register = () => {
       errors.zipCode = "Enter your zip code";
     } else if (/[a-zA-Z]/.test(values.zipCode)) {
       errors.zipCode = "Enter a valid zip code";
-    } else if (values.zipCode.length > 5) {
+    } else if (values.zipCode.length !== 5) {
       errors.zipCode = "Enter a valid zip code";
     }
 
@@ -151,19 +155,20 @@ const Register = () => {
     return errors;
   };
 
-  // useEffect(() => {
-  //   if (Object.keys(errors).length === 0 && isSubmit) {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loader = useSelector((state) => state.loader.loading);
 
-  //   } 
-  // }, [errors]);
-  
+  console.log(loader);
 
+  if (loader) {
+    return <Spinner />;
+  }
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  if (width > 820) {
+  if (width > 820 && !isAuthenticated) {
     return (
       <motion.div
         variants={animations}
@@ -201,7 +206,6 @@ const Register = () => {
                     phone={phone}
                     handleSubmit={handleSubmit}
                     errors={errors}
-                    
                   />
                 </Box>
                 <Box
@@ -218,6 +222,8 @@ const Register = () => {
                     handleSubmit={handleSubmit}
                     errors={errors}
                     formData={formData}
+                    loading={loading}
+                    setLoading={setLoading}
                   />
                 </Box>
               </form>
@@ -228,7 +234,11 @@ const Register = () => {
     );
   }
 
-  if (width <= 820) {
+  if (isAuthenticated) {
+    return <Navigate to="/email-verification" />;
+  }
+
+  if (width <= 820 && !isAuthenticated) {
     return (
       <Box>
         <Helmet>

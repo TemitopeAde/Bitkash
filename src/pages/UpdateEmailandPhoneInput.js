@@ -68,49 +68,23 @@ const UpdateEmailAndPhoneInput = ({ children }) => {
                     <Form initialValues={initialValues} validate={validate}>
                       <Box className="update-phone-email">
                         <Box>
-                          <h6>Email and Phone Verification</h6>
+                          <h6>Phone Verification</h6>
                           <p>
-                            A 4 digit OTP code has been sent to your mail{" "}
-                            <a className="color-yellow" href="mailto:">
-                              bitkash@gmail.com
-                            </a>
-                            and phone numnber{" "}
-                            <a className="color-yellow" href="tel:+1234567890">
+                            A 4 digit OTP code has been sent to your <br />
+                            
+                            phone numnber{" "}
+                            <a style={{textDecoration: 'none'}} className="color-yellow" href="tel:+1234567890">
                               +1234567890
                             </a>
                           </p>
                         </Box>
 
                         <Box>
-                          <label
-                            className="mb-3 mt-4"
-                            htmlFor="email-address-otp"
-                          >
-                            Email address
-                          </label>
-                          <Field
-                            type="email"
-                            className="form-control"
-                            name="email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            style={{ marginBottom: "30px" }}
-                          />
+                          
 
-                          <label className="mb-3" htmlFor="email-address-otp">
-                            Phone Number
-                          </label>
-                          <Field
-                            type="number"
-                            className="form-control mb-5"
-                            name="phoneNumber"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
+                          
 
-                          <button className="update-otp-submit" type="submit">
-                            Update
-                          </button>
+                          
                         </Box>
                       </Box>
                     </Form>

@@ -1,28 +1,33 @@
 import { Box, Container, Stack } from "@mui/material";
-import React, { useEffect, useState, useRef } from "react";
+import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
 
 import "./register.css";
 
 const animations = {
-  initial: { opacity: 0, x: 1000 },
+  initial: { opacity: 0, x: 100 },
   animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -1000 },
+  exit: { opacity: 0, x: -100 },
 };
 
-const Register2 = ({ handleChange, setForm, errors, formData }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Register2 = ({
+  handleChange,
+  setForm,
+  errors,
+  formData,
+  loading,
+}) => {
+  const [isChecked, setIsChecked] = useState(true);
+
+
   const handleChanges = (event) => {
-    if (event.target.checked && Object.keys(errors).length === 0) {
-      setIsChecked(false)
+    if (event.target.checked) {
+      setIsChecked(!isChecked);
     } else {
-      setIsChecked(true)
+      setIsChecked(!isChecked);
     }
   };
-
-  const dispatch = useDispatch();
 
   return (
     <motion.div
@@ -391,7 +396,6 @@ const Register2 = ({ handleChange, setForm, errors, formData }) => {
                     >
                       <input
                         type="checkbox"
-                        value={isChecked}
                         onChange={handleChanges}
                         style={{ transform: "scale(1.4)" }}
                         id="register-2-check"
@@ -420,12 +424,12 @@ const Register2 = ({ handleChange, setForm, errors, formData }) => {
                       className="btn btn-lg register-previous"
                       onClick={() => setForm(1)}
                       type="button"
-                      
+                      disabled={loading}
                     >
                       Previous
                     </button>
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="btn btn-lg"
                       disabled={isChecked}
                     >

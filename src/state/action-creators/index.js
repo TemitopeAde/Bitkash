@@ -1,7 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { AiFillAccountBook } from "react-icons/ai";
+import React, { useState } from "react";
 import {
   SIGNUP_SUCCESS,
   LOGIN_FAIL,
@@ -10,15 +8,31 @@ import {
   REMOVE_ALERT,
   SET_ALERT,
   SIGNUP_FAIL,
+  HIDE_LOADER,
+  SHOW_LOADER,
 } from "../action-creators/types";
 
-export const register = (data) => {
+export const showLoader = () => async (dispatch) => {
+  console.log("show loader")
+  dispatch({
+    type: SHOW_LOADER,
+  });
+};
+
+showLoader()
+
+export const hideLoader = () => async (dispatch) => {
+  dispatch({
+    type: HIDE_LOADER,
+  });
+};
+
+export const register = (data) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-
   const {
     firstName,
     lastName,
@@ -34,7 +48,6 @@ export const register = (data) => {
     streetAddress,
     role,
   } = data;
-
   const body = JSON.stringify({
     firstName,
     lastName,
@@ -52,8 +65,37 @@ export const register = (data) => {
   });
   const url = "https://bitkash.herokuapp.com/user/signup";
 
-  return async (dispatch) => {
-    const response = await axios.post(url, body, config);
-    dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
-  };
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: data.data,
+      });
+
+      dispatch({
+        type: HIDE_LOADER
+      })
+    })
+    .catch((error) => {
+      dispatch({
+        type: SIGNUP_FAIL,
+        payload: error,
+      });
+      dispatch({
+        type: HIDE_LOADER
+      })
+    });
 };
+
+export const login = (data) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const url = "https://bitkash.herokuapp.com/user/signup";
+}
+
+
