@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   recovered: false,
+  submitNewPassoword: false
 };
 
 export const recoverReducer = (state = initialState, action) => {
@@ -27,12 +28,14 @@ export const recoverReducer = (state = initialState, action) => {
       return {
         ...state,
         recovered: true,
+        submitNewPassoword: true
       };
 
     case SUBMIT_NEW_PASSWORD_FAILED:
       return {
         ...state,
         recovered: false,
+        submitNewPassoword: false
       };
 
     default:

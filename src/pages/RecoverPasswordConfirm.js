@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { submitNewPassword } from "../state/action-creators";
 import Spinner from "../components/Spinner";
@@ -42,14 +42,23 @@ const RecoverPasswordConfirm = () => {
   };
   const dispatch = useDispatch()
   const recovered = useSelector((state) => state.recover.recovered);
+  const submitSuccess = useSelector((state) => state.recover.submitNewPassoword)
 
   const submitForm = (values) => {
-    dispatch(submitNewPassword(values.password))
+    console.log(values.password)
+    const payload = {
+        password: values.password
+    }
+    dispatch(submitNewPassword(payload))
   };
 
   if (recovered) {
     return <Spinner />
   };
+
+  if (submitSuccess) {
+    return <Navigate to="/login" />
+  }
   
   return (
     <motion.div
