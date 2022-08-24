@@ -4,6 +4,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { submitNewPassword } from "../state/action-creators";
+import Spinner from "../components/Spinner";
+
 
 const animations = {
   initial: { opacity: 0, y: 1000 },
@@ -12,8 +16,6 @@ const animations = {
 };
 
 const RecoverPasswordConfirm = () => {
-  const { id } = useParams();
-  console.log(id)
   const validate = (values) => {
     let errors = {};
 
@@ -38,9 +40,17 @@ const RecoverPasswordConfirm = () => {
     password: "",
     password2: "",
   };
+  const dispatch = useDispatch()
+  const recovered = useSelector((state) => state.recover.recovered);
 
-  const submitForm = () => {};
+  const submitForm = (values) => {
+    dispatch(submitNewPassword(values.password))
+  };
 
+  if (recovered) {
+    return <Spinner />
+  };
+  
   return (
     <motion.div
       variants={animations}

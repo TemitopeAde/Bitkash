@@ -12,10 +12,12 @@ import {
   SHOW_LOADER,
   RECOVER_PASSWORD,
   RECOVER_PASSWORD_FAILED,
+  SUBMIT_NEW_PASSWORD_SUCCESS,
+  SUBMIT_NEW_PASSWORD_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
-  console.log("show")
+  console.log("show");
   dispatch({
     type: SHOW_LOADER,
   });
@@ -24,7 +26,7 @@ export const showLoader = () => async (dispatch) => {
 showLoader();
 
 export const hideLoader = () => async (dispatch) => {
-  console.log("hide")
+  console.log("hide");
   dispatch({
     type: HIDE_LOADER,
   });
@@ -68,8 +70,8 @@ export const register = (data) => async (dispatch) => {
   });
   const url = "https://bitkash.herokuapp.com/user/signup";
   dispatch({
-    type: SHOW_LOADER
-  })
+    type: SHOW_LOADER,
+  });
 
   await axios
     .post(url, body, config)
@@ -119,10 +121,10 @@ export const login = (data) => async (dispatch) => {
       dispatch({
         type: HIDE_LOADER,
       });
-      console.log(data)
+      console.log(data);
     })
     .catch((errors) => {
-      console.log(errors)
+      console.log(errors);
       dispatch({
         type: LOGIN_FAIL,
         payload: errors.data,
@@ -151,13 +153,46 @@ export const recoverPassword = (data) => async (dispatch) => {
     .then((data) => {
       dispatch({
         type: RECOVER_PASSWORD,
-        payload: data.data
-      })
+        payload: data.data,
+      });
     })
     .catch((errors) => {
       dispatch({
         type: RECOVER_PASSWORD_FAILED,
-        payload: errors.data
-      })
-  })
-}
+        payload: errors.data,
+      });
+    });
+};
+
+export const submitNewPassword = (data) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const url = "https://bitkash.herokuapp.com/recover-password/reset-now";
+
+  const { password } = data;
+  
+  console.log(password)
+
+  const body = JSON.stringify({ password });
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      console.log(data)
+      dispatch({
+        type: SUBMIT_NEW_PASSWORD_SUCCESS,
+        payload: data.data,
+      });
+    })
+    .catch((errors) => {
+      console.log(errors)
+      dispatch({
+        type: SUBMIT_NEW_PASSWORD_FAILED,
+        payload: errors.data,
+      });
+    });
+};
