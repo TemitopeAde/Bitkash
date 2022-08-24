@@ -1,18 +1,9 @@
-import React from "react";
 import { Box } from "@mui/material";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link, Navigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-
-import "../components/Auth/auth.css";
-import {
-  hideLoader,
-  recoverPassword,
-  showLoader,
-} from "../state/action-creators";
-import Spinner from "../components/Spinner";
+import { Link } from "react-router-dom";
 
 const animations = {
   initial: { opacity: 0, y: 1000 },
@@ -20,44 +11,33 @@ const animations = {
   exit: { opacity: 0, y: -1000 },
 };
 
-const RecoverPassword = () => {
+const RecoverPasswordConfirm = () => {
   const validate = (values) => {
     let errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.email) {
-      errors.email = "Email is required";
-    } else if (!regex.test(values.email)) {
-      errors.email = "Invalid Email";
+
+    if (!values.password) {
+      errors.password = "Enter your password";
+    } else if (values.password.length < 6) {
+      errors.password = "Password too short";
+    }
+
+    if (!values.password2) {
+      errors.password2 = "Enter confirm password";
+    } else if (values.password2 < 6) {
+      errors.password2 = "Password is too short";
+    } else if (values.password !== values.password2) {
+      errors.password2 = "Passwords do not match";
     }
 
     return errors;
   };
 
-  const dispatch = useDispatch();
-  const loader = useSelector((state) => state.loader.loading);
-  const recover = useSelector((state) => state.recover.recovered);
-  console.log(recover)
-
   const initialValues = {
-    email: "",
+    password: "",
+    password2: "",
   };
 
-  const submitForm = (values) => {
-    dispatch(recoverPassword(values));
-    dispatch(showLoader());
-
-    setTimeout(() => {
-      dispatch(hideLoader());
-    }, 4000);
-  };
-
-  if (loader) {
-    return <Spinner />;
-  }
-
-  if (recover) {
-    return <Navigate to="/" />
-  }
+  const submitForm = () => {};
 
   return (
     <motion.div
@@ -67,7 +47,7 @@ const RecoverPassword = () => {
       transition={{ duration: 0.8 }}
     >
       <Helmet>
-        <title>Recover password</title>
+        <title>Change password</title>
         <meta name="description" content="App Description" />
         <meta name="theme-color" content="#008f68" />
       </Helmet>
@@ -106,22 +86,42 @@ const RecoverPassword = () => {
                   return (
                     <Form>
                       <Box sx={{ marginBottom: "23px" }}>
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Password</label>
                         <Field
-                          type="email"
-                          // className="form-control"
-                          name="email"
-                          value={values.email}
+                          type="password"
+                          name="password"
+                          value={values.password}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           className={
-                            errors.email && touched.email
+                            errors.password && touched.password
                               ? "input-error form-control"
                               : "form-control"
                           }
                         />
                         <ErrorMessage
-                          name="email"
+                          name="password"
+                          component="span"
+                          className="error"
+                        />
+                      </Box>
+
+                      <Box sx={{ marginBottom: "23px" }}>
+                        <label htmlFor="email">Confirm new password</label>
+                        <Field
+                          type="password"
+                          name="password2"
+                          value={values.password2}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className={
+                            errors.password2 && touched.password2
+                              ? "input-error form-control"
+                              : "form-control"
+                          }
+                        />
+                        <ErrorMessage
+                          name="password2"
                           component="span"
                           className="error"
                         />
@@ -155,6 +155,15 @@ const RecoverPassword = () => {
                   );
                 }}
               </Formik>
+
+              <Box mt="3rem" sx={{ textAlign: "center" }}>
+                <p>
+                  Don’t have an account?{" "}
+                  <Link style={{ textDecoration: "none", color: '#ff9924' }} to="/register">
+                    Sign up
+                  </Link>
+                </p>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -163,4 +172,4 @@ const RecoverPassword = () => {
   );
 };
 
-export default RecoverPassword;
+export default RecoverPasswordConfirm;

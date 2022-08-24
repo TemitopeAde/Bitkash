@@ -344,6 +344,12 @@ label {
     opacity: .5;
 }
 
+.title-auth {
+    font-family: 'Montserrat';
+    font-size: 20px;
+    
+}
+
 
 @media screen and (min-width: 1280px) {
     .register-page .css-1oqqzyl-MuiContainer-root {

@@ -7,3 +7,5 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const SHOW_LOADER = 'SHOW_LOADER';
 export const HIDE_LOADER = 'HIDE_LOADER';
+export const RECOVER_PASSWORD = 'RECOVER_PASSWORD';
+export const RECOVER_PASSWORD_FAILED = 'RECOVER_PASSWORD_FAILED'

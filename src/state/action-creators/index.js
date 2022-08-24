@@ -10,6 +10,8 @@ import {
   SIGNUP_FAIL,
   HIDE_LOADER,
   SHOW_LOADER,
+  RECOVER_PASSWORD,
+  RECOVER_PASSWORD_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -130,3 +132,32 @@ export const login = (data) => async (dispatch) => {
       });
     });
 };
+
+export const recoverPassword = (data) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const { email } = data;
+
+  const url = "https://bitkash.herokuapp.com/recover-password/email";
+
+  const body = JSON.stringify({ email });
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      dispatch({
+        type: RECOVER_PASSWORD,
+        payload: data.data
+      })
+    })
+    .catch((errors) => {
+      dispatch({
+        type: RECOVER_PASSWORD_FAILED,
+        payload: errors.data
+      })
+  })
+}

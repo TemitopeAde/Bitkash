@@ -33,6 +33,7 @@ import {useSelector} from "react-redux"
 import ProtectedRoute from "./ProtectedRoute";
 import EmailVerification from "./pages/EmailVerification";
 import EmailAndPhone from "./pages/EmailAndPhone";
+import RecoverPasswordConfirm from "./pages/RecoverPasswordConfirm";
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
+        <Route path="/recover-password/:token" element={<RecoverPasswordConfirm />} />
       </Routes>
     </AnimatePresence>
   );
