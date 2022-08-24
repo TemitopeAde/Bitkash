@@ -10,9 +10,9 @@ import Spinner from "../components/Spinner";
 
 
 const animations = {
-  initial: { opacity: 0, y: 1000 },
+  initial: { opacity: 0, y: 100 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -1000 },
+  exit: { opacity: 0, y: -100 },
 };
 
 const RecoverPasswordConfirm = () => {
@@ -45,7 +45,6 @@ const RecoverPasswordConfirm = () => {
   const submitSuccess = useSelector((state) => state.recover.submitNewPassoword)
 
   const submitForm = (values) => {
-    console.log(values.password)
     const payload = {
         password: values.password
     }

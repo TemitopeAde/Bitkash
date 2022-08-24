@@ -170,14 +170,10 @@ export const submitNewPassword = (data) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   };
-
   const url = "https://bitkash.herokuapp.com/recover-password/reset-now";
-
   const { password } = data;
-  
-  console.log(password)
-
   const body = JSON.stringify({ password });
+  console.log(body)
 
   await axios
     .post(url, body, config)
