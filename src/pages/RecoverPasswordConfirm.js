@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const animations = {
   initial: { opacity: 0, y: 1000 },
@@ -12,6 +12,8 @@ const animations = {
 };
 
 const RecoverPasswordConfirm = () => {
+  const { id } = useParams();
+  console.log(id)
   const validate = (values) => {
     let errors = {};
 
@@ -159,7 +161,10 @@ const RecoverPasswordConfirm = () => {
               <Box mt="3rem" sx={{ textAlign: "center" }}>
                 <p>
                   Don’t have an account?{" "}
-                  <Link style={{ textDecoration: "none", color: '#ff9924' }} to="/register">
+                  <Link
+                    style={{ textDecoration: "none", color: "#ff9924" }}
+                    to="/register"
+                  >
                     Sign up
                   </Link>
                 </p>

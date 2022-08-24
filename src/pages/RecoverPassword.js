@@ -56,7 +56,7 @@ const RecoverPassword = () => {
   }
 
   if (recover) {
-    return <Navigate to="/" />
+    return <Navigate to="/password-reset-link" />
   }
 
   return (

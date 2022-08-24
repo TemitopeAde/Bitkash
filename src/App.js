@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 
 import Home from "./pages/Home";
 import "./App.css";
@@ -34,6 +34,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import EmailVerification from "./pages/EmailVerification";
 import EmailAndPhone from "./pages/EmailAndPhone";
 import RecoverPasswordConfirm from "./pages/RecoverPasswordConfirm";
+import PasswordResetLink from "./pages/PasswordResetLink";
 
 
 function App() {
@@ -43,10 +44,8 @@ function App() {
   }, []);
 
   const state = useSelector((state) => state);
-
   console.log(state)
-
-
+  
   return (
     <AnimatePresence>
       <Routes>
@@ -76,6 +75,7 @@ function App() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
         <Route path="/recover-password/:user/:token" element={<RecoverPasswordConfirm />} />
+        <Route path="/password-reset-link" element={<PasswordResetLink />} />
       </Routes>
     </AnimatePresence>
   );
