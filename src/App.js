@@ -75,7 +75,7 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
-        <Route path="/recover-password/:token" element={<RecoverPasswordConfirm />} />
+        <Route path="/recover-password/:user/:token" element={<RecoverPasswordConfirm />} />
       </Routes>
     </AnimatePresence>
   );
