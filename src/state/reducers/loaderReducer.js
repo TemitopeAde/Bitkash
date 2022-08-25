@@ -8,7 +8,7 @@ const initialState = {
 export const loaderReducer = (state = initialState, action) => {
   switch (action.type) {
     case HIDE_LOADER:
-      console.log("hide")
+      // console.log("hide")
       return {
         ...state,
         loading: false,

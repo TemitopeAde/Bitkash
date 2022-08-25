@@ -47,31 +47,30 @@ const Login = ({ children }) => {
   const dispatch = useDispatch();
 
   const submitForm = (values) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     dispatch(login(values));
-    setTimeout(() => {
-      dispatch(hideLoader());
-      console.log("loading...");
-    }, 4000);
+    // setTimeout(() => {
+    //   dispatch(hideLoader());
+    //   console.log("loading...");
+    // }, 4000);
   };
 
   const [passwordShown, setPasswordShown] = useState(true);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log(isAuthenticated);
+  const loading = useSelector((state) => state.loader.loading);
+  console.log(loading);
 
   const togglePassword = (e) => {
     e.preventDefault();
     setPasswordShown(!passwordShown);
   };
 
-  const loader = useSelector((state) => state.loader.loading);
-
-  if (loader) {
+  if (loading) {
     return <Spinner />;
   }
 
   if (isAuthenticated) {
-    return <Navigate to="/buy" />;
+    return <Navigate to="/buy" />
   }
 
   if (!isAuthenticated) {
@@ -230,7 +229,7 @@ const Login = ({ children }) => {
                                   disabled={!(dirty && isValid)}
                                   style={{ flexBasis: "35%" }}
                                 >
-                                  Login
+                                  Log in
                                 </button>
 
                                 <Box
@@ -254,14 +253,15 @@ const Login = ({ children }) => {
                                       type="checkbox"
                                       id="remember-me"
                                     />
-                                    <label style={{ marginBottom: '0'}} htmlFor="remember-me">
+                                    <label
+                                      style={{ marginBottom: "0" }}
+                                      htmlFor="remember-me"
+                                    >
                                       Remember me
                                     </label>
                                   </Box>
                                 </Box>
                               </Box>
-
-                              
 
                               <div className="mt-5">
                                 <p style={{ fontSize: "16px" }}>

@@ -110,7 +110,9 @@ export const login = (data) => async (dispatch) => {
   const url = "https://bitkash.herokuapp.com/user/signin";
 
   const body = JSON.stringify({ email, password });
-
+  dispatch({
+    type: SHOW_LOADER
+  })
   await axios
     .post(url, body, config)
     .then((data) => {
@@ -118,10 +120,6 @@ export const login = (data) => async (dispatch) => {
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
-      dispatch({
-        type: HIDE_LOADER,
-      });
-      console.log(data);
     })
     .catch((errors) => {
       console.log(errors);
@@ -129,10 +127,12 @@ export const login = (data) => async (dispatch) => {
         type: LOGIN_FAIL,
         payload: errors.data,
       });
+    })
+    .then(() => {
       dispatch({
-        type: HIDE_LOADER,
-      });
-    });
+        type: HIDE_LOADER
+      })
+    })
 };
 
 export const recoverPassword = (data) => async (dispatch) => {
