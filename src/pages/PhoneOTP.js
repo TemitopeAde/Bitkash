@@ -11,6 +11,7 @@ import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
 import phone from "../assets/images/phone-gray.png";
+import Sidebar from "../components/Sidebar";
 
 const PhoneOTP = () => {
   const [otp, setOtp] = useState(new Array(4).fill(""));
@@ -37,94 +38,7 @@ const PhoneOTP = () => {
         </Helmet>
         <Box className="dashboard">
           <Box className="dashboard-grid">
-            <Box className="sidebar">
-              <Container>
-                <Link to="/">
-                  <img className="logo" src={logo} alt="bitkash" />
-                </Link>
-
-                <ul className="nav-icons">
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Buy</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Transaction History</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>My Payments</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Pasword and security</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Activities</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Logout</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                </ul>
-              </Container>
-            </Box>
+            <Sidebar />
 
             <Box className="dashboard-content">
               <Box className="dashboard-header">

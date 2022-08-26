@@ -7,12 +7,13 @@ import { Helmet } from "react-helmet";
 import { Container } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 
-import { showLoader, hideLoader, login } from "../state/action-creators";
-import Header from "../components/Header";
+import { login } from "../state/action-creators";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import logo from "../assets/icons/header-white.png";
 import "../components/Auth/auth.css";
 import Spinner from "../components/Spinner";
+
+
 
 const animations = {
   initial: { opacity: 0 },
@@ -47,18 +48,16 @@ const Login = ({ children }) => {
   const dispatch = useDispatch();
 
   const submitForm = (values) => {
-    // dispatch(showLoader());
     dispatch(login(values));
-    // setTimeout(() => {
-    //   dispatch(hideLoader());
-    //   console.log("loading...");
-    // }, 4000);
   };
 
   const [passwordShown, setPasswordShown] = useState(true);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.loader.loading);
-  console.log(loading);
+  const message = useSelector((state) => state.auth.message);
+
+  console.log(message)
+  
 
   const togglePassword = (e) => {
     e.preventDefault();
@@ -70,7 +69,7 @@ const Login = ({ children }) => {
   }
 
   if (isAuthenticated) {
-    return <Navigate to="/buy" />
+    return <Navigate to="/buy" />;
   }
 
   if (!isAuthenticated) {
@@ -90,9 +89,7 @@ const Login = ({ children }) => {
         <Box className="register-page web-register-page">
           <Box position="relative">
             <Box className="register-sidebar">
-              <Link to="/">
-                <img src={logo} alt="" />
-              </Link>
+              
 
               <Box className="register-title">
                 <h3>Sign up</h3>
@@ -100,6 +97,11 @@ const Login = ({ children }) => {
             </Box>
 
             <Box className="register-content-form">
+              {message && (
+                <div className="error-container">
+                  <h6 className="error-message">{message}</h6>
+                </div>
+              )}
               <Box
                 style={{ paddingBottom: "5rem" }}
                 className="register-content"

@@ -8,6 +8,7 @@ import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import History from "../components/History";
 import { motion } from "framer-motion";
+import Sidebar from "../components/Sidebar";
 
 const animations = {
   initial: { opacity: 0 },
@@ -31,95 +32,7 @@ const Buy = () => {
           animate="animate"
           transition={{ duration: 0.5 }}
         >
-          <Box className="sidebar">
-            <Container>
-              <Link to="/">
-              <img className="logo" src={logo} alt="bitkash" />
-              </Link>
-              
-
-              <ul className="nav-icons">
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Buy</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Transaction History</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>My Payments</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Pasword and security</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Activities</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Logout</h6>
-                    </Stack>
-                  </Link>
-                </li>
-              </ul>
-            </Container>
-          </Box>
+          <Sidebar />
         </motion.div>
 
         <Box className="dashboard-content">

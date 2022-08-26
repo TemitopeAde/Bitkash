@@ -32,6 +32,7 @@ import whiteSms from "../assets/images/sms-white.png";
 import whiteTick from "../assets/images/tick-white.png";
 import whitePhone from "../assets/images/phone-white.png";
 import whiteSecurity from "../assets/images/security-white.png";
+import Sidebar from "../components/Sidebar";
 // import whiteShield from '../assets/images/'
 
 ChartJS.register(
@@ -139,94 +140,7 @@ const Dashboard = () => {
           <body class="dashboard-background" />
         </Helmet>
         <Box className="dashboard-grid">
-          <Box className="sidebar">
-            <Container>
-              <Link to="/">
-                <img className="logo" src={logo} alt="bitkash" />
-              </Link>
-
-              <ul className="nav-icons">
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Buy</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Transaction History</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>My Payments</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Pasword and security</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Activities</h6>
-                    </Stack>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <Stack
-                      className="sidebar-nav-flex"
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
-                      <img src={icon1} alt="" />
-                      <h6>Logout</h6>
-                    </Stack>
-                  </Link>
-                </li>
-              </ul>
-            </Container>
-          </Box>
+          <Sidebar />
 
           <Box className="dashboard-content">
             <Box className="dashboard-header">

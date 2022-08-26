@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
   return isAuthenticated ? (
     <Outlet />
   ) : (
-    <Navigate to="/register" replace state={{ from: location }} />
+    <Navigate to="/login" replace state={{ from: location }} />
   );
 };
 

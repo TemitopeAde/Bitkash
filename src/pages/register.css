@@ -9,11 +9,29 @@
     top: 0;
     bottom: 0;
     height: 100vh;
-    /* background-image: url('../assets/images/Signup.png'); */
-    background-position: center;
-    background-size: contain;
+    background-image: url('../assets/images/sidebar.svg');
+    background-size: cover;
     background-repeat: no-repeat;
-    background-color: #FF9924;
+}
+
+.error-container {
+    background: linear-gradient(90deg, #ff9924, #f16a23);
+    padding: .8rem 0;
+    width: 50%;
+    position: absolute;
+    top: -60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.error-container h6 {
+    margin: 0;
+    color: white;
+    font-weight: bold;
 }
 
 .register-center {
@@ -58,7 +76,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 76vh;
+    height: 89vh;
 }
 
 
@@ -94,14 +112,14 @@
 .react-tel-input .form-control {
     border: 1px solid #FF9924 !important;
     margin-left: 2rem !important;
-    height: 39px !important;
+    height: 50px !important;
     width: 88% !important;
     padding-left: 0 !important;
 }
 
 .react-tel-input .selected-flag {
     border: 1px solid #FF9924 !important;
-    height: 38px !important;
+    height: 50px !important;
 }
 
 .register-row label {
@@ -347,7 +365,7 @@ label {
 .title-auth {
     font-family: 'Montserrat';
     font-size: 20px;
-    
+
 }
 
 
@@ -356,12 +374,12 @@ label {
         max-width: 900px !important;
     }
 
-    
+
 }
 
 
 @media screen and (min-width: 1366px) {
-    
+
 
     .register-page .css-1oqqzyl-MuiContainer-root {
         max-width: 1000px !important;
@@ -374,7 +392,7 @@ label {
         width: 434px;
     } */
 
-    
+
 }
 
 
@@ -383,7 +401,7 @@ label {
         margin-top: 10rem;
     }
 
-    
+
 
     .register-page .css-1oqqzyl-MuiContainer-root {
         max-width: 1200px !important;
@@ -419,7 +437,7 @@ label {
         margin-top: 10rem;
     }
 
-    
+
 
     .register-page .css-1oqqzyl-MuiContainer-root {
         max-width: 1500px !important;

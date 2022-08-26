@@ -29,7 +29,6 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const form1 = useRef();
   const form2 = useRef();
-
   const [formData, setFormData] = useState({
     firstName: "djkw",
     email: "adesiyantope2014@gmail.com",
@@ -47,7 +46,6 @@ const Register = () => {
     role: 1,
     terms: false,
   });
-
   const {
     firstName,
     email,
@@ -64,16 +62,10 @@ const Register = () => {
     streetAddress,
     terms,
   } = formData;
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(formData));
-    dispatch(showLoader());
     dispatch(register(formData));
-
-    setTimeout(() => {
-      dispatch(hideLoader());
-    }, 4000);
   };
 
   const validate = (values) => {
@@ -154,19 +146,18 @@ const Register = () => {
 
     return errors;
   };
-
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loader = useSelector((state) => state.loader.loading);
+  const message = useSelector((state) => state.auth.message);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-
+  console.log(message);
 
   if (loader) {
     return <Spinner />;
   }
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   if (width > 820 && !isAuthenticated) {
     return (
@@ -179,9 +170,7 @@ const Register = () => {
         <Box className="register-page web-register-page">
           <Box position="relative">
             <Box className="register-sidebar">
-              <Link to="/">
-                <img src={logo} alt="" />
-              </Link>
+              
 
               <Box className="register-title">
                 <h3>Sign up</h3>
@@ -189,6 +178,12 @@ const Register = () => {
             </Box>
 
             <Box className="register-content-form">
+              {message && (
+                <div className="error-container">
+                  <h6 className="error-message">{message}</h6>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit}>
                 <Box
                   ref={form1}
@@ -284,6 +279,7 @@ const Register = () => {
                       <Register2
                         handleChange={handleChange}
                         setForm={setForm}
+                        message={message}
                       />
                     </Box>
                   </form>

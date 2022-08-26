@@ -29,13 +29,12 @@ import VerificationSuccessful from "./pages/Verification-successful";
 import ChangePassword from "./pages/ChangePassword";
 import Notification from "./pages/Notification";
 
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 import ProtectedRoute from "./ProtectedRoute";
 import EmailVerification from "./pages/EmailVerification";
 import EmailAndPhone from "./pages/EmailAndPhone";
 import RecoverPasswordConfirm from "./pages/RecoverPasswordConfirm";
 import PasswordResetLink from "./pages/PasswordResetLink";
-
 
 function App() {
   useEffect(() => {
@@ -44,8 +43,8 @@ function App() {
   }, []);
 
   const state = useSelector((state) => state);
-  console.log(state)
-  
+  console.log(state);
+
   return (
     <AnimatePresence>
       <Routes>
@@ -61,7 +60,10 @@ function App() {
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
         <Route path="/user/verify/:token" element={<EmailAndPhone />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/verification-complete" element={<VerificationComplete />} />
+        <Route
+          path="/verification-complete"
+          element={<VerificationComplete />}
+        />
         <Route path="/email-and-password-sent" element={<PhoneOTP />} />
         <Route path="/success-page" element={<SucessRegistrationPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -70,11 +72,17 @@ function App() {
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/phone-verification" element={<PhoneVerification />} />
-        <Route path="/verification-successful" element={<VerificationSuccessful />} />
+        <Route
+          path="/verification-successful"
+          element={<VerificationSuccessful />}
+        />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
-        <Route path="/recover-password/:user/:token" element={<RecoverPasswordConfirm />} />
+        <Route
+          path="/recover-password/:user/:token"
+          element={<RecoverPasswordConfirm />}
+        />
         <Route path="/password-reset-link" element={<PasswordResetLink />} />
       </Routes>
     </AnimatePresence>

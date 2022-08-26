@@ -49,6 +49,7 @@ const Register2 = ({
               <Stack>
                 <p className="step-one mb-3">Step 2 of 2</p>
                 <p className="step-one-title mb-5">Address info</p>
+                
               </Stack>
 
               <Box className="register-form-grid">
