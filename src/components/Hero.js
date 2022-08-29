@@ -8,8 +8,8 @@ import "./hero.css";
 const Hero = () => {
   return (
     <Box className="hero">
-      <Box className="hero-flex-container">
-        <Container sx={{margin: '0px', width: '64%'}}>
+      <Container>
+        <Box className="hero-flex-container">
           <Box className="hero-flex-new">
             <h4>
               Buy <span>Bitcoin</span> The Fast and Secure Way
@@ -21,8 +21,8 @@ const Hero = () => {
             </p>
             <Link to="/register">Get Started Now</Link>
           </Box>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
     </Box>
   );
 };

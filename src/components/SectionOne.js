@@ -1,9 +1,8 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { Stack } from "@mui/material";
-import HeroImage from "../assets/images/phone.svg";
+import HeroImage from "../assets/images/phone-small.png";
 import { Container } from "@mui/system";
-import Logo from "../assets/icons/header.png";
 
 import "./section.css";
 
@@ -12,30 +11,11 @@ const SectionOne = () => {
     <Box className="about-bitkash">
       <Container className="p-4">
         <Box className="hero-grid">
-          <Box
-            position="relative"
-            data-aos="fade-up"
-            data-aos-easing="ease-in-back"
-            data-aos-offset="0"
-            data-aos-duration="1500"
-          >
+          <Box>
             <img className="phone-img" src={HeroImage} alt="hero" />
-            <Box>
-              <img
-                postion="absolute"
-                className="logo-img"
-                src={Logo}
-                alt="logo"
-              />
-            </Box>
           </Box>
 
-          <Box
-            data-aos="fade-down"
-            data-aos-easing="ease-in-back"
-            data-aos-offset="0"
-            data-aos-duration="1500"
-          >
+          <Box>
             <Stack spacing={2}>
               <h3 className="about-bitkash-title">
                 <span className="hero-brown" style={{ marginRight: "10px" }}>
@@ -45,13 +25,13 @@ const SectionOne = () => {
               </h3>
 
               <p id="section-one-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Adipiscing enim elementum tincidunt eget. Ac suspendisse
-                facilisi odio ultrices in. Vulputate mauris scelerisque ac sed
-                at volutpat, blandit leo. Consectetur aliquet elementum
-                tincidunt mattis malesuada vitae, senectus vitae. Nisl, quam ut
-                ut mattis mi potenti. Vel a metus id id neque. Justo viverra
-                laoreet cursus tortor.
+                Bitkash is a team of professional cryptocurrency enthusiasts
+                situated all around the globe. We are a brokerage firm
+                steadfastly committed to making it easy and foolproof to
+                purchase cryptocurrency anywhere in the world. Our team is made
+                of dedicated crypto professionals working together in various
+                units to ensure that you and every member of the Bitkash family
+                enjoy fast, seamless, and safe transactions.
               </p>
             </Stack>
           </Box>

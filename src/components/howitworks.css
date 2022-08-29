@@ -25,6 +25,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 30px;
+    text-align: left;
 }
 
 .flexitems {
@@ -36,8 +37,11 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 4rem;
     position: relative;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2.8rem;
+    padding-right: 5rem;
 }
 
 .flex-items h3 {
@@ -54,6 +58,10 @@
     position: absolute;
     left: -55px;
     top: 90px;
+}
+
+.number img:first-of-type {
+    left: -29px;
 }
 
 
@@ -77,14 +85,14 @@
     }
 
     .flexitems {
-        padding: 5rem;
+        
     }
 }
 
 
 @media screen and (min-width: 1920px) {
     .flexitems {
-        padding: 6.5rem;
+        
     }
 
     .number img {

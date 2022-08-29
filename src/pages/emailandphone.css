@@ -73,6 +73,7 @@ body {
 
 .color-yellow {
     color: #FF9924;
+    text-decoration: none;
 }
 
 .otp-number-div p {

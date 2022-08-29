@@ -5,11 +5,15 @@
 }
 
 .buy-bitcoin h3 {
+    font-family: 'Circular Std';
     font-style: normal;
     font-weight: 700;
-    font-size: 43px;
-    line-height: 56px;
-    color: #000000;
+    font-size: 64px;
+    line-height: 81px;
+    letter-spacing: -0.03em;
+
+    color: #292D32;
+    margin-bottom: 1.5rem;
 }
 
 .buy-bitcoin p {
@@ -21,15 +25,20 @@
 }
 
 .buy-bitcoin button {
-    background: rgba(255, 153, 36, 1);
-    color: rgba(0, 0, 0, 1);
-    width: 144px;
-    height: 54px;
+    width: 284px;
+    height: 64px;
+    background: #FF9924;
+    border-radius: 5px;
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 24px;
     line-height: 40px;
+    /* identical to box height, or 167% */
+
+
     color: #000000;
+
 }
 
 .buy-flex {
@@ -235,6 +244,6 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 150px;
-        background-image:  url("../assets/images/bit-mobile.png");
+        background-image: url("../assets/images/bit-mobile.png");
     }
 }

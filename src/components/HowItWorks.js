@@ -21,7 +21,11 @@ const HowItWorks = () => {
               <h6>1</h6>
             </div>
             <h3>Sign up</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex.</p>
+            <p>
+              Here’s where we get to know you and welcome you to the Bitkash
+              family. Don’t worry your details are a hundred percent safe with
+              us. Learn more.
+            </p>
           </div>
           <div className="flexitems">
             <div className="number">
@@ -31,7 +35,10 @@ const HowItWorks = () => {
               <h6>2</h6>
             </div>
             <h3>KYC</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex.</p>
+            <p>
+              The KYC verification allows us to protect you and your portfolio.
+              It takes only a few minutes and you’re officially ready to trade!
+            </p>
           </div>
           <div className="flexitems">
             <div className="number">
@@ -41,7 +48,11 @@ const HowItWorks = () => {
               <h6>3</h6>
             </div>
             <h3>Buy</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex.</p>
+            <p>
+              Once payment is made, your coins will be delivered in x minutes.
+              Currently, we accept only bank transfers but we’re working on
+              making more payment options available.
+            </p>
           </div>
         </div>
       </Container>

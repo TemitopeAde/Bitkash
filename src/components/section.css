@@ -1,11 +1,9 @@
 .hero-grid {
-    /* height: 720px; */
-    overflow-y: hidden;
-    display: flex;
-    justify-content: space-between;
-    gap: 20%;
-    height: 60vh;
+    gap: 10%;
     padding: 4rem 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    align-items: center;
 }
 
 .hero-grid h3 {
@@ -25,8 +23,7 @@
 }
 
 .phone-img {
-    width: 321px;
-    height: 696px;
+    
 }
 
 .logo-img {
@@ -38,30 +35,39 @@
 
 #section-one-text {
     line-height: 40px;
+    text-align: right;
 }
 
 .about-bitkash {
     display: flex;
     justify-content: flex-end;
+   
 }
 
+.about-bitkash-title {
+    text-align: right;
+}
+
+.hero-brown {
+    color: #ff9924;
+}
 
 @media screen and (min-width: 1600px) {
-    .hero-grid {
+    /* .hero-grid {
         height: 45vh;
-    }
+    } */
 }
 
 @media screen and (min-width: 2256px) {
-    .hero-grid {
+    /* .hero-grid {
         height: 35vh;
-    }
+    } */
 }
 
 @media screen and (min-width: 2736px) {
-    .hero-grid {
+    /* .hero-grid {
         height: 30vh;
-    }
+    } */
 }
 
 

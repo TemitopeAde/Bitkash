@@ -1,5 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import Line from "../assets/images/line.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
@@ -12,9 +12,9 @@ const Newsletter = () => {
 
   const width = window.innerWidth;
 
-  const inputRef = useRef()
+  const inputRef = useRef();
 
-  console.log(inputRef)
+  console.log(inputRef);
 
   // if (width <= 768) {
   //   inputRef.setAttribute('placeholder', '')
@@ -53,11 +53,11 @@ const Newsletter = () => {
 
         <Box>
           <Stack className="form-box" spacing={6}>
-            <h6 style={{color: '#f5f5f5'}} className="mb-5">
-              Once each month we'll send you recent episodes of our Financial
-              information covering the optimization of digital technology and
-              irresistible people delivering a great customer experience that
-              impacts the bottom line.
+            <h6 style={{ color: "#f5f5f5" }} className="mb-5">
+              Sign Up For Our Free Newsletter. Once a week, we’ll send you
+              Bitkash updates, news, and tips about crypto trading. Sign up to
+              never miss an update or promotional offer. We promise not to bore
+              you.
             </h6>
 
             <Box position="relative" className="newsletter-form mt-5">
@@ -93,16 +93,15 @@ const Newsletter = () => {
                           value={values.email}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          
                           className={
                             errors.email && touched.email ? "input-error" : ""
                           }
                         />
 
-                        
-                        <button type="submit" className="subscribe-btn">Subscribe</button>
+                        <button type="submit" className="subscribe-btn">
+                          Subscribe
+                        </button>
                       </Form>
-                      
                     </div>
                   );
                 }}

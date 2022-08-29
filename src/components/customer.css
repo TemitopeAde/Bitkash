@@ -18,7 +18,7 @@
 
 .customer-flex {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 5rem;
 
@@ -26,14 +26,14 @@
 
 .customer-items {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 1rem;
+    padding: 3rem;
     border-radius: 10px;
     border: 1px solid #F16A23;
 }
 
 .customer-items div:first-of-type {
     padding: 1rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     height: 60px;
 }
 
@@ -47,17 +47,29 @@
     font-weight: 700;
     font-size: 19px;
     line-height: 24px;
-    font-family: 'Inter';
-    color: var(--border-brown);
+    font-family: 'Circular std';
+    color: #000
 }
 
 .customer-flex p {
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
-    line-height: 25px;
-    color: #A6A6A6;
+    font-size: 18px;
+    line-height: 30px;
+    color: #263238;
 }
+
+.customer-flex .color-yellow {
+    font-weight: bold;
+    transition: .7s;
+}
+
+.customer-flex .color-yellow:hover {
+    color: #e29742;
+}
+
+
+
 
 
 @media screen and (min-width: 1920px) {
