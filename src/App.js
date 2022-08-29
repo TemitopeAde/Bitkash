@@ -37,11 +37,7 @@ import RecoverPasswordConfirm from "./pages/RecoverPasswordConfirm";
 import PasswordResetLink from "./pages/PasswordResetLink";
 
 function App() {
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
-
+  
   const state = useSelector((state) => state);
   console.log(state);
 
