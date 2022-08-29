@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Box, Container, Stack } from "@mui/material";
+import React from "react";
+import { motion } from "framer-motion";
 
-import Sidebar from "../components/Sidebar";
+import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
-import Activity from "../components/Activities";
-
+import Sidebar from "../components/Sidebar";
+import Bank from "../components/Banks";
 
 const animations = {
   initial: { opacity: 0 },
@@ -21,7 +20,7 @@ const animation = {
   exit: { opacity: 0 },
 };
 
-const Activities = () => {
+const Banks = () => {
   return (
     <Box className="dashboard">
       <Box className="dashboard-grid">
@@ -68,7 +67,7 @@ const Activities = () => {
             animate="animate"
             transition={{ duration: 1 }}
           >
-            <Activity />
+            <Bank />
           </motion.div>
         </Box>
       </Box>
@@ -76,4 +75,4 @@ const Activities = () => {
   );
 };
 
-export default Activities;
+export default Banks;

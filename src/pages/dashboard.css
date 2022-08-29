@@ -22,9 +22,9 @@
 
 .dashboard-content .dashboard-inner {
     position: absolute;
-    top: 105px;
-    right: 9%;
-    left: 25%;
+    top: 65px;
+    right: 0;
+    left: 20%;
 }
 
 .wallet-address-grid {
@@ -186,6 +186,10 @@ ul {
     column-gap: 1.5rem;
 }
 
+.dashboard-inner .splide__arrows {
+    display: none;
+}
+
 .dashboard-buy.disabled-btn {
     width: 202px !important;
 }
@@ -260,6 +264,8 @@ ul {
 
 .dashboard .flex-security-buttons {
     width: auto;
+    background: transparent;
+    color: #FF9924;
 }
 
 .buy-padding {
@@ -279,6 +285,11 @@ ul {
 
 
     color: #000000;
+}
+
+.logout-container {
+    border: 2px solid #FF9924;
+    border-radius: 20px;
 }
 
 .dashboard-padding h4 {
@@ -372,12 +383,33 @@ button {
     align-items: center;
 }
 
+.ach-transfer,
+.bch-transfer {
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 3rem;
+    border-radius: 10px;
+}
 
+.bch-transfer.ach-transfer {
+    background-image: url("../assets/images/bg-two.png");
+    display: flex;
+    justify-content: space-between;
+}
 
+.ach-transfer {
+    background-image: url("../assets//images/bg-one.png");
+}
 
+.bch-transfer.ach-transfer .details-flex-confirm {
+    align-self: flex-end;
+}
 
-
-
+.transfer-three {
+    padding-left: 3rem;
+}
 
 
 
@@ -510,7 +542,7 @@ button {
 
 .dashboard-padding {
     padding-left: 4rem !important;
-    padding-top: 3rem !important;
+    /* padding-top: 3rem !important; */
 }
 
 .dashboard-inner .mobile-padding {
@@ -822,7 +854,7 @@ select::-ms-expand {
 
 .password-security-flex {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 250px);
     gap: 1rem;
 }
 

@@ -16,7 +16,7 @@ const Sidebar = () => {
 
           <ul className="nav-icons">
             <li>
-              <Link to="/">
+              <Link to="/user-dashboard">
                 <svg
                   width="22"
                   height="22"
@@ -53,7 +53,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/buy">
                 <svg
                   width="20"
                   height="20"
@@ -109,7 +109,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/transaction-history">
                 <svg
                   width="20"
                   height="20"
@@ -175,7 +175,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/banks">
                 <svg
                   width="24"
                   height="24"
@@ -236,7 +236,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/pasword-and-security">
                 <svg
                   width="20"
                   height="20"
@@ -280,7 +280,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/activities">
                 <svg
                   width="20"
                   height="24"
@@ -322,7 +322,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/logout">
                 <svg
                   width="20"
                   height="20"

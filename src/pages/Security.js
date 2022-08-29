@@ -1,12 +1,9 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 
 import "./dashboard.css";
-import logo from "../assets/icons/header-white.png";
-import icon1 from "../assets/icons/note-2.png";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
@@ -14,6 +11,7 @@ import key from "../assets/images/key-square.png";
 import edit from "../assets/images/edit-2.png";
 import profile from "../assets/images/profile.png";
 import tick from "../assets/images/tick-circle.png";
+import Sidebar from "../components/Sidebar";
 
 const Security = () => {
   const [tab, setTab] = useState(0);
@@ -29,94 +27,7 @@ const Security = () => {
         </Helmet>
         <Box className="dashboard">
           <Box className="dashboard-grid">
-            <Box className="sidebar">
-              <Container>
-                <Link to="/">
-                  <img className="logo" src={logo} alt="bitkash" />
-                </Link>
-
-                <ul className="nav-icons">
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Buy</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Transaction History</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>My Payments</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Pasword and security</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Activities</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <Stack
-                        className="sidebar-nav-flex"
-                        alignItems="center"
-                        direction="row"
-                        spacing={1}
-                      >
-                        <img src={icon1} alt="" />
-                        <h6>Logout</h6>
-                      </Stack>
-                    </Link>
-                  </li>
-                </ul>
-              </Container>
-            </Box>
+            <Sidebar />
 
             <Box className="dashboard-content">
               <Box className="dashboard-header">

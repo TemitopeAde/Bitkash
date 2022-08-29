@@ -134,7 +134,7 @@ const Dashboard = () => {
     return (
       <Box className="dashboard">
         <Helmet>
-          <title>Dashboard</title>
+          <title>User Dashboard</title>
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
           <body class="dashboard-background" />

@@ -1,16 +1,14 @@
 .hero {
     background-repeat: no-repeat;
     background-image: url('../assets/images/bg.png');
+    background-position-y: 80px;
     background-size: cover;
-    background-repeat: no-repeat;
-    padding-top: 6.5rem;
+
+
     height: 100vh;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-position-y: 80px;
-    background-position-x: -5px;
 }
 
 .hero-flex-new h4 {

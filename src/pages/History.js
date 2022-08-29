@@ -1,14 +1,14 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+
 import "./dashboard.css";
-import logo from "../assets/icons/header-white.png";
-import icon1 from "../assets/icons/note-2.png";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import History from "../components/History";
-import { motion } from "framer-motion";
 import Sidebar from "../components/Sidebar";
+
 
 const animations = {
   initial: { opacity: 0 },
@@ -22,7 +22,7 @@ const animation = {
   exit: { opacity: 0 },
 };
 
-const Buy = () => {
+const Histories = () => {
   return (
     <Box className="dashboard">
       <Box className="dashboard-grid">
@@ -77,4 +77,4 @@ const Buy = () => {
   );
 };
 
-export default Buy;
+export default Histories;

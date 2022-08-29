@@ -1,6 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import "./dashboard.css";
@@ -18,7 +17,6 @@ const BuyConfirm = () => {
           <title>Payment Details</title>
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
-          
         </Helmet>
         <Box className="dashboard">
           <Box className="dashboard-grid">
@@ -26,9 +24,7 @@ const BuyConfirm = () => {
 
             <Box className="dashboard-content">
               <Box className="dashboard-header">
-                <Container
-                  style={{ display: "flex", justifyContent: "flex-end" }}
-                >
+                <Box style={{ display: "flex", justifyContent: "flex-end" }}>
                   <Box className="dashboard-container">
                     <Stack spacing={2} direction="row">
                       <img className="user" src={user} alt="" />
@@ -41,12 +37,12 @@ const BuyConfirm = () => {
                       </Box>
                     </Stack>
                   </Box>
-                </Container>
+                </Box>
               </Box>
 
               <Box style={{ top: "90px" }} className="dashboard-inner py-5">
-                <Container className="buy-padding">
-                  <Stack spacing={2} className="confirm-buy">
+                <Box style={{ padding: "0 3rem" }}>
+                  <Stack spacing={4} className="confirm-buy">
                     <Box>
                       <h6
                         style={{
@@ -59,7 +55,8 @@ const BuyConfirm = () => {
                         Please send your money ($5000) to
                       </h6>
                     </Box>
-                    <Box className="ach-transfer mt-5">
+
+                    <Box className="ach-transfer">
                       <h6
                         className="color-yellow"
                         style={{ fontWeight: "600", fontSize: "20px" }}
@@ -84,38 +81,41 @@ const BuyConfirm = () => {
                       </h6>
                     </Box>
 
-                    <Box className="ach-transfer mt-5">
-                      <h6
-                        className="color-yellow"
-                        style={{ fontWeight: "600", fontSize: "20px" }}
-                      >
-                        International Transfers
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>Beneficiary account name -</span> Bitkash Ou{" "}
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>Bank name -</span> Metropolitan Commercial Bank{" "}
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>Bank address -</span> 2099 Park Avenue, New York,
-                        NY 12345{" "}
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>SWIFT Code -</span> 1234567890{" "}
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>Routing/ABA -</span> 24559599303299i4MDET54{" "}
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>Account Number -</span> 1234567890{" "}
-                      </h6>
-                      <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
-                        <span>Reference -</span> 2455
-                      </h6>
+                    <Box className="bch-transfer ach-transfer">
+                      <Box></Box>
+                      <Box className="details-flex-confirm">
+                        <h6
+                          className="color-yellow"
+                          style={{ fontWeight: "600", fontSize: "20px" }}
+                        >
+                          International Transfers
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>Beneficiary account name -</span> Bitkash Ou{" "}
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>Bank name -</span> Metropolitan Commercial Bank{" "}
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>Bank address -</span> 2099 Park Avenue, New
+                          York, NY 12345{" "}
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>SWIFT Code -</span> 1234567890{" "}
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>Routing/ABA -</span> 24559599303299i4MDET54{" "}
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>Account Number -</span> 1234567890{" "}
+                        </h6>
+                        <h6 style={{ fontWeight: "500", fontSize: "16px" }}>
+                          <span>Reference -</span> 2455
+                        </h6>
+                      </Box>
                     </Box>
 
-                    <Box className="ach-transfer mt-5">
+                    <Box className="transfer-three">
                       <h6
                         className="color-yellow"
                         style={{ fontWeight: "600", fontSize: "20px" }}
@@ -135,7 +135,8 @@ const BuyConfirm = () => {
                           style={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "space-around",
+                            justifyContent: "center",
+                            gap: '2rem'
                           }}
                         >
                           <button
@@ -156,7 +157,7 @@ const BuyConfirm = () => {
                       </Box>
                     </Box>
                   </Stack>
-                </Container>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -280,7 +281,7 @@ const BuyConfirm = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-around",
-                  marginBottom: '5rem'
+                  marginBottom: "5rem",
                 }}
               >
                 <button
@@ -299,7 +300,6 @@ const BuyConfirm = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    
                   }}
                   className="btn btn-save-pdf-outline mobile"
                 >

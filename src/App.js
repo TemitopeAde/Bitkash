@@ -35,6 +35,9 @@ import EmailVerification from "./pages/EmailVerification";
 import EmailAndPhone from "./pages/EmailAndPhone";
 import RecoverPasswordConfirm from "./pages/RecoverPasswordConfirm";
 import PasswordResetLink from "./pages/PasswordResetLink";
+import Activities from "./pages/Activities";
+import Banks from "./pages/Banks";
+import Logout from "./pages/Logout";
 
 function App() {
   
@@ -50,7 +53,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/buy" element={<Buy />} />
         </Route>
-        <Route path="/history" element={<History />} />
+        <Route path="/transaction-history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
@@ -62,9 +65,9 @@ function App() {
         />
         <Route path="/email-and-password-sent" element={<PhoneOTP />} />
         <Route path="/success-page" element={<SucessRegistrationPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user-dashboard" element={<Dashboard />} />
         <Route path="/payment-details" element={<BuyConfirm />} />
-        <Route path="/security" element={<Security />} />
+        <Route path="/pasword-and-security" element={<Security />} />
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/phone-verification" element={<PhoneVerification />} />
@@ -80,6 +83,9 @@ function App() {
           element={<RecoverPasswordConfirm />}
         />
         <Route path="/password-reset-link" element={<PasswordResetLink />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/banks" element={<Banks />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </AnimatePresence>
   );
