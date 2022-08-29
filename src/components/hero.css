@@ -3,7 +3,6 @@
     background-image: url('../assets/images/bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
     padding-top: 6.5rem;
     height: 100vh;
     overflow: hidden;
@@ -11,6 +10,7 @@
     align-items: center;
     justify-content: center;
     background-position-y: 80px;
+    background-position-x: -5px;
 }
 
 .hero-flex-new h4 {

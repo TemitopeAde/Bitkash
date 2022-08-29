@@ -56,7 +56,7 @@
 .newsletter {
     padding: 5rem;
     font-family: 'Poppins';
-    background: #514847;
+    background: #292D32;
 }
 
 .newsletter-flex {
@@ -112,11 +112,12 @@
     height: 53px;
     width: 100%;
     color: #999999;
+    padding-right: 10px;
 }
 
 .newsletter-form .subscribe-btn {
     position: absolute;
-    width: 144px;
+    width: 28%;
     height: 54px;
     bottom: 10px;
     background: #F16A23;
@@ -124,8 +125,10 @@
     color: #fff;
     border: none;
     outline: none;
-    right: 0px;
+    right: 12px;
 }
+
+
 
 
 ::placeholder {
