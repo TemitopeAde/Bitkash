@@ -36,7 +36,8 @@ const RecoverPasswordConfirm = () => {
     return errors;
   };
 
-  const {user, token} = useParams();
+  const {token, user} = useParams();
+  console.log(token)
   
   const initialValues = {
     password: "",

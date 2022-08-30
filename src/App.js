@@ -80,10 +80,10 @@ function App() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
         <Route
-          path="/recover-password/:user/:token"
+          path="/recover-password/:token/:id"
           element={<RecoverPasswordConfirm />}
         />
-        <Route path="/password-reset-link" element={<PasswordResetLink />} />
+        <Route path="/password-reset-link-sent" element={<PasswordResetLink />} />
         <Route path="/activities" element={<Activities />} />
         <Route path="/banks" element={<Banks />} />
         <Route path="/logout" element={<Logout />} />
