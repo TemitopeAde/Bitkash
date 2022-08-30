@@ -36,22 +36,29 @@ const RecoverPasswordConfirm = () => {
     return errors;
   };
 
+  const {user, token} = useParams();
+  
   const initialValues = {
     password: "",
     password2: "",
   };
-  const dispatch = useDispatch()
-  const recovered = useSelector((state) => state.recover.recovered);
-  const submitSuccess = useSelector((state) => state.recover.submitNewPassoword)
+
+  const dispatch = useDispatch();
+  const submitSuccess = useSelector((state) => state.recover.submitNewPassoword);
+  const loading = useSelector((state) => state.loader.loading);
 
   const submitForm = (values) => {
+
     const payload = {
-        password: values.password
+        password: values.password,
+        token: token,
+        id: user
     }
+
     dispatch(submitNewPassword(payload))
   };
 
-  if (recovered) {
+  if (loading) {
     return <Spinner />
   };
 

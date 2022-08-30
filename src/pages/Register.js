@@ -62,6 +62,7 @@ const Register = () => {
     streetAddress,
     terms,
   } = formData;
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(formData));
@@ -153,7 +154,6 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(message);
 
   if (loader) {
     return <Spinner />;

@@ -178,8 +178,9 @@ export const submitNewPassword = (data) => async (dispatch) => {
     },
   };
   const url = "https://bitkash.herokuapp.com/recover-password/reset-now";
-  const { password } = data;
-  const body = JSON.stringify({ password });
+  const { password, id, token } = data;
+  const body = JSON.stringify({ password, id, token });
+  console.log(body)
 
   dispatch({
     type: SHOW_LOADER,
@@ -188,12 +189,14 @@ export const submitNewPassword = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
+      console.log(data)
       dispatch({
         type: SUBMIT_NEW_PASSWORD_SUCCESS,
         payload: data.data,
       });
     })
     .catch((errors) => {
+      console.log(errors)
       dispatch({
         type: SUBMIT_NEW_PASSWORD_FAILED,
         payload: errors.data,

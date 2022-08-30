@@ -59,6 +59,7 @@ function App() {
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
         <Route path="/user/verify/:token" element={<EmailAndPhone />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/registration" element={<Register />} />
         <Route
           path="/verification-complete"
           element={<VerificationComplete />}
