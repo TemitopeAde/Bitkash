@@ -36,7 +36,7 @@ const RecoverPasswordConfirm = () => {
     return errors;
   };
 
-  const {token, user} = useParams();
+  const {token, id} = useParams();
   console.log(token)
   
   const initialValues = {
@@ -53,7 +53,7 @@ const RecoverPasswordConfirm = () => {
     const payload = {
         password: values.password,
         token: token,
-        id: user
+        id: id
     }
 
     dispatch(submitNewPassword(payload))

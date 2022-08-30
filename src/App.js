@@ -40,7 +40,6 @@ import Banks from "./pages/Banks";
 import Logout from "./pages/Logout";
 
 function App() {
-  
   const state = useSelector((state) => state);
   console.log(state);
 
@@ -83,7 +82,10 @@ function App() {
           path="/recover-password/:token/:id"
           element={<RecoverPasswordConfirm />}
         />
-        <Route path="/password-reset-link-sent" element={<PasswordResetLink />} />
+        <Route
+          path="/password-reset-link-sent"
+          element={<PasswordResetLink />}
+        />
         <Route path="/activities" element={<Activities />} />
         <Route path="/banks" element={<Banks />} />
         <Route path="/logout" element={<Logout />} />

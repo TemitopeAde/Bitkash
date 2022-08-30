@@ -179,8 +179,9 @@ export const submitNewPassword = (data) => async (dispatch) => {
   };
   const url = "https://bitkash.herokuapp.com/recover-password/reset-now";
   const { password, id, token } = data;
-  const body = JSON.stringify({ password, id, token });
-  console.log(body)
+  console.log(data)
+  const body = JSON.stringify({ password, token, id });
+  // console.log(body)
 
   dispatch({
     type: SHOW_LOADER,
