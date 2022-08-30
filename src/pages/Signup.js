@@ -19,8 +19,6 @@ const Signup = ({ children }) => {
   };
   const [currency, setCurrency] = useState(defaultValue);
 
-  console.log(currency);
-
   const handleCurrencyChange = (e) => {
     setCurrency(e.target.value);
   };
@@ -69,12 +67,53 @@ const Signup = ({ children }) => {
     return errors;
   };
 
+  const validateEur = (values) => {
+    let errors = {};
+
+    if (!values.businessType) {
+      errors.businessType = "Businesss type is required";
+    }
+
+    if (!values.accountHolderName) {
+      errors.accountHolderName = "Account holder name is required";
+    }
+
+    if (!values.bankName) {
+      errors.bankName = "Bank name is required";
+    }
+
+    if (!values.swiftCode) {
+      errors.swiftCode = "SWIFT/BIC Code is required";
+    }
+
+    if (!values.zipCode) {
+      errors.zipCode = "Zip code is required";
+    }
+
+    if (!values.bankAddress) {
+      errors.bankAddress = "Bank address is required";
+    }
+
+    if (!values.bankCity) {
+      errors.bankCity = "Bank city is required";
+    }
+
+    if (!values.iban) {
+      errors.iban = "IBAN is required";
+    }
+
+    if (!values.bankBranchName) {
+      errors.bankBranchName = "Bank branch name is required";
+    }
+
+    return errors;
+  };
+
   const initialValuesEur = {
     businessType: "",
     accountHolderName: "",
     bankName: "",
     swiftCode: "",
-    routingNumber: "",
     accountType: "",
     zipCode: "",
     bankAddress: "",
@@ -86,6 +125,8 @@ const Signup = ({ children }) => {
   const submitFormUsd = (values) => {
     console.log(values);
   };
+
+  const submitFormEur = (values) => {};
 
   return (
     <motion.div
@@ -136,86 +177,248 @@ const Signup = ({ children }) => {
                   animate="animate"
                   transition={{ duration: 0.4 }}
                 >
-                  <Box className="mt-5">
-                    <Box className="signup-grid">
-                      <Box className="form-input radio-input radio-form-input">
-                        <Box>
-                          <input
-                            type="radio"
-                            name="account-type"
-                            id="individual-input"
-                            checked
-                          />
-                          <label htmlFor="individual-input">Individual</label>
-                        </Box>
-                        <Box>
-                          <input
-                            type="radio"
-                            name="account-type"
-                            id="business-input"
-                          />
-                          <label htmlFor="business-input">Business</label>
-                        </Box>
-                      </Box>
-                      <Box className="form-input">
-                        <Box>
-                          <label htmlFor="holder-name">
-                            Account Holders Name
-                          </label>
-                          <input id="holder-name" className="form-control" />
-                        </Box>
-                        <Box>
-                          <label htmlFor="bank-name">Bank Name</label>
-                          <input id="bank-name" className="form-control" />
-                        </Box>
-                      </Box>
-                      <Box className="form-inputs">
-                        <Box>
-                          <label htmlFor="bank-branch-name">
-                            Bank branch name
-                          </label>
-                          <input
-                            id="bank-branch-name"
-                            className="form-control"
-                          />
-                        </Box>
-                        <Box>
-                          <label htmlFor="iban">IBAN</label>
-                          <input id="iban" className="form-control" />
-                        </Box>
-                        <Box>
-                          <label htmlFor="swift-code">SWIFT/BIC Code</label>
-                          <input id="swift-code" className="form-control" />
-                        </Box>
-                      </Box>
+                  <Formik
+                    initialValues={initialValuesEur}
+                    onSubmit={submitFormEur}
+                    validate={validateEur}
+                  >
+                    {(formik) => {
+                      const {
+                        values,
+                        handleChange,
+                        handleSubmit,
+                        errors,
+                        touched,
+                        handleBlur,
+                        isValid,
+                        dirty,
+                      } = formik;
 
-                      <Box className="form-input">
-                        <Box>
-                          <label htmlFor="bank-address">Bank Address</label>
+                      return (
+                        <Form>
+                          <Box className="mt-5">
+                            <Box className="signup-grid">
+                              <Box className="form-input radio-input radio-form-input">
+                                <Box>
+                                  <Field
+                                    type="radio"
+                                    value="individual"
+                                    name="businessType"
+                                    id="individual-input"
+                                    onBlur={handleBlur}
+                                    className={
+                                      errors.businessType &&
+                                      touched.businessType
+                                        ? "input-error"
+                                        : ""
+                                    }
+                                  />
+                                  <label htmlFor="individual-input">
+                                    Individual
+                                  </label>
+                                </Box>
+                                <Box>
+                                  <Field
+                                    type="radio"
+                                    value="business"
+                                    name="businessType"
+                                    id="business-input"
+                                    onBlur={handleBlur}
+                                    className={
+                                      errors.businessType &&
+                                      touched.businessType
+                                        ? "input-error"
+                                        : ""
+                                    }
+                                  />
+                                  <label htmlFor="business-input">
+                                    Business
+                                  </label>
+                                </Box>
 
-                          <textarea
-                            name="bank-address"
-                            id="bank-address"
-                            rows="3"
-                            className="form-control"
-                          ></textarea>
-                        </Box>
-                        <Box>
-                          <label htmlFor="bank-city">Bank City</label>
-                          <input id="bank-city" className="form-control" />
-                        </Box>
-                      </Box>
+                                <ErrorMessage
+                                  name="businessType"
+                                  component="span"
+                                  className="error"
+                                />
+                              </Box>
+                              <Box className="form-input">
+                                <Box>
+                                  <label htmlFor="holder-name">
+                                    Account Holders Name
+                                  </label>
+                                  <Field
+                                    id="holder-name"
+                                    name="accountHolderName"
+                                    className={
+                                      errors.accountHolderName &&
+                                      touched.accountHolderName
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="accountHolderName"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                                <Box>
+                                  <label htmlFor="bank-name">Bank Name</label>
+                                  <Field
+                                    id="bank-name"
+                                    name="bankName"
+                                    className={
+                                      errors.bankName && touched.bankName
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="bankName"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                              </Box>
+                              <Box className="form-inputs">
+                                <Box>
+                                  <label htmlFor="bank-branch-name">
+                                    Bank branch name
+                                  </label>
+                                  <Field
+                                    id="bank-branch-name"
+                                    name="bankBranchName"
+                                    className={
+                                      errors.bankBranchName &&
+                                      touched.bankBranchName
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="bankBranchName"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                                <Box>
+                                  <label htmlFor="iban">IBAN</label>
+                                  <Field
+                                    id="iban"
+                                    name="iban"
+                                    className={
+                                      errors.iban && touched.iban
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="iban"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                                <Box>
+                                  <label htmlFor="swift-code">
+                                    SWIFT/BIC Code
+                                  </label>
+                                  <Field
+                                    id="swift-code"
+                                    name="swiftCode"
+                                    className={
+                                      errors.swiftCode && touched.swiftCode
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="swiftCode"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                              </Box>
 
-                      <Box className="form-zip">
-                        <label htmlFor="zip-code">Zip/Postal Code</label>
-                        <input id="zip-code" className="form-control" />
-                      </Box>
-                    </Box>
+                              <Box className="form-input">
+                                <Box>
+                                  <label htmlFor="bank-address">
+                                    Bank Address
+                                  </label>
 
-                    <button type="submit" className="btn btn-primary submit">
-                      Save
-                    </button>
-                  </Box>
+                                  <Field
+                                    name="bankAddress"
+                                    id="bankAddress"
+                                    rows="3"
+                                    component="textarea"
+                                    className={
+                                      errors.bankAddress && touched.bankAddress
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="bankAddress"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                                <Box>
+                                  <label htmlFor="bank-city">Bank City</label>
+                                  <Field
+                                    id="bank-city"
+                                    name="bankCity"
+                                    className={
+                                      errors.bankCity && touched.bankCity
+                                        ? "form-control input-error"
+                                        : "form-control"
+                                    }
+                                  />
+                                  <ErrorMessage
+                                    name="bankCity"
+                                    component="span"
+                                    className="error"
+                                  />
+                                </Box>
+                              </Box>
+
+                              <Box className="form-zip">
+                                <label htmlFor="zip-code">
+                                  Zip/Postal Code
+                                </label>
+                                <Field
+                                  id="zip-code"
+                                  name="zipCode"
+                                  className={
+                                    errors.zipCode && touched.zipCode
+                                      ? "form-control input-error"
+                                      : "form-control"
+                                  }
+                                />
+                                <ErrorMessage
+                                  name="zipCode"
+                                  component="span"
+                                  className="error"
+                                />
+                              </Box>
+                            </Box>
+                            <button
+                              type="submit"
+                              className={
+                                dirty && isValid
+                                  ? "btn btn-primary submit"
+                                  : "btn btn-primary submit disabled-btn"
+                              }
+                              disabled={!(dirty && isValid)}
+                            >
+                              {console.log(errors)}
+                              Save
+                            </button>
+                          </Box>
+                        </Form>
+                      );
+                    }}
+                  </Formik>
                 </motion.div>
               ) : (
                 <Box className="mt-5">
