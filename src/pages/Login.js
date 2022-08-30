@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { login } from "../state/action-creators";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import logo from "../assets/icons/header-white.png";
 import "../components/Auth/auth.css";
 import Spinner from "../components/Spinner";
 

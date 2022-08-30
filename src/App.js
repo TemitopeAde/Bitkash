@@ -49,7 +49,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/complete-bank-details" element={<Signup />} />
+        <Route path="/kyc-verification" element={<Signup />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/buy" element={<Buy />} />
         </Route>

@@ -91,7 +91,7 @@ h3 {
 .signup-grid {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 2rem;
 }
 
 .sign-up {
@@ -113,6 +113,7 @@ h3 {
 .sign-up .change-currency {
     background-color: #FF9924;
     color: black;
+    width: 150px;
 }
 
 .sign-up label {
@@ -131,13 +132,12 @@ h3 {
 }
 
 .sign-up {
-    padding-top: 10rem;
+    padding-top: 8rem;
     /* background-color: rgba(255, 223, 184, 0.2); */
     padding-bottom: 4.03rem;
 }
 
 .sign-up .submit {
-
     color: #fff;
     background: #FF9924 !important;
     border-radius: 5px;
@@ -148,6 +148,12 @@ h3 {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
+    width: 250px !important;
+    height: 50px !important;
+}
+
+.sign-up .submit:hover {
+    color: #fff !important;
 }
 
 .select-control {
@@ -185,6 +191,12 @@ h3 {
 
 .form-input input[type="radio"] {
     display: none;
+    visibility: hidden;
+}
+
+.error {
+    color: red;
+    font-weight: 600;
 }
 
 .form-input.radio-input label {
@@ -194,6 +206,14 @@ h3 {
     text-align: center;
     position: relative;
     border-radius: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-container-width label {
+    margin: 0;
 }
 
 .form-input.radio-input label:before {
@@ -201,9 +221,9 @@ h3 {
     position: absolute;
     width: 12px;
     height: 12px;
-    left: 120px;
+    left: 150px;
     border-radius: 50%;
-    top: 11.5px;
+    top: 20.5px;
     border: 1px solid #6f6e6e;
 }
 
@@ -213,9 +233,9 @@ h3 {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    top: 14.5px;
+    top: 23.5px;
     background: #6f6e6e;
-    left: 123px;
+    left: 152px;
 }
 
 
@@ -224,7 +244,7 @@ h3 {
 }
 
 .signup-container-width {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 }
 

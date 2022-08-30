@@ -6,6 +6,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import {Link} from 'react-router-dom';
 
 import wallet from "../assets/images/wallet-add.png";
 import "./history.css";
@@ -99,7 +100,7 @@ const Bank = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              <span style={{ marginLeft: "10px" }}>Add bank</span>
+              <Link to="/kyc-verification" style={{ marginLeft: "10px" }}>Add</Link>
             </button>
           </Box>
         </Box>
