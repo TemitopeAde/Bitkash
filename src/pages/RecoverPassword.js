@@ -36,7 +36,6 @@ const RecoverPassword = () => {
   const dispatch = useDispatch();
   const loader = useSelector((state) => state.loader.loading);
   const recover = useSelector((state) => state.recover.recovered);
-  console.log(recover)
 
   const initialValues = {
     email: "",
@@ -44,11 +43,6 @@ const RecoverPassword = () => {
 
   const submitForm = (values) => {
     dispatch(recoverPassword(values));
-    dispatch(showLoader());
-
-    setTimeout(() => {
-      dispatch(hideLoader());
-    }, 4000);
   };
 
   if (loader) {
