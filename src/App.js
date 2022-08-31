@@ -50,8 +50,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/kyc-verification" element={<Signup />} />
         {/* <Route element={<ProtectedRoute />}> */}
-          <Route path="/buy" element={<Buy />} />
+
         {/* </Route> */}
+        <Route path="/buy" element={<Buy />} />
         <Route path="/transaction-history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
