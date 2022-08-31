@@ -50,9 +50,9 @@ const Buy = () => {
     return errors;
   };
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/login" />;
+  // }
 
   if (window.innerWidth > 820) {
     return (
