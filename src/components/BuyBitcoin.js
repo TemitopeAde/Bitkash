@@ -8,8 +8,12 @@ const BuyBitcoin = () => {
     <Box className="buy-bitcoin">
       <Container className="buy-flex">
         <Stack>
-          <h3>Get Started Now and Join The <span style={{ color: '#ff9924'}}>Bitkash</span> Family With Your First Purchase</h3>
-          
+          <h3>
+            Get Started Now and Join The{" "}
+            <span style={{ color: "#ff9924" }}>Bitkash</span> Family With Your
+            First Purchase
+          </h3>
+
           <Box className="buy-button">
             <button className="btn">Buy Bitcoins</button>
           </Box>
@@ -17,6 +21,7 @@ const BuyBitcoin = () => {
 
         <Box>
           <img src={Bitcoin} alt="bitcoin" />
+          
         </Box>
       </Container>
     </Box>

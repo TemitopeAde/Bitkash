@@ -55,28 +55,28 @@
 <feGaussianBlur stdDeviation="0.101426" result="effect1_foregroundBlur_19_1301"/>
 </filter>
 <linearGradient id="paint0_linear_19_1301" x1="360.699" y1="218.211" x2="360.699" y2="302.379" gradientUnits="userSpaceOnUse">
-<stop stop-color="#81AACE"/>
-<stop offset="0.1" stop-color="#B9D2E8"/>
-<stop offset="0.9" stop-color="#B9D2E8"/>
-<stop offset="1" stop-color="#81AACE"/>
+<stop stopColor="#81AACE"/>
+<stop offset="0.1" stopColor="#B9D2E8"/>
+<stop offset="0.9" stopColor="#B9D2E8"/>
+<stop offset="1" stopColor="#81AACE"/>
 </linearGradient>
 <linearGradient id="paint1_linear_19_1301" x1="10.1844" y1="200.73" x2="10.1844" y2="252.624" gradientUnits="userSpaceOnUse">
-<stop stop-color="#81AACE"/>
-<stop offset="0.1" stop-color="#B9D2E8"/>
-<stop offset="0.9" stop-color="#B9D2E8"/>
-<stop offset="1" stop-color="#81AACE"/>
+<stop stopColor="#81AACE"/>
+<stop offset="0.1" stopColor="#B9D2E8"/>
+<stop offset="0.9" stopColor="#B9D2E8"/>
+<stop offset="1" stopColor="#81AACE"/>
 </linearGradient>
 <linearGradient id="paint2_linear_19_1301" x1="10.0946" y1="270.767" x2="10.0946" y2="322.661" gradientUnits="userSpaceOnUse">
-<stop stop-color="#81AACE"/>
-<stop offset="0.1" stop-color="#B9D2E8"/>
-<stop offset="0.9" stop-color="#B9D2E8"/>
-<stop offset="1" stop-color="#81AACE"/>
+<stop stopColor="#81AACE"/>
+<stop offset="0.1" stopColor="#B9D2E8"/>
+<stop offset="0.9" stopColor="#B9D2E8"/>
+<stop offset="1" stopColor="#81AACE"/>
 </linearGradient>
 <linearGradient id="paint3_linear_19_1301" x1="10.0946" y1="147.56" x2="10.0946" y2="173.665" gradientUnits="userSpaceOnUse">
-<stop stop-color="#81AACE"/>
-<stop offset="0.1" stop-color="#B9D2E8"/>
-<stop offset="0.9" stop-color="#B9D2E8"/>
-<stop offset="1" stop-color="#81AACE"/>
+<stop stopColor="#81AACE"/>
+<stop offset="0.1" stopColor="#B9D2E8"/>
+<stop offset="0.9" stopColor="#B9D2E8"/>
+<stop offset="1" stopColor="#81AACE"/>
 </linearGradient>
 <clipPath id="clip0_19_1301">
 <path d="M20 55C20 34.0132 37.0132 17 58 17H303.441C324.428 17 341.441 34.0132 341.441 55V675.066C341.441 696.053 324.428 713.066 303.441 713.066H58C37.0132 713.066 20 696.053 20 675.066V55Z" fill="white"/>

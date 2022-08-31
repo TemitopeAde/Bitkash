@@ -21,6 +21,15 @@
     align-items: center;
 }
 
+.history-pagination ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.history-pagination {
+    margin-top: 2rem;
+}
+
 @media screen and (max-width: 1280px) {
     .history-header {
         /* grid-template-columns: 1fr 1fr 0.4fr; */
