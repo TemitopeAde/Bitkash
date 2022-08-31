@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 
 import wallet from "../assets/images/wallet-add.png";
 import "./history.css";
