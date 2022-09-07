@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useState, useEffect } from "react";
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from "react-paginate";
 
 import wallet from "../assets/images/wallet-add.png";
 import "./history.css";
@@ -20,7 +20,7 @@ const History = () => {
       paymentType: "one",
       cryptoAmount: "0.234",
       fiatAmount: "$200",
-      wallet: "ffgkkrkmmmr4mmg",
+      wallet: "ffgkkrkmmmr4mmgffgkkrk",
       status: "Approved",
     },
     {
@@ -68,12 +68,84 @@ const History = () => {
       wallet: "yytejttyjbkjhje",
       status: "Declined",
     },
+    {
+      id: 3,
+      date: "08/06/2020",
+      paymentType: "Three",
+      cryptoAmount: "0.634",
+      fiatAmount: "$30",
+      wallet: "yytejttyjbkjhje",
+      status: "Approved",
+    },
+    {
+      id: 4,
+      date: "08/06/2020",
+      paymentType: "Four",
+      cryptoAmount: "0.634",
+      fiatAmount: "$730",
+      wallet: "yytejttyjbkjhje",
+      status: "Declined",
+    },
+    {
+      id: 5,
+      date: "08/06/2020",
+      paymentType: "Five",
+      cryptoAmount: "0.634",
+      fiatAmount: "$730",
+      wallet: "yytejttyjbkjhje",
+      status: "Declined",
+    },
+    {
+      id: 6,
+      date: "08/06/2020",
+      paymentType: "Six",
+      cryptoAmount: "0.0234",
+      fiatAmount: "$730",
+      wallet: "yytejttyjbkjhje",
+      status: "Declined",
+    },
+    {
+      id: 3,
+      date: "08/06/2020",
+      paymentType: "Three",
+      cryptoAmount: "0.634",
+      fiatAmount: "$30",
+      wallet: "yytejttyjbkjhje",
+      status: "Approved",
+    },
+    {
+      id: 4,
+      date: "08/06/2020",
+      paymentType: "Four",
+      cryptoAmount: "0.634",
+      fiatAmount: "$730",
+      wallet: "yytejttyjbkjhje",
+      status: "Declined",
+    },
+    {
+      id: 5,
+      date: "08/06/2020",
+      paymentType: "Five",
+      cryptoAmount: "0.634",
+      fiatAmount: "$730",
+      wallet: "yytejttyjbkjhje",
+      status: "Declined",
+    },
+    {
+      id: 6,
+      date: "08/06/2020",
+      paymentType: "Six",
+      cryptoAmount: "0.0234",
+      fiatAmount: "$730",
+      wallet: "yytejttyjbkjhje",
+      status: "Declined",
+    },
   ];
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 2;
+  const itemsPerPage = 4;
   // console.log(currentItems)
 
   useEffect(() => {
@@ -92,12 +164,54 @@ const History = () => {
     setItemOffset(newOffset);
   };
 
+  const [search, setSearch] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [dropdown, setDropdown] = useState("");
+  const [filteredData, setFilteredData] = useState([])
+ 
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleDropDown = (e) => {
+    setDropdown(e.target.value);
+  };
+
+  const handleTo = (e) => {
+    setTo(e.target.value);
+  };
+
+  const handleFrom = (e) => {
+    setFrom(e.target.value);
+  };
+
+  // console.log(currentItems)
+
+
+  useEffect(() => {
+    // const filtered = currentItems?.filter((item) => search ? item.status.toLowerCase() === search.toLowerCase() : item);
+    // // console.log(filtered)
+    // setFilteredData(filtered)
+
+    
+    const filtered = currentItems?.filter((item) => {
+      return item.status.toLowerCase() === "app"
+    })
+
+    console.log(filtered);
+
+  }, [search, to, from])
+
+  
+
   function Items() {
     return (
       <>
-        {console.log(currentItems)}
+        {/* {console.log(filteredData)} */}
         {currentItems &&
-          currentItems.map((row, index) => (
+          currentItems?.map((row, index) => (
             <TableRow
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -131,10 +245,17 @@ const History = () => {
 
           <Box className="history-header-search">
             <Box>
-              <input className="form-control" placeholder="Search" />
+              <input
+                value={search}
+                onChange={handleSearch}
+                className="form-control"
+                placeholder="Search"
+              />
             </Box>
             <Box>
               <input
+                value={to}
+                onChange={handleTo}
                 type="text"
                 onFocus={(e) => (e.target.type = "date")}
                 className="form-control"
@@ -144,6 +265,8 @@ const History = () => {
             </Box>
             <Box>
               <input
+                value={from}
+                onChange={handleFrom}
                 type="text"
                 className="form-control"
                 placeholder="To"
@@ -152,7 +275,11 @@ const History = () => {
               />
             </Box>
             <Box>
-              <select className="form-control">
+              <select
+                value={dropdown}
+                onChange={handleDropDown}
+                className="form-control"
+              >
                 <option>Filter by</option>
                 <option>Approved</option>
                 <option>Pending</option>
@@ -164,7 +291,6 @@ const History = () => {
 
         <Box style={{ marginTop: "4rem" }} className="h-table">
           <Box
-            className="shadow"
             style={{
               background: "#fff",
               padding: "2.4rem",
@@ -202,7 +328,6 @@ const History = () => {
             nextClassName={"next-page"}
             nextLinkClassName={"next-link-class"}
             previousLinkClassName={"prev-link-class"}
-
           />
         </Box>
       </Container>

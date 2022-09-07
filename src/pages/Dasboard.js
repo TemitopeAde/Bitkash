@@ -286,7 +286,7 @@ const Dashboard = () => {
                     </Box>
                   </Box>
 
-                  <Box>
+                  <Box  sx={{paddingBottom: '5rem'}}>
                     <Box className="chart-flex-container">
                       <Box className="chart-container">
                         <Stack>

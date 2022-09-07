@@ -8,6 +8,7 @@ import {
   SIGNUP_SUCCESS,
   SHOW_LOADER,
   HIDE_LOADER,
+  SEND_ID
 } from "../action-creators/types";
 
 const initialState = {
@@ -27,6 +28,10 @@ const authReducer = (state = initialState, action) => {
       loading: false,
       token: payload.token,
     };
+  }
+
+  if (action.type === SEND_ID) {
+    return state
   }
 
   if (action.type === SIGNUP_FAIL) {

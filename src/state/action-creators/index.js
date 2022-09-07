@@ -153,12 +153,14 @@ export const recoverPassword = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
+      console.log(data)
       dispatch({
         type: RECOVER_PASSWORD,
         payload: data.data,
       });
     })
     .catch((errors) => {
+      console.log(errors)
       dispatch({
         type: RECOVER_PASSWORD_FAILED,
         payload: errors.data,
@@ -209,3 +211,35 @@ export const submitNewPassword = (data) => async (dispatch) => {
       });
     });
 };
+
+export const submitOTP = (data) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+  const url = "https://bitkash.herokuapp.com/user/verify-phone";
+  const { code, uid } = data;
+  
+}
+
+
+export const sendOtp = (uid) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+
+  const url = "https://bitkash.herokuapp.com/user/user/resend-code";
+  const body = JSON.stringify({uid})
+  
+  await axios.post(url, body, config)
+    .then((data) => {
+      console.log(data)
+    })
+    .catch((errors) => {
+      console.log(errors)
+    })
+}
+

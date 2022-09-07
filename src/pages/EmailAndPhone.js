@@ -1,12 +1,16 @@
 import { Box } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import OTPInput, { ResendOTP } from "otp-input-react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { sendOtp } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
 import "./emailandphone.css";
+
 
 const animations = {
   initial: { opacity: 0 },
@@ -16,6 +20,14 @@ const animations = {
 
 const EmailAndPhone = ({ children }) => {
   const [OTP, setOTP] = useState("");
+  const { uid } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(sendOtp(uid))
+  }, [])
+
+
   if (window.innerWidth > 820) {
     return (
       <motion.div
