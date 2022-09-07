@@ -77,6 +77,7 @@ export const register = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
+      console.log(data)
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
@@ -213,14 +214,18 @@ export const submitNewPassword = (data) => async (dispatch) => {
 };
 
 export const submitOTP = (data) => async (dispatch) => {
+  
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   }
+
   const url = "https://bitkash.herokuapp.com/user/verify-phone";
   const { code, uid } = data;
   
+  
+
 }
 
 
@@ -231,7 +236,7 @@ export const sendOtp = (uid) => async (dispatch) => {
     },
   }
 
-  const url = "https://bitkash.herokuapp.com/user/user/resend-code";
+  const url = "https://bitkash.herokuapp.com/user/resend-code";
   const body = JSON.stringify({uid})
   
   await axios.post(url, body, config)
