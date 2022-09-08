@@ -62,7 +62,7 @@ const Register = () => {
     streetAddress,
     terms,
   } = formData;
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(formData));
@@ -154,7 +154,6 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-
   if (loader) {
     return <Spinner />;
   }
@@ -170,8 +169,6 @@ const Register = () => {
         <Box className="register-page web-register-page">
           <Box position="relative">
             <Box className="register-sidebar">
-              
-
               <Box className="register-title">
                 <h3>Sign up</h3>
               </Box>
@@ -233,7 +230,8 @@ const Register = () => {
     return <Navigate to="/email-verification" />;
   }
 
-  if (width <= 820 && !isAuthenticated) {
+  if (width <= 820) {
+    console.log("er")
     return (
       <Box>
         <Helmet>
@@ -291,6 +289,8 @@ const Register = () => {
       </Box>
     );
   }
+
+  
 };
 
 export default Register;
