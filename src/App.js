@@ -38,6 +38,8 @@ import PasswordResetLink from "./pages/PasswordResetLink";
 import Activities from "./pages/Activities";
 import Banks from "./pages/Banks";
 import Logout from "./pages/Logout";
+import ChangeEmail from "./pages/ChangeEmail";
+import ChangePhoneNumber from "./pages/ChangeNumber";
 
 function App() {
   const state = useSelector((state) => state);
@@ -90,6 +92,8 @@ function App() {
         <Route path="/activities" element={<Activities />} />
         <Route path="/banks" element={<Banks />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/change-email" element={<ChangeEmail />} />
+        <Route path="/change-phone" element={<ChangePhoneNumber />} />
       </Routes>
     </AnimatePresence>
   );

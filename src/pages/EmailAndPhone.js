@@ -23,10 +23,11 @@ const EmailAndPhone = ({ children }) => {
   const { uid } = useParams();
   const dispatch = useDispatch();
 
+  console.log(uid)
+
   useEffect(() => {
     dispatch(sendOtp(uid))
   }, [])
-
 
   if (window.innerWidth > 820) {
     return (
@@ -71,7 +72,7 @@ const EmailAndPhone = ({ children }) => {
                         value={OTP}
                         onChange={setOTP}
                         autoFocus
-                        OTPLength={4}
+                        OTPLength={3}
                         otpType="number"
                         disabled={false}
                         secure

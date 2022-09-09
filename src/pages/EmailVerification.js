@@ -14,6 +14,10 @@ const animations = {
 };
 
 const EmailVerification = () => {
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  const {email} = userData
+
+  
   return (
     <motion.div
       variants={animations}
@@ -62,7 +66,7 @@ const EmailVerification = () => {
                   style={{ color: "#ff9924", textDecoration: "none" }}
                   href="mailto:bitkash@gmail.com"
                 >
-                  bitkash@gmail.com
+                  {email}
                 </a>{" "}
               </p>
               <p
