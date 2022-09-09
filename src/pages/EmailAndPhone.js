@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import OTPInput, { ResendOTP } from "otp-input-react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { sendOtp } from "../state/action-creators";
 
@@ -91,12 +91,13 @@ const EmailAndPhone = ({ children }) => {
                 <div className="mt-5 mb-3">
                   <p>
                     Made a mistake in your phone number or <br /> email address?{" "}
-                    <button
+                    <Link
                       className="color-yellow"
                       style={{ background: "none", border: "none" }}
+                      to="/change-phone"
                     >
                       click here
-                    </button>
+                    </Link>
                   </p>
                 </div>
 
