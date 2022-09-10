@@ -305,7 +305,7 @@ export const changeEmail = (data) => async (dispatch) => {
   });
 
   await axios
-    .post(url, body, config)
+    .put(url, body, config)
     .then((data) => {
       console.log(data)
       dispatch({
