@@ -1,7 +1,6 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
@@ -9,11 +8,10 @@ import { Navigate } from "react-router-dom";
 import Register1 from "./Register-1";
 import Register2 from "./Register-2";
 import "./register.css";
-import logo from "../assets/icons/header-white.png";
 import { register } from "../state/action-creators";
-import { showLoader } from "../state/action-creators";
-import { hideLoader } from "../state/action-creators";
 import Spinner from "../components/Spinner";
+import PhoneInput from "react-phone-input-2";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const animations = {
   initial: { opacity: 0 },
@@ -154,6 +152,13 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = (e) => {
+    e.preventDefault();
+    setPasswordShown(!passwordShown);
+  };
+
   if (loader) {
     return <Spinner />;
   }
@@ -231,6 +236,7 @@ const Register = () => {
   }
 
   if (width <= 820) {
+    console.log("small screen");
     return (
       <Box>
         <Helmet>
@@ -250,35 +256,180 @@ const Register = () => {
                   <form>
                     <Box
                       ref={form1}
-                      className={
-                        form === 1
-                          ? "forms-ref form-one form-toggle"
-                          : "forms-ref form-one"
-                      }
+                      className={form === 1 ? "" : ""}
                       style={{ padding: "3rem 1.5rem" }}
                     >
-                      <Register1
-                        formData={formData}
-                        setFormData={setFormData}
-                        handleChange={handleChange}
-                        setForm={setForm}
-                        phone={phone}
-                      />
+                      <div className="register-name">
+                        <label htmlFor="first-name">First name</label>
+                        <input
+                          name="firstName"
+                          className="form-control"
+                          id="first-name"
+                          type="text"
+                          onChange={handleChange}
+                          value={formData.firstName}
+                        />
+                        <p className="form-error">{errors?.firstName}</p>
+                      </div>
+                      <div className="register-last-name">
+                        <label htmlFor="last-name">Last name</label>
+                        <input
+                          className="form-control"
+                          name="lastName"
+                          id="last-name"
+                          type="text"
+                          onChange={handleChange}
+                          value={formData.lastName}
+                        />
+                        <p className="form-error">{errors?.LastName}</p>
+                      </div>
+                      <div className="register-name">
+                        <label htmlFor="register-email-address">Email</label>
+                        <input
+                          name="email"
+                          className="form-control"
+                          id="register-email-address"
+                          type="email"
+                          onChange={handleChange}
+                          value={formData.email}
+                        />
+                        <p className="form-error">{errors.email}</p>
+                      </div>
+                      <div className="register-last-name">
+                        <label htmlFor="register-phone">Phone</label>
+
+                        <PhoneInput
+                          inputProps={{
+                            name: "phone",
+                          }}
+                          country={"us"}
+                          value={formData.phone}
+                          onChange={(e) =>
+                            setFormData({ ...formData, phone: e })
+                          }
+                        />
+                        <p className="form-error">{errors?.phone}</p>
+                      </div>
+                      <div className="register-name">
+                        <label htmlFor="register-password">Password</label>
+
+                        <Box position="relative">
+                          <input
+                            name="password"
+                            className="form-control"
+                            type={passwordShown ? "text" : "password"}
+                            id="register-password"
+                            onChange={handleChange}
+                            value={formData.password}
+                          />
+                          <p className="form-error">{errors?.password}</p>
+                          <Box
+                            position="absolute"
+                            sx={{ right: "20px", top: "13px" }}
+                          >
+                            {passwordShown ? (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEye />
+                              </button>
+                            ) : (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEyeInvisible />
+                              </button>
+                            )}
+                          </Box>
+                        </Box>
+                      </div>
+                      <div className="register-last-name">
+                        <label htmlFor="regsiter-confirm-password">
+                          Confirm password
+                        </label>
+
+                        <Box position="relative">
+                          <input
+                            name="password2"
+                            className="form-control"
+                            type={passwordShown ? "text" : "password"}
+                            id="regsiter-confirm-password"
+                            value={formData.password2}
+                            onChange={handleChange}
+                          />
+                          <p className="form-error">{errors?.password2}</p>
+                          <Box
+                            position="absolute"
+                            sx={{ right: "20px", top: "7px" }}
+                          >
+                            {passwordShown ? (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEye />
+                              </button>
+                            ) : (
+                              <button
+                                style={{
+                                  background: "none",
+                                  outline: "none",
+                                  border: "none",
+                                }}
+                                onClick={togglePassword}
+                              >
+                                <AiFillEyeInvisible />
+                              </button>
+                            )}
+                          </Box>
+                        </Box>
+                      </div>
+                      <div className="register-name">
+                        <label htmlFor="register-currency">Currency</label>
+                        <select
+                          name="currency"
+                          id="register-currency"
+                          className="form-control"
+                          onChange={handleChange}
+                          value={formData.currency}
+                        >
+                          <option>EUR</option>
+                          <option>USD</option>
+                        </select>
+                        <p className="form-error">{errors?.currency}</p>
+                      </div>
+                      <div className="register-last-name">
+                        <label htmlFor="register-language">
+                          Preffered language
+                        </label>
+                        <select
+                          className="form-control"
+                          name="language"
+                          id="register-language"
+                          onChange={handleChange}
+                          value={formData.language}
+                        >
+                          <option>ENG</option>
+                          <option>FRA</option>
+                        </select>
+                        <p className="form-error">{errors?.language}</p>
+                      </div>
                     </Box>
-                    <Box
-                      ref={form2}
-                      className={
-                        form === 2
-                          ? "forms-ref form-two form-toggle"
-                          : "forms-ref form-two"
-                      }
-                    >
-                      <Register2
-                        handleChange={handleChange}
-                        setForm={setForm}
-                        message={message}
-                      />
-                    </Box>
+                    <Box ref={form2} className={form === 2 ? "" : ""}></Box>
                   </form>
                 </Box>
               </Box>
@@ -288,8 +439,6 @@ const Register = () => {
       </Box>
     );
   }
-
-  
 };
 
 export default Register;

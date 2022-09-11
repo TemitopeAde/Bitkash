@@ -525,6 +525,10 @@ label {
     #form1 {
         background: white;
     }
+
+    #form1 .register-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 
