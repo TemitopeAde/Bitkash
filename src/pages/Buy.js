@@ -364,11 +364,11 @@ const Buy = () => {
         <MobileNav />
 
         <Box>
-          <Box className="dashboard-inner" sx={{paddingTop: '1rem'}}>
+          <Box className="dashboard-inner" sx={{paddingTop: '3rem'}}>
             <Container className="mobile-padding">
               <Box
                 className="overview"
-                style={{ background: "#FFF8EE", borderRadius: "10px" }}
+                style={{ background: "#FFF8EE", borderRadius: "10px", marginTop: '2rem' }}
               >
                 <h4 className="mb-4">
                   You are buying Bitcoin at <span>$24,000</span>{" "}
