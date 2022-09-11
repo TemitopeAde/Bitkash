@@ -358,13 +358,13 @@ const Buy = () => {
     );
   }
 
-  if (window.innerWidth <= 820 && isAuthenticated) {
+  if (window.innerWidth <= 820) {
     return (
       <Box>
         <MobileNav />
 
         <Box>
-          <Box className="dashboard-inner py-5">
+          <Box className="dashboard-inner" sx={{paddingTop: '1rem'}}>
             <Container className="mobile-padding">
               <Box
                 className="overview"

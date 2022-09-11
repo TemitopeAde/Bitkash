@@ -91,6 +91,7 @@
         /* identical to box height, or 562% */
         color: #281F1E;
         transition: .7s;
+        text-decoration: none;
     }
 
     .mobile-navlist a:hover {

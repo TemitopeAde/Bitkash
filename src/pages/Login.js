@@ -11,8 +11,7 @@ import { login } from "../state/action-creators";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../components/Auth/auth.css";
 import Spinner from "../components/Spinner";
-
-
+import MobileNav from "../components/mobileNav";
 
 const animations = {
   initial: { opacity: 0 },
@@ -21,6 +20,7 @@ const animations = {
 };
 
 const Login = ({ children }) => {
+  const width = window.innerWidth;
   const initialValues = {
     email: "adesiyantope2014@gmail.com",
     password: "",
@@ -55,8 +55,7 @@ const Login = ({ children }) => {
   const loading = useSelector((state) => state.loader.loading);
   const message = useSelector((state) => state.auth.message);
 
-  console.log(message)
-  
+  console.log(message);
 
   const togglePassword = (e) => {
     e.preventDefault();
@@ -71,7 +70,7 @@ const Login = ({ children }) => {
     return <Navigate to="/buy" />;
   }
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && width > 820) {
     return (
       <motion.div
         variants={animations}
@@ -88,8 +87,6 @@ const Login = ({ children }) => {
         <Box className="register-page web-register-page">
           <Box position="relative">
             <Box className="register-sidebar">
-              
-
               <Box className="register-title">
                 <h3>Sign up</h3>
               </Box>
@@ -291,6 +288,55 @@ const Login = ({ children }) => {
           </Box>
         </Box>
       </motion.div>
+    );
+  }
+
+  if (!isAuthenticated && width <= 820) {
+    return (
+      <Box>
+        <Helmet>
+          <title>Sign up</title>
+          <meta name="description" content="App Description" />
+          <meta name="theme-color" content="#008f68" />
+          <body class="mobile-background" />
+        </Helmet>
+
+        <Box>
+          <MobileNav />
+        </Box>
+        <div className="mobile-register-page">
+          <Box>
+            <Box>
+              <h3>Sign up</h3>
+
+              <Box>
+                <Box>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                  asperiores enim illo totam quaerat, ratione tenetur dolorem
+                  vitae natus incidunt alias modi quo? Lorem ipsum dolor sit,
+                  amet consectetur adipisicing elit. Ex dignissimos porro,
+                  adipisci necessitatibus officiis corrupti maiores iste
+                  accusantium, provident voluptates voluptatibus magnam esse
+                  architecto expedita, numquam repudiandae. Earum eveniet
+                  debitis necessitatibus ab fugit beatae, alias qui at
+                  recusandae velit saepe labore dolor autem vitae temporibus sed
+                  facere sit. Maxime aperiam recusandae quas consequuntur ut
+                  molestiae quae, animi magni, reprehenderit rerum praesentium
+                  molestias possimus itaque, nobis maiores quia est consequatur
+                  exercitationem eligendi labore saepe? Aliquid molestiae nemo
+                  sunt adipisci iure deleniti vel corporis iusto enim quos,
+                  facilis ex reiciendis voluptates dolorem, minima consectetur
+                  necessitatibus deserunt repellat. Magni rerum laudantium vitae
+                  ducimus officia? Deleniti temporibus nisi aut voluptates,
+                  fugiat nostrum itaque? Eius soluta assumenda cupiditate,
+                  explicabo aspernatur ex eos modi sunt expedita possimus
+                  reiciendis facere.
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </div>
+      </Box>
     );
   }
 };

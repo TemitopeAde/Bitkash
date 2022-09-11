@@ -231,7 +231,6 @@ const Register = () => {
   }
 
   if (width <= 820) {
-    console.log("er")
     return (
       <Box>
         <Helmet>

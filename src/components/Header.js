@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Container, Stack } from "@mui/material";
 import { Box } from "@mui/material";
-import Logo from "../assets/icons/header.png";
 import { Link } from "react-router-dom";
 import hamburger from "../assets/icons/hamburger.png";
 import "./header.css";
@@ -19,7 +18,7 @@ const Header = () => {
           <Link to="/">
             {/* <img style={{ width: "200px" }} src={Logo} alt="Logo" /> */}
             <svg
-              width="267"
+              width="150"
               height="49"
               viewBox="0 0 267 49"
               fill="none"
