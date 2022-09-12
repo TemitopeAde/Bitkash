@@ -493,6 +493,16 @@ label {
 
 
 @media screen and (max-width: 820px) {
+
+    .login-form label {
+        font-family: 'Poppins';
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .mobile-register-page .error-container {
+        top: 65px;
+    }
     .register-sidebar {
         display: none;
     }

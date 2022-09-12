@@ -25,7 +25,6 @@ export const showLoader = () => async (dispatch) => {
   });
 };
 
-showLoader();
 
 export const hideLoader = () => async (dispatch) => {
   console.log("hide");

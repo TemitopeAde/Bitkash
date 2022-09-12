@@ -12,6 +12,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../components/Auth/auth.css";
 import Spinner from "../components/Spinner";
 import MobileNav from "../components/mobileNav";
+import AuthHeader from "../components/AuthHeader";
 
 const animations = {
   initial: { opacity: 0 },
@@ -301,36 +302,198 @@ const Login = ({ children }) => {
           <body class="mobile-background" />
         </Helmet>
 
-        <Box>
-          <MobileNav />
-        </Box>
         <div className="mobile-register-page">
+          <AuthHeader />
           <Box>
-            <Box>
-              <h3>Sign up</h3>
+            <Box mt="8rem">
+              <h3>Login</h3>
 
               <Box>
-                <Box>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  asperiores enim illo totam quaerat, ratione tenetur dolorem
-                  vitae natus incidunt alias modi quo? Lorem ipsum dolor sit,
-                  amet consectetur adipisicing elit. Ex dignissimos porro,
-                  adipisci necessitatibus officiis corrupti maiores iste
-                  accusantium, provident voluptates voluptatibus magnam esse
-                  architecto expedita, numquam repudiandae. Earum eveniet
-                  debitis necessitatibus ab fugit beatae, alias qui at
-                  recusandae velit saepe labore dolor autem vitae temporibus sed
-                  facere sit. Maxime aperiam recusandae quas consequuntur ut
-                  molestiae quae, animi magni, reprehenderit rerum praesentium
-                  molestias possimus itaque, nobis maiores quia est consequatur
-                  exercitationem eligendi labore saepe? Aliquid molestiae nemo
-                  sunt adipisci iure deleniti vel corporis iusto enim quos,
-                  facilis ex reiciendis voluptates dolorem, minima consectetur
-                  necessitatibus deserunt repellat. Magni rerum laudantium vitae
-                  ducimus officia? Deleniti temporibus nisi aut voluptates,
-                  fugiat nostrum itaque? Eius soluta assumenda cupiditate,
-                  explicabo aspernatur ex eos modi sunt expedita possimus
-                  reiciendis facere.
+                <Box
+                  className="mobile-register-form active login-form"
+                  style={{ padding: "3rem 1.5rem" }}
+                >
+                  {message && (
+                    <div className="error-container">
+                      <h6 className="error-message">{message}</h6>
+                    </div>
+                  )}
+                  <Formik
+                    initialValues={initialValues}
+                    validate={validate}
+                    onSubmit={submitForm}
+                  >
+                    {(formik) => {
+                      const {
+                        values,
+                        handleChange,
+                        handleSubmit,
+                        errors,
+                        touched,
+                        handleBlur,
+                        isValid,
+                        dirty,
+                      } = formik;
+                      return (
+                        <Form>
+                          <Box sx={{ marginBottom: "23px" }}>
+                            <label htmlFor="email">Email</label>
+                            <Field
+                              type="email"
+                              // className="form-control"
+                              name="email"
+                              value={values.email}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              className={
+                                errors.email && touched.email
+                                  ? "input-error form-control"
+                                  : "form-control"
+                              }
+                            />
+                            <ErrorMessage
+                              name="email"
+                              component="span"
+                              className="error"
+                            />
+                          </Box>
+                          <label htmlFor="password">Password</label>
+                          <Box position="relative">
+                            <Field
+                              type={passwordShown ? "text" : "password"}
+                              // className="form-control"
+                              name="password"
+                              value={values.password}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              className={
+                                errors.email && touched.email
+                                  ? "input-error form-control"
+                                  : "form-control"
+                              }
+                            />
+                            <ErrorMessage
+                              name="password"
+                              component="span"
+                              className="error"
+                            />
+                            <Box
+                              position="absolute"
+                              sx={{ right: "20px", top: "13px" }}
+                            >
+                              {passwordShown ? (
+                                <button
+                                  style={{
+                                    background: "none",
+                                    outline: "none",
+                                    border: "none",
+                                  }}
+                                  onClick={togglePassword}
+                                >
+                                  <AiFillEye />
+                                </button>
+                              ) : (
+                                <button
+                                  style={{
+                                    background: "none",
+                                    outline: "none",
+                                    border: "none",
+                                  }}
+                                  onClick={togglePassword}
+                                >
+                                  <AiFillEyeInvisible />
+                                </button>
+                              )}
+                            </Box>
+                          </Box>
+
+                          <Box
+                            sx={{
+                              display: "flex",
+
+                              gap: "30%",
+                              marginTop: "23px",
+                            }}
+                            className="login-button-box"
+                          >
+                            <button
+                              onClick={() => handleSubmit}
+                              type="submit"
+                              // className="btn-lg btn btn-wide"
+                              className={
+                                dirty && isValid
+                                  ? "btn login-btn"
+                                  : "login-btn disabled-btn"
+                              }
+                              disabled={!(dirty && isValid)}
+                              style={{ width: "100%" }}
+                            >
+                              Log in
+                            </button>
+                          </Box>
+
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                            }}
+                            mt="1rem"
+                          >
+                            <Box
+                              style={{
+                                flexBasis: "35%",
+                                textAlign: "end",
+                                fontSize: "18px",
+                                lineHeight: "27px",
+                              }}
+                            >
+                              <Box
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: "10px",
+                                  justifyContent: "end",
+                                }}
+                              >
+                                <input
+                                  style={{ transform: "scale(1)" }}
+                                  type="checkbox"
+                                  id="remember-me"
+                                />
+                                <label
+                                  style={{ marginBottom: "0" }}
+                                  htmlFor="remember-me"
+                                >
+                                  Remember me
+                                </label>
+                              </Box>
+                            </Box>
+
+                            <div>
+                              <p style={{ fontSize: "16px", margin: 0 }}>
+                                Don't have an account?{" "}
+                                <Link
+                                  style={{
+                                    fontSize: "16px",
+                                    color: "#FF9924",
+                                    textDecoration: "none",
+                                  }}
+                                  to="/register"
+                                >
+                                  Sign up
+                                </Link>
+                              </p>
+                            </div>
+                          </Box>
+
+                          <Box mt="1rem" sx={{ textAlign: "center" }}>
+                            <p style={{ fontFamily: 'Poppins', fontSize: '12px'}}>Don’t have an account? <Link to="/register" style={{ color: '#ff9924'}}>Sign up</Link></p>
+                          </Box>
+                        </Form>
+                      );
+                    }}
+                  </Formik>
                 </Box>
               </Box>
             </Box>

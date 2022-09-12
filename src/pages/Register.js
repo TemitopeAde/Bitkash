@@ -264,6 +264,11 @@ const Register = () => {
 
               <Box>
                 <Box>
+                  {message && (
+                    <div className="error-container">
+                      <h6 className="error-message">{message}</h6>
+                    </div>
+                  )}
                   <form onSubmit={handleSubmit}>
                     <Box
                       ref={form1}
