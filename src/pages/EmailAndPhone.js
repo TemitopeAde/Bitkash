@@ -72,7 +72,7 @@ const EmailAndPhone = ({ children }) => {
                         value={OTP}
                         onChange={setOTP}
                         autoFocus
-                        OTPLength={3}
+                        OTPLength={4}
                         otpType="number"
                         disabled={false}
                         secure

@@ -256,10 +256,14 @@ const Register = () => {
                   <form>
                     <Box
                       ref={form1}
-                      className={form === 1 ? "" : ""}
+                      className={
+                        form === 1
+                          ? "mobile-register-form"
+                          : "mobile-register-form"
+                      }
                       style={{ padding: "3rem 1.5rem" }}
                     >
-                      <div className="register-name">
+                      <div className="register-name mobile-register-field">
                         <label htmlFor="first-name">First name</label>
                         <input
                           name="firstName"
@@ -271,7 +275,7 @@ const Register = () => {
                         />
                         <p className="form-error">{errors?.firstName}</p>
                       </div>
-                      <div className="register-last-name">
+                      <div className="register-last-name mobile-register-field">
                         <label htmlFor="last-name">Last name</label>
                         <input
                           className="form-control"
@@ -283,7 +287,7 @@ const Register = () => {
                         />
                         <p className="form-error">{errors?.LastName}</p>
                       </div>
-                      <div className="register-name">
+                      <div className="register-name mobile-register-field">
                         <label htmlFor="register-email-address">Email</label>
                         <input
                           name="email"
@@ -295,7 +299,7 @@ const Register = () => {
                         />
                         <p className="form-error">{errors.email}</p>
                       </div>
-                      <div className="register-last-name">
+                      <div className="register-last-name mobile-register-field">
                         <label htmlFor="register-phone">Phone</label>
 
                         <PhoneInput
@@ -310,7 +314,7 @@ const Register = () => {
                         />
                         <p className="form-error">{errors?.phone}</p>
                       </div>
-                      <div className="register-name">
+                      <div className="register-name mobile-register-field">
                         <label htmlFor="register-password">Password</label>
 
                         <Box position="relative">
@@ -353,7 +357,7 @@ const Register = () => {
                           </Box>
                         </Box>
                       </div>
-                      <div className="register-last-name">
+                      <div className="register-last-name mobile-register-field">
                         <label htmlFor="regsiter-confirm-password">
                           Confirm password
                         </label>
@@ -398,7 +402,7 @@ const Register = () => {
                           </Box>
                         </Box>
                       </div>
-                      <div className="register-name">
+                      <div className="register-name mobile-register-field">
                         <label htmlFor="register-currency">Currency</label>
                         <select
                           name="currency"
@@ -412,7 +416,7 @@ const Register = () => {
                         </select>
                         <p className="form-error">{errors?.currency}</p>
                       </div>
-                      <div className="register-last-name">
+                      <div className="register-last-name mobile-register-field">
                         <label htmlFor="register-language">
                           Preffered language
                         </label>
@@ -427,6 +431,26 @@ const Register = () => {
                           <option>FRA</option>
                         </select>
                         <p className="form-error">{errors?.language}</p>
+                      </div>
+                      <div className="register-last-name mobile-register-field">
+                        <button
+                          className="btn"
+                          type="button"
+                          onClick={() => setForm(2)}
+                          style={{
+                            width: "129px",
+                            background: "#FF9924",
+                            height: "40px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: '#000000',
+                            fontWeight: '400', 
+                            fontSize: '14px'
+                          }}
+                        >
+                          Next
+                        </button>
                       </div>
                     </Box>
                     <Box ref={form2} className={form === 2 ? "" : ""}></Box>

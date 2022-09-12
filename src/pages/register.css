@@ -529,6 +529,19 @@ label {
     #form1 .register-row {
         grid-template-columns: 1fr;
     }
+
+    .mobile-register-field {
+        margin-bottom: 2rem;
+    }
+
+    .mobile-register-form {
+        background: #FFFFFF;
+        margin: 0 1rem;
+        margin-bottom: 4rem;
+        margin-top: 3rem;
+        border-radius: 10px;
+    }
+    
 }
 
 
