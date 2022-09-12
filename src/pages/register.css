@@ -51,6 +51,9 @@
 
 .btn-lg {
     width: 100px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .register-sidebar img {
@@ -365,7 +368,15 @@ label {
 .title-auth {
     font-family: 'Montserrat';
     font-size: 20px;
+}
 
+.mobile-register-form.active {
+    display: block;
+    transition: .8s;
+}
+
+.mobile-register-form {
+    display: none;
 }
 
 

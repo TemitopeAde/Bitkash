@@ -20,7 +20,6 @@ const Register2 = ({
 }) => {
   const [isChecked, setIsChecked] = useState(true);
 
-
   const handleChanges = (event) => {
     if (event.target.checked) {
       setIsChecked(!isChecked);
