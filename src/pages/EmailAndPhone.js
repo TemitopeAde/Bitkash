@@ -26,7 +26,7 @@ const EmailAndPhone = ({ children }) => {
   console.log(uid)
 
   useEffect(() => {
-    dispatch(sendOtp(uid))
+    dispatch(sendOtp("631ef3854b0772e27eb8dd31"))
   }, [])
 
   if (window.innerWidth > 820) {

@@ -12,6 +12,7 @@ import { register } from "../state/action-creators";
 import Spinner from "../components/Spinner";
 import PhoneInput from "react-phone-input-2";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import AuthHeader from "../components/AuthHeader";
 
 const animations = {
   initial: { opacity: 0 },
@@ -247,8 +248,9 @@ const Register = () => {
         </Helmet>
 
         <div className="mobile-register-page">
+          <AuthHeader />
           <Box>
-            <Box>
+            <Box mt="8rem">
               <h3>Sign up</h3>
 
               <Box>
