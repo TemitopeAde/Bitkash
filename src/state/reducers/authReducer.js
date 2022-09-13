@@ -11,7 +11,9 @@ import {
   SEND_ID,
   RECOVER_PASSWORD,
   RECOVER_PASSWORD_FAILED,
-  SUBMIT_NEW_PASSWORD_FAILED
+  SUBMIT_NEW_PASSWORD_FAILED,
+  SUBMIT_NEW_PASSWORD_SUCCESS,
+  PHONE_NUMBER_CHANGED_FAILED
 } from "../action-creators/types";
 
 const initialState = {
@@ -95,6 +97,18 @@ const authReducer = (state = initialState, action) => {
   if (action.type === SUBMIT_NEW_PASSWORD_FAILED) {
     const {payload} = action;
 
+    return {
+      ...state,
+      message: payload
+    }
+  }
+
+  if (action.type === SUBMIT_NEW_PASSWORD_SUCCESS) {
+    return state
+  }
+
+  if (action.type ===PHONE_NUMBER_CHANGED_FAILED) {
+    const {payload} = action;
     return {
       ...state,
       message: payload

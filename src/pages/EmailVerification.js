@@ -86,7 +86,7 @@ const EmailVerification = () => {
                 Made a mistake in your address?{" "}
                 <Link
                   style={{ color: "#ff9924", textDecoration: "none" }}
-                  to="/change-email"
+                  to="/update-email"
                 >
                   click here
                 </Link>

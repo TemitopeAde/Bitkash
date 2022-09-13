@@ -47,34 +47,7 @@ const Register1 = ({
               <Stack>
                 <p className="step-one mb-3">Step 1 of 2</p>
                 <p className="step-one-title mb-5">Personal Details</p>
-                {/* <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                  ab dicta numquam veniam odio pariatur deserunt, modi porro
-                  quia amet sit. Sed, velit veniam ratione consequatur
-                  asperiores voluptate nihil fuga nulla officiis tempora
-                  laboriosam suscipit mollitia corporis modi quis eligendi quod,
-                  illo cupiditate temporibus iure et! Omnis cupiditate aut
-                  doloremque reprehenderit earum expedita odit nesciunt non
-                  fugit magni. Animi ratione a voluptatem et commodi
-                  consequuntur consequatur hic, explicabo eos assumenda ducimus
-                  facere cumque veritatis veniam dolores cupiditate amet omnis
-                  rerum qui architecto praesentium, officia quos molestiae!
-                  Voluptates atque, optio ipsam quas totam vitae ipsum aut
-                  aliquam earum illo. Ipsa eligendi modi autem adipisci! Ab
-                  laboriosam ea impedit sed distinctio eum nostrum, saepe
-                  repudiandae esse quidem amet optio asperiores odio laudantium
-                  facere eius doloribus. Nisi quisquam, corrupti ea
-                  necessitatibus ex aut praesentium. Iure eum quo quisquam
-                  commodi illo delectus nostrum unde quis explicabo!
-                  Necessitatibus minus quo esse non suscipit eos ut, dignissimos
-                  laborum nobis iste perspiciatis ipsa tempora quibusdam fugit
-                  et nihil magni veniam? Quo necessitatibus autem, rerum dolor
-                  cum exercitationem doloremque fugiat ipsa eius nostrum labore
-                  temporibus, ut voluptate, aspernatur quisquam. Incidunt atque
-                  magni ab earum commodi provident quibusdam repudiandae
-                  adipisci perspiciatis labore, corporis dolorem debitis. Magnam
-                  labore voluptas ab!
-                </p> */}
+                
               </Stack>
 
               <Box className="register-form-grid">

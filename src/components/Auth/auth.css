@@ -40,6 +40,14 @@
     border: none;
     outline: none;
     color: #000000;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: #000000;
 }
 
 .disabled-btn {
@@ -263,7 +271,7 @@ h3 {
 
     .radio-input.radio-form-input {
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         margin-bottom: .8rem;
     }
 
@@ -279,14 +287,14 @@ h3 {
         left: 20px;
         top: 11.5px;
     }
-    
+
     .form-input.radio-input input[type="radio"]:checked+label:after {
         left: 23px;
     }
 
     .signup-grid .form-inputs {
-        grid-template-columns:  1fr;
-        
+        grid-template-columns: 1fr;
+
     }
 }
 

@@ -92,8 +92,8 @@ function App() {
         <Route path="/activities" element={<Activities />} />
         <Route path="/banks" element={<Banks />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/change-email" element={<ChangeEmail />} />
-        <Route path="/change-phone" element={<ChangePhoneNumber />} />
+        <Route path="/update-email" element={<ChangeEmail />} />
+        <Route path="/update-phone" element={<ChangePhoneNumber />} />
       </Routes>
     </AnimatePresence>
   );

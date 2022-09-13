@@ -279,6 +279,15 @@ const Register = () => {
                       }
                       style={{ padding: "3rem 1.5rem" }}
                     >
+                      <Stack
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
+                        <p className="step-one-title mb-5">Personal Details</p>
+                        <p className="step-one mb-3">Step 1 of 2</p>
+                      </Stack>
+
                       <div className="register-name mobile-register-field">
                         <label htmlFor="first-name">First name</label>
                         <input
@@ -478,6 +487,14 @@ const Register = () => {
                       }
                       style={{ padding: "3rem 1.5rem" }}
                     >
+                      <Stack
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
+                        <p className="step-one-title mb-5">Address Info</p>
+                        <p className="step-one mb-3">Step 2 of 2</p>
+                      </Stack>
                       <div className="register-name  mobile-register-field">
                         <label htmlFor="country">Country</label>
                         <select
@@ -764,7 +781,7 @@ const Register = () => {
                       </div>
                       <div className="register-city  mobile-register-field">
                         <label
-                          style={{ fontWeight: "bold" }}
+                          
                           htmlFor="register-city"
                         >
                           City

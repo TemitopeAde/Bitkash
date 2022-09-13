@@ -77,7 +77,7 @@ const Login = ({ children }) => {
         variants={animations}
         initial="initial"
         animate="animate"
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.3 }}
       >
         <Helmet>
           <title>Login</title>
@@ -262,7 +262,7 @@ const Login = ({ children }) => {
                                 </Box>
                               </Box>
 
-                              <div style={{marginTop: '1rem'}}>
+                              <div style={{ marginTop: "1rem" }}>
                                 <Link
                                   to="/recover-password"
                                   style={{
@@ -307,7 +307,12 @@ const Login = ({ children }) => {
 
   if (!isAuthenticated && width <= 820) {
     return (
-      <Box>
+      <motion.div
+        variants={animations}
+        initial="initial"
+        animate="animate"
+        transition={{ duration: 0.3 }}
+      >
         <Helmet>
           <title>Sign up</title>
           <meta name="description" content="App Description" />
@@ -527,7 +532,7 @@ const Login = ({ children }) => {
             </Box>
           </Box>
         </div>
-      </Box>
+      </motion.div>
     );
   }
 };

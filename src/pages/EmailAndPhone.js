@@ -94,7 +94,7 @@ const EmailAndPhone = ({ children }) => {
                     <Link
                       className="color-yellow"
                       style={{ background: "none", border: "none" }}
-                      to="/change-phone"
+                      to="/update-phone"
                     >
                       click here
                     </Link>

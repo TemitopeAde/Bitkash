@@ -318,11 +318,11 @@ export const changeEmail = (data) => async (dispatch) => {
         payload: data,
       });
     })
-    .catch((error) => {
-      console.log(error)
+    .catch((errors) => {
+      console.log(errors)
       dispatch({
         type: PHONE_NUMBER_CHANGED_FAILED,
-        payload: error,
+        payload: errors.response.data.message
       });
     })
     .then(() => {
