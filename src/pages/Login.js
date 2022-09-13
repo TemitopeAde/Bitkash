@@ -452,8 +452,7 @@ const Login = ({ children }) => {
                                 style={{
                                   display: "flex",
                                   alignItems: "center",
-                                  gap: "10px",
-                                  justifyContent: "end",
+                                  gap: "2px",
                                 }}
                               >
                                 <input
@@ -462,7 +461,10 @@ const Login = ({ children }) => {
                                   id="remember-me"
                                 />
                                 <label
-                                  style={{ marginBottom: "0" }}
+                                  style={{
+                                    marginBottom: "0",
+                                    fontSize: "12px",
+                                  }}
                                   htmlFor="remember-me"
                                 >
                                   Remember me
@@ -471,24 +473,37 @@ const Login = ({ children }) => {
                             </Box>
 
                             <div>
-                              <p style={{ fontSize: "16px", margin: 0 }}>
-                                Don't have an account?{" "}
-                                <Link
-                                  style={{
-                                    fontSize: "16px",
-                                    color: "#FF9924",
-                                    textDecoration: "none",
-                                  }}
-                                  to="/register"
-                                >
-                                  Sign up
-                                </Link>
-                              </p>
+                              <Link
+                                to="/recover-password"
+                                style={{
+                                  color: "#ff9924",
+                                  fontSize: "12px",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                Forgot password?
+                              </Link>
                             </div>
                           </Box>
 
                           <Box mt="1rem" sx={{ textAlign: "center" }}>
-                            <p style={{ fontFamily: 'Poppins', fontSize: '12px'}}>Don’t have an account? <Link to="/register" style={{ color: '#ff9924'}}>Sign up</Link></p>
+                            <p
+                              style={{
+                                fontFamily: "Poppins",
+                                fontSize: "12px",
+                              }}
+                            >
+                              Don’t have an account?{" "}
+                              <Link
+                                to="/register"
+                                style={{
+                                  color: "#ff9924",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                Sign up
+                              </Link>
+                            </p>
                           </Box>
                         </Form>
                       );
