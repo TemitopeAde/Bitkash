@@ -164,10 +164,10 @@ export const recoverPassword = (data) => async (dispatch) => {
       });
     })
     .catch((errors) => {
-      console.log(errors);
+      // console.log(errors);
       dispatch({
         type: RECOVER_PASSWORD_FAILED,
-        payload: errors.data,
+        payload: errors.response.data.message
       });
     })
     .then(() => {

@@ -262,7 +262,20 @@ const Login = ({ children }) => {
                                 </Box>
                               </Box>
 
-                              <div className="mt-5">
+                              <div style={{marginTop: '1rem'}}>
+                                <Link
+                                  to="/recover-password"
+                                  style={{
+                                    color: "#ff9924",
+                                    fontSize: "18px",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  Forgot password?
+                                </Link>
+                              </div>
+
+                              <div className="mt-5 text-center">
                                 <p style={{ fontSize: "16px" }}>
                                   Don't have an account?{" "}
                                   <Link
