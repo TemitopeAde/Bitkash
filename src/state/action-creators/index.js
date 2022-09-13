@@ -206,7 +206,7 @@ export const submitNewPassword = (data) => async (dispatch) => {
       console.log(errors);
       dispatch({
         type: SUBMIT_NEW_PASSWORD_FAILED,
-        payload: errors.data,
+        payload: errors.response.data.message
       });
     })
     .then(() => {

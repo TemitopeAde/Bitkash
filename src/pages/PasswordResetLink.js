@@ -132,8 +132,8 @@ const PasswordResetLink = () => {
                       flexDirection: "column",
                       gap: "1rem",
                       textAlign: "center",
-                      fontFamily: 'Poppins',
-                      fontWeight: '500'
+                      fontFamily: "Poppins",
+                      fontWeight: "500",
                     }}
                   >
                     <Box>
@@ -150,7 +150,7 @@ const PasswordResetLink = () => {
                         />
                       </svg>
                     </Box>
-                    
+
                     <p
                       style={{
                         fontWeight: "16px",
@@ -178,15 +178,17 @@ const PasswordResetLink = () => {
                     >
                       Back to{" "}
                       <Link
-                        style={{ color: "#ff9924", textDecoration: "none", fontWeight: '400' }}
+                        style={{
+                          color: "#ff9924",
+                          textDecoration: "none",
+                          fontWeight: "400",
+                        }}
                         to="/login"
                       >
                         login
                       </Link>
                     </p>
                   </Box>
-
-                  
                 </Box>
               </Box>
             </Box>

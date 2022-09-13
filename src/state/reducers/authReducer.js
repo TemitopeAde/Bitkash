@@ -10,7 +10,8 @@ import {
   HIDE_LOADER,
   SEND_ID,
   RECOVER_PASSWORD,
-  RECOVER_PASSWORD_FAILED
+  RECOVER_PASSWORD_FAILED,
+  SUBMIT_NEW_PASSWORD_FAILED
 } from "../action-creators/types";
 
 const initialState = {
@@ -85,13 +86,19 @@ const authReducer = (state = initialState, action) => {
 
   if (action.type === RECOVER_PASSWORD_FAILED) {
     const { payload } = action;
-    console.log('payload', payload)
+    return {
+      ...state,
+      message: payload
+    } 
+  }
+
+  if (action.type === SUBMIT_NEW_PASSWORD_FAILED) {
+    const {payload} = action;
 
     return {
       ...state,
       message: payload
     }
-    
   }
 
   return state;

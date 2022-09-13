@@ -494,6 +494,11 @@ label {
 
 @media screen and (max-width: 820px) {
 
+    .mobile-register-form label {
+        font-family: 'Poppins';
+        font-weight: 500;
+    }
+
     .login-form label {
         font-family: 'Poppins';
         font-size: 16px;
