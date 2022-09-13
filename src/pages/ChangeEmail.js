@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
@@ -63,7 +63,7 @@ const ChangeEmail = () => {
         variants={animations}
         initial="initial"
         animate="animate"
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.3 }}
       >
         <Helmet>
           <title>Change Email</title>
