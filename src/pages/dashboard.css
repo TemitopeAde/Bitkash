@@ -14,6 +14,24 @@
     font-family: 'Poppins';
 }
 
+.splide-item {
+    margin-top: 2rem;
+}
+
+.mobile-nav-flex p {
+    margin: 0;
+    color: inherit;
+}
+
+.mobile-nav-flex a {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Poppins';
+    gap: 7px;
+}
+
+
+
 .dashboard-content {
     padding-left: 300px;
     display: flex;

@@ -32,7 +32,15 @@ const MobileNav = () => {
       </Box>
       <Box className="mobile-nav-fixed">
         <Box className="mobile-nav-flex">
-          <button>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
             <svg
               width="22"
               height="22"
@@ -65,8 +73,18 @@ const MobileNav = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-          <button>
+
+            <p>Dashboard</p>
+          </Link>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
             <svg
               width="20"
               height="20"
@@ -112,8 +130,18 @@ const MobileNav = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-          <button>
+
+            <p>Buy</p>
+          </Link>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
             <svg
               width="20"
               height="20"
@@ -166,8 +194,18 @@ const MobileNav = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-          <button>
+
+            <p>Transactions</p>
+          </Link>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
             <svg
               width="20"
               height="20"
@@ -218,8 +256,18 @@ const MobileNav = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-          <button>
+
+            <p>Banks</p>
+          </Link>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
             <svg
               width="20"
               height="24"
@@ -252,7 +300,9 @@ const MobileNav = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
+
+            <p>Activities</p>
+          </Link>
         </Box>
       </Box>
     </Box>

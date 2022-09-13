@@ -364,14 +364,19 @@ const Buy = () => {
         <MobileNav />
 
         <Box>
-          <Box className="dashboard-inner" sx={{paddingTop: '3rem'}}>
+          <Box className="dashboard-inner" sx={{ paddingTop: "3rem" }}>
             <Container className="mobile-padding">
               <Box
                 className="overview"
-                style={{ background: "#FFF8EE", borderRadius: "10px", marginTop: '2rem' }}
+                style={{
+                  background: "#FFF8EE",
+                  borderRadius: "10px",
+                  marginTop: "2rem",
+                }}
               >
                 <h4 className="mb-4">
-                  You are buying Bitcoin at <span style={{ color: '#ff9924'}}>$24,000</span>{" "}
+                  You are buying Bitcoin at{" "}
+                  <span style={{ color: "#ff9924" }}>$24,000</span>{" "}
                 </h4>
                 <p>The Bitcoin exchange rate will refresh in 10 minutes</p>
               </Box>
@@ -467,6 +472,7 @@ const Buy = () => {
       </Box>
     );
   }
+  
 };
 
 export default Buy;
