@@ -54,7 +54,7 @@ function App() {
         {/* <Route element={<ProtectedRoute />}> */}
 
         {/* </Route> */}
-        <Route path="/buy" element={<Buy />} />
+        <Route path="/buy-bitcoin" element={<Buy />} />
         <Route path="/transaction-history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />

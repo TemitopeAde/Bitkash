@@ -15,7 +15,6 @@ import { useState } from "react";
 const Buy = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-
   const [bitcoin, setBitcoin] = useState(null);
   const [values, setValues] = useState();
   const [equivalent, setEquivalent] = useState(0);
@@ -24,7 +23,7 @@ const Buy = () => {
 
   const initialValues = {
     price: "",
-    currency: "usd",
+    currency: "",
     wallet: "",
     toggle: false,
   };
@@ -32,12 +31,12 @@ const Buy = () => {
   const submitForm = (values) => {
     console.log(values);
     const payload = {
-      walletAdress : values.wallet,
-      price : values.price,
-      currency : values.currency
-    }
+      walletAdress: values.wallet,
+      price: values.price,
+      currency: values.currency,
+    };
 
-    console.log(payload)
+    console.log(payload);
   };
 
   const validate = (values) => {
@@ -72,7 +71,10 @@ const Buy = () => {
       axios
         .get(url)
         .then((data) => {
-          setBitcoin(data.data.market_data.current_price.usd + data.data.market_data.current_price.usd * 0.06)
+          setBitcoin(
+            data.data.market_data.current_price.usd +
+              data.data.market_data.current_price.usd * 0.06
+          );
           setUsd(
             data.data.market_data.current_price.usd +
               data.data.market_data.current_price.usd * 0.06
@@ -282,9 +284,9 @@ const Buy = () => {
                                     : "form-control"
                                 }
                               >
-                                {/* <option disabled value="">
+                                <option disabled value="">
                                   Select a currency
-                                </option> */}
+                                </option>
                                 <option>USD</option>
                                 <option>EUR</option>
                               </Field>
@@ -429,10 +431,14 @@ const Buy = () => {
               >
                 <h4 className="mb-4">
                   You are buying Bitcoin at{" "}
-                  <span style={{ color: "#ff9924" }}>$24,000</span>{" "}
+                  <span style={{ color: "#ff9924" }}>${bitcoin}</span>{" "}
                 </h4>
                 <p>The Bitcoin exchange rate will refresh in 10 minutes</p>
               </Box>
+
+
+
+              
               <form>
                 <Box>
                   <Box className="dashboard-form mobile">
@@ -441,6 +447,9 @@ const Buy = () => {
                         Currency
                       </label>
                       <select id="currency-dashboard" className="form-control">
+                        <option disabled value="">
+                          Select a currency
+                        </option>
                         <option>USD</option>
                         <option>EUR</option>
                       </select>

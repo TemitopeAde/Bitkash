@@ -53,7 +53,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/buy">
+              <Link to="/buy-bitcoin">
                 <svg
                   width="20"
                   height="20"
