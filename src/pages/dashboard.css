@@ -47,6 +47,10 @@
     bottom: 0;
 }
 
+.disabled-btns {
+    opacity: .6;
+}
+
 .wallet-address-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;

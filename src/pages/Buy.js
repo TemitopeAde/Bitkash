@@ -374,10 +374,6 @@ const Buy = () => {
                               <h6 className="checkbox-text">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Animi libero laboriosam neque
-                                ipsam, voluptate omnis non. Lorem ipsum dolor
-                                sit amet consectetur adipisicing elit. Animi
-                                libero laboriosam neque ipsam, voluptate omnis
-                                non.
                               </h6>
                             </Stack>
                             <ErrorMessage
@@ -436,98 +432,162 @@ const Buy = () => {
                 <p>The Bitcoin exchange rate will refresh in 10 minutes</p>
               </Box>
 
-
-
-              
-              <form>
-                <Box>
-                  <Box className="dashboard-form mobile">
-                    <Box>
-                      <label className="mb-3" htmlFor="currency-dashboard">
-                        Currency
-                      </label>
-                      <select id="currency-dashboard" className="form-control">
-                        <option disabled value="">
-                          Select a currency
-                        </option>
-                        <option>USD</option>
-                        <option>EUR</option>
-                      </select>
-                    </Box>
-
-                    <Stack
-                      spacing={2}
-                      direction="row"
-                      justifyContent="space-between"
-                      className="mt-5"
-                    >
+              <Formik
+                initialValues={initialValues}
+                validate={validate}
+                onSubmit={submitForm}
+              >
+                {(formik) => {
+                  const {
+                    values,
+                    handleChange,
+                    handleSubmit,
+                    errors,
+                    touched,
+                    handleBlur,
+                    isValid,
+                    dirty,
+                  } = formik;
+                  return (
+                    <Form>
                       <Box>
-                        <label className="mb-3" htmlFor="dashboard-price">
-                          Price
-                        </label>
-                        <input
-                          type="number"
-                          id="dashboard-price"
-                          className="form-control"
-                        />
+                        <Box className="dashboard-form mobile">
+                          <Box>
+                            <label htmlFor="dashboard-price">Currency</label>
+                            <Field
+                              as="select"
+                              name="currency"
+                              onBlur={handleBlur}
+                              className={
+                                errors.currency && touched.currency
+                                  ? "input-error form-control"
+                                  : "form-control"
+                              }
+                            >
+                              <option disabled value="">
+                                Select a currency
+                              </option>
+                              <option>USD</option>
+                              <option>EUR</option>
+                            </Field>
+                            <ErrorMessage
+                              name="currency"
+                              component="span"
+                              className="error"
+                            />
+                          </Box>
+
+                          <Stack
+                            spacing={2}
+                            direction="row"
+                            justifyContent="space-between"
+                            className="mt-5"
+                          >
+                            <Box>
+                              <label htmlFor="dashboard-price">Price</label>
+                              <Field
+                                type="number"
+                                name="price"
+                                value={values.price}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={
+                                  errors.price && touched.price
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="password"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="dashboard-price">
+                                Bitcoin Equivalent
+                              </label>
+                              <Field
+                                type="number"
+                                name="bitcoin"
+                                readOnly
+                                value={equivalent}
+                                onBlur={handleBlur}
+                                className={
+                                  errors.bitcoin && touched.bitcoin
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="password"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                          </Stack>
+                        </Box>
+
+                        <Box className="mb-5 mt-5 dashboard-form-single">
+                          <label htmlFor="wallet-adresss">
+                            Bitcoin Wallet Addresss
+                          </label>
+                          <Field
+                            type="text"
+                            name="wallet"
+                            value={values.wallet}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className={
+                              errors.wallet && touched.wallet
+                                ? "input-error form-control"
+                                : "form-control"
+                            }
+                          />
+                          <ErrorMessage
+                            name="wallet"
+                            component="span"
+                            className="error"
+                          />
+                        </Box>
+
+                        <Box className="mb-5 mt-5 dashboard-form-single">
+                          <Stack
+                            className="mb-4"
+                            alignItems="center"
+                            direction="row"
+                            spacing={5}
+                          >
+                            <Field name="toggle" type="checkbox" />
+                            <h6 className="checkbox-text">
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit
+                            </h6>
+                          </Stack>
+                        </Box>
+
+                        <button
+                          onClick={() => handleSubmit}
+                          type="submit"
+                          className={
+                            dirty && isValid
+                              ? "dashboard-buy-mobile"
+                              : "dashboard-buy-mobile disabled-btns"
+                          }
+                          disabled={!(dirty && isValid)}
+                          style={{
+                            flexBasis: "35%",
+                            width: "129px !important",
+                          }}
+                        >
+                          Buy
+                        </button>
                       </Box>
-
-                      <Box>
-                        <label className="mb-3" htmlFor="bitcoin-equ">
-                          Bitcoin Equivalent
-                        </label>
-                        <input
-                          type="number"
-                          className="form-control"
-                          id="bitcoin-equ"
-                        />
-                      </Box>
-                    </Stack>
-                  </Box>
-
-                  <Box
-                    className="mb-5 mt-5 dashboard-form-single"
-                    sx={{ position: "relative" }}
-                  >
-                    <label className="mb-3" htmlFor="wallet-adresss">
-                      Bitcoin Wallet Addresss
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control paste-container"
-                      id="wallet-address"
-                    />
-
-                    {/* <button
-                      style={{ position: "absolute", top: "0" }}
-                      className="paste-btn"
-                      // onClick={handlePaste}
-                    >
-                      Paste
-                    </button> */}
-                  </Box>
-
-                  <Stack
-                    className="mb-4"
-                    alignItems="center"
-                    direction="row"
-                    spacing={5}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{ transform: "scale(1.5)" }}
-                    />
-                    <h6 className="checkbox-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Animi libero laboriosam neque ipsam, voluptate omnis non.
-                    </h6>
-                  </Stack>
-
-                  <button type="submit" className="dashboard-buy-mobile mt-4">
-                    Buy
-                  </button>
-                </Box>
-              </form>
+                    </Form>
+                  );
+                }}
+              </Formik>
             </Container>
           </Box>
         </Box>
