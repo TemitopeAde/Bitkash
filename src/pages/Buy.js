@@ -1,31 +1,48 @@
 import { Box, Container, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
 import MobileNav from "../components/mobileNav";
 import Sidebar from "../components/Sidebar";
+import { useState } from "react";
 
 const Buy = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
+
+  const [bitcoin, setBitcoin] = useState(null);
+  const [values, setValues] = useState();
+  const [equivalent, setEquivalent] = useState(0);
+  const [usd, setUsd] = useState();
+  const [euro, setEuro] = useState();
+
   const initialValues = {
-    bitcoin: "567",
     price: "",
-    currency: "",
+    currency: "usd",
     wallet: "",
     toggle: false,
   };
 
   const submitForm = (values) => {
     console.log(values);
+    const payload = {
+      walletAdress : values.wallet,
+      price : values.price,
+      currency : values.currency
+    }
+
+    console.log(payload)
   };
 
   const validate = (values) => {
+    setValues(values);
+    console.log(values);
     let errors = {};
 
     if (values.toggle === false) {
@@ -48,6 +65,43 @@ const Buy = () => {
 
     return errors;
   };
+
+  useEffect(() => {
+    const fetchBitcoinPrice = () => {
+      const url = "https://api.coingecko.com/api/v3/coins/bitcoin";
+      axios
+        .get(url)
+        .then((data) => {
+          setBitcoin(data.data.market_data.current_price.usd + data.data.market_data.current_price.usd * 0.06)
+          setUsd(
+            data.data.market_data.current_price.usd +
+              data.data.market_data.current_price.usd * 0.06
+          );
+
+          setEuro(
+            data.data.market_data.current_price.eur +
+              data.data.market_data.current_price.eur * 0.06
+          );
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+    };
+
+    fetchBitcoinPrice();
+  }, []);
+
+  useEffect(() => {
+    const price = values?.price;
+    const eq1 = price / usd;
+    const eq2 = price / euro;
+
+    if (values?.currency === "USD") {
+      setEquivalent(eq1);
+    } else if (values?.currency === "EUR") {
+      setEquivalent(eq2);
+    }
+  }, [values]);
 
   // if (!isAuthenticated) {
   //   return <Navigate to="/login" />;
@@ -127,7 +181,7 @@ const Buy = () => {
                     >
                       <Box>
                         <h4 className="mb-4">
-                          You are buying Bitcoin at <span>$24,000</span>{" "}
+                          You are buying Bitcoin at <span>${bitcoin}</span>{" "}
                         </h4>
                         <p>
                           The Bitcoin exchange rate will refresh in 10 minutes
@@ -166,8 +220,8 @@ const Buy = () => {
                               y2="38.9741"
                               gradientUnits="userSpaceOnUse"
                             >
-                              <stop stop-color="#FFD401" />
-                              <stop offset="1" stop-color="#FE7E10" />
+                              <stop stopColor="#FFD401" />
+                              <stop offset="1" stopColor="#FE7E10" />
                             </linearGradient>
                             <linearGradient
                               id="paint1_linear_2005_16555"
@@ -177,8 +231,8 @@ const Buy = () => {
                               y2="25.0817"
                               gradientUnits="userSpaceOnUse"
                             >
-                              <stop stop-color="#FFD401" />
-                              <stop offset="1" stop-color="#FE7E10" />
+                              <stop stopColor="#FFD401" />
+                              <stop offset="1" stopColor="#FE7E10" />
                             </linearGradient>
                             <linearGradient
                               id="paint2_linear_2005_16555"
@@ -188,8 +242,8 @@ const Buy = () => {
                               y2="28.845"
                               gradientUnits="userSpaceOnUse"
                             >
-                              <stop stop-color="#FFD401" />
-                              <stop offset="1" stop-color="#FE7E10" />
+                              <stop stopColor="#FFD401" />
+                              <stop offset="1" stopColor="#FE7E10" />
                             </linearGradient>
                           </defs>
                         </svg>
@@ -231,8 +285,8 @@ const Buy = () => {
                                 {/* <option disabled value="">
                                   Select a currency
                                 </option> */}
-                                <option>EUR</option>
                                 <option>USD</option>
+                                <option>EUR</option>
                               </Field>
                               <ErrorMessage
                                 name="currency"
@@ -270,8 +324,7 @@ const Buy = () => {
                                 type="number"
                                 name="bitcoin"
                                 readOnly
-                                value={values.bitcoin}
-                                onChange={handleChange}
+                                value={equivalent}
                                 onBlur={handleBlur}
                                 className={
                                   errors.bitcoin && touched.bitcoin
@@ -472,7 +525,6 @@ const Buy = () => {
       </Box>
     );
   }
-  
 };
 
 export default Buy;
