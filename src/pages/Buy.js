@@ -26,6 +26,7 @@ const Buy = () => {
     currency: "",
     wallet: "",
     toggle: false,
+    networkType: "",
   };
 
   const submitForm = (values) => {
@@ -34,6 +35,7 @@ const Buy = () => {
       walletAdress: values.wallet,
       price: values.price,
       currency: values.currency,
+      networkType: values.networkType,
     };
 
     console.log(payload);
@@ -60,6 +62,10 @@ const Buy = () => {
       errors.wallet = "Invalid wallet address";
     } else if (values.wallet.length > 35) {
       errors.wallet = "Invalid wallet address";
+    }
+
+    if (!values.networkType) {
+      errors.networkType = "Select bitcoin network type";
     }
 
     return errors;
@@ -365,6 +371,32 @@ const Buy = () => {
                                 className="error"
                               />
                             </Box>
+
+                            <Box className="mb-5 mt-5 dashboard-form-single">
+                              <label htmlFor="wallet-adresss">
+                                Network Type
+                              </label>
+                              <Field
+                                as="select"
+                                name="networkType"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.networkType && touched.networkType
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              >
+                                <option disabled value="">
+                                  Select Bitcoin network type
+                                </option>
+                                <option>BTC (Bitcoin)</option>
+                              </Field>
+                              <ErrorMessage
+                                name="networkType"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
                           </Box>
 
                           <Box>
@@ -553,6 +585,30 @@ const Buy = () => {
                         </Box>
 
                         <Box className="mb-5 mt-5 dashboard-form-single">
+                          <label htmlFor="wallet-adresss">Network Type</label>
+                          <Field
+                            as="select"
+                            name="networkType"
+                            onBlur={handleBlur}
+                            className={
+                              errors.networkType && touched.networkType
+                                ? "input-error form-control"
+                                : "form-control"
+                            }
+                          >
+                            <option disabled value="">
+                              Select Bitcoin network type
+                            </option>
+                            <option>BTC (Bitcoin)</option>
+                          </Field>
+                          <ErrorMessage
+                            name="networkType"
+                            component="span"
+                            className="error"
+                          />
+                        </Box>
+
+                        <Box className="mb-5 mt-5 dashboard-form-single">
                           <Stack
                             className="mb-4"
                             alignItems="center"
@@ -566,6 +622,8 @@ const Buy = () => {
                             </h6>
                           </Stack>
                         </Box>
+
+                        
 
                         <button
                           onClick={() => handleSubmit}

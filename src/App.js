@@ -42,8 +42,7 @@ import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhoneNumber from "./pages/ChangeNumber";
 
 function App() {
-  const state = useSelector((state) => state);
-  console.log(state);
+ 
 
   return (
     <AnimatePresence>

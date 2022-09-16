@@ -2,7 +2,6 @@ import { Box, Container, Stack } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import icon1 from "../assets/icons/empty-wallet-tick.svg";
 import logo from "../assets/icons/header-white.png";
 
 const Sidebar = () => {

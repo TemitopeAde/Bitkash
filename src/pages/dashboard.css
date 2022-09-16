@@ -25,9 +25,15 @@
 
 .mobile-nav-flex a {
     text-decoration: none;
-    color: inherit;
     font-family: 'Poppins';
     gap: 7px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 30px;
+    /* identical to box height, or 300% */
+
+
+    color: #000000;
 }
 
 
@@ -54,6 +60,7 @@
 .wallet-address-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
 }
 
 .dashboard .sidebar .logo {
@@ -409,7 +416,7 @@ button {
 
 .ach-transfer,
 .bch-transfer {
-    
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

@@ -16,6 +16,8 @@ import {
   SUBMIT_NEW_PASSWORD_FAILED,
   PHONE_NUMBER_CHANGED,
   PHONE_NUMBER_CHANGED_FAILED,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -24,7 +26,6 @@ export const showLoader = () => async (dispatch) => {
     type: SHOW_LOADER,
   });
 };
-
 
 export const hideLoader = () => async (dispatch) => {
   console.log("hide");
@@ -79,12 +80,12 @@ export const register = (data) => async (dispatch) => {
     .post(url, body, config)
     .then((data) => {
       console.log(data.data.user._id);
-      localStorage.setItem('userData', body)
+      localStorage.setItem("userData", body);
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
-      localStorage.setItem('uid', data.data.user._id)
+      localStorage.setItem("uid", data.data.user._id);
     })
     .catch((error) => {
       dispatch({
@@ -167,7 +168,7 @@ export const recoverPassword = (data) => async (dispatch) => {
       // console.log(errors);
       dispatch({
         type: RECOVER_PASSWORD_FAILED,
-        payload: errors.response.data.message
+        payload: errors.response.data.message,
       });
     })
     .then(() => {
@@ -206,7 +207,7 @@ export const submitNewPassword = (data) => async (dispatch) => {
       console.log(errors);
       dispatch({
         type: SUBMIT_NEW_PASSWORD_FAILED,
-        payload: errors.response.data.message
+        payload: errors.response.data.message,
       });
     })
     .then(() => {
@@ -228,10 +229,9 @@ export const submitOTP = (data) => async (dispatch) => {
 };
 
 export const sendOtp = (uid) => async (dispatch) => {
-
   const object = {
-    uid: uid
-  }
+    uid: uid,
+  };
 
   const config = {
     headers: {
@@ -241,7 +241,7 @@ export const sendOtp = (uid) => async (dispatch) => {
 
   const url = "https://bitkash.herokuapp.com/user/resend-code";
   // const body = JSON.stringify({ uid });
-  const data = JSON.stringify(object)
+  const data = JSON.stringify(object);
 
   console.log(data);
 
@@ -264,7 +264,7 @@ export const changeNumber = (data) => async (dispatch) => {
   const url = "https://bitkash.herokuapp.com/user/edit-phone";
   const { phone, uid } = data;
   const body = JSON.stringify({ phone, uid });
-  console.log(data)
+  console.log(data);
 
   dispatch({
     type: SHOW_LOADER,
@@ -273,14 +273,14 @@ export const changeNumber = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       dispatch({
         type: PHONE_NUMBER_CHANGED,
         payload: data,
       });
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
       dispatch({
         type: PHONE_NUMBER_CHANGED_FAILED,
         payload: error,
@@ -312,22 +312,44 @@ export const changeEmail = (data) => async (dispatch) => {
   await axios
     .put(url, body, config)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       dispatch({
         type: PHONE_NUMBER_CHANGED,
         payload: data,
       });
     })
     .catch((errors) => {
-      console.log(errors)
+      console.log(errors);
       dispatch({
         type: PHONE_NUMBER_CHANGED_FAILED,
-        payload: errors.response.data.message
+        payload: errors.response.data.message,
       });
     })
     .then(() => {
       dispatch({
         type: HIDE_LOADER,
       });
+    });
+};
+
+export const fetchUser = (data) => async (dispatch) => {
+  const uid = data;
+  const url = `https://bitkash.herokuapp.com/user/${uid}`
+
+  await axios
+    .get(url)
+    .then((data) => {
+      console.log(data);
+      dispatch({
+        type: FETCH_USER_SUCCESS,
+        payload: data.data
+      })
+    })
+    .catch((errors) => {
+      console.log(errors);
+      dispatch({
+        type: FETCH_USER_FAILED,
+        payload: data.data
+      })
     });
 };

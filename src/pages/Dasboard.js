@@ -1,6 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import MobileNav from "../components/mobileNav";
 import {
   Chart as ChartJS,
@@ -14,6 +14,7 @@ import {
 import { Bar } from "react-chartjs-2";
 import { Helmet } from "react-helmet";
 import { SplideSlide, Splide } from "@splidejs/react-splide";
+import { useSelector, useDispatch } from "react-redux";
 
 import shield from "../assets/images/shield.png";
 import curate from "../assets/images/cuate.png";
@@ -22,18 +23,11 @@ import email from "../assets/images/sms.png";
 import shieldNew from "../assets/images/security-user.png";
 import phone from "../assets/images/telephone.png";
 import "./dashboard.css";
-import logo from "../assets/icons/header-white.png";
-import icon1 from "../assets/icons/note-2.png";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import cuate2 from "../assets/images/cuate2.png";
-import tik from "../assets/images/tik.png";
-import whiteSms from "../assets/images/sms-white.png";
-import whiteTick from "../assets/images/tick-white.png";
-import whitePhone from "../assets/images/phone-white.png";
-import whiteSecurity from "../assets/images/security-white.png";
 import Sidebar from "../components/Sidebar";
-// import whiteShield from '../assets/images/'
+import { fetchUser } from "../state/action-creators/index";
 
 ChartJS.register(
   CategoryScale,
@@ -122,6 +116,19 @@ export const mobiledata = {
 };
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userDetails = useSelector((state) => state.auth.userDetails);
+
+  const { email_verified, kyc_verified, lastName, phone_verified, firstName } =
+    userDetails;
+
+  useEffect(() => {
+    const id = localStorage.getItem("uid");
+    console.log(id);
+    dispatch(fetchUser(id));
+  }, []);
+
   const options = {
     type: "loop",
     autoplay: true,
@@ -179,7 +186,7 @@ const Dashboard = () => {
                           <Box>
                             <Stack>
                               <h6 className="name-account">
-                                Hello Olubanjo Oluseyi
+                                Hello <span>{firstName}</span> {lastName}
                               </h6>
                               <p className="welcome-account">
                                 Welcome to your dashboard
@@ -224,7 +231,12 @@ const Dashboard = () => {
                                 adipisicing elit. Eligendi sed nemo tenetur ad
                                 in error nesciunt.
                               </p>
-                              <button className="btn verify-account-button">
+                              <button
+                                onClick={() =>
+                                  navigate("/pasword-and-security")
+                                }
+                                className="btn verify-account-button"
+                              >
                                 Go to security
                               </button>
                             </Stack>
@@ -374,27 +386,254 @@ const Dashboard = () => {
                                   direction="row"
                                   spacing={1}
                                 >
-                                  <img src={email} alt="" />
+                                  <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 15 15"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M10.625 12.8125H4.375C2.5 12.8125 1.25 11.875 1.25 9.6875V5.3125C1.25 3.125 2.5 2.1875 4.375 2.1875H10.625C12.5 2.1875 13.75 3.125 13.75 5.3125V9.6875C13.75 11.875 12.5 12.8125 10.625 12.8125Z"
+                                      stroke="#292D32"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M10.625 5.625L8.66875 7.1875C8.025 7.7 6.96875 7.7 6.325 7.1875L4.375 5.625"
+                                      stroke="#292D32"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+
                                   <p>Email</p>
-                                  <img src={check} alt="" />
+                                  {email_verified ? (
+                                    <svg
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 16 16"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M8.00004 14.6667C11.6667 14.6667 14.6667 11.6667 14.6667 8.00004C14.6667 4.33337 11.6667 1.33337 8.00004 1.33337C4.33337 1.33337 1.33337 4.33337 1.33337 8.00004C1.33337 11.6667 4.33337 14.6667 8.00004 14.6667Z"
+                                        stroke="#008545"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M5.16663 7.99995L7.05329 9.88661L10.8333 6.11328"
+                                        stroke="#008545"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  ) : (
+                                    <svg
+                                      width="18"
+                                      height="18"
+                                      viewBox="0 0 18 18"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
+                                        stroke="#FF0202"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M9 6V9.75"
+                                        stroke="#FF0202"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M8.99609 12H9.00283"
+                                        stroke="#FF0202"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  )}
                                 </Stack>
                                 <Stack
                                   alignItems="center"
                                   direction="row"
                                   spacing={1}
                                 >
-                                  <img src={phone} alt="" />
+                                  <svg
+                                    width="9"
+                                    height="15"
+                                    viewBox="0 0 9 15"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M1.37192 0.625L7.62192 0.63125C8.30942 0.63125 8.87192 1.1875 8.87192 1.875V13.125C8.87192 13.8125 8.30942 14.375 7.62192 14.375H1.37192C0.684424 14.375 0.128174 13.8125 0.128174 13.125V1.875C0.128174 1.1875 0.684424 0.625 1.37192 0.625ZM1.37192 11.875H7.62192V3.125H1.37192V11.875Z"
+                                      fill="black"
+                                      fill-opacity="0.54"
+                                    />
+                                  </svg>
+
                                   <p>Phone Number</p>
-                                  <img src={check} alt="" />
+
+                                  {phone_verified ? (
+                                    <svg
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 16 16"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M8.00004 14.6666C11.6667 14.6666 14.6667 11.6666 14.6667 7.99992C14.6667 4.33325 11.6667 1.33325 8.00004 1.33325C4.33337 1.33325 1.33337 4.33325 1.33337 7.99992C1.33337 11.6666 4.33337 14.6666 8.00004 14.6666Z"
+                                        stroke="#008545"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M5.16663 7.99995L7.05329 9.88661L10.8333 6.11328"
+                                        stroke="#008545"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  ) : (
+                                    <svg
+                                      width="18"
+                                      height="18"
+                                      viewBox="0 0 18 18"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
+                                        stroke="#FF0202"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M9 6V9.75"
+                                        stroke="#FF0202"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M8.99609 12H9.00283"
+                                        stroke="#FF0202"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  )}
                                 </Stack>
                                 <Stack
                                   alignItems="center"
                                   direction="row"
                                   spacing={1}
                                 >
-                                  <img src={shieldNew} alt="" />
+                                  <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 15 15"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M6.55622 1.39385L3.43747 2.56259C2.71872 2.83134 2.13123 3.68134 2.13123 4.45009V9.09383C2.13123 9.83133 2.61873 10.8001 3.21248 11.2438L5.89997 13.2501C6.78122 13.9126 8.23121 13.9126 9.11246 13.2501L11.8 11.2438C12.3937 10.8001 12.8812 9.83133 12.8812 9.09383V4.45009C12.8812 3.68134 12.2937 2.83134 11.575 2.56259L8.45622 1.39385C7.92497 1.2001 7.07497 1.2001 6.55622 1.39385Z"
+                                      stroke="#292D32"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M7.50005 6.82501C7.47505 6.82501 7.4438 6.82501 7.4188 6.82501C6.8313 6.80626 6.36255 6.31876 6.36255 5.72501C6.36255 5.11876 6.8563 4.625 7.46255 4.625C8.0688 4.625 8.56256 5.11876 8.56256 5.72501C8.55631 6.32501 8.08755 6.80626 7.50005 6.82501Z"
+                                      stroke="#292D32"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M6.25627 8.5751C5.65627 8.9751 5.65627 9.63134 6.25627 10.0313C6.93752 10.4876 8.05628 10.4876 8.73753 10.0313C9.33753 9.63134 9.33753 8.9751 8.73753 8.5751C8.06253 8.11885 6.94377 8.11885 6.25627 8.5751Z"
+                                      stroke="#292D32"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+
                                   <p>KYC Verification</p>
-                                  <img src={check} alt="" />
+                                  {kyc_verified ? (
+                                    <svg
+                                      width="15"
+                                      height="15"
+                                      viewBox="0 0 15 15"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M6.55622 1.39385L3.43747 2.56259C2.71872 2.83134 2.13123 3.68134 2.13123 4.45009V9.09383C2.13123 9.83133 2.61873 10.8001 3.21248 11.2438L5.89997 13.2501C6.78122 13.9126 8.23121 13.9126 9.11246 13.2501L11.8 11.2438C12.3937 10.8001 12.8812 9.83133 12.8812 9.09383V4.45009C12.8812 3.68134 12.2937 2.83134 11.575 2.56259L8.45622 1.39385C7.92497 1.2001 7.07497 1.2001 6.55622 1.39385Z"
+                                        stroke="#292D32"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M7.50005 6.82501C7.47505 6.82501 7.4438 6.82501 7.4188 6.82501C6.8313 6.80626 6.36255 6.31876 6.36255 5.72501C6.36255 5.11876 6.8563 4.625 7.46255 4.625C8.0688 4.625 8.56256 5.11876 8.56256 5.72501C8.55631 6.32501 8.08755 6.80626 7.50005 6.82501Z"
+                                        stroke="#292D32"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M6.25627 8.5751C5.65627 8.9751 5.65627 9.63134 6.25627 10.0313C6.93752 10.4876 8.05628 10.4876 8.73753 10.0313C9.33753 9.63134 9.33753 8.9751 8.73753 8.5751C8.06253 8.11885 6.94377 8.11885 6.25627 8.5751Z"
+                                        stroke="#292D32"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  ) : (
+                                    <svg
+                                      width="18"
+                                      height="18"
+                                      viewBox="0 0 18 18"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
+                                        stroke="#FF0202"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M9 6V9.75"
+                                        stroke="#FF0202"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                      <path
+                                        d="M8.99609 12H9.00283"
+                                        stroke="#FF0202"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  )}
                                 </Stack>
                               </Stack>
 
@@ -446,7 +685,7 @@ const Dashboard = () => {
                         <Box>
                           <Stack spacing={2}>
                             <h6 className="name-account">
-                              Hello Olubanjo Oluseyi
+                              Hello <span>{firstName}</span> {lastName}
                             </h6>
                             <p className="welcome-account">
                               Welcome to your dashboard
@@ -1298,7 +1537,12 @@ const Dashboard = () => {
                             direction="row"
                           >
                             <Box>
-                              <button className="btn btn-overview">
+                              <button
+                                onClick={() =>
+                                  navigate("/pasword-and-security")
+                                }
+                                className="btn btn-overview"
+                              >
                                 Go to Security
                               </button>
                             </Box>
@@ -2283,28 +2527,61 @@ const Dashboard = () => {
                             </svg>
 
                             <p>Email</p>
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M7.99967 14.6667C11.6663 14.6667 14.6663 11.6667 14.6663 8.00004C14.6663 4.33337 11.6663 1.33337 7.99967 1.33337C4.33301 1.33337 1.33301 4.33337 1.33301 8.00004C1.33301 11.6667 4.33301 14.6667 7.99967 14.6667Z"
-                                stroke="white"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                              <path
-                                d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
-                                stroke="white"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
+
+                            {email_verified ? (
+                              <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M7.99967 14.6667C11.6663 14.6667 14.6663 11.6667 14.6663 8.00004C14.6663 4.33337 11.6663 1.33337 7.99967 1.33337C4.33301 1.33337 1.33301 4.33337 1.33301 8.00004C1.33301 11.6667 4.33301 14.6667 7.99967 14.6667Z"
+                                  stroke="white"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
+                                  stroke="white"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 18 18"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
+                                  stroke="#FF0202"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M9 6V9.75"
+                                  stroke="#FF0202"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M8.99609 12H9.00283"
+                                  stroke="#FF0202"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            )}
                           </Stack>
                           <Stack
                             alignItems="center"
@@ -2327,28 +2604,61 @@ const Dashboard = () => {
                             </svg>
 
                             <p>Phone Number</p>
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M7.99967 14.6667C11.6663 14.6667 14.6663 11.6667 14.6663 8.00004C14.6663 4.33337 11.6663 1.33337 7.99967 1.33337C4.33301 1.33337 1.33301 4.33337 1.33301 8.00004C1.33301 11.6667 4.33301 14.6667 7.99967 14.6667Z"
-                                stroke="white"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                              <path
-                                d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
-                                stroke="white"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
+
+                            {phone_verified ? (
+                              <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M7.99967 14.6667C11.6663 14.6667 14.6663 11.6667 14.6663 8.00004C14.6663 4.33337 11.6663 1.33337 7.99967 1.33337C4.33301 1.33337 1.33301 4.33337 1.33301 8.00004C1.33301 11.6667 4.33301 14.6667 7.99967 14.6667Z"
+                                  stroke="white"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
+                                  stroke="white"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 18 18"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
+                                  stroke="#FF0202"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M9 6V9.75"
+                                  stroke="#FF0202"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M8.99609 12H9.00283"
+                                  stroke="#FF0202"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            )}
                           </Stack>
                           <Stack
                             alignItems="center"
@@ -2383,28 +2693,61 @@ const Dashboard = () => {
                             </svg>
 
                             <p>KYC Verification</p>
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M7.99967 14.6667C11.6663 14.6667 14.6663 11.6667 14.6663 8.00004C14.6663 4.33337 11.6663 1.33337 7.99967 1.33337C4.33301 1.33337 1.33301 4.33337 1.33301 8.00004C1.33301 11.6667 4.33301 14.6667 7.99967 14.6667Z"
-                                stroke="white"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                              <path
-                                d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
-                                stroke="white"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
+
+                            {kyc_verified ? (
+                              <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M7.99967 14.6667C11.6663 14.6667 14.6663 11.6667 14.6663 8.00004C14.6663 4.33337 11.6663 1.33337 7.99967 1.33337C4.33301 1.33337 1.33301 4.33337 1.33301 8.00004C1.33301 11.6667 4.33301 14.6667 7.99967 14.6667Z"
+                                  stroke="white"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
+                                  stroke="white"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 18 18"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
+                                  stroke="#FF0202"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M9 6V9.75"
+                                  stroke="#FF0202"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                                <path
+                                  d="M8.99609 12H9.00283"
+                                  stroke="#FF0202"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            )}
                           </Stack>
                         </Box>
 

@@ -13,7 +13,8 @@ import {
   RECOVER_PASSWORD_FAILED,
   SUBMIT_NEW_PASSWORD_FAILED,
   SUBMIT_NEW_PASSWORD_SUCCESS,
-  PHONE_NUMBER_CHANGED_FAILED
+  PHONE_NUMBER_CHANGED_FAILED,
+  FETCH_USER_SUCCESS
 } from "../action-creators/types";
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   loading: true,
   token: localStorage.getItem("token"),
   message: "",
+  userDetails: ''
 };
 
 const authReducer = (state = initialState, action) => {
@@ -107,11 +109,21 @@ const authReducer = (state = initialState, action) => {
     return state
   }
 
-  if (action.type ===PHONE_NUMBER_CHANGED_FAILED) {
+  if (action.type === PHONE_NUMBER_CHANGED_FAILED) {
     const {payload} = action;
     return {
       ...state,
       message: payload
+    }
+  }
+
+  if (action.type === FETCH_USER_SUCCESS) {
+    const {payload} = action;
+    console.log(payload)
+
+    return {
+      ...state,
+      userDetails: payload.data
     }
   }
 
