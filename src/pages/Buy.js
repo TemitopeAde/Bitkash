@@ -52,7 +52,7 @@ const Buy = () => {
 
     if (!values.price) {
       errors.price = "Price is required";
-    } else if (values.price < 100) {
+    } else if (values.price < 500) {
       errors.price = "Invalid Price";
     }
 

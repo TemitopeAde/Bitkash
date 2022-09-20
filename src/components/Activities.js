@@ -20,41 +20,40 @@ const Activity = () => {
       city: "Abuja",
     },
     {
-        time: "12;00 WAT",
-        action: "SWIFT",
-        ip_address: "Transfer",
-        country: "$200",
-        city: "Abuja",
-      },
-      {
-        time: "12;00 WAT",
-        action: "SWIFT",
-        ip_address: "Transfer",
-        country: "$200",
-        city: "Abuja",
-      },
-      {
-        time: "12;00 WAT",
-        action: "SWIFT",
-        ip_address: "Transfer",
-        country: "$200",
-        city: "Abuja",
-      },
-      {
-        time: "12;00 WAT",
-        action: "SWIFT",
-        ip_address: "Transfer",
-        country: "$200",
-        city: "Abuja",
-      },
-      {
-        time: "12;00 WAT",
-        action: "SWIFT",
-        ip_address: "Transfer",
-        country: "$200",
-        city: "Abuja",
-      },
-    
+      time: "12;00 WAT",
+      action: "SWIFT",
+      ip_address: "Transfer",
+      country: "$200",
+      city: "Abuja",
+    },
+    {
+      time: "12;00 WAT",
+      action: "SWIFT",
+      ip_address: "Transfer",
+      country: "$200",
+      city: "Abuja",
+    },
+    {
+      time: "12;00 WAT",
+      action: "SWIFT",
+      ip_address: "Transfer",
+      country: "$200",
+      city: "Abuja",
+    },
+    {
+      time: "12;00 WAT",
+      action: "SWIFT",
+      ip_address: "Transfer",
+      country: "$200",
+      city: "Abuja",
+    },
+    {
+      time: "12;00 WAT",
+      action: "SWIFT",
+      ip_address: "Transfer",
+      country: "$200",
+      city: "Abuja",
+    },
   ];
   return (
     <Box className="dashboard-inner">
@@ -68,7 +67,6 @@ const Activity = () => {
 
         <Box style={{ marginTop: "4rem" }} className="h-table">
           <Box
-            className="shadow"
             style={{
               background: "#fff",
               padding: "2.4rem",
@@ -79,7 +77,6 @@ const Activity = () => {
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                   <TableRow sx={{ fontWeight: "bolder" }}>
-                   
                     <TableCell align="right">Time</TableCell>
                     <TableCell align="right">Action</TableCell>
                     <TableCell align="right">IP Address</TableCell>

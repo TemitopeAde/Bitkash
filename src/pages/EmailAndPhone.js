@@ -10,7 +10,7 @@ import { sendOtp } from "../state/action-creators";
 import "./register.css";
 import Header from "../components/Header";
 import "./emailandphone.css";
-
+import axios from "axios";
 
 const animations = {
   initial: { opacity: 0 },
@@ -20,14 +20,29 @@ const animations = {
 
 const EmailAndPhone = ({ children }) => {
   const [OTP, setOTP] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  console.log(phoneNumber);
+
   const { uid } = useParams();
   const dispatch = useDispatch();
 
-  console.log(uid)
+  const fetchUser = async () => {
+    const url = `https://bitkash.herokuapp.com/user/${uid}`;
+    
+    await axios
+      .get(url)
+      .then((data) => {
+        setPhoneNumber(data.data.data.phone);
+      })
+      .catch((errors) => {
+        console.log(errors);
+      });
+  };
 
   useEffect(() => {
-    dispatch(sendOtp("631ef3854b0772e27eb8dd31"))
-  }, [])
+    fetchUser();
+    dispatch(sendOtp(uid));
+  }, [uid]);
 
   if (window.innerWidth > 820) {
     return (
@@ -54,13 +69,13 @@ const EmailAndPhone = ({ children }) => {
                   <h6 className="otp-title">Phone Verification</h6>
                   <p>
                     A 4 digit OTP code has been sent to your <br /> phone number{" "}
-                    <a
+                    <span
                       style={{ textDecoration: "none" }}
                       className="color-yellow"
-                      href="tel:+123456789"
+
                     >
-                      +123456789
-                    </a>
+                      {phoneNumber}
+                    </span>
                   </p>
                 </Box>
 
@@ -104,7 +119,10 @@ const EmailAndPhone = ({ children }) => {
                 <div style={{ marginBottom: "2rem" }}>
                   <p>
                     If you can't get an OTP code kindly{" "}
-                    <a style={{ color: "#ff9924", textDecoration: 'none' }} href="/">
+                    <a
+                      style={{ color: "#ff9924", textDecoration: "none" }}
+                      href="/"
+                    >
                       resend
                     </a>{" "}
                   </p>
