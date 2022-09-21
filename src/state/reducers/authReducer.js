@@ -22,7 +22,7 @@ const initialState = {
   loading: true,
   token: localStorage.getItem("token"),
   message: "",
-  userDetails: ''
+  userDetails: {}
 };
 
 const authReducer = (state = initialState, action) => {

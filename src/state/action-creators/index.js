@@ -100,7 +100,8 @@ export const register = (data) => async (dispatch) => {
     });
 };
 
-export const login = (data) => async (dispatch) => {
+export const login = (data) => async (dispatch, getState) => {
+  console.log(getState())
   const config = {
     headers: {
       "Content-Type": "application/json",
