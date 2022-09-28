@@ -8,8 +8,19 @@ import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 import { BsArrowDown } from "react-icons/bs";
 import Sidebar from "../components/Sidebar";
+import { Link } from "react-router-dom";
 
 const BuyConfirm = () => {
+
+  const data = JSON.parse(localStorage.getItem("paymentDetails"));
+  console.log(data)
+
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const amount = numberWithCommas(data.fiat_amount);
+
   if (window.innerWidth > 820) {
     return (
       <Box>
@@ -52,7 +63,7 @@ const BuyConfirm = () => {
                           color: "#000000",
                         }}
                       >
-                        Please send your money ($5000) to
+                        Please send your money (${amount}) to
                       </h6>
                     </Box>
 
@@ -136,7 +147,7 @@ const BuyConfirm = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            gap: '2rem'
+                            gap: "2rem",
                           }}
                         >
                           <button
@@ -150,9 +161,9 @@ const BuyConfirm = () => {
                             <BsArrowDown />
                             Save as PDF
                           </button>
-                          <button className="btn btn-save-pdf-outline">
+                          <Link to="/buy-bitcoin" className="btn btn-save-pdf-outline">
                             Back
-                          </button>
+                          </Link>
                         </Box>
                       </Box>
                     </Box>

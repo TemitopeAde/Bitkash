@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 import "./dashboard.css";
@@ -11,9 +11,16 @@ import user from "../assets/images/ellipse.png";
 import MobileNav from "../components/mobileNav";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import { BuyBitcoin } from "../state/action-creators";
+import Spinner from '../components/Spinner';
+
 
 const Buy = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loading = useSelector((state) => state.loader.loading);
+  const showPay = useSelector((state) => state.auth.showPay);
+  console.log(showPay);
+  const dispatch = useDispatch();
 
   const [bitcoin, setBitcoin] = useState(null);
   const [values, setValues] = useState();
@@ -30,20 +37,20 @@ const Buy = () => {
   };
 
   const submitForm = (values) => {
-    console.log(values);
     const payload = {
-      walletAdress: values.wallet,
-      price: values.price,
-      currency: values.currency,
-      networkType: values.networkType,
+      reciept_wallet: values.wallet,
+      fiat_amount: values.price,
+      crypto_amount: equivalent,
+      // currency: values.currency,
+      // networkType: values.networkType,
+      payment_type: "transfer",
+      transaction_status: "approved"
     };
-
-    console.log(payload);
+    dispatch(BuyBitcoin(payload))
   };
 
   const validate = (values) => {
     setValues(values);
-    console.log(values);
     let errors = {};
 
     if (values.toggle === false) {
@@ -114,6 +121,14 @@ const Buy = () => {
   // if (!isAuthenticated) {
   //   return <Navigate to="/login" />;
   // }
+
+  if (showPay) {
+    return <Navigate to="/payment-details" />;
+  }
+
+  if (loading) {
+    return <Spinner />
+  }
 
   if (window.innerWidth > 820) {
     return (
@@ -318,7 +333,7 @@ const Buy = () => {
                                 }
                               />
                               <ErrorMessage
-                                name="password"
+                                name="price"
                                 component="span"
                                 className="error"
                               />

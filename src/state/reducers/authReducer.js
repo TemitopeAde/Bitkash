@@ -14,7 +14,9 @@ import {
   SUBMIT_NEW_PASSWORD_FAILED,
   SUBMIT_NEW_PASSWORD_SUCCESS,
   PHONE_NUMBER_CHANGED_FAILED,
-  FETCH_USER_SUCCESS
+  FETCH_USER_SUCCESS,
+  SHOW_MODAL,
+  SHOW_PAY_PAGE
 } from "../action-creators/types";
 
 const initialState = {
@@ -22,7 +24,9 @@ const initialState = {
   loading: true,
   token: localStorage.getItem("token"),
   message: "",
-  userDetails: {}
+  userDetails: {},
+  showModal: false,
+  showPay: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -125,6 +129,21 @@ const authReducer = (state = initialState, action) => {
       ...state,
       userDetails: payload.data
     }
+  }
+
+  if (action.type === SHOW_MODAL) {
+  
+    return {
+      ...state,
+      showModal: true
+    }
+  }
+
+  if (action.type === SHOW_PAY_PAGE) {
+    return {
+      ...state,
+      showPay: true,
+    };
   }
 
   return state;

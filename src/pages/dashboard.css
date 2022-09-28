@@ -18,6 +18,21 @@
     margin-top: 2rem;
 }
 
+.fiat-btn {
+    background-color: #FF9924;
+    color: black;
+    border: none;
+    width: 96px;
+    height: 30px;
+    border-radius: 3px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 32px;
+    -webkit-appearance: caret;
+}
+
 .mobile-nav-flex p {
     margin: 0;
     color: inherit;
@@ -440,6 +455,7 @@ button {
 
 .transfer-three {
     padding-left: 3rem;
+    padding-bottom: 4rem;
 }
 
 

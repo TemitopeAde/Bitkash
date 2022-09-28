@@ -18,6 +18,10 @@ import {
   PHONE_NUMBER_CHANGED_FAILED,
   FETCH_USER_SUCCESS,
   FETCH_USER_FAILED,
+  KYC_EURO_SUCCESS,
+  KYC_EURO_FAILED,
+  SHOW_MODAL,
+  SHOW_PAY_PAGE,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -101,7 +105,7 @@ export const register = (data) => async (dispatch) => {
 };
 
 export const login = (data) => async (dispatch, getState) => {
-  console.log(getState())
+  console.log(getState());
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -335,7 +339,7 @@ export const changeEmail = (data) => async (dispatch) => {
 
 export const fetchUser = (data) => async (dispatch) => {
   const uid = data;
-  const url = `https://bitkash.herokuapp.com/user/${uid}`
+  const url = `https://bitkash.herokuapp.com/user/${uid}`;
 
   await axios
     .get(url)
@@ -343,14 +347,275 @@ export const fetchUser = (data) => async (dispatch) => {
       console.log(data);
       dispatch({
         type: FETCH_USER_SUCCESS,
-        payload: data.data
-      })
+        payload: data.data,
+      });
     })
     .catch((errors) => {
       console.log(errors);
       dispatch({
         type: FETCH_USER_FAILED,
-        payload: data.data
-      })
+        payload: data.data,
+      });
     });
+};
+
+export const BuyBitcoin = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash.herokuapp.com/transactions/create";
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  
+
+  const {
+    payment_type,
+    crypto_amount,
+    fiat_amount,
+    reciept_wallet,
+    transaction_status,
+  } = data;
+
+  const body = JSON.stringify({
+    payment_type,
+    crypto_amount,
+    fiat_amount,
+    reciept_wallet,
+    transaction_status,
+  });
+
+  dispatch({
+    type: SHOW_LOADER
+  })
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: SHOW_PAY_PAGE,
+      });
+    })
+    .then(() => {
+      localStorage.setItem("paymentDetails", body);
+    })
+};
+
+export const getAllTransactions = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash.herokuapp.com/transactions/get/all";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .get(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const getTransaction = (data) => async (dispatch, getState) => {
+  const { uid } = data;
+  const url = `https://bitkash.herokuapp.com/transactions/get/:${uid}`;
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .get(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const deleteTransaction = (data) => async (dispatch, getState) => {
+  const { uid } = data;
+  const url = `https://bitkash.herokuapp.com/transactions/delete/:${uid}`;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .get(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const handleKycUsd = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash.herokuapp.com/account/create-usa-acc";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  const {
+    currency,
+    acc_type,
+    acc_number,
+    acc_option,
+    acc_owner,
+    bank_name,
+    swift_code,
+    routing_number,
+    zip_code,
+  } = data;
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  const body = JSON.stringify({
+    currency,
+    acc_type,
+    acc_option,
+    acc_owner,
+    bank_name,
+    acc_number,
+    routing_number,
+    zip_code,
+    swift_code,
+  });
+
+  console.log(body);
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const handleKycEuro = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash.herokuapp.com/account/create-eur-acc";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+  const {
+    currency,
+    acc_type,
+    acc_owner,
+    bank_name,
+    bank_branch_name,
+    Iban,
+    swift_code,
+    bank_address,
+    bank_city,
+    zip_code,
+    // acc_number
+  } = data;
+  const body = JSON.stringify({
+    currency,
+    acc_type,
+    acc_owner,
+    bank_name,
+    bank_branch_name,
+    Iban,
+    swift_code,
+    bank_address,
+    bank_city,
+    zip_code,
+  });
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      dispatch({
+        type: KYC_EURO_SUCCESS,
+        payload: data.data,
+      })
+    })
+    .catch((err) => {
+      dispatch({
+        type: KYC_EURO_FAILED,
+        payload: err.response.data,
+      })
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: SHOW_MODAL,
+      });
+    })
+    
 };

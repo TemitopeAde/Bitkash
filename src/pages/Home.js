@@ -25,7 +25,6 @@ const animations = {
 
 
 
-
 const Home = () => {
 
   const fetchPro = async () => {
@@ -44,7 +43,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchPro();
-  })
+  });
 
   return (
     <motion.div
