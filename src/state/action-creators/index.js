@@ -22,10 +22,11 @@ import {
   KYC_EURO_FAILED,
   SHOW_MODAL,
   SHOW_PAY_PAGE,
+  TRANSACTION_HISTORY_SUCCESS,
+  TRANSACTION_HISTORY_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
-  console.log("show");
   dispatch({
     type: SHOW_LOADER,
   });
@@ -369,8 +370,6 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
     },
   };
 
-  
-
   const {
     payment_type,
     crypto_amount,
@@ -388,8 +387,8 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
   });
 
   dispatch({
-    type: SHOW_LOADER
-  })
+    type: SHOW_LOADER,
+  });
 
   await axios
     .post(url, body, config)
@@ -401,7 +400,7 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
     })
     .then(() => {
       dispatch({
-        type: HIDE_LOADER
+        type: HIDE_LOADER,
       });
     })
     .then(() => {
@@ -411,16 +410,16 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
     })
     .then(() => {
       localStorage.setItem("paymentDetails", body);
-    })
+    });
 };
 
-export const getAllTransactions = (data) => async (dispatch, getState) => {
+export const getAllTransactions = () => async (dispatch, getState) => {
   const url = "https://bitkash.herokuapp.com/transactions/get/all";
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${getState().auth.token}`,
-    },
+  const options = {
+    method: "GET",
+    headers : {
+      Authorization : `Bearer ${getState().auth.token}`
+    }
   };
 
   dispatch({
@@ -428,12 +427,19 @@ export const getAllTransactions = (data) => async (dispatch, getState) => {
   });
 
   await axios
-    .get(url, {}, config)
+    .get(url, options)
     .then((data) => {
-      console.log(data);
+      dispatch({
+        type: TRANSACTION_HISTORY_SUCCESS,
+        payload: data.data,
+      });
     })
     .catch((err) => {
       console.log(err);
+      dispatch({
+        type: TRANSACTION_HISTORY_FAILED,
+        payload: err,
+      });
     })
     .then(() => {
       dispatch({
@@ -538,8 +544,6 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     swift_code,
   });
 
-  console.log(body);
-
   await axios
     .post(url, body, config)
     .then((data) => {
@@ -599,13 +603,13 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
       dispatch({
         type: KYC_EURO_SUCCESS,
         payload: data.data,
-      })
+      });
     })
     .catch((err) => {
       dispatch({
         type: KYC_EURO_FAILED,
         payload: err.response.data,
-      })
+      });
     })
     .then(() => {
       dispatch({
@@ -616,6 +620,5 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
       dispatch({
         type: SHOW_MODAL,
       });
-    })
-    
+    });
 };

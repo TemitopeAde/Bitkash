@@ -1,7 +1,9 @@
 import { Box, Container, Stack } from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllTransactions } from "../state/action-creators";
 
 import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
@@ -21,7 +23,18 @@ const animation = {
   exit: { opacity: 0 },
 };
 
+
+
 const Histories = () => {
+  const dispatch = useDispatch();
+  const history = useSelector((state) => state.transactions.history);
+
+  // console.log(history)
+
+  useEffect(() => {
+    dispatch(getAllTransactions());
+  }, []); 
+  
   return (
     <>
       <Helmet>
