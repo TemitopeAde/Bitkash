@@ -15,7 +15,6 @@ export const loaderReducer = (state = initialState, action) => {
       };
 
     case SHOW_LOADER:
-      console.log("show")
       return {
         ...state,
         loading: true,

@@ -8,10 +8,10 @@ const initialState = {
 export const transactionReducer = (state = initialState, action) => {
   switch (action.type) {
     case TRANSACTION_HISTORY_SUCCESS:
-      console.log(action.payload)
+      // console.log(action.payload.data)
       return {
         ...state,
-        history: action.payload
+        history: action.payload.data
       }
     
     case TRANSACTION_HISTORY_FAILED:

@@ -11,8 +11,10 @@ import ReactPaginate from "react-paginate";
 
 import wallet from "../assets/images/wallet-add.png";
 import "./history.css";
+import Spinner from '../components/Spinner';
 
-const History = () => {
+const History = ({historyData, loading}) => {
+  
   const data = [
     {
       id: 1,
@@ -145,22 +147,20 @@ const History = () => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 4;
+  const itemsPerPage = 10;
   // console.log(currentItems)
 
   useEffect(() => {
     // Fetch items from another resources.
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(data.slice(itemOffset, endOffset));
+    const newH = historyData.slice(itemOffset, endOffset);
+    setCurrentItems(newH);
     setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+  }, [currentItems]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+    
     setItemOffset(newOffset);
   };
 
@@ -196,11 +196,11 @@ const History = () => {
     // setFilteredData(filtered)
 
     
-    const filtered = currentItems?.filter((item) => {
-      return item.status.toLowerCase() === "app"
-    })
+    // const filtered = currentItems?.filter((item) => {
+    //   return item.status.toLowerCase() === "app"
+    // })
 
-    console.log(filtered);
+    // console.log(filtered);
 
   }, [search, to, from])
 
@@ -216,22 +216,26 @@ const History = () => {
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell align="right">{row.id}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.paymentType}</TableCell>
-              <TableCell align="right">{row.cryptoAmount}</TableCell>
-              <TableCell align="right">{row.fiatAmount}</TableCell>
-              <TableCell align="right">{row.wallet}</TableCell>
+              <TableCell align="right">{row._id}</TableCell>
+              <TableCell align="right">{row.createdDate}</TableCell>
+              <TableCell align="right">{row.payment_type}</TableCell>
+              <TableCell align="right">{row.crypto_amount}</TableCell>
+              <TableCell align="right">{row.fiat_amount}</TableCell>
+              <TableCell align="right">{row.reciept_wallet}</TableCell>
               <TableCell
                 className={row.status === "Declined" ? "declined" : "approved"}
                 align="right"
               >
-                {row.status}
+                {row.transaction_status}
               </TableCell>
             </TableRow>
           ))}
       </>
     );
+  };
+
+  if (loading) {
+    return <Spinner />
   }
 
   return (
