@@ -417,11 +417,11 @@ const Buy = () => {
                           <Box>
                             <Stack className="mb-4" direction="row" spacing={2}>
                               {/* <input type="checkbox" /> */}
-                              <Field name="toggle" type="checkbox" />
-                              <h6 className="checkbox-text">
+                              <Field name="toggle" type="checkbox" id="terms" />
+                              <label htmlFor="terms" className="checkbox-text">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Animi libero laboriosam neque
-                              </h6>
+                              </label>
                             </Stack>
                             <ErrorMessage
                               name="toggle"

@@ -28,7 +28,7 @@
 
 .history-pagination {
     margin-top: 2rem;
-    
+    padding-bottom: 2rem;
 }
 
 @media screen and (max-width: 1280px) {

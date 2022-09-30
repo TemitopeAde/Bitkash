@@ -11,156 +11,28 @@ import ReactPaginate from "react-paginate";
 
 import wallet from "../assets/images/wallet-add.png";
 import "./history.css";
-import Spinner from '../components/Spinner';
+import Spinner from "../components/Spinner";
 
-const History = ({historyData, loading}) => {
+const History = ({ historyData, loading }) => {
   
-  const data = [
-    {
-      id: 1,
-      date: "18/06/2022",
-      paymentType: "one",
-      cryptoAmount: "0.234",
-      fiatAmount: "$200",
-      wallet: "ffgkkrkmmmr4mmgffgkkrk",
-      status: "Approved",
-    },
-    {
-      id: 2,
-      date: "08/06/2020",
-      paymentType: "Two",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 3,
-      date: "08/06/2020",
-      paymentType: "Three",
-      cryptoAmount: "0.634",
-      fiatAmount: "$30",
-      wallet: "yytejttyjbkjhje",
-      status: "Approved",
-    },
-    {
-      id: 4,
-      date: "08/06/2020",
-      paymentType: "Four",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 5,
-      date: "08/06/2020",
-      paymentType: "Five",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 6,
-      date: "08/06/2020",
-      paymentType: "Six",
-      cryptoAmount: "0.0234",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 3,
-      date: "08/06/2020",
-      paymentType: "Three",
-      cryptoAmount: "0.634",
-      fiatAmount: "$30",
-      wallet: "yytejttyjbkjhje",
-      status: "Approved",
-    },
-    {
-      id: 4,
-      date: "08/06/2020",
-      paymentType: "Four",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 5,
-      date: "08/06/2020",
-      paymentType: "Five",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 6,
-      date: "08/06/2020",
-      paymentType: "Six",
-      cryptoAmount: "0.0234",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 3,
-      date: "08/06/2020",
-      paymentType: "Three",
-      cryptoAmount: "0.634",
-      fiatAmount: "$30",
-      wallet: "yytejttyjbkjhje",
-      status: "Approved",
-    },
-    {
-      id: 4,
-      date: "08/06/2020",
-      paymentType: "Four",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 5,
-      date: "08/06/2020",
-      paymentType: "Five",
-      cryptoAmount: "0.634",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-    {
-      id: 6,
-      date: "08/06/2020",
-      paymentType: "Six",
-      cryptoAmount: "0.0234",
-      fiatAmount: "$730",
-      wallet: "yytejttyjbkjhje",
-      status: "Declined",
-    },
-  ];
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 10;
-  // console.log(currentItems)
+  const itemsPerPage = 5;
+  console.log(currentItems);
 
   useEffect(() => {
     // Fetch items from another resources.
     const endOffset = itemOffset + itemsPerPage;
     const newH = historyData.slice(itemOffset, endOffset);
     setCurrentItems(newH);
-    setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [currentItems]);
+    setPageCount(Math.ceil(historyData.length / itemsPerPage));
+  }, [historyData, itemsPerPage, itemOffset]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.length;
-    
+    const newOffset = (event.selected * itemsPerPage) % historyData?.length;
+
     setItemOffset(newOffset);
   };
 
@@ -168,8 +40,7 @@ const History = ({historyData, loading}) => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [dropdown, setDropdown] = useState("");
-  const [filteredData, setFilteredData] = useState([])
- 
+  const [filteredData, setFilteredData] = useState([]);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -189,22 +60,14 @@ const History = ({historyData, loading}) => {
 
   // console.log(currentItems)
 
-
   useEffect(() => {
-    // const filtered = currentItems?.filter((item) => search ? item.status.toLowerCase() === search.toLowerCase() : item);
-    // // console.log(filtered)
-    // setFilteredData(filtered)
+    const filtered = currentItems?.filter((item) =>
+      search ? item.reciept_wallet.toLowerCase() === search.toLowerCase() : item
+    );
+    setFilteredData(filtered);
 
-    
-    // const filtered = currentItems?.filter((item) => {
-    //   return item.status.toLowerCase() === "app"
-    // })
-
-    // console.log(filtered);
-
-  }, [search, to, from])
-
-  
+    console.log(filtered);
+  }, [search, to, from]);
 
   function Items() {
     return (
@@ -217,7 +80,7 @@ const History = ({historyData, loading}) => {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell align="right">{row._id}</TableCell>
-              <TableCell align="right">{row.createdDate}</TableCell>
+              <TableCell align="right">{row.createdAt}</TableCell>
               <TableCell align="right">{row.payment_type}</TableCell>
               <TableCell align="right">{row.crypto_amount}</TableCell>
               <TableCell align="right">{row.fiat_amount}</TableCell>
@@ -232,10 +95,10 @@ const History = ({historyData, loading}) => {
           ))}
       </>
     );
-  };
+  }
 
   if (loading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   return (
@@ -322,18 +185,20 @@ const History = ({historyData, loading}) => {
           </Box>
         </Box>
 
-        <Box className="history-pagination">
-          <ReactPaginate
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            pageCount={pageCount}
-            activeClassName={"active-page"}
-            previousClassName={"previous-page"}
-            nextClassName={"next-page"}
-            nextLinkClassName={"next-link-class"}
-            previousLinkClassName={"prev-link-class"}
-          />
-        </Box>
+        {currentItems?.length > 1 && (
+          <Box className="history-pagination">
+            <ReactPaginate
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              activeClassName={"active-page"}
+              previousClassName={"previous-page"}
+              nextClassName={"next-page"}
+              nextLinkClassName={"next-link-class"}
+              previousLinkClassName={"prev-link-class"}
+            />
+          </Box>
+        )}
       </Container>
     </Box>
   );
