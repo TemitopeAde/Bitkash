@@ -24,6 +24,8 @@ import {
   SHOW_PAY_PAGE,
   TRANSACTION_HISTORY_SUCCESS,
   TRANSACTION_HISTORY_FAILED,
+  FETCH_PRODUCTS,
+  FETCH_PRODUCTS_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -417,9 +419,9 @@ export const getAllTransactions = () => async (dispatch, getState) => {
   const url = "https://bitkash.herokuapp.com/transactions/get/all";
   const options = {
     method: "GET",
-    headers : {
-      Authorization : `Bearer ${getState().auth.token}`
-    }
+    headers: {
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
   };
 
   dispatch({
@@ -429,13 +431,14 @@ export const getAllTransactions = () => async (dispatch, getState) => {
   await axios
     .get(url, options)
     .then((data) => {
+      console.log("success");
       dispatch({
         type: TRANSACTION_HISTORY_SUCCESS,
         payload: data.data,
       });
     })
     .catch((err) => {
-      console.log(err);
+      console.log("failed");
       dispatch({
         type: TRANSACTION_HISTORY_FAILED,
         payload: err,
@@ -622,3 +625,29 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
       });
     });
 };
+
+export const fetchProduct = (data) => async (dispatch, getState) => {
+  const url = "https://www.griffati.com/restful/export/api/products.json";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Basic ZGYyYmZjMTctM2I5OS00MjQzLWI2YmMtYTg0NDI5NDc2OTVhOkZpdmVycjE4OCE="
+    },
+  };
+
+  await axios.post(url, {}, config)
+    .then((data) => {
+      console.log(data)
+      dispatch({
+        type: FETCH_PRODUCTS,
+        payload: data
+      })
+    })
+    .catch((err) => {
+      dispatch({
+        type: FETCH_PRODUCTS_FAILED,
+        payload: err
+      })
+    })
+};
+

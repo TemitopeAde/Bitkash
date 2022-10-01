@@ -7,40 +7,58 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 
 import wallet from "../assets/images/wallet-add.png";
 import "./history.css";
 import Spinner from "../components/Spinner";
+import ReactPaginate from "react-paginate";
+import axios from "axios";
 
-const History = ({ historyData, loading }) => {
-  
-
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 5;
-  console.log(currentItems);
-
-  useEffect(() => {
-    // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage;
-    const newH = historyData.slice(itemOffset, endOffset);
-    setCurrentItems(newH);
-    setPageCount(Math.ceil(historyData.length / itemsPerPage));
-  }, [historyData, itemsPerPage, itemOffset]);
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % historyData?.length;
-
-    setItemOffset(newOffset);
-  };
-
+const History = () => {
+  const [error, setError] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+  const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [from, setFrom] = useState("");
+   const [dropdown, setDropdown] = useState("");
   const [to, setTo] = useState("");
-  const [dropdown, setDropdown] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+
+  console.log(items);
+
+  useEffect(() => {
+    const filtered = items?.filter((item) =>
+      search ? item.reciept_wallet.toLowerCase() === search.toLowerCase() : item
+    );
+    setItems(filtered);
+
+    console.log(filtered);
+  }, [search, to, from]);
+
+  useEffect(() => {
+    const fetchHistory = () => {
+      const url = "https://bitkash.herokuapp.com/transactions/get/all";
+      const token = localStorage.getItem("token");
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      axios
+        .get(url, options)
+        .then((data) => {
+          setLoaded(true);
+          setItems(data.data.data);
+        })
+        .catch((err) => {
+          setLoaded(true);
+          setError(error);
+        });
+    };
+
+    fetchHistory();
+  }, []);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -58,23 +76,12 @@ const History = ({ historyData, loading }) => {
     setFrom(e.target.value);
   };
 
-  // console.log(currentItems)
-
-  useEffect(() => {
-    const filtered = currentItems?.filter((item) =>
-      search ? item.reciept_wallet.toLowerCase() === search.toLowerCase() : item
-    );
-    setFilteredData(filtered);
-
-    console.log(filtered);
-  }, [search, to, from]);
-
   function Items() {
     return (
       <>
         {/* {console.log(filteredData)} */}
-        {currentItems &&
-          currentItems?.map((row, index) => (
+        {items &&
+          items?.map((row, index) => (
             <TableRow
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -95,10 +102,6 @@ const History = ({ historyData, loading }) => {
           ))}
       </>
     );
-  }
-
-  if (loading) {
-    return <Spinner />;
   }
 
   return (
@@ -130,6 +133,7 @@ const History = ({ historyData, loading }) => {
                 onBlur={(e) => (e.target.type = "text")}
               />
             </Box>
+
             <Box>
               <input
                 value={from}
@@ -185,20 +189,19 @@ const History = ({ historyData, loading }) => {
           </Box>
         </Box>
 
-        {currentItems?.length > 1 && (
+        {/* {currentItems?.length > 1 && (
           <Box className="history-pagination">
             <ReactPaginate
+              breakLabel="..."
+              nextLabel="next >"
               onPageChange={handlePageClick}
-              pageRangeDisplayed={3}
+              pageRangeDisplayed={5}
               pageCount={pageCount}
-              activeClassName={"active-page"}
-              previousClassName={"previous-page"}
-              nextClassName={"next-page"}
-              nextLinkClassName={"next-link-class"}
-              previousLinkClassName={"prev-link-class"}
+              previousLabel="< previous"
+              renderOnZeroPageCount={null}
             />
           </Box>
-        )}
+        )} */}
       </Container>
     </Box>
   );

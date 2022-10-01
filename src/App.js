@@ -40,9 +40,13 @@ import Banks from "./pages/Banks";
 import Logout from "./pages/Logout";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhoneNumber from "./pages/ChangeNumber";
+import { getAllTransactions } from "./state/action-creators";
 
 function App() {
- 
+  
+  useEffect(() => {
+    getAllTransactions();
+  }, []);
 
   return (
     <AnimatePresence>

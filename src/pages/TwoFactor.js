@@ -2,6 +2,7 @@ import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./dashboard.css";
 import logo from "../assets/icons/header-white.png";
@@ -12,8 +13,17 @@ import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
 import authenticate from "../assets/images/goggle.png";
 import phone from "../assets/images/phone-gray.png";
+import { useEffect } from "react";
+import { fetchProduct } from "../state/action-creators";
 
 const TwoFactor = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProduct())
+  }, [])
+
   if (window.innerWidth > 820) {
     return (
       <Box>

@@ -1,27 +1,36 @@
-import { TRANSACTION_HISTORY_SUCCESS, TRANSACTION_HISTORY_FAILED } from "../action-creators/types"
-
+import {
+  TRANSACTION_HISTORY_SUCCESS,
+  TRANSACTION_HISTORY_FAILED,
+} from "../action-creators/types";
 
 const initialState = {
-  history : []
-}
+  history: [
+    {
+      _id: "",
+      createdAt: "",
+      payment_type: "",
+      crypto_amount: "",
+      fiat_amount: "",
+      receipt_wallet: "",
+    },
+  ],
+};
 
 export const transactionReducer = (state = initialState, action) => {
   switch (action.type) {
     case TRANSACTION_HISTORY_SUCCESS:
-      // console.log(action.payload.data)
       return {
         ...state,
-        history: action.payload.data
-      }
-    
+        history: action.payload.data,
+      };
+
     case TRANSACTION_HISTORY_FAILED:
-      console.log("failed")
       return {
         ...state,
-        history: []
-      }
+        history: [],
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};

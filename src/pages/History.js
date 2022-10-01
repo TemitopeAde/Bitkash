@@ -30,10 +30,10 @@ const Histories = () => {
   const transactionHistory = useSelector((state) => state.transactions.history);
   const loader = useSelector((state) => state.loader.loading)
   const dispatch = useDispatch();
-  // console.log(transactionHistory)
+  console.log(transactionHistory, "trans history")
 
   useEffect(() => {
-    dispatch(getAllTransactions());
+    // dispatch(getAllTransactions());
   }, []);
 
   return (
@@ -89,7 +89,7 @@ const Histories = () => {
               animate="animate"
               transition={{ duration: 1 }}
             >
-              <History historyData={transactionHistory} loading={loader} />
+              <History loading = {loader} historyData = {transactionHistory} />
             </motion.div>
           </Box>
         </Box>
