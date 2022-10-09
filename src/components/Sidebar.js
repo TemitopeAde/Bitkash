@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/icons/header-white.png";
 
 const Sidebar = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  console.log(isAuthenticated);
+
   return (
     <div>
       <Box className="sidebar">
@@ -145,7 +148,6 @@ const Sidebar = () => {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    
                   />
                   <path
                     d="M17.9348 11.8318V13.4568C17.9348 13.6235 17.9265 13.7901 17.9182 13.9568C17.7598 16.8651 16.1348 18.3318 13.0515 18.3318H6.55151C6.35151 18.3318 6.15151 18.3151 5.95985 18.2901C3.30985 18.1151 1.89318 16.6985 1.71818 14.0485C1.69318 13.8568 1.67651 13.6568 1.67651 13.4568V11.8318C1.67651 10.1568 2.69318 8.71514 4.14318 8.09014C4.64318 7.8818 5.17651 7.76514 5.74318 7.76514H13.8765C14.2848 7.76514 14.6848 7.82347 15.0515 7.9318C16.7098 8.44014 17.9348 9.99014 17.9348 11.8318Z"
@@ -320,48 +322,51 @@ const Sidebar = () => {
                 <h6>Activities</h6>
               </Link>
             </li>
-            <li>
-              <Link to="/logout">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8.3501 14.6002C8.73343 15.0919 9.33343 15.4169 10.0001 15.4169C11.1501 15.4169 12.0834 14.4836 12.0834 13.3336C12.0834 12.8586 11.9251 12.4169 11.6584 12.0669"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M2.35008 17.3335C1.84175 16.7002 1.66675 15.6918 1.66675 14.1668V12.5002C1.66675 9.16683 2.50008 8.3335 5.83341 8.3335H14.1667C14.4667 8.3335 14.7417 8.34183 15.0001 8.3585C17.6417 8.5085 18.3334 9.46683 18.3334 12.5002V14.1668C18.3334 17.5002 17.5001 18.3335 14.1667 18.3335H5.83341C5.53341 18.3335 5.25841 18.3252 5.00008 18.3085"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M5 8.33317V6.6665C5 3.90817 5.83333 1.6665 10 1.6665C13.4583 1.6665 14.6167 2.8165 14.9167 4.63317"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M18.3334 1.6665L1.66675 18.3332"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
 
-                <h6>Logout</h6>
-              </Link>
-            </li>
+            {isAuthenticated && (
+              <li>
+                <Link to="/logout">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.3501 14.6002C8.73343 15.0919 9.33343 15.4169 10.0001 15.4169C11.1501 15.4169 12.0834 14.4836 12.0834 13.3336C12.0834 12.8586 11.9251 12.4169 11.6584 12.0669"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M2.35008 17.3335C1.84175 16.7002 1.66675 15.6918 1.66675 14.1668V12.5002C1.66675 9.16683 2.50008 8.3335 5.83341 8.3335H14.1667C14.4667 8.3335 14.7417 8.34183 15.0001 8.3585C17.6417 8.5085 18.3334 9.46683 18.3334 12.5002V14.1668C18.3334 17.5002 17.5001 18.3335 14.1667 18.3335H5.83341C5.53341 18.3335 5.25841 18.3252 5.00008 18.3085"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M5 8.33317V6.6665C5 3.90817 5.83333 1.6665 10 1.6665C13.4583 1.6665 14.6167 2.8165 14.9167 4.63317"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M18.3334 1.6665L1.66675 18.3332"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+
+                  <h6>Logout</h6>
+                </Link>
+              </li>
+            )}
           </ul>
         </Container>
       </Box>

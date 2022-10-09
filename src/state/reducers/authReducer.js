@@ -83,12 +83,18 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGOUT) {
+    
     localStorage.removeItem("token");
+    localStorage.removeItem("uid");
+    localStorage.removeItem("userData");
+    localStorage.removeItem("paymentDetails");
+    localStorage.removeItem("response")
     return {
       ...state,
       isAuthenticated: false,
       loading: false,
       token: null,
+      userDetails: {}
     };
   }
 

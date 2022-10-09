@@ -146,6 +146,12 @@ export const login = (data) => async (dispatch, getState) => {
     });
 };
 
+export const logout = (data) => async (dispatch, getState) => {
+  dispatch({
+    type: LOGOUT
+  })
+}
+
 export const recoverPassword = (data) => async (dispatch) => {
   const config = {
     headers: {
@@ -626,28 +632,49 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     });
 };
 
-export const fetchProduct = (data) => async (dispatch, getState) => {
-  const url = "https://www.griffati.com/restful/export/api/products.json";
+export const getAccount = () => async (dispatch, getState) => {
+  const url = "https://bitkash.herokuapp.com/account/get-account";
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Basic ZGYyYmZjMTctM2I5OS00MjQzLWI2YmMtYTg0NDI5NDc2OTVhOkZpdmVycjE4OCE="
+      "Authorization": `Bearer ${getState().auth.token}`,
     },
   };
 
-  await axios.post(url, {}, config)
-    .then((data) => {
-      console.log(data)
-      dispatch({
-        type: FETCH_PRODUCTS,
-        payload: data
-      })
-    })
-    .catch((err) => {
-      dispatch({
-        type: FETCH_PRODUCTS_FAILED,
-        payload: err
-      })
-    })
+  await axios.get(url, config)
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
+export const getAllAccount = () => async (dispatch, getState) => {
+  const url = "https://bitkash.herokuapp.com/account/all-account";
+  console.log(getState().auth.token)
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  await axios
+    .get(url, config)
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+
+export const getUserBank = () => async (dispatch, getState) => {
+  const id = localStorage.getItem("uid")
+  const url = `https://bitkash.herokuapp.com/account/get/${id}`;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  await axios.get(url, config)
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err))
+}

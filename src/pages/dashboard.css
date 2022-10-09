@@ -51,7 +51,52 @@
     color: #000000;
 }
 
+.profile-form-2 input[type="file"]::file-selector-button {
+    border: none;
+    outline: none;
+    background: none;
+    color: #FF9924;
+    text-align: center;
 
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#my-file {
+    display: none;
+}
+
+.profile-items h6 {
+    color: #FF9924 !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 30px !important;
+    /* or 188% */
+
+    text-align: center;
+}
+
+.profile-items p {
+    color: #000000;
+
+    font-family: 'Poppins' !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 30px !important;
+    /* or 188% */
+
+    text-align: center !important;
+}
+
+.profile-flex-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
 
 .dashboard-content {
     padding-left: 300px;

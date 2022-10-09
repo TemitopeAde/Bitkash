@@ -1,12 +1,23 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
+import { logout } from "../state/action-creators";
+
 
 const Logout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+
   return (
     <Box>
       <Helmet>
@@ -140,6 +151,7 @@ const Logout = () => {
                                 fontSize: "24px",
                                 fontFamily: "Poppins",
                               }}
+                              onClick={handleLogout}
                             >
                               Yes
                             </button>
@@ -153,6 +165,7 @@ const Logout = () => {
                                 fontSize: "24px",
                                 fontFamily: "Poppins",
                               }}
+                              onClick={() => navigate("/user-dashboard")}
                             >
                               No
                             </button>
