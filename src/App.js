@@ -62,7 +62,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
-        <Route path="/user/verify/:uid" element={<EmailAndPhone />} />
+        <Route path="/user/verify/:token/:uid" element={<EmailAndPhone />} />
         <Route path="/register" element={<Register />} />
         <Route path="/registration" element={<Register />} />
         <Route
