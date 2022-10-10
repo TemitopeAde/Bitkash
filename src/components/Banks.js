@@ -3,8 +3,7 @@ import {
   Button,
   Container,
   Modal,
-  Stack,
-  Typography,
+  Stack
 } from "@mui/material";
 import React from "react";
 import Table from "@mui/material/Table";
@@ -13,11 +12,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./history.css";
 
 const Bank = () => {
+  const navigate = useNavigate();
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -155,6 +156,7 @@ const Bank = () => {
                   width: "186px",
                   border: "none",
                 }}
+                onClick={() => navigate("/kyc-verification")}
               >
                 <svg
                   width="24"
@@ -185,8 +187,8 @@ const Bank = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <Link
-                  to="/kyc-verification"
+                <span
+                  
                   style={{
                     marginLeft: "10px",
                     color: "white",
@@ -194,14 +196,13 @@ const Bank = () => {
                   }}
                 >
                   Add
-                </Link>
+                </span>
               </button>
             </Box>
           </Box>
 
           <Box style={{ marginTop: "4rem" }} className="h-table">
             <Box
-             
               style={{
                 background: "#fff",
                 padding: "2.4rem",
@@ -216,7 +217,7 @@ const Bank = () => {
                       <TableCell align="right">Payment methods</TableCell>
                       <TableCell align="right">Bank name</TableCell>
                       <TableCell align="right">Account no/IBAN</TableCell>
-                      
+
                       <TableCell align="right">Delete</TableCell>
                     </TableRow>
                   </TableHead>
@@ -236,7 +237,7 @@ const Bank = () => {
                         <TableCell align="right">
                           {row.account_number}
                         </TableCell>
-                        
+
                         <TableCell align="right">
                           <button
                             style={{ background: "none", border: "none" }}
@@ -332,10 +333,10 @@ const Bank = () => {
                     width: "134px",
                     height: "50px",
                     background: "#ff9924",
-                    border: '1px solid #ff9925',
-                    color: '#ffffff',
-                    fontFamily: 'Poppins',
-                    fontSize: '16px'
+                    border: "1px solid #ff9925",
+                    color: "#ffffff",
+                    fontFamily: "Poppins",
+                    fontSize: "16px",
                   }}
                 >
                   Yes
@@ -345,10 +346,10 @@ const Bank = () => {
                     width: "134px",
                     height: "50px",
                     background: "transparent",
-                    border: '1px solid #ff9925',
-                    color: '#000',
-                    fontFamily: 'Poppins',
-                    fontSize: '16px'
+                    border: "1px solid #ff9925",
+                    color: "#000",
+                    fontFamily: "Poppins",
+                    fontSize: "16px",
                   }}
                 >
                   No

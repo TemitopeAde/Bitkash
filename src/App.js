@@ -63,6 +63,7 @@ function App() {
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
         <Route path="/user/verify/:token/:uid" element={<EmailAndPhone />} />
+        
         <Route path="/register" element={<Register />} />
         <Route path="/registration" element={<Register />} />
         <Route

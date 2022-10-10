@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Container, Stack } from "@mui/material";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import hamburger from "../assets/icons/hamburger.png";
 import "./header.css";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  console.log(isAuthenticated)
 
   const [showNav, setShowNav] = useState(false);
 
@@ -138,29 +142,31 @@ const Header = () => {
           </Box>
 
           <Box className="web-header">
-            <Stack
-              justifyContent="space-between"
-              alignItems="center"
-              sapcing={2}
-              direction="row"
-            >
-              <li style={{ marginRight: "2rem" }}>
-                <Link
-                  style={{ textDecoration: "none", color: "#FF9924" }}
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => navigate("/register")}
-                  className="btn btn-primary"
-                >
-                  Sign Up
-                </button>
-              </li>
-            </Stack>
+            {!isAuthenticated && (
+              <Stack
+                justifyContent="space-between"
+                alignItems="center"
+                sapcing={2}
+                direction="row"
+              >
+                <li style={{ marginRight: "2rem" }}>
+                  <Link
+                    style={{ textDecoration: "none", color: "#FF9924" }}
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/register")}
+                    className="btn btn-primary"
+                  >
+                    Sign Up
+                  </button>
+                </li>
+              </Stack>
+            )}
           </Box>
 
           <Box

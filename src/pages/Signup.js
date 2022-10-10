@@ -152,7 +152,7 @@ const Signup = ({ children }) => {
   const submitFormUsd = (values) => {
   
     const payload = {
-      currency: "usd",
+      currency: "usa",
       acc_type: values.accountType,
       acc_option: values.businessType,
       acc_owner: values.accountHolderName,
@@ -182,7 +182,7 @@ const Signup = ({ children }) => {
     };
 
     dispatch(handleKycEuro(payload));
-    // handleOpen();
+    handleOpen();
   };
 
   const [open, setOpen] = React.useState(false);

@@ -27,24 +27,7 @@ const animations = {
 
 const Home = () => {
 
-  const fetchPro = async () => {
-    const url = "https://www.griffati.com/restful/export/api/products.json";
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': "HTTP Basic (df2bfc17-3b99-4243-b6bc-a8442947695a: Fiverr188!)"
-      },
-    };
-
-    await axios.get(url, {}, config)
-      .then((data) => console.log(data)).catch((error) => console.log(error))
-  };
-
-  useEffect(() => {
-    fetchPro();
-  });
-
+  
   return (
     <motion.div
       variants={animations}

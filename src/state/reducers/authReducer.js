@@ -22,7 +22,8 @@ import {
 const initialState = {
   isAuthenticated: false,
   loading: true,
-  token: localStorage.getItem("token"),
+  // token: localStorage.getItem("token"),
+  token : null,
   message: "",
   userDetails: {},
   showModal: false,
