@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import "../components/Auth/auth.css";
 import { Link } from "react-router-dom";
+
 import Header from "../components/Header";
 import mark from "../assets/icons/mark.png";
 import { motion } from "framer-motion";

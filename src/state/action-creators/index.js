@@ -86,13 +86,13 @@ export const register = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data.data.user._id);
+      console.log(data.data)
       localStorage.setItem("userData", body);
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
-      localStorage.setItem("uid", data.data.user._id);
+      localStorage.setItem("uid", data.data.user);
     })
     .catch((error) => {
       dispatch({
@@ -353,7 +353,10 @@ export const fetchUser = (data) => async (dispatch) => {
   await axios
     .get(url)
     .then((data) => {
-      console.log(data);
+      console.log(data.data.data);
+      JSON.stringify(
+        localStorage.setItem("user", JSON.stringify(data.data.data))
+      );  
       dispatch({
         type: FETCH_USER_SUCCESS,
         payload: data.data,
