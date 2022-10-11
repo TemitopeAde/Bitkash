@@ -1,11 +1,12 @@
 import { Box } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./register.css";
 import { fetchUser } from "../state/action-creators";
+
 
 const animations = {
   initial: { opacity: 0 },
@@ -14,9 +15,11 @@ const animations = {
 };
 
 const EmailVerification = () => {
+
+  const [email, setEmail] = useState()
   const userData = JSON.parse(localStorage.getItem("user"));
 
-  const {email} = userData;
+  // const {email} = userData;
 
   
   const dispatch = useDispatch();
