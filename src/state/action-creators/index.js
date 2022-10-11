@@ -353,7 +353,7 @@ export const fetchUser = (data) => async (dispatch) => {
   await axios
     .get(url)
     .then((data) => {
-      console.log(data.data.data);
+      
       JSON.stringify(
         localStorage.setItem("user", JSON.stringify(data.data.data))
       );  
@@ -363,7 +363,7 @@ export const fetchUser = (data) => async (dispatch) => {
       });
     })
     .catch((errors) => {
-      console.log(errors);
+      
       dispatch({
         type: FETCH_USER_FAILED,
         payload: data.data,

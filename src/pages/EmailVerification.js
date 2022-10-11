@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./register.css";
 import { fetchUser } from "../state/action-creators";
 
-
 const animations = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
@@ -15,13 +14,10 @@ const animations = {
 };
 
 const EmailVerification = () => {
+  const [userData, setUserData] = JSON.parse(localStorage.getItem("user"));
+ 
+  const {email} = userData;
 
-  const [email, setEmail] = useState()
-  const userData = JSON.parse(localStorage.getItem("user"));
-
-  // const {email} = userData;
-
-  
   const dispatch = useDispatch();
   const uid = localStorage.getItem("uid");
 
