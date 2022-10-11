@@ -557,6 +557,8 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     swift_code,
   });
 
+  console.log(body)
+
   await axios
     .post(url, body, config)
     .then((data) => {
