@@ -14,7 +14,7 @@ const animations = {
 };
 
 const EmailVerification = () => {
-  const [userData, setUserData] = JSON.parse(localStorage.getItem("user"));
+  const [userData, setUserData] = JSON.parse(localStorage.getItem("userData"));
  
   const {email} = userData;
 
