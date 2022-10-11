@@ -147,6 +147,7 @@ export const login = (data) => async (dispatch, getState) => {
 };
 
 export const logout = (data) => async (dispatch, getState) => {
+  console.log("..")
   dispatch({
     type: LOGOUT,
   });
