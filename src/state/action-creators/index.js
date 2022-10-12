@@ -26,6 +26,8 @@ import {
   TRANSACTION_HISTORY_FAILED,
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_FAILED,
+  KYC_USD_FAILED,
+  KYC_USD_SUCCESS,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -86,7 +88,7 @@ export const register = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data.data)
+      console.log(data.data);
       localStorage.setItem("userData", body);
       dispatch({
         type: SIGNUP_SUCCESS,
@@ -147,7 +149,7 @@ export const login = (data) => async (dispatch, getState) => {
 };
 
 export const logout = (data) => async (dispatch, getState) => {
-  console.log("..")
+  console.log("..");
   dispatch({
     type: LOGOUT,
   });
@@ -354,17 +356,15 @@ export const fetchUser = (data) => async (dispatch) => {
   await axios
     .get(url)
     .then((data) => {
-      
       JSON.stringify(
         localStorage.setItem("user", JSON.stringify(data.data.data))
-      );  
+      );
       dispatch({
         type: FETCH_USER_SUCCESS,
         payload: data.data,
       });
     })
     .catch((errors) => {
-      
       dispatch({
         type: FETCH_USER_FAILED,
         payload: data.data,
@@ -521,11 +521,12 @@ export const deleteTransaction = (data) => async (dispatch, getState) => {
 };
 
 export const handleKycUsd = (data) => async (dispatch, getState) => {
+  const token = localStorage.getItem("token");
   const url = "https://bitkash.herokuapp.com/account/create-usa-acc";
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${getState().auth.token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
 
@@ -557,15 +558,22 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     swift_code,
   });
 
-  console.log(body)
-
+  
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data);
+      localStorage.setItem("kycStatus", data.data.message)
+      dispatch({
+        type: KYC_USD_SUCCESS,
+        payload: data.data.message
+      });
     })
     .catch((err) => {
-      console.log(err);
+      localStorage.setItem("kycStatus", err.message);
+      dispatch({
+        type: KYC_USD_FAILED,
+        payload: err.message 
+      })
     })
     .then(() => {
       dispatch({
@@ -580,11 +588,12 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
 };
 
 export const handleKycEuro = (data) => async (dispatch, getState) => {
+  const token = localStorage.getItem("token");
   const url = "https://bitkash.herokuapp.com/account/create-eur-acc";
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${getState().auth.token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
   const {
@@ -617,17 +626,26 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     type: SHOW_LOADER,
   });
 
-  console.log(body);
 
   await axios
     .post(url, body, config)
     .then((data) => {
+      console.log(data);
+      localStorage.setItem("kycStatus", data.data.message);
       dispatch({
         type: KYC_EURO_SUCCESS,
         payload: data.data,
       });
     })
-    .then((err) => {
+    .catch((err) => {
+      console.log(err);
+      localStorage.setItem("kycStatus", err.message);
+      dispatch({
+        type: KYC_EURO_FAILED,
+        payload: err.message,
+      });
+    })
+    .then(() => {
       dispatch({
         type: HIDE_LOADER,
       });
@@ -636,13 +654,8 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
       dispatch({
         type: SHOW_MODAL,
       });
-    })
-    .catch((err) => {
-      dispatch({
-        type: KYC_EURO_FAILED,
-        payload: err.response.data,
-      });
     });
+    
 };
 
 export const getAccount = () => async (dispatch, getState) => {

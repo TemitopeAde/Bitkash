@@ -16,18 +16,24 @@ import {
   PHONE_NUMBER_CHANGED_FAILED,
   FETCH_USER_SUCCESS,
   SHOW_MODAL,
-  SHOW_PAY_PAGE
+  SHOW_PAY_PAGE,
+  KYC_USD_FAILED,
+  KYC_USD_SUCCESS,
+  KYC_EURO_SUCCESS,
+  KYC_EURO_FAILED,
 } from "../action-creators/types";
 
 const initialState = {
   isAuthenticated: false,
   loading: true,
   // token: localStorage.getItem("token"),
-  token : null,
+  token: null,
   message: "",
   userDetails: {},
   showModal: false,
   showPay: false,
+  kycStatus: "",
+  kycUsd: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -43,13 +49,13 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === SEND_ID) {
-    return state
+    return state;
   }
 
   if (action.type === SIGNUP_FAIL) {
     localStorage.removeItem("token");
     const { payload } = action;
-    console.log(payload)
+    console.log(payload);
     return {
       ...state,
       isAuthenticated: false,
@@ -72,7 +78,7 @@ const authReducer = (state = initialState, action) => {
 
   if (action.type === LOGIN_FAIL) {
     const { payload } = action;
-    console.log(payload)
+    console.log(payload);
     localStorage.removeItem("token");
     return {
       ...state,
@@ -84,18 +90,17 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGOUT) {
-    
     localStorage.removeItem("token");
     localStorage.removeItem("uid");
     localStorage.removeItem("userData");
     localStorage.removeItem("paymentDetails");
-    localStorage.removeItem("response")
+    localStorage.removeItem("response");
     return {
       ...state,
       isAuthenticated: false,
       loading: false,
       token: null,
-      userDetails: {}
+      userDetails: {},
     };
   }
 
@@ -103,53 +108,85 @@ const authReducer = (state = initialState, action) => {
     const { payload } = action;
     return {
       ...state,
-      message: payload
-    } 
+      message: payload,
+    };
   }
 
   if (action.type === SUBMIT_NEW_PASSWORD_FAILED) {
-    const {payload} = action;
+    const { payload } = action;
 
     return {
       ...state,
-      message: payload
-    }
+      message: payload,
+    };
   }
 
   if (action.type === SUBMIT_NEW_PASSWORD_SUCCESS) {
-    return state
+    return state;
   }
 
   if (action.type === PHONE_NUMBER_CHANGED_FAILED) {
-    const {payload} = action;
+    const { payload } = action;
     return {
       ...state,
-      message: payload
-    }
+      message: payload,
+    };
   }
 
   if (action.type === FETCH_USER_SUCCESS) {
-    const {payload} = action;
-    console.log(payload)
+    const { payload } = action;
+    console.log(payload);
 
     return {
       ...state,
-      userDetails: payload.data
-    }
+      userDetails: payload.data,
+    };
   }
 
   if (action.type === SHOW_MODAL) {
-  
     return {
       ...state,
-      showModal: true
-    }
+      showModal: true,
+    };
   }
 
   if (action.type === SHOW_PAY_PAGE) {
     return {
       ...state,
       showPay: true,
+    };
+  }
+
+  if (action.type === KYC_USD_FAILED) {
+    const { payload } = action;
+    console.log(payload);
+    return {
+      state,
+      kycUsd: false,
+      kycStatus: payload,
+    };
+  }
+
+  if (action.type === KYC_USD_SUCCESS) {
+    const { payload } = action;
+    return {
+      state,
+      kycUsd: true,
+      kycStatus: payload,
+    };
+  }
+
+  if (action.type === KYC_EURO_SUCCESS) {
+    return {
+      state,
+      kyc_eur_status: true,
+    };
+  }
+
+  if (action.type === KYC_EURO_FAILED) {
+    return {
+      state,
+      kyc_eur_status: false,
     };
   }
 

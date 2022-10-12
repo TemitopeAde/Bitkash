@@ -20,6 +20,13 @@ const animations = {
 const Signup = ({ children }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loader.loading);
+  const kycUsdStatus = useSelector((state) => state.auth.kycStatus);
+  const kycUsd = useSelector((state) => state.auth.kycUsd);
+  
+  
+
+  const message = localStorage.getItem("kycStatus");
+  console.log(message);
 
   const style = {
     position: "absolute",
@@ -146,11 +153,10 @@ const Signup = ({ children }) => {
     bankCity: "millwall london",
     iban: "2244224",
     bankBranchName: "manchester",
-    accountNumber: "83783983"
+    accountNumber: "83783983",
   };
 
   const submitFormUsd = (values) => {
-  
     const payload = {
       currency: "usa",
       acc_type: values.accountType,
@@ -162,7 +168,6 @@ const Signup = ({ children }) => {
       zip_code: values.zipCode,
       swift_code: values.swiftCode2,
     };
-
     dispatch(handleKycUsd(payload));
     handleOpen();
   };
@@ -769,24 +774,27 @@ const Signup = ({ children }) => {
                   </svg>
                 </Box>
 
-                <h6
-                  style={{
-                    fontSize: "32px",
-                    lineHeight: "40px",
-                    color: "#000000",
-                  }}
-                >
-                  Bank Added Successfully
-                </h6>
-                <p
-                  style={{
-                    fontFamily: "Poppins",
-                    fontSize: "16px",
-                    fontWeight: "400",
-                  }}
-                >
-                  Your account number is under review
-                </p>
+                <Box>
+                  <h6
+                    style={{
+                      fontSize: "32px",
+                      lineHeight: "40px",
+                      color: "#000000",
+                    }}
+                  >
+                    {message}
+                  </h6>
+                  <p
+                    style={{
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                      fontWeight: "400",
+                    }}
+                  >
+                    Your account number is under review
+                  </p>
+                </Box>
+
                 <p>
                   Go to{" "}
                   <Link
