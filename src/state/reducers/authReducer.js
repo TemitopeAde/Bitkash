@@ -24,7 +24,7 @@ import {
 } from "../action-creators/types";
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   loading: true,
   // token: localStorage.getItem("token"),
   token: null,

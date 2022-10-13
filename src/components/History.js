@@ -15,24 +15,22 @@ import ReactPaginate from "react-paginate";
 import axios from "axios";
 
 const History = () => {
-  const [error, setError] = useState(null);
-  const [loaded, setLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 6;
+
   const [search, setSearch] = useState("");
   const [from, setFrom] = useState("");
-   const [dropdown, setDropdown] = useState("");
+  const [dropdown, setDropdown] = useState("");
   const [to, setTo] = useState("");
 
-  console.log(items);
-
   useEffect(() => {
-    const filtered = items?.filter((item) =>
-      search ? item.reciept_wallet.toLowerCase() === search.toLowerCase() : item
-    );
-    setItems(filtered);
-
-    console.log(filtered);
-  }, [search, to, from]);
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, items]);
 
   useEffect(() => {
     const fetchHistory = () => {
@@ -48,17 +46,28 @@ const History = () => {
       axios
         .get(url, options)
         .then((data) => {
-          setLoaded(true);
           setItems(data.data.data);
         })
-        .catch((err) => {
-          setLoaded(true);
-          setError(error);
-        });
+        .catch((err) => {});
     };
 
     fetchHistory();
   }, []);
+
+  useEffect(() => {
+    const filtered = items.filter((item) =>
+      search
+        ? item.reciept_wallet.toLowerCase().includes(search.toLowerCase())
+        : currentItems
+    );
+
+    setItems(filtered);
+  }, [search]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+  };
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -79,9 +88,8 @@ const History = () => {
   function Items() {
     return (
       <>
-        {/* {console.log(filteredData)} */}
-        {items &&
-          items?.map((row, index) => (
+        {currentItems &&
+          currentItems?.map((row, index) => (
             <TableRow
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -189,7 +197,7 @@ const History = () => {
           </Box>
         </Box>
 
-        {/* {currentItems?.length > 1 && (
+        {currentItems?.length > 1 && (
           <Box className="history-pagination">
             <ReactPaginate
               breakLabel="..."
@@ -201,7 +209,7 @@ const History = () => {
               renderOnZeroPageCount={null}
             />
           </Box>
-        )} */}
+        )}
       </Container>
     </Box>
   );

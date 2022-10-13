@@ -658,6 +658,27 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     
 };
 
+export const handleFileSubmit = (data) => async (dispatch, getState) => {
+  const {formData} = data;
+  const token = localStorage.getItem("token");
+  const url = "https://bitkash.herokuapp.com/user/edit-profile";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  axios
+    .post(url, formData, config)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export const getAccount = () => async (dispatch, getState) => {
   const url = "https://bitkash.herokuapp.com/account/get-account";
   const config = {

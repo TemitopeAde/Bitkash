@@ -24,6 +24,7 @@ import notification from "../assets/images/notification.png";
 import cuate2 from "../assets/images/cuate2.png";
 import Sidebar from "../components/Sidebar";
 import { fetchUser } from "../state/action-creators/index";
+import DashboardHeader from "../components/DashboardHeader";
 
 ChartJS.register(
   CategoryScale,
@@ -139,6 +140,8 @@ const Dashboard = () => {
     setCurrency(e.target.value);
   }
 
+  
+
   if (window.innerWidth > 820) {
     return (
       <Box className="dashboard">
@@ -152,24 +155,7 @@ const Dashboard = () => {
           <Sidebar />
 
           <Box className="dashboard-content">
-            <Box className="dashboard-header">
-              <Container
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <Box className="dashboard-container">
-                  <Stack spacing={2} direction="row">
-                    <img className="user" src={user} alt="" />
-                    <Stack>
-                      <h6>Olubanjo Oluseyi</h6>
-                      <p>Verified</p>
-                    </Stack>
-                    <Box paddingTop="6px">
-                      <img className="notify" src={notification} alt="" />
-                    </Box>
-                  </Stack>
-                </Box>
-              </Container>
-            </Box>
+            <DashboardHeader />
 
             <Box className="dashboard-inner py-5 dashboard-inner-white">
               <Container className="buy-padding dashboard-padding">

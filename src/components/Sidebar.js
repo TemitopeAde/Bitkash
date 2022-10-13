@@ -1,12 +1,20 @@
 import { Box, Container, Stack } from "@mui/material";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import logo from "../assets/icons/header-white.png";
 
 const Sidebar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log(isAuthenticated);
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+
+  let navigationStyles = {
+    
+  }
+  let activeClassName = "underline";
 
   return (
     <div>
@@ -18,7 +26,12 @@ const Sidebar = () => {
 
           <ul className="nav-icons">
             <li>
-              <Link to="/user-dashboard">
+              <NavLink
+                to="/user-dashboard"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : navigationStyles
+                }
+              >
                 <svg
                   width="22"
                   height="22"
@@ -51,11 +64,16 @@ const Sidebar = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <h6>Dashboard</h6>
-              </Link>
+                Dashboard
+              </NavLink>
             </li>
             <li>
-              <Link to="/buy-bitcoin">
+              <NavLink
+                to="/buy-bitcoin"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : navigationStyles
+                }
+              >
                 <svg
                   width="20"
                   height="20"
@@ -107,11 +125,16 @@ const Sidebar = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p>Buy</p>
-              </Link>
+                Buy
+              </NavLink>
             </li>
             <li>
-              <Link to="/transaction-history">
+              <NavLink
+                to="/transaction-history"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : navigationStyles
+                }
+              >
                 <svg
                   width="20"
                   height="20"
@@ -171,12 +194,17 @@ const Sidebar = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-
-                <h6>Transaction History</h6>
-              </Link>
+                Transaction History
+              </NavLink>
             </li>
+            
             <li>
-              <Link to="/banks">
+              <NavLink
+                to="/banks"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : navigationStyles
+                }
+              >
                 <svg
                   width="24"
                   height="24"
@@ -233,11 +261,16 @@ const Sidebar = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <h6>Banks</h6>
-              </Link>
+                Banks
+              </NavLink>
             </li>
             <li>
-              <Link to="/pasword-and-security">
+              <NavLink
+                to="/pasword-and-security"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : navigationStyles
+                }
+              >
                 <svg
                   width="20"
                   height="20"
@@ -276,12 +309,16 @@ const Sidebar = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-
-                <h6>Security</h6>
-              </Link>
+                Security
+              </NavLink>
             </li>
             <li>
-              <Link to="/activities">
+              <NavLink
+                to="/activities"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : navigationStyles
+                }
+              >
                 <svg
                   width="20"
                   height="24"
@@ -318,14 +355,18 @@ const Sidebar = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-
-                <h6>Activities</h6>
-              </Link>
+                Activities
+              </NavLink>
             </li>
 
             {isAuthenticated && (
               <li>
-                <Link to="/logout">
+                <NavLink
+                  to="/logout"
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : navigationStyles
+                  }
+                >
                   <svg
                     width="20"
                     height="20"
@@ -362,9 +403,8 @@ const Sidebar = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-
-                  <h6>Logout</h6>
-                </Link>
+                  Logout
+                </NavLink>
               </li>
             )}
           </ul>
