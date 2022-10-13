@@ -8,12 +8,14 @@ import logo from "../assets/icons/header-white.png";
 const Sidebar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   let activeStyle = {
-    textDecoration: "underline",
+    padding: "0.7rem 0",
+    paddingLeft: "0.5rem",
+    borderRadius: "5px",
+    backgroundColor: "#ffffff",
+    color: "black",
   };
 
-  let navigationStyles = {
-    
-  }
+  let navigationStyles = {};
   let activeClassName = "underline";
 
   return (
@@ -197,7 +199,7 @@ const Sidebar = () => {
                 Transaction History
               </NavLink>
             </li>
-            
+
             <li>
               <NavLink
                 to="/banks"

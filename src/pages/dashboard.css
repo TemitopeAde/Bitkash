@@ -189,9 +189,14 @@ ul {
     color: black;
 }
 
-.nav-icons a:hover path {
-    stroke: #000000;
+.nav-icons a:hover path,
+.active svg path {
+    stroke: #000000 !important;
 }
+
+
+
+
 
 .nav-icons p {
     margin: 0;
