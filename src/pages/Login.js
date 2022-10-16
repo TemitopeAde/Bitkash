@@ -54,10 +54,11 @@ const Login = ({ children }) => {
   const [passwordShown, setPasswordShown] = useState(true);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.loader.loading);
+
   const message = useSelector((state) => state.auth.message);
 
   console.log(message);
-
+  
   const togglePassword = (e) => {
     e.preventDefault();
     setPasswordShown(!passwordShown);
@@ -68,7 +69,7 @@ const Login = ({ children }) => {
   }
 
   if (isAuthenticated) {
-    return <Navigate to="/buy" />;
+    return <Navigate to="/user-dashboard" />;
   }
 
   if (!isAuthenticated && width > 820) {
@@ -89,7 +90,7 @@ const Login = ({ children }) => {
           <Box position="relative">
             <Box className="register-sidebar">
               <Box className="register-title">
-                <h3>Sign up</h3>
+                <h3>Log in</h3>
               </Box>
             </Box>
 
@@ -331,11 +332,11 @@ const Login = ({ children }) => {
                   className="mobile-register-form active login-form"
                   style={{ padding: "3rem 1.5rem" }}
                 >
-                  {message && (
+                  {/* {message && (
                     <div className="error-container">
                       <h6 className="error-message">{message}</h6>
                     </div>
-                  )}
+                  )} */}
                   <Formik
                     initialValues={initialValues}
                     validate={validate}

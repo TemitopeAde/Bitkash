@@ -1,22 +1,26 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Navigate } from "react-router-dom";
+
 
 import Sidebar from "../components/Sidebar";
-import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
 import { logout } from "../state/action-creators";
 import DashboardHeader from "../components/DashboardHeader";
 
 
 const Logout = () => {
+  const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logout());
+  }
+
+  if (!token) {
+    return <Navigate to="/" />;
   }
 
   return (

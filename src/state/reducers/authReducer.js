@@ -24,7 +24,7 @@ import {
 } from "../action-creators/types";
 
 const initialState = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   loading: true,
   // token: localStorage.getItem("token"),
   token: null,
@@ -34,6 +34,7 @@ const initialState = {
   showPay: false,
   kycStatus: "",
   kycUsd: false,
+  logoutStatus: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -95,6 +96,7 @@ const authReducer = (state = initialState, action) => {
     localStorage.removeItem("userData");
     localStorage.removeItem("paymentDetails");
     localStorage.removeItem("response");
+    localStorage.removeItem("user");
     return {
       ...state,
       isAuthenticated: false,

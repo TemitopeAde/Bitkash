@@ -88,7 +88,6 @@ export const register = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data.data);
       localStorage.setItem("userData", body);
       dispatch({
         type: SIGNUP_SUCCESS,
@@ -129,6 +128,8 @@ export const login = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
+      console.log(data.data.user);
+      localStorage.setItem("userData", JSON.stringify(data.data.user));
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
@@ -149,7 +150,6 @@ export const login = (data) => async (dispatch, getState) => {
 };
 
 export const logout = (data) => async (dispatch, getState) => {
-  console.log("..");
   dispatch({
     type: LOGOUT,
   });
@@ -246,9 +246,9 @@ export const submitOTP = (data) => async (dispatch) => {
 };
 
 export const sendOtp = (uid) => async (dispatch) => {
-  const object = {
-    uid: uid,
-  };
+  // const object = {
+  //   uid: uid,
+  // };
 
   const config = {
     headers: {
@@ -257,13 +257,12 @@ export const sendOtp = (uid) => async (dispatch) => {
   };
 
   const url = "https://bitkash.herokuapp.com/user/resend-code";
-  // const body = JSON.stringify({ uid });
-  const data = JSON.stringify(object);
+  const data = JSON.stringify({ uid });
 
   console.log(data);
 
   await axios
-    .post(url, data, config)
+    .post(url, uid, config)
     .then((data) => {
       console.log(data);
     })
@@ -367,7 +366,7 @@ export const fetchUser = (data) => async (dispatch) => {
     .catch((errors) => {
       dispatch({
         type: FETCH_USER_FAILED,
-        payload: data.data,
+        payload: errors.data,
       });
     });
 };
@@ -558,22 +557,21 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     swift_code,
   });
 
-  
   await axios
     .post(url, body, config)
     .then((data) => {
-      localStorage.setItem("kycStatus", data.data.message)
+      localStorage.setItem("kycStatus", data.data.message);
       dispatch({
         type: KYC_USD_SUCCESS,
-        payload: data.data.message
+        payload: data.data.message,
       });
     })
     .catch((err) => {
       localStorage.setItem("kycStatus", err.message);
       dispatch({
         type: KYC_USD_FAILED,
-        payload: err.message 
-      })
+        payload: err.message,
+      });
     })
     .then(() => {
       dispatch({
@@ -626,7 +624,6 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     type: SHOW_LOADER,
   });
 
-
   await axios
     .post(url, body, config)
     .then((data) => {
@@ -655,11 +652,10 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
         type: SHOW_MODAL,
       });
     });
-    
 };
 
 export const handleFileSubmit = (data) => async (dispatch, getState) => {
-  const {formData} = data;
+  const { formData } = data;
   const token = localStorage.getItem("token");
   const url = "https://bitkash.herokuapp.com/user/edit-profile";
   const config = {
@@ -677,7 +673,7 @@ export const handleFileSubmit = (data) => async (dispatch, getState) => {
     .catch((err) => {
       console.log(err);
     });
-}
+};
 
 export const getAccount = () => async (dispatch, getState) => {
   const url = "https://bitkash.herokuapp.com/account/get-account";
