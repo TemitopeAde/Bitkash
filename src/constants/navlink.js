@@ -29,4 +29,14 @@ export const navLink = [
     label: "Terms",
     route: "/terms",
   },
+//   {
+//     id: 7,
+//     label: "Delivery Policy",
+//     route: "/delivery-policy",
+//   },
+//   {
+//     id: 8,
+//     label: "Refund",
+//     route: "/refund",
+//   },
 ];

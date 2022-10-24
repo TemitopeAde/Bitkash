@@ -68,7 +68,7 @@ export default function HomeWrapper() {
         </Section>
         <Section
           background='tw-relative'
-          classname='tw-flex tw-min-h-[70vh] lg:tw-min-h-[77vh] tw-overflow-hidden'
+          classname='tw-flex tw-min-h-[70vh] lg:tw-min-h-[84vh] xl:tw-min-h-[77vh] tw-overflow-hidden'
         >
           <div className='tw-hidden lg:tw-block tw-flex-1 tw-absolute tw-bottom-0 tw-left-0'>
             <div className='tw-w-[70%] '>
