@@ -68,7 +68,7 @@ export default function HomeWrapper() {
         </Section>
         <Section
           background='tw-relative'
-          classname='tw-flex tw-min-h-[70vh] lg:tw-min-h-[85vh] tw-overflow-hidden'
+          classname='tw-flex tw-min-h-[70vh] lg:tw-min-h-[77vh] tw-overflow-hidden'
         >
           <div className='tw-hidden lg:tw-block tw-flex-1 tw-absolute tw-bottom-0 tw-left-0'>
             <div className='tw-w-[70%] '>
@@ -203,12 +203,10 @@ export default function HomeWrapper() {
         >
           <div className='tw-hidden tw-flex-1 lg:tw-flex tw-items-center'>
             <div>
-              <Text as='h1' classname='tw-py-3'>
+              <Text as='h1' classname='tw-py-3 tw-leading-normal'>
                 Get Started Now and Join The{" "}
-                <span className='tw-text-primary-main tw-leading-normal'>
-                  Bitkash
-                </span>{" "}
-                Family With Your First Purchase
+                <span className='tw-text-primary-main'>Bitkash</span> Family
+                With Your First Purchase
               </Text>
               <Button variant='primary' size='large'>
                 Buy Bitcoins

@@ -16,12 +16,12 @@ const AdminNavLinks = [
     route: "/admin/users-list",
     icon: <IoWalletOutline />,
   },
-  {
-    id: 3,
-    label: "Banks",
-    route: "/",
-    icon: <BsBank2 />,
-  },
+  // {
+  //   id: 3,
+  //   label: "Banks",
+  //   route: "/",
+  //   icon: <BsBank2 />,
+  // },
   {
     id: 4,
     label: "Admins",
