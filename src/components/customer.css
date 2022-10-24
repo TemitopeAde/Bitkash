@@ -1,0 +1,126 @@
+.customer {
+    font-family: 'Poppins';
+    padding: 5rem;
+}
+
+.customer .cust-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 40px;
+}
+
+.customer-items {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 20px;
+}
+
+.customer-flex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 5rem;
+
+}
+
+.customer-items {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 3rem;
+    border-radius: 10px;
+    border: 1px solid #F16A23;
+}
+
+.customer-items div:first-of-type {
+    padding: 1rem;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    height: 60px;
+}
+
+.customer-items img {
+    width: 25px;
+    height: 25px;
+}
+
+.customer-flex h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 24px;
+    font-family: 'Circular std';
+    color: #000
+}
+
+.customer-flex p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+    color: #263238;
+}
+
+.customer-flex .color-yellow {
+    font-weight: bold;
+    transition: .7s;
+}
+
+.customer-flex .color-yellow:hover {
+    color: #e29742;
+}
+
+
+
+
+
+@media screen and (min-width: 1920px) {
+    .customer-items {
+        padding: 3rem;
+    }
+
+    .customer-flex {
+        gap: 60px;
+    }
+}
+
+
+@media screen and (min-width: 2256px) {
+    .customer-items {
+        padding: 6rem;
+    }
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 820px) {
+    .customer-flex {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-items {
+        flex-direction: column;
+        column-gap: 20px;
+    }
+
+    .customer-items div:first-of-type {
+        /* display: none; */
+        box-shadow: none;
+    }
+
+    .customer .cust-title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .customer {
+        text-align: center !important;
+        padding: 5rem 1rem;
+    }
+
+
+    .customer .cust-title {
+        margin-top: 3rem;
+    }
+}

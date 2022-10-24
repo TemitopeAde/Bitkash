@@ -1,0 +1,152 @@
+.history-header {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    column-gap: 40px;
+    align-items: center;
+}
+
+.history-header-search {
+    display: grid;
+    grid-template-columns: 2fr repeat(3,1fr);
+    gap: 1rem
+}
+
+.history-header-search .form-control {
+    font-size: .7rem;
+}
+
+.banks .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-pagination ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.history-pagination {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 1280px) {
+    .history-header {
+        /* grid-template-columns: 1fr 1fr 0.4fr; */
+        column-gap: 30px;
+
+    }
+    .history-header-search {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 1rem
+    }
+}
+
+.history-header .wallet {
+    width: 40px;
+    height: 40px;
+}
+
+.history-table {
+    overflow-x: scroll;
+}
+
+.history-header select {
+    background-color: none !important;
+}
+
+.history-table-head {
+    text-align: center;
+}
+
+.history-table-head,
+.history-table-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0px;
+    text-align: center;
+}
+
+.dashboard-inner {
+    padding: 3rem 0;
+    background-color: #fff;
+}
+
+.h-table {
+    font-family: 'Poppins' !important;
+}
+
+.h-table th,
+.h-table td {
+    text-align: center;
+    font-family: 'Poppins';
+}
+
+table,
+tr,
+td {
+    border: none !important;
+}
+
+.h-table table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border: none !important;
+    /* border-spacing: 200px 500px !important; */
+}
+
+thead th {
+    font-weight: 600 !important;
+    font-size: 16px;
+}
+
+
+tbody tr {
+    background-color: rgba(255, 249, 241, 1);
+}
+
+
+
+
+
+/* PAYMENT.JS */
+
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment-header .payment-button {
+    color: #fff;
+    width: 166px;
+    height: 57px;
+    left: 1828px;
+    top: 154px;
+
+    background: #FF9924;
+    border: 1px solid #FF9924;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.h-table td {
+    font-size: 16px;
+}
+
+.approved {
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 16px;
+    line-height: 32px;
+    color: #008545 !important;
+}
+
+.declined {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: crimson !important;
+}

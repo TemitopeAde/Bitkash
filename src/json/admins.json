@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Olubanjo Oluseyi",
+    "role":"Super Admin"
+  },
+  {
+    "id": 2,
+    "name": "Oloko Opeyemi",
+    "role":"Super Admin"
+  },
+  {
+    "id": 3,
+    "name": "Fayelu Olatubosun",
+    "role":"Admin"
+  },
+  {
+    "id": 4,
+    "name": "Fagbamila Faith",
+    "role":"Admin"
+  },
+  {
+    "id": 5,
+    "name": "Olubanjo Oluseyi",
+    "role":"Super Admin"
+  },
+  {
+    "id": 6,
+    "name": "Olubanjo Oluseyi",
+    "role":"Admin"
+  },
+  {
+    "id": 7,
+    "name": "Olubanjo Oluseyi",
+    "role":"Super Admin"
+  },
+  {
+    "id": 8,
+    "name": "Olubanjo Oluseyi",
+    "role":"Super Admin"
+  },
+  {
+    "id": 9,
+    "name": "Olubanjo Oluseyi",
+    "role":"Admin"
+  },
+  {
+    "id": 10,
+    "name": "Olubanjo Oluseyi",
+    "role":"Super Admin"
+  },
+  {
+    "id": 11,
+    "name": "Olubanjo Oluseyi",
+    "role":"Admin"
+  },
+  {
+    "id": 12,
+    "name": "Olubanjo Oluseyi",
+    "role":"Admin"
+  }
+]

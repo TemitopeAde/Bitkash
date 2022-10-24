@@ -1,0 +1,42 @@
+.mobile-nav-fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #FFF8EE;
+    width: 100%;
+    z-index: 1000;
+}
+
+.mobile-nav-fixed button {
+    background: none;
+    border: none;
+}
+
+.mobile-nav-fixed .mobile-nav-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.mobile-fixed-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 101%;
+    z-index: 1000;
+    background-color: white;
+}
+
+
+#mobile-logo {
+    width: 149px;
+}
+
+.mobile-nav-fixed .profile-avatar {
+    border-radius: 50%;
+}
+
+
