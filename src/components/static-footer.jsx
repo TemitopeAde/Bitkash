@@ -14,7 +14,7 @@ export default function Footer({ classname, children }) {
             <p className='tw-text-primary-main tw-text-xl tw-font-semibold'>
               Subscribe
             </p>
-            <h1 className='tw-text-white tw-text-2xl lg:tw-text-5xl tw-leading-tight tw-font-bold tw-font-circular lg:w-[80%]'>
+            <h1 className='tw-text-white tw-text-2xl lg:tw-text-5xl tw-leading-normal tw-font-bold tw-font-circular lg:w-[80%]'>
               Stay informed never miss an <span>update!</span>
             </h1>
           </div>
