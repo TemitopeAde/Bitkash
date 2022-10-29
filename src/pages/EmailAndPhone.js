@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { sendOtp } from "../state/action-creators";
+import { sendOtp, test } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
@@ -21,14 +21,18 @@ const animations = {
 const EmailAndPhone = ({ children }) => {
   const [OTP, setOTP] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  console.log(phoneNumber);
+  const [message, setMessage] = useState("Send Code");
+  const handleClick = (e) => {
+    e.preventDefault();
+    setMessage("Submit");
+  }
 
   const { uid } = useParams();
   const dispatch = useDispatch();
 
   const fetchUser = async () => {
     const url = `https://bitkash.herokuapp.com/user/${uid}`;
-    
+
     await axios
       .get(url)
       .then((data) => {
@@ -72,7 +76,6 @@ const EmailAndPhone = ({ children }) => {
                     <span
                       style={{ textDecoration: "none" }}
                       className="color-yellow"
-
                     >
                       {phoneNumber}
                     </span>
@@ -103,7 +106,7 @@ const EmailAndPhone = ({ children }) => {
                   </Box>
                 </Box>
 
-                <div className="mt-5 mb-3">
+                <div className="mt-3 mb-3">
                   <p>
                     Made a mistake in your phone number or <br /> email address?{" "}
                     <Link
@@ -168,7 +171,7 @@ const EmailAndPhone = ({ children }) => {
         <Header />
         <Box>
           <Helmet>
-            <title>OTP Verification</title>
+            <title>Phone verification</title>
             <meta name="description" content="App Description" />
             <meta name="theme-color" content="#008f68" />
             <body class="mobile-background" />
@@ -177,7 +180,7 @@ const EmailAndPhone = ({ children }) => {
 
         <Box
           style={{
-            marginTop: "6rem",
+            marginTop: "8rem",
             fontFamily: "Poppins",
             textAlign: "center",
           }}
@@ -188,77 +191,110 @@ const EmailAndPhone = ({ children }) => {
               lineHeight: "40px",
               fontSize: "24px",
               fontWeight: "600",
+              marginBottom: "3rem",
             }}
-            className="text-center mb-3 mt-4"
+            className="text-center"
+            
           >
             Phone verification
           </h6>
 
           <Box
-            style={{ width: "90vw", margin: "0 auto", paddingBottom: "5rem" }}
+            style={{
+              width: "90vw",
+              margin: "0 auto",
+              paddingBottom: "5rem",
+              textAlign: "left",
+            }}
           >
-            <Box className="p-2" style={{ background: "white" }}>
+            <Box
+              className="p-2"
+              style={{ background: "white", borderRadius: "10px" }}
+            >
               <Box style={{ padding: "2rem 1rem" }}>
                 <form>
                   <Box className="otp-number-div mb-5">
-                    {/* <h6 className="otp-title">Email and Phone Verification</h6> */}
                     <p>
-                      A 4 digit OTP code has been sent to your mail
-                      <a
-                        style={{ marginRight: "6px" }}
-                        className="color-yellow"
-                        href="mailto:bitkash@gmail.com"
-                      >
-                        bitkash@gmail.com
-                      </a>
-                      and phone number{" "}
-                      <a className="color-yellow" href="tel:+123456789">
-                        +123456789
-                      </a>
+                      A 4 digit OTP code has been sent to your mail phone number{" "}
+                      <span className="color-yellow">{phoneNumber}</span>
                     </p>
                   </Box>
 
                   <Box className="enter-otp-title mb-5">
                     <label htmlFor="phone-otp">Enter the phone OTP code</label>
-                    <Box className="phone-otp mt-3">
-                      <form>
-                        <div className="phone-otp-flex"></div>
-                      </form>
-                    </Box>
-                  </Box>
 
-                  <Box className="enter-otp-title">
-                    <label htmlFor="phone-otp">Enter the Email OTP code</label>
                     <Box className="phone-otp mt-3">
                       <div className="phone-otp-flex">
-                        {/* {otp2.map((data, index) => {
-                          return (
-                            <input
-                              type="text"
-                              name="otp"
-                              maxLength="1"
-                              className="input-otp"
-                              key={index}
-                              value={data}
-                              onFocus={(e) => e.target.select()}
-                              onChange={(e) => handleChange2(e.target, index)}
-                            />
-                          );
-                        })} */}
+                        <OTPInput
+                          value={OTP}
+                          onChange={setOTP}
+                          autoFocus
+                          OTPLength={4}
+                          otpType="number"
+                          disabled={false}
+                          secure
+                          inputStyles={{
+                            width: "70px",
+                            height: "70px",
+                            fontSize: "2rem",
+                            borderRadius: "5px",
+                            border: "1px solid #ff9924",
+                          }}
+                        />
                       </div>
                     </Box>
                   </Box>
 
-                  <div className="mt-5 mb-3">
-                    <p>
-                      Made a mistake in your phone number or <br /> email
-                      address?{" "}
-                      <button
-                        className="color-yellow"
-                        style={{ background: "none", border: "none" }}
-                      >
-                        click here
-                      </button>
+                  <div className="mt-3 mb-3">
+                    <p style={{ margin: 0 }}>
+                      Made a mistake in your phone number or email address?
+                    </p>
+
+                    <Link
+                      to="/"
+                      className="color-yellow"
+                      style={{ background: "none", border: "none" }}
+                    >
+                      click here
+                    </Link>
+                  </div>
+
+                  <div>
+                    <button
+                      style={{
+                        width: "129px",
+                        height: "40px",
+                        background: "#FF9924",
+                        border: "1px solid #FC8218",
+                        borderRadius: " 5px",
+                        fontFamily: "Poppins",
+                        fontSize: "14px",
+                        color: "#000000",
+                        outline: "none",
+                      }}
+                      onClick={handleClick}
+                    >
+                      {message}
+                    </button>
+                  </div>
+
+                  <div className="mt-3 mb-3">
+                    <p style={{ margin: 0 }}>
+                      If you did not receive the OTP code Kindly{" "}
+                    </p>
+
+                    <Link
+                      to="/"
+                      className="color-yellow"
+                      style={{ background: "none", border: "none" }}
+                    >
+                      resend
+                    </Link>
+                  </div>
+
+                  <div className="mt-3 mb-3">
+                    <p style={{ margin: 0 }}>
+                      Note: The OTP code expires in <br /> 2 minutes
                     </p>
                   </div>
 

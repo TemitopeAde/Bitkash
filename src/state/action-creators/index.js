@@ -246,10 +246,6 @@ export const submitOTP = (data) => async (dispatch) => {
 };
 
 export const sendOtp = (uid) => async (dispatch) => {
-  // const object = {
-  //   uid: uid,
-  // };
-
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -258,11 +254,10 @@ export const sendOtp = (uid) => async (dispatch) => {
 
   const url = "https://bitkash.herokuapp.com/user/resend-code";
   const data = JSON.stringify({ uid });
-
-  console.log(data);
+  console.log(data)
 
   await axios
-    .post(url, uid, config)
+    .post(url, data, config)
     .then((data) => {
       console.log(data);
     })
@@ -722,3 +717,4 @@ export const getUserBank = () => async (dispatch, getState) => {
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 };
+

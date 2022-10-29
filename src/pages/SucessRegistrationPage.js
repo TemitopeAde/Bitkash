@@ -28,7 +28,7 @@ const SucessRegistrationPage = () => {
           <title>Registration Successful</title>
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
-        </Helmet>
+        </Helmet>                    
         <Box>
           <Box>
             <Header />
@@ -52,9 +52,9 @@ const SucessRegistrationPage = () => {
             </Box>
           </Box>
         </Box>
-      </motion.div>
+      </motion.div>                                 
     );
-  }
+  }        
 
   if (window.innerWidth <= 820) {
     return (

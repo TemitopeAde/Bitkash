@@ -7,9 +7,9 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const animations = {
-  initial: { opacity: 0, x: 1000 },
+  initial: { opacity: 0, x: 50 },
   animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -1000 },
+  exit: { opacity: 0, x: -50 },
 };
 
 const Register1 = ({

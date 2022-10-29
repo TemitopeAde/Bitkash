@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import React, {useEffect} from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactions } from "../state/action-creators";
 
 import "./dashboard.css";
-import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
 import History from "../components/History";
 import Sidebar from "../components/Sidebar";
 import DashboardHeader from "../components/DashboardHeader";
@@ -31,7 +29,7 @@ const Histories = () => {
   const transactionHistory = useSelector((state) => state.transactions.history);
   const loader = useSelector((state) => state.loader.loading)
   const dispatch = useDispatch();
-  console.log(transactionHistory, "trans history")
+  
 
   useEffect(() => {
     // dispatch(getAllTransactions());

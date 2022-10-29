@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container, ListItemIcon, Stack } from "@mui/material";
 import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -25,6 +25,7 @@ const History = () => {
   const [from, setFrom] = useState("");
   const [dropdown, setDropdown] = useState("");
   const [to, setTo] = useState("");
+  console.log(currentItems)
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -58,11 +59,13 @@ const History = () => {
     const filtered = items.filter((item) =>
       search
         ? item.reciept_wallet.toLowerCase().includes(search.toLowerCase())
-        : currentItems
+        : items
     );
 
     setItems(filtered);
   }, [search]);
+
+  
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -108,6 +111,32 @@ const History = () => {
               </TableCell>
             </TableRow>
           ))}
+
+        {/* {currentItems
+          ?.filter((item) => {
+            return search.toLowerCase() === ""
+              ? item
+              : item.reciept_wallet.toLowerCase().includes(search.toLowerCase());
+          })
+          .map((row, index) => (
+            <TableRow
+              key={index}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell align="right">{row._id}</TableCell>
+              <TableCell align="right">{row.createdAt}</TableCell>
+              <TableCell align="right">{row.payment_type}</TableCell>
+              <TableCell align="right">{row.crypto_amount}</TableCell>
+              <TableCell align="right">{row.fiat_amount}</TableCell>
+              <TableCell align="right">{row.reciept_wallet}</TableCell>
+              <TableCell
+                className={row.status === "Declined" ? "declined" : "approved"}
+                align="right"
+              >
+                {row.transaction_status}
+              </TableCell>
+            </TableRow>
+          ))} */}
       </>
     );
   }

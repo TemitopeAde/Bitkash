@@ -245,8 +245,7 @@ const Register = () => {
     return <Navigate to="/email-verification" />;
   }
 
-  if (width <= 820) {
-    console.log("small screen");
+  if (width <= 820 && !isAuthenticated) {
     return (
       <Box>
         <Helmet>
@@ -780,12 +779,7 @@ const Register = () => {
                         <p className="form-error">{errors?.state}</p>
                       </div>
                       <div className="register-city  mobile-register-field">
-                        <label
-                          
-                          htmlFor="register-city"
-                        >
-                          City
-                        </label>
+                        <label htmlFor="register-city">City</label>
                         <input
                           id="register-city"
                           type="text"
