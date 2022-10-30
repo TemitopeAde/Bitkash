@@ -49,38 +49,41 @@ export const register = (data) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   };
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    phone,
-    currency,
-    language,
-    zipCode,
-    country,
-    state,
-    city,
-    streetAddress,
-    role,
-  } = data;
-  const body = JSON.stringify({
-    firstName,
-    lastName,
-    email,
-    password,
-    phone,
-    currency,
-    zipCode,
-    language,
-    country,
-    state,
-    city,
-    streetAddress,
-    role,
-  });
-  const url = "https://bitkash.herokuapp.com/user/signup";
 
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    phone_number,
+    currency,
+    preferred_language,
+    zip_code,
+    country,
+    state,
+    city,
+    street_address,
+    confirm_password,
+  } = data;
+
+  const body = JSON.stringify({
+    first_name,
+    last_name,
+    email,
+    password,
+    phone_number,
+    currency,
+    zip_code,
+    preferred_language,
+    country,
+    state,
+    city,
+    street_address,
+    confirm_password,
+  });
+
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/register";
+  
   dispatch({
     type: SHOW_LOADER,
   });
@@ -88,12 +91,15 @@ export const register = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      localStorage.setItem("userData", body);
+      const user = JSON.stringify({
+        email: email,
+        phone_number: phone_number
+      });
+      localStorage.setItem("userData", user);
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
-      localStorage.setItem("uid", data.data.user);
     })
     .catch((error) => {
       dispatch({
@@ -109,7 +115,6 @@ export const register = (data) => async (dispatch) => {
 };
 
 export const login = (data) => async (dispatch, getState) => {
-  console.log(getState());
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -117,8 +122,9 @@ export const login = (data) => async (dispatch, getState) => {
   };
 
   const { email, password } = data;
+  
 
-  const url = "https://bitkash.herokuapp.com/user/signin";
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/login";
 
   const body = JSON.stringify({ email, password });
   console.log(body);
@@ -129,9 +135,9 @@ export const login = (data) => async (dispatch, getState) => {
     .post(url, body, config)
     .then((data) => {
       console.log(data.data.user);
-      localStorage.setItem("userData", JSON.stringify(data.data.user));
+      
       dispatch({
-        type: SIGNUP_SUCCESS,
+        type: LOGIN_SUCCESS,
         payload: data.data,
       });
     })

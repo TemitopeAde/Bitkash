@@ -14,7 +14,6 @@ const animations = {
 
 const Register1 = ({
   setForm,
-  phone,
   setFormData,
   formData,
   handleChange,
@@ -36,7 +35,11 @@ const Register1 = ({
       // className="mobile-white"
       style={{ borderRadius: "10px", paddingBottom: "0rem" }}
     >
-      <Box style={{ paddingBottom: "0rem" }} className="register-content" id="form1">
+      <Box
+        style={{ paddingBottom: "0rem" }}
+        className="register-content"
+        id="form1"
+      >
         <Container>
           <Box position="relative" style={{ paddingBottom: "4rem" }}>
             <Box
@@ -47,7 +50,6 @@ const Register1 = ({
               <Stack>
                 <p className="step-one mb-3">Step 1 of 2</p>
                 <p className="step-one-title mb-5">Personal Details</p>
-                
               </Stack>
 
               <Box className="register-form-grid">
@@ -61,9 +63,9 @@ const Register1 = ({
                         id="first-name"
                         type="text"
                         onChange={handleChange}
-                        value={formData.firstName}
+                        value={formData.first_name}
                       />
-                      <p className="form-error">{errors?.firstName}</p>
+                      <p className="form-error">{errors?.first_name}</p>
                     </div>
                     <div className="register-last-name">
                       <label htmlFor="last-name">Last name</label>
@@ -73,9 +75,9 @@ const Register1 = ({
                         id="last-name"
                         type="text"
                         onChange={handleChange}
-                        value={formData.lastName}
+                        value={formData.last_name}
                       />
-                      <p className="form-error">{errors?.LastName}</p>
+                      <p className="form-error">{errors?.last_name}</p>
                     </div>
                   </div>
                   <div className="register-row">
@@ -160,10 +162,10 @@ const Register1 = ({
                           className="form-control"
                           type={passwordShown ? "text" : "password"}
                           id="regsiter-confirm-password"
-                          value={formData.password2}
+                          value={formData.confirm_password}
                           onChange={handleChange}
                         />
-                        <p className="form-error">{errors?.password2}</p>
+                        <p className="form-error">{errors?.confirm_password}</p>
                         <Box
                           position="absolute"
                           sx={{ right: "20px", top: "7px" }}
@@ -219,12 +221,12 @@ const Register1 = ({
                         name="language"
                         id="register-language"
                         onChange={handleChange}
-                        value={formData.language}
+                        value={formData.preferred_language}
                       >
                         <option>ENG</option>
                         <option>FRA</option>
                       </select>
-                      <p className="form-error">{errors?.language}</p>
+                      <p className="form-error">{errors?.preferred_language}</p>
                     </div>
                   </div>
                   <div className="mt-3 register-next">

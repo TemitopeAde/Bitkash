@@ -3,7 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 
-import Header from "../components/Header";
 import "./success.css";
 import check from "../assets/images/check.png";
 import { Link } from "react-router-dom";
@@ -28,10 +27,9 @@ const SucessRegistrationPage = () => {
           <title>Registration Successful</title>
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
-        </Helmet>                    
-        <Box>
+        </Helmet>
+        <Box style={{ background: "rgba(255, 223, 184, 0.2)" }}>
           <Box>
-            <Header />
             <Box className="success-registration-flex-center">
               <Box>
                 <Stack spacing={4}>
@@ -41,22 +39,26 @@ const SucessRegistrationPage = () => {
 
                   <h6>Congratulations Olubanjo Oluseyi</h6>
                   <p>
-                    Your registration to Bitkash is successful <br /> click here
-                    to visit your{" "}
+                    You're officially part of the Bitkash Family <br /> Click{" "}
                     <Link className="color-yellow" to="/dashboard">
-                      dashboard
-                    </Link>
+                      here
+                    </Link>{" "}
+                    to get started 
                   </p>
                 </Stack>
               </Box>
             </Box>
           </Box>
         </Box>
-      </motion.div>                                 
+      </motion.div>
     );
-  }        
+  }
+
+  
 
   if (window.innerWidth <= 820) {
+    const data = localStorage.getItem("user");
+    console.log(data)
     return (
       <motion.div
         variants={animations}
@@ -73,16 +75,20 @@ const SucessRegistrationPage = () => {
 
         <div className="mobile-register-page">
           <AuthHeader />
-          <Box sx={{fontFamily: 'Poppins'}}>
+          <Box sx={{ fontFamily: "Poppins" }}>
             <Box mt="8rem">
-              <h3>Update Email</h3>
+              <h3>Registration Successful</h3>
 
               <Box>
                 <Box
                   className="mobile-register-form active login-form"
                   style={{ padding: "3rem 1.5rem" }}
                 >
-                  <Stack spacing={4} textAlign="center" className="flex-success" >
+                  <Stack
+                    spacing={4}
+                    textAlign="center"
+                    className="flex-success"
+                  >
                     <Box>
                       <svg
                         width="72"
@@ -98,13 +104,23 @@ const SucessRegistrationPage = () => {
                       </svg>
                     </Box>
 
-                    <h6>Congratulations <br /> Olubanjo Oluseyi</h6>
-                    <p>
-                      Your registration to Bitkash is successful click here to
-                      visit your{" "}
+                    <h6>
+                      Congratulations <br /> Olubanjo Oluseyi
+                    </h6>
+                    <p
+                      style={{
+                        lineHeight: "32px",
+                        fontSize: "16px",
+                        fontFamily: "Poppins",
+                        fontWeight: "400",
+                      }}
+                    >
+                      You're officially part of the <br /> Bitkash Family <br />
+                      Click{" "}
                       <Link className="color-yellow" to="/dashboard">
-                        dashboard
-                      </Link>
+                        here
+                      </Link>{" "}
+                      to get started
                     </p>
                   </Stack>
                 </Box>

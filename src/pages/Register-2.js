@@ -322,7 +322,7 @@ const Register2 = ({
                         <option>Zambia</option>
                         <option>Zimbabwe</option>
                       </select>
-                      <p className="form-error">{errors?.currency}</p>
+                      <p className="form-error">{errors?.country}</p>
                     </div>
                     <div className="register-last-name">
                       <label htmlFor="register-state">State/County</label>
@@ -360,12 +360,12 @@ const Register2 = ({
                       <input
                         id="register-zip"
                         type="number"
-                        className="form-control"
-                        name="zipCode"
+                        className="form-control"zipCode
+                        name="zip_code"
                         onChange={handleChange}
-                        value={formData.zipCode}
+                        value={formData.zip_code}
                       />
-                      <p className="form-error">{errors?.zipCode}</p>
+                      <p className="form-error">{errors?.zip_code}</p>
                     </div>
                   </div>
                   <div
@@ -376,12 +376,12 @@ const Register2 = ({
                       <label htmlFor="register-street">Street address</label>
                       <textarea
                         id="register-street"
-                        name="streetAddress"
+                        name="street_address"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.streetAddress}
+                        value={formData.street_address}
                       ></textarea>
-                      <p className="form-error">{errors?.streetAddress}</p>
+                      <p className="form-error">{errors?.street_address}</p>
                     </div>
                   </div>
                   <div

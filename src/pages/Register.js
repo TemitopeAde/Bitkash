@@ -29,39 +29,22 @@ const Register = () => {
   const form1 = useRef();
   const form2 = useRef();
   const [formData, setFormData] = useState({
-    firstName: "djkw",
+    first_name: "temitope",
     email: "adesiyantope2014@gmail.com",
-    password: "123456",
-    password2: "123456",
+    password: "123456789",
+    confirm_password: "123456789",
     currency: "USD",
-    lastName: "mkkee3",
-    phone: "2347038347584",
-    language: "ENG",
+    last_name: "adesiyan",
+    phone_number: "2347038347584",
+    preferred_language: "ENG",
     country: "jjs",
     state: "osu",
     city: "drr",
-    zipCode: "23412",
-    streetAddress: "nnnnnnnnnnnnnnnnn",
-    role: 1,
-    terms: false,
+    zip_code: "23412",
+    street_address: "nnnnnnnnnnnnnnnnn",
   });
-  const {
-    firstName,
-    email,
-    password,
-    password2,
-    currency,
-    lastName,
-    phone,
-    language,
-    country,
-    state,
-    city,
-    zipCode,
-    streetAddress,
-    terms,
-  } = formData;
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(formData));
@@ -78,40 +61,40 @@ const Register = () => {
       errors.email = "Invalid Email";
     }
 
-    if (!values.firstName) {
-      errors.firstName = "Firstname is required";
-    } else if (values.firstName.length < 2) {
-      errors.firstName = "Firstname is too short";
-    } else if (/\d/.test(values.firstName)) {
-      errors.firstName = "Firstname should not contain number";
+    if (!values.first_name) {
+      errors.first_name = "Firstname is required";
+    } else if (values.first_name.length < 2) {
+      errors.first_name = "Firstname is too short";
+    } else if (/\d/.test(values.first_name)) {
+      errors.first_name = "Firstname should not contain number";
     }
 
-    if (!values.lastName) {
-      errors.LastName = "Lastname is required";
-    } else if (values.lastName.length < 2) {
-      errors.lastName = "Lastname is too short";
-    } else if (/\d/.test(values.firstName)) {
-      errors.lastName = "Lastname should not contain number";
+    if (!values.last_name) {
+      errors.last_name = "Lastname is required";
+    } else if (values.last_name.length < 2) {
+      errors.last_name = "Lastname is too short";
+    } else if (/\d/.test(values.last_name)) {
+      errors.last_name = "Lastname should not contain number";
     }
 
     if (!values.password) {
       errors.password = "Password is required";
-    } else if (values.password.length < 6) {
+    } else if (values.password.length < 8) {
       errors.password = "Password length is too short";
     }
 
-    if (!values.phone) {
-      errors.password = "Phone number is required";
-    } else if (values.phone.length > 13) {
-      errors.password = "Enter a valid phone number";
+    if (!values.phone_number) {
+      errors.phone_number = "Phone number is required";
+    } else if (values.phone_number.length > 13) {
+      errors.phone_number = "Enter a valid phone number";
     }
 
-    if (!values.password2) {
-      errors.password2 = "Password is required";
-    } else if (values.password2.length < 6) {
-      errors.password2 = "Password length is too short";
-    } else if (values.password !== values.password2) {
-      errors.password2 = "Passwords do not match";
+    if (!values.confirm_password) {
+      errors.confirm_password = "Password is required";
+    } else if (values.confirm_password.length < 8) {
+      errors.confirm_password = "Password length is too short";
+    } else if (values.password !== values.confirm_password) {
+      errors.confirm_password = "Passwords do not match";
     }
 
     if (!values.state) {
@@ -122,11 +105,11 @@ const Register = () => {
       errors.country = "Select your home country";
     }
 
-    if (!values.zipCode) {
-      errors.zipCode = "Enter your zip code";
-    } else if (/[a-zA-Z]/.test(values.zipCode)) {
-      errors.zipCode = "Enter a valid zip code";
-    } else if (values.zipCode.length !== 5) {
+    if (!values.zip_code) {
+      errors.zip_code = "Enter your zip code";
+    } else if (/[a-zA-Z]/.test(values.zip_code)) {
+      errors.zip_code = "Enter a valid zip code";
+    } else if (values.zip_code.length !== 5) {
       errors.zipCode = "Enter a valid zip code";
     }
 
@@ -136,12 +119,8 @@ const Register = () => {
       errors.city = "Enter a valid city";
     }
 
-    if (!values.streetAddress) {
-      errors.streetAddress = "Enter your street address";
-    }
-
-    if (values.terms === false) {
-      errors.terms = "Kindly accept the terms and conditions";
+    if (!values.street_address) {
+      errors.street_address = "Enter your street address";
     }
 
     return errors;
@@ -210,7 +189,6 @@ const Register = () => {
                     setFormData={setFormData}
                     handleChange={handleChange}
                     setForm={setForm}
-                    phone={phone}
                     handleSubmit={handleSubmit}
                     errors={errors}
                   />
@@ -290,26 +268,26 @@ const Register = () => {
                       <div className="register-name mobile-register-field">
                         <label htmlFor="first-name">First name</label>
                         <input
-                          name="firstName"
+                          name="first_name"
                           className="form-control"
                           id="first-name"
                           type="text"
                           onChange={handleChange}
-                          value={formData.firstName}
+                          value={formData.first_name}
                         />
-                        <p className="form-error">{errors?.firstName}</p>
+                        <p className="form-error">{errors?.first_name}</p>
                       </div>
                       <div className="register-last-name mobile-register-field">
                         <label htmlFor="last-name">Last name</label>
                         <input
                           className="form-control"
-                          name="lastName"
+                          name="last_name"
                           id="last-name"
                           type="text"
                           onChange={handleChange}
-                          value={formData.lastName}
+                          value={formData.last_name}
                         />
-                        <p className="form-error">{errors?.LastName}</p>
+                        <p className="form-error">{errors?.last_name}</p>
                       </div>
                       <div className="register-name mobile-register-field">
                         <label htmlFor="register-email-address">Email</label>
@@ -328,15 +306,15 @@ const Register = () => {
 
                         <PhoneInput
                           inputProps={{
-                            name: "phone",
+                            name: "phone_number",
                           }}
                           country={"us"}
-                          value={formData.phone}
+                          value={formData.phone_number}
                           onChange={(e) =>
-                            setFormData({ ...formData, phone: e })
+                            setFormData({ ...formData, phone_number: e })
                           }
                         />
-                        <p className="form-error">{errors?.phone}</p>
+                        <p className="form-error">{errors?.phone_number}</p>
                       </div>
                       <div className="register-name mobile-register-field">
                         <label htmlFor="register-password">Password</label>
@@ -388,14 +366,14 @@ const Register = () => {
 
                         <Box position="relative">
                           <input
-                            name="password2"
+                            name="confirm_password"
                             className="form-control"
                             type={passwordShown ? "text" : "password"}
                             id="regsiter-confirm-password"
-                            value={formData.password2}
+                            value={formData.confirm_password}
                             onChange={handleChange}
                           />
-                          <p className="form-error">{errors?.password2}</p>
+                          <p className="form-error">{errors?.confirm_password}</p>
                           <Box
                             position="absolute"
                             sx={{ right: "20px", top: "7px" }}
@@ -796,11 +774,11 @@ const Register = () => {
                           id="register-zip"
                           type="number"
                           className="form-control"
-                          name="zipCode"
+                          name="zip_code"
                           onChange={handleChange}
-                          value={formData.zipCode}
+                          value={formData.zip_code}
                         />
-                        <p className="form-error">{errors?.zipCode}</p>
+                        <p className="form-error">{errors?.zip_code}</p>
                       </div>
                       <div className="register-name  mobile-register-field">
                         <label htmlFor="register-street">Street address</label>

@@ -30,6 +30,7 @@ const Login = ({ children }) => {
   const validate = (values) => {
     let errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
     if (!values.email) {
       errors.email = "Email is required";
     } else if (!regex.test(values.email)) {
@@ -38,12 +39,14 @@ const Login = ({ children }) => {
 
     if (!values.password) {
       errors.password = "Password is required";
-    } else if (values.password.length < 6) {
+    } else if (values.password.length < 8) {
       errors.password = "Password length is too short";
     }
+    console.log(errors)
 
     return errors;
   };
+  // console.log(validate)
 
   const dispatch = useDispatch();
 
@@ -58,7 +61,7 @@ const Login = ({ children }) => {
   const message = useSelector((state) => state.auth.message);
 
   console.log(message);
-  
+
   const togglePassword = (e) => {
     e.preventDefault();
     setPasswordShown(!passwordShown);
@@ -140,13 +143,13 @@ const Login = ({ children }) => {
                                 <label htmlFor="email">Email</label>
                                 <Field
                                   type="email"
-                                  // className="form-control"
                                   name="email"
                                   value={values.email}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                                   className={
-                                    errors.email && touched.email
+                                    errors.email &&
+                                    touched.email
                                       ? "input-error form-control"
                                       : "form-control"
                                   }
@@ -161,7 +164,6 @@ const Login = ({ children }) => {
                               <Box position="relative">
                                 <Field
                                   type={passwordShown ? "text" : "password"}
-                                  // className="form-control"
                                   name="password"
                                   value={values.password}
                                   onChange={handleChange}
@@ -220,7 +222,6 @@ const Login = ({ children }) => {
                                 <button
                                   onClick={() => handleSubmit}
                                   type="submit"
-                                  // className="btn-lg btn btn-wide"
                                   className={
                                     dirty && isValid
                                       ? "btn login-btn"
@@ -332,11 +333,11 @@ const Login = ({ children }) => {
                   className="mobile-register-form active login-form"
                   style={{ padding: "3rem 1.5rem" }}
                 >
-                  {/* {message && (
+                  {message && (
                     <div className="error-container">
                       <h6 className="error-message">{message}</h6>
                     </div>
-                  )} */}
+                  )}
                   <Formik
                     initialValues={initialValues}
                     validate={validate}
@@ -359,7 +360,6 @@ const Login = ({ children }) => {
                             <label htmlFor="email">Email</label>
                             <Field
                               type="email"
-                              // className="form-control"
                               name="email"
                               value={values.email}
                               onChange={handleChange}

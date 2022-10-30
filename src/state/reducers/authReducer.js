@@ -56,13 +56,12 @@ const authReducer = (state = initialState, action) => {
   if (action.type === SIGNUP_FAIL) {
     localStorage.removeItem("token");
     const { payload } = action;
-    console.log(payload);
     return {
       ...state,
       isAuthenticated: false,
       loading: false,
       token: null,
-      message: payload.response.data.message,
+      message: payload.response.data.message
     };
   }
 
@@ -73,7 +72,7 @@ const authReducer = (state = initialState, action) => {
       ...state,
       isAuthenticated: true,
       loading: false,
-      token: payload.token,
+      // token: payload.token,
     };
   }
 
