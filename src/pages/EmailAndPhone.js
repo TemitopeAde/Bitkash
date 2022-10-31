@@ -25,28 +25,16 @@ const EmailAndPhone = ({ children }) => {
   const handleClick = (e) => {
     e.preventDefault();
     setMessage("Submit");
-  }
-
-  const { uid } = useParams();
-  const dispatch = useDispatch();
-
-  const fetchUser = async () => {
-    const url = `https://bitkash.herokuapp.com/user/${uid}`;
-
-    await axios
-      .get(url)
-      .then((data) => {
-        setPhoneNumber(data.data.data.phone);
-      })
-      .catch((errors) => {
-        console.log(errors);
-      });
+    dispatch(sendOtp(token));
   };
 
+  const { token } = useParams();
+  // console.log("token", token)
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetchUser();
-    dispatch(sendOtp(uid));
-  }, [uid]);
+    dispatch(sendOtp(token));
+  }, [token]);
 
   if (window.innerWidth > 820) {
     return (
@@ -194,7 +182,6 @@ const EmailAndPhone = ({ children }) => {
               marginBottom: "3rem",
             }}
             className="text-center"
-            
           >
             Phone verification
           </h6>

@@ -251,16 +251,16 @@ export const submitOTP = (data) => async (dispatch) => {
   const { code, uid } = data;
 };
 
-export const sendOtp = (uid) => async (dispatch) => {
+export const sendOtp = (token) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
 
-  const url = "https://bitkash.herokuapp.com/user/resend-code";
-  const data = JSON.stringify({ uid });
-  console.log(data)
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/send-sms-otp";
+  const data = JSON.stringify({ token });
+
 
   await axios
     .post(url, data, config)
