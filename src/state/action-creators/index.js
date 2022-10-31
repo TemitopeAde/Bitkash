@@ -251,7 +251,7 @@ export const submitOTP = (data) => async (dispatch) => {
   const { code, uid } = data;
 };
 
-export const sendOtp = (token) => async (dispatch) => {
+export const sendOtp = (uid) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -259,7 +259,7 @@ export const sendOtp = (token) => async (dispatch) => {
   };
 
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/send-sms-otp";
-  const data = JSON.stringify({ token });
+  const data = JSON.stringify({ uid });
 
 
   await axios

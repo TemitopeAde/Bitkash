@@ -25,7 +25,7 @@ const History = () => {
   const [from, setFrom] = useState("");
   const [dropdown, setDropdown] = useState("");
   const [to, setTo] = useState("");
-  console.log(currentItems)
+  console.log(search)
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;

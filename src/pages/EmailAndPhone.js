@@ -10,7 +10,7 @@ import { sendOtp, test } from "../state/action-creators";
 import "./register.css";
 import Header from "../components/Header";
 import "./emailandphone.css";
-import axios from "axios";
+
 
 const animations = {
   initial: { opacity: 0 },
@@ -25,16 +25,16 @@ const EmailAndPhone = ({ children }) => {
   const handleClick = (e) => {
     e.preventDefault();
     setMessage("Submit");
-    dispatch(sendOtp(token));
+    dispatch(sendOtp());
   };
 
-  const { token } = useParams();
+  const { uid } = useParams();
   // console.log("token", token)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(sendOtp(token));
-  }, [token]);
+    dispatch(sendOtp(uid));
+  }, [uid]);
 
   if (window.innerWidth > 820) {
     return (
