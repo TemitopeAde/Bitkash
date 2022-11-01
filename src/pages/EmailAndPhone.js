@@ -2,10 +2,10 @@ import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import OTPInput, { ResendOTP } from "otp-input-react";
+import OTPInput from "otp-input-react";
 import { Link, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { sendOtp, test } from "../state/action-creators";
+import { useDispatch } from "react-redux";
+import { sendOtp } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
@@ -20,8 +20,9 @@ const animations = {
 
 const EmailAndPhone = ({ children }) => {
   const [OTP, setOTP] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber] = useState("");
   const [message, setMessage] = useState("Send Code");
+
   const handleClick = (e) => {
     e.preventDefault();
     setMessage("Submit");

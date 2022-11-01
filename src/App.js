@@ -86,7 +86,7 @@ function App() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
         <Route
-          path="/recover-password/:token/:id"
+          path="/recover-password/:token"
           element={<RecoverPasswordConfirm />}
         />
         <Route

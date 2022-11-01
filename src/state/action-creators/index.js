@@ -82,6 +82,8 @@ export const register = (data) => async (dispatch) => {
     confirm_password,
   });
 
+  console.log(body)
+
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/register";
   
   dispatch({
@@ -170,7 +172,7 @@ export const recoverPassword = (data) => async (dispatch) => {
 
   const { email } = data;
 
-  const url = "https://bitkash.herokuapp.com/recover-password/email";
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/forgot-password";
 
   const body = JSON.stringify({ email });
 
@@ -188,7 +190,7 @@ export const recoverPassword = (data) => async (dispatch) => {
       });
     })
     .catch((errors) => {
-      // console.log(errors);
+      console.log(errors);
       dispatch({
         type: RECOVER_PASSWORD_FAILED,
         payload: errors.response.data.message,
