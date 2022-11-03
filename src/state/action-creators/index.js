@@ -82,10 +82,10 @@ export const register = (data) => async (dispatch) => {
     confirm_password,
   });
 
-  console.log(body)
+  console.log(body);
 
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/register";
-  
+
   dispatch({
     type: SHOW_LOADER,
   });
@@ -95,7 +95,7 @@ export const register = (data) => async (dispatch) => {
     .then((data) => {
       const user = JSON.stringify({
         email: email,
-        phone_number: phone_number
+        phone_number: phone_number,
       });
       localStorage.setItem("userData", user);
       dispatch({
@@ -124,7 +124,6 @@ export const login = (data) => async (dispatch, getState) => {
   };
 
   const { email, password } = data;
-  
 
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/login";
 
@@ -137,7 +136,7 @@ export const login = (data) => async (dispatch, getState) => {
     .post(url, body, config)
     .then((data) => {
       console.log(data.data.user);
-      
+
       dispatch({
         type: LOGIN_SUCCESS,
         payload: data.data,
@@ -172,7 +171,8 @@ export const recoverPassword = (data) => async (dispatch) => {
 
   const { email } = data;
 
-  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/forgot-password";
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/auth/forgot-password";
 
   const body = JSON.stringify({ email });
 
@@ -218,7 +218,7 @@ export const submitNewPassword = (data) => async (dispatch) => {
     recover_token,
     confirm_password,
   });
-  console.log(body)
+  console.log(body);
 
   dispatch({
     type: SHOW_LOADER,
@@ -254,10 +254,25 @@ export const submitOTP = (data) => async (dispatch) => {
     },
   };
 
-  const url = "https://bitkash.herokuapp.com/user/verify-phone";
-  const { code, uid } = data;
-};
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/auth/verify-sms-otp";
+  const { token, uid } = data;
 
+  const body = JSON.stringify({
+    token,
+    uid,
+  });
+
+  console.log(body)
+
+  await axios.post(url, body, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+};
 
 export const sendOtp = (uid) => async (dispatch) => {
   const config = {
@@ -268,8 +283,7 @@ export const sendOtp = (uid) => async (dispatch) => {
 
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/send-sms-otp";
   // const data = JSON.stringify({ uid });
-  const data = {uid}
-
+  const data = { uid };
 
   await axios
     .post(url, data, config)
@@ -732,4 +746,3 @@ export const getUserBank = () => async (dispatch, getState) => {
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 };
-

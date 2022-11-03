@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import OTPInput from "otp-input-react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { sendOtp } from "../state/action-creators";
+import { sendOtp, submitOTP } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
@@ -19,7 +19,7 @@ const animations = {
 };
 
 const EmailAndPhone = ({ children }) => {
-  const [OTP, setOTP] = useState("");
+  const [Otp, setOtp] = useState("");
   const [phoneNumber] = useState("");
   const [message, setMessage] = useState("Send Code");
 
@@ -32,6 +32,15 @@ const EmailAndPhone = ({ children }) => {
   const { uid } = useParams();
   // console.log("token", token)
   const dispatch = useDispatch();
+  const payload = {
+    token: Otp,
+    uid: uid
+  }
+
+  const submitToken = (e) => {
+    e.preventDefault();
+    dispatch(submitOTP(payload))
+  }
 
   useEffect(() => {
     dispatch(sendOtp(uid));
@@ -76,8 +85,8 @@ const EmailAndPhone = ({ children }) => {
                   <Box className="phone-otp mt-3">
                     <div className="phone-otp-flex">
                       <OTPInput
-                        value={OTP}
-                        onChange={setOTP}
+                        value={Otp}
+                        onChange={setOtp}
                         autoFocus
                         OTPLength={4}
                         otpType="number"
@@ -128,6 +137,7 @@ const EmailAndPhone = ({ children }) => {
                       type="submit"
                       value="confirm"
                       className="otp-submit btn"
+                      onClick={submitToken}
                     />
                   </div>
 
@@ -214,8 +224,8 @@ const EmailAndPhone = ({ children }) => {
                     <Box className="phone-otp mt-3">
                       <div className="phone-otp-flex">
                         <OTPInput
-                          value={OTP}
-                          onChange={setOTP}
+                          value={Otp}
+                          onChange={setOtp}
                           autoFocus
                           OTPLength={4}
                           otpType="number"
@@ -291,6 +301,7 @@ const EmailAndPhone = ({ children }) => {
                       type="submit"
                       value="Submit"
                       className="btn otp-submit"
+                      onClick={submitToken}
                     />
                   </Box>
                 </form>
