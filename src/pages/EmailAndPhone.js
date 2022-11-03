@@ -25,7 +25,7 @@ const EmailAndPhone = ({ children }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setMessage("Submit");
+    setMessage("Resend code");
     dispatch(sendOtp(uid));
   };
 
