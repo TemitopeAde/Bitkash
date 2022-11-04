@@ -16,16 +16,16 @@ import {
   SUBMIT_NEW_PASSWORD_FAILED,
   PHONE_NUMBER_CHANGED,
   PHONE_NUMBER_CHANGED_FAILED,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILED,
+  // FETCH_USER_SUCCESS,
+  // FETCH_USER_FAILED,
   KYC_EURO_SUCCESS,
   KYC_EURO_FAILED,
   SHOW_MODAL,
   SHOW_PAY_PAGE,
   TRANSACTION_HISTORY_SUCCESS,
   TRANSACTION_HISTORY_FAILED,
-  FETCH_PRODUCTS,
-  FETCH_PRODUCTS_FAILED,
+  // FETCH_PRODUCTS,
+  // FETCH_PRODUCTS_FAILED,
   KYC_USD_FAILED,
   KYC_USD_SUCCESS,
   OTP_FAILED,
@@ -256,8 +256,7 @@ export const submitOTP = (data) => async (dispatch) => {
     },
   };
 
-  const url =
-    "https://bitkash-backend.herokuapp.com/api/v1/auth/verify-sms-otp";
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/verify-sms-otp";
   const { token, uid } = data;
 
   const body = JSON.stringify({
@@ -281,7 +280,7 @@ export const submitOTP = (data) => async (dispatch) => {
     .catch((err) => {
       console.log(err);
       dispatch({
-        OTP_FAILED,
+        type: OTP_FAILED,
       });
     })
     .then(() => {
@@ -290,6 +289,8 @@ export const submitOTP = (data) => async (dispatch) => {
       });
     });
 };
+
+
 
 export const sendOtp = (uid) => async (dispatch) => {
   const config = {

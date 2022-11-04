@@ -67,17 +67,19 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === OTP_SUCCESS) {
-    return {
-      ...state,
-      phoneAndEmailVerified: true,
-    };
+    console.log(action.type)
+    // return {
+    //   ...state,
+    //   phoneAndEmailVerified: true,
+    // };
   }
 
   if (action.type === OTP_FAILED) {
-    return {
-      ...state,
-      phoneAndEmailVerified: false,
-    };
+    console.log(action.type);
+    // return {
+    //   ...state,
+    //   phoneAndEmailVerified: false,
+    // };
   }
 
   if (action.type === LOGIN_SUCCESS) {
