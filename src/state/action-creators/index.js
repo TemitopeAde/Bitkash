@@ -205,6 +205,11 @@ export const recoverPassword = (data) => async (dispatch) => {
     });
 };
 
+export const changePassword = (data) => async (dispatch) => {
+
+}
+
+
 export const submitNewPassword = (data) => async (dispatch) => {
   const config = {
     headers: {
@@ -276,6 +281,10 @@ export const submitOTP = (data) => async (dispatch) => {
         type: OTP_SUCCESS,
         payload: data.data.message
       });
+
+      dispatch({
+        type: LOGIN_SUCCESS
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -289,8 +298,6 @@ export const submitOTP = (data) => async (dispatch) => {
       });
     });
 };
-
-
 
 export const sendOtp = (uid) => async (dispatch) => {
   const config = {
