@@ -30,6 +30,8 @@ const EmailAndPhone = ({ children }) => {
     dispatch(sendOtp(uid));
   };
 
+  console.log(verified)
+
   const { uid } = useParams();
 
   const dispatch = useDispatch();
