@@ -21,10 +21,13 @@ import {
   KYC_USD_SUCCESS,
   KYC_EURO_SUCCESS,
   KYC_EURO_FAILED,
+  SUBMIT_OTP_FAILED,
+  SUBMIT_OTP_SUCCESS,
 } from "../action-creators/types";
 
 const initialState = {
   isAuthenticated: false,
+  phoneAndEmailVerified: false,
   loading: true,
   // token: localStorage.getItem("token"),
   token: null,
@@ -61,7 +64,21 @@ const authReducer = (state = initialState, action) => {
       isAuthenticated: false,
       loading: false,
       token: null,
-      message: payload.response.data.message
+      message: payload.response.data.message,
+    };
+  }
+
+  if (action.type === SUBMIT_OTP_SUCCESS) {
+    return {
+      ...state,
+      phoneAndEmailVerified: true,
+    };
+  }
+
+  if (action.type === SUBMIT_OTP_FAILED) {
+    return {
+      ...state,
+      phoneAndEmailVerified: false,
     };
   }
 

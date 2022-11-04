@@ -28,6 +28,7 @@ import {
   FETCH_PRODUCTS_FAILED,
   KYC_USD_FAILED,
   KYC_USD_SUCCESS,
+  SUBMIT_OTP_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -271,9 +272,15 @@ export const submitOTP = (data) => async (dispatch) => {
     .post(url, body, config)
     .then((data) => {
       console.log(data);
+      dispatch({
+        SUBMIT_NEW_PASSWORD_SUCCESS,
+      });
     })
     .catch((err) => {
       console.log(err);
+      dispatch({
+        SUBMIT_OTP_FAILED,
+      });
     })
     .then(() => {
       dispatch({
@@ -387,21 +394,13 @@ export const fetchUser = (data) => async (dispatch) => {
   await axios
     .get(url)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       JSON.stringify(
-        // localStorage.setItem("user", JSON.stringify(data.data.data))
+        localStorage.setItem("user", JSON.stringify(data.data.data))
       );
-      // dispatch({
-      //   type: FETCH_USER_SUCCESS,
-      //   payload: data.data,
-      // });
     })
     .catch((errors) => {
-      console.log(errors)
-      // dispatch({
-      //   type: FETCH_USER_FAILED,
-      //   payload: errors.data,
-      // });
+      console.log(errors);
     });
 };
 
@@ -555,7 +554,8 @@ export const deleteTransaction = (data) => async (dispatch, getState) => {
 
 export const handleKycUsd = (data) => async (dispatch, getState) => {
   const token = localStorage.getItem("token");
-  const url = "https://bitkash-backend.herokuapp.com/api/v1/transactions/add-usd-bank";
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/transactions/add-usd-bank";
   const config = {
     headers: {
       "Content-Type": "application/json",

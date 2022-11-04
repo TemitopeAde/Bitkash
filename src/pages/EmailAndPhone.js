@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import OTPInput from "otp-input-react";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { sendOtp, submitOTP, fetchUser } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
 import "./emailandphone.css";
+import Spinner from "../components/Spinner";
 
 const animations = {
   initial: { opacity: 0 },
@@ -20,14 +21,17 @@ const animations = {
 const EmailAndPhone = ({ children }) => {
   const [Otp, setOtp] = useState("");
   const [phoneNumber] = useState("");
-  
+  const userDetails = JSON.parse(localStorage.getItem("user"));
+  const verified = useSelector((state) => state.auth.phoneAndEmailVerified);
+  const loading = useSelector((state) => state.loader.loading);
+
   const handleSendOtp = (e) => {
     e.preventDefault();
     dispatch(sendOtp(uid));
   };
 
   const { uid } = useParams();
-  // console.log("token", token)
+
   const dispatch = useDispatch();
   const payload = {
     token: Otp,
@@ -39,12 +43,18 @@ const EmailAndPhone = ({ children }) => {
     dispatch(submitOTP(payload));
   };
 
-  console.log(uid);
-
   useEffect(() => {
     dispatch(sendOtp(uid));
     dispatch(fetchUser(uid));
   }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (verified) {
+    return <Navigate to="/user-dashboard" />;
+  }
 
   if (window.innerWidth > 820) {
     return (
@@ -75,7 +85,7 @@ const EmailAndPhone = ({ children }) => {
                       style={{ textDecoration: "none" }}
                       className="color-yellow"
                     >
-                      {phoneNumber}
+                      {userDetails?.phone_number}
                     </span>
                   </p>
                 </Box>
@@ -299,8 +309,6 @@ const EmailAndPhone = ({ children }) => {
                       Note: The OTP code expires in <br /> 2 minutes
                     </p>
                   </div>
-
-                  
                 </form>
               </Box>
             </Box>
