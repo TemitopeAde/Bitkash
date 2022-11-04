@@ -68,18 +68,18 @@ const authReducer = (state = initialState, action) => {
 
   if (action.type === OTP_SUCCESS) {
     console.log(action.type)
-    // return {
-    //   ...state,
-    //   phoneAndEmailVerified: true,
-    // };
+    return {
+      ...state,
+      phoneAndEmailVerified: true,
+    };
   }
 
   if (action.type === OTP_FAILED) {
     console.log(action.type);
-    // return {
-    //   ...state,
-    //   phoneAndEmailVerified: false,
-    // };
+    return {
+      ...state,
+      phoneAndEmailVerified: false,
+    };
   }
 
   if (action.type === LOGIN_SUCCESS) {
