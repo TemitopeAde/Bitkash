@@ -273,7 +273,7 @@ export const submitOTP = (data) => async (dispatch) => {
     .then((data) => {
       console.log(data);
       dispatch({
-        OTP_SUCCESS,
+        type: OTP_SUCCESS,
         payload: data.data.message
       });
     })
