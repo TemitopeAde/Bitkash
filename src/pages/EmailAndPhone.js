@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import OTPInput from "otp-input-react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { sendOtp, submitOTP } from "../state/action-creators";
+import { sendOtp, submitOTP, fetchUser } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
@@ -44,6 +44,7 @@ const EmailAndPhone = ({ children }) => {
 
   useEffect(() => {
     dispatch(sendOtp(uid));
+    dispatch(fetchUser(uid));
   }, [uid]);
 
   if (window.innerWidth > 820) {
@@ -70,7 +71,7 @@ const EmailAndPhone = ({ children }) => {
                 <Box className="otp-number-div mb-5">
                   <h6 className="otp-title">Phone Verification</h6>
                   <p>
-                    A 4 digit OTP code has been sent to your <br /> phone number{" "}
+                    A 4 digit OTP code has been sent to your phone number <br />
                     <span
                       style={{ textDecoration: "none" }}
                       className="color-yellow"
@@ -106,7 +107,7 @@ const EmailAndPhone = ({ children }) => {
 
                 <div className="mt-3 mb-3">
                   <p>
-                    Made a mistake in your phone number or <br /> email address?{" "}
+                    Gave us the wrong number? No problem! <br />
                     <Link
                       className="color-yellow"
                       style={{ background: "none", border: "none" }}
@@ -117,25 +118,13 @@ const EmailAndPhone = ({ children }) => {
                   </p>
                 </div>
 
-                <div style={{ marginBottom: "2rem" }}>
-                  <p>
-                    If you can't get an OTP code kindly{" "}
-                    <a
-                      style={{ color: "#ff9924", textDecoration: "none" }}
-                      href="/"
-                    >
-                      resend
-                    </a>{" "}
-                  </p>
-                </div>
-
                 <div
                   style={{ display: "flex", gap: "2rem", marginBottom: "2rem" }}
                 >
                   <div>
                     <input
                       type="submit"
-                      value="confirm"
+                      value="Submit"
                       className="otp-submit btn"
                       onClick={submitToken}
                     />
@@ -153,6 +142,22 @@ const EmailAndPhone = ({ children }) => {
                       Back
                     </button>
                   </Box>
+                </div>
+
+                <div style={{ marginBottom: "2rem" }}>
+                  <p>
+                    Didn't get an OTP?{" "}
+                    <button
+                      style={{
+                        color: "#ff9924",
+                        textDecoration: "none",
+                        background: "none",
+                        border: "none",
+                      }}
+                    >
+                      Send Again
+                    </button>
+                  </p>
                 </div>
 
                 <h6>Note: The OTP code expires in 2 minutes</h6>

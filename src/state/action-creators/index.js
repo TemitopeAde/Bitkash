@@ -263,15 +263,23 @@ export const submitOTP = (data) => async (dispatch) => {
     uid,
   });
 
-  console.log(body)
+  dispatch({
+    type: SHOW_LOADER,
+  });
 
-  await axios.post(url, body, config)
+  await axios
+    .post(url, body, config)
     .then((data) => {
       console.log(data);
     })
     .catch((err) => {
       console.log(err);
     })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
 };
 
 export const sendOtp = (uid) => async (dispatch) => {
@@ -374,24 +382,25 @@ export const changeEmail = (data) => async (dispatch) => {
 
 export const fetchUser = (data) => async (dispatch) => {
   const uid = data;
-  const url = `https://bitkash.herokuapp.com/user/${uid}`;
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/user/${uid}`;
 
   await axios
     .get(url)
     .then((data) => {
+      console.log(data)
       JSON.stringify(
-        localStorage.setItem("user", JSON.stringify(data.data.data))
+        // localStorage.setItem("user", JSON.stringify(data.data.data))
       );
-      dispatch({
-        type: FETCH_USER_SUCCESS,
-        payload: data.data,
-      });
+      // dispatch({
+      //   type: FETCH_USER_SUCCESS,
+      //   payload: data.data,
+      // });
     })
     .catch((errors) => {
-      dispatch({
-        type: FETCH_USER_FAILED,
-        payload: errors.data,
-      });
+      // dispatch({
+      //   type: FETCH_USER_FAILED,
+      //   payload: errors.data,
+      // });
     });
 };
 
@@ -545,7 +554,7 @@ export const deleteTransaction = (data) => async (dispatch, getState) => {
 
 export const handleKycUsd = (data) => async (dispatch, getState) => {
   const token = localStorage.getItem("token");
-  const url = "https://bitkash.herokuapp.com/account/create-usa-acc";
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/transactions/add-usd-bank";
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -555,14 +564,14 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
 
   const {
     currency,
-    acc_type,
-    acc_number,
+    account_type,
+    account_number,
     acc_option,
-    acc_owner,
-    bank_name,
-    swift_code,
+    account_holder_name,
+    name,
+    swift_or_bic_code,
     routing_number,
-    zip_code,
+    postal_code,
   } = data;
 
   dispatch({
@@ -571,14 +580,14 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
 
   const body = JSON.stringify({
     currency,
-    acc_type,
+    account_type,
     acc_option,
-    acc_owner,
-    bank_name,
-    acc_number,
+    account_holder_name,
+    name,
+    account_number,
     routing_number,
-    zip_code,
-    swift_code,
+    postal_code,
+    swift_or_bic_code,
   });
 
   await axios
