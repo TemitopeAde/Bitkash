@@ -397,6 +397,7 @@ export const fetchUser = (data) => async (dispatch) => {
       // });
     })
     .catch((errors) => {
+      console.log(errors)
       // dispatch({
       //   type: FETCH_USER_FAILED,
       //   payload: errors.data,
