@@ -11,7 +11,6 @@ import "./register.css";
 import Header from "../components/Header";
 import "./emailandphone.css";
 
-
 const animations = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
@@ -21,11 +20,9 @@ const animations = {
 const EmailAndPhone = ({ children }) => {
   const [Otp, setOtp] = useState("");
   const [phoneNumber] = useState("");
-  const [message, setMessage] = useState("Send Code");
-
-  const handleClick = (e) => {
+  
+  const handleSendOtp = (e) => {
     e.preventDefault();
-    setMessage("Resend code");
     dispatch(sendOtp(uid));
   };
 
@@ -34,18 +31,20 @@ const EmailAndPhone = ({ children }) => {
   const dispatch = useDispatch();
   const payload = {
     token: Otp,
-    uid: uid
-  }
+    uid: uid,
+  };
 
   const submitToken = (e) => {
     e.preventDefault();
-    dispatch(submitOTP(payload))
-  }
+    dispatch(submitOTP(payload));
+  };
+
+  console.log(uid);
 
   useEffect(() => {
     dispatch(sendOtp(uid));
     dispatch(fetchUser(uid));
-  }, [uid]);
+  }, []);
 
   if (window.innerWidth > 820) {
     return (
@@ -275,24 +274,24 @@ const EmailAndPhone = ({ children }) => {
                         color: "#000000",
                         outline: "none",
                       }}
-                      onClick={handleClick}
+                      onClick={submitOTP}
                     >
-                      {message}
+                      Submit
                     </button>
                   </div>
 
                   <div className="mt-3 mb-3">
                     <p style={{ margin: 0 }}>
-                      If you did not receive the OTP code Kindly{" "}
+                      if you can’t get an OTP code Kindly
                     </p>
 
-                    <Link
-                      to="/"
+                    <button
                       className="color-yellow"
                       style={{ background: "none", border: "none" }}
+                      onClick={handleSendOtp}
                     >
                       resend
-                    </Link>
+                    </button>
                   </div>
 
                   <div className="mt-3 mb-3">
@@ -301,14 +300,7 @@ const EmailAndPhone = ({ children }) => {
                     </p>
                   </div>
 
-                  <Box>
-                    <input
-                      type="submit"
-                      value="Submit"
-                      className="btn otp-submit"
-                      onClick={submitToken}
-                    />
-                  </Box>
+                  
                 </form>
               </Box>
             </Box>
