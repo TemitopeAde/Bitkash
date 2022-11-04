@@ -28,7 +28,8 @@ import {
   FETCH_PRODUCTS_FAILED,
   KYC_USD_FAILED,
   KYC_USD_SUCCESS,
-  SUBMIT_OTP_FAILED,
+  OTP_FAILED,
+  OTP_SUCCESS
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -273,13 +274,14 @@ export const submitOTP = (data) => async (dispatch) => {
     .then((data) => {
       console.log(data);
       dispatch({
-        SUBMIT_NEW_PASSWORD_SUCCESS,
+        OTP_SUCCESS,
+        payload: data.data.message
       });
     })
     .catch((err) => {
       console.log(err);
       dispatch({
-        SUBMIT_OTP_FAILED,
+        OTP_FAILED,
       });
     })
     .then(() => {
