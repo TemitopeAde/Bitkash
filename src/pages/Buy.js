@@ -42,8 +42,6 @@ const Buy = () => {
       reciept_wallet: values.wallet,
       fiat_amount: values.price,
       crypto_amount: equivalent,
-      // currency: values.currency,
-      // networkType: values.networkType,
       payment_type: "transfer",
       transaction_status: "approved"
     };
@@ -119,9 +117,9 @@ const Buy = () => {
     }
   }, [values]);
 
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" />;
-  // }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   if (showPay) {
     return <Navigate to="/payment-details" />;

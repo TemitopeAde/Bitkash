@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import OTPInput from "otp-input-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { sendOtp, submitOTP, fetchUser } from "../state/action-creators";
+import { sendOtp, submitOTP, fetchUser, loginFn } from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
@@ -24,7 +24,7 @@ const EmailAndPhone = ({ children }) => {
   const userDetails = JSON.parse(localStorage.getItem("user"));
   const verified = useSelector((state) => state.auth.phoneAndEmailVerified);
   const loading = useSelector((state) => state.loader.loading);
-
+  
   const handleSendOtp = (e) => {
     e.preventDefault();
     dispatch(sendOtp(uid));
@@ -50,11 +50,13 @@ const EmailAndPhone = ({ children }) => {
     dispatch(fetchUser(uid));
   }, []);
 
+
   if (loading) {
     return <Spinner />;
   }
 
   if (verified) {
+    dispatch(loginFn())
     return <Navigate to="/user-dashboard" />;
   }
 

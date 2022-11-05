@@ -8,7 +8,8 @@ const DashboardHeader = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const currentUser = localStorage.getItem("user");
   const userDetails = JSON.parse(currentUser);
-  console.log(isAuthenticated)
+
+  
   return (
     <div>
       {isAuthenticated && (

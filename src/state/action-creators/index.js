@@ -137,11 +137,18 @@ export const login = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data.data.user);
-
+      const user = data.data.data;
+      const payload = {
+        email_verified: user.has_verified_email,
+        phoneNumber: user.has_verified_phone_number,
+        kyc_verified: user.has_completed_kyc,
+        firstName: user.first_name,
+        lastName: user.lastName,
+      };
+      localStorage.setItem("user", JSON.stringify(payload))
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: data.data,
+        payload: data.data.data,
       });
     })
     .catch((errors) => {
@@ -158,10 +165,30 @@ export const login = (data) => async (dispatch, getState) => {
     });
 };
 
-export const logout = (data) => async (dispatch, getState) => {
+export const loginFn = () => async (dispatch, getState) => {
+  dispatch({
+    type: LOGIN_SUCCESS,
+  });
+}
+
+export const logout = () => async (dispatch, getState) => {
+  localStorage.removeItem("paymentDetails");
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
   dispatch({
     type: LOGOUT,
   });
+
+  setTimeout(() => {
+    dispatch({
+      type: HIDE_LOADER,
+    });
+  }, [5])
+
+  
 };
 
 export const recoverPassword = (data) => async (dispatch) => {
@@ -208,7 +235,6 @@ export const recoverPassword = (data) => async (dispatch) => {
 export const changePassword = (data) => async (dispatch) => {
 
 }
-
 
 export const submitNewPassword = (data) => async (dispatch) => {
   const config = {
@@ -307,16 +333,16 @@ export const sendOtp = (uid) => async (dispatch) => {
   };
 
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/send-sms-otp";
-  // const data = JSON.stringify({ uid });
+  
   const data = { uid };
 
   await axios
     .post(url, data, config)
     .then((data) => {
-      console.log(data);
+      
     })
     .catch((errors) => {
-      console.log(errors);
+      
     });
 };
 
@@ -404,7 +430,6 @@ export const fetchUser = (data) => async (dispatch) => {
   await axios
     .get(url)
     .then((data) => {
-      console.log(data);
       JSON.stringify(
         localStorage.setItem("user", JSON.stringify(data.data.data))
       );
@@ -415,14 +440,17 @@ export const fetchUser = (data) => async (dispatch) => {
 };
 
 export const BuyBitcoin = (data) => async (dispatch, getState) => {
+  
   const url = "https://bitkash.herokuapp.com/transactions/create";
 
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${getState().auth.token}`,
+      // Authorization: `Bearer ${getState().auth.token}`,
     },
   };
+
+  
 
   const {
     payment_type,
@@ -604,14 +632,14 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      localStorage.setItem("kycStatus", data.data.message);
+      // localStorage.setItem("kycStatus", data.data.message);
       dispatch({
         type: KYC_USD_SUCCESS,
         payload: data.data.message,
       });
     })
     .catch((err) => {
-      localStorage.setItem("kycStatus", err.message);
+      // localStorage.setItem("kycStatus", err.message);
       dispatch({
         type: KYC_USD_FAILED,
         payload: err.message,
@@ -671,8 +699,8 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data);
-      localStorage.setItem("kycStatus", data.data.message);
+      // console.log(data);
+      // localStorage.setItem("kycStatus", data.data.message);
       dispatch({
         type: KYC_EURO_SUCCESS,
         payload: data.data,
@@ -680,7 +708,7 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     })
     .catch((err) => {
       console.log(err);
-      localStorage.setItem("kycStatus", err.message);
+      // localStorage.setItem("kycStatus", err.message);
       dispatch({
         type: KYC_EURO_FAILED,
         payload: err.message,

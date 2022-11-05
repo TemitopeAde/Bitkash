@@ -19,8 +19,6 @@ import { useSelector, useDispatch } from "react-redux";
 import shield from "../assets/images/shield.png";
 import curate from "../assets/images/cuate.png";
 import "./dashboard.css";
-import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
 import cuate2 from "../assets/images/cuate2.png";
 import Sidebar from "../components/Sidebar";
 import { fetchUser } from "../state/action-creators/index";
@@ -117,15 +115,21 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.auth.userDetails);
   const [currency, setCurrency] = React.useState("USD");
-  // console.log(currency)
 
-  const { email_verified, kyc_verified, lastName, phone_verified, firstName } =
-    userDetails;
+  console.log(userDetails)
+
+  const {
+    first_name,
+    has_completed_kyc,
+    has_verified_email,
+    has_verified_phone_number,
+    last_name,
+  } = userDetails;
+
+  console.log(userDetails);
 
   useEffect(() => {
-    const id = localStorage.getItem("uid");
-    console.log(id);
-    dispatch(fetchUser(id));
+    // dispatch(fetchUser(id));
   }, []);
 
   const options = {
@@ -174,7 +178,7 @@ const Dashboard = () => {
                           <Box>
                             <Stack>
                               <h6 className="name-account">
-                                Hello <span>{firstName}</span> {lastName}
+                                Hello <span>{first_name}</span> {last_name}
                               </h6>
                               <p className="welcome-account">
                                 Welcome to your dashboard
@@ -267,18 +271,26 @@ const Dashboard = () => {
                           }}
                           className="transactions-number"
                         >
-                          <Box style={{ display: 'flex', justifyContent: 'space-between'}}>
+                          <Box
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
                             <h6>Fiat Transactions</h6>
                             <form>
-                              <select value={currency}  onChange={handleChange} className="fiat-btn">
+                              <select
+                                value={currency}
+                                onChange={handleChange}
+                                className="fiat-btn"
+                              >
                                 <option>$ USD</option>
                                 <option>€ EUR</option>
                               </select>
                             </form>
                           </Box>
-                          
-                         {currency === "USD" ? <p>$20k</p> : <p>€20k</p>}
-                          
+
+                          {currency === "USD" ? <p>$20k</p> : <p>€20k</p>}
                         </Box>
                         <Box
                           padding=".7rem 1.5rem"
@@ -408,7 +420,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>Email</p>
-                                  {email_verified ? (
+                                  {has_verified_email ? (
                                     <svg
                                       width="16"
                                       height="16"
@@ -486,7 +498,7 @@ const Dashboard = () => {
 
                                   <p>Phone Number</p>
 
-                                  {phone_verified ? (
+                                  {has_verified_phone_number ? (
                                     <svg
                                       width="16"
                                       height="16"
@@ -574,7 +586,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>KYC Verification</p>
-                                  {kyc_verified ? (
+                                  {has_completed_kyc ? (
                                     <svg
                                       width="15"
                                       height="15"
@@ -683,7 +695,7 @@ const Dashboard = () => {
                         <Box>
                           <Stack spacing={2}>
                             <h6 className="name-account">
-                              Hello <span>{firstName}</span> {lastName}
+                              Hello <span>{first_name}</span> {last_name}
                             </h6>
                             <p className="welcome-account">
                               Welcome to your dashboard
@@ -2526,7 +2538,7 @@ const Dashboard = () => {
 
                             <p>Email</p>
 
-                            {email_verified ? (
+                            {has_verified_email ? (
                               <svg
                                 width="16"
                                 height="16"
@@ -2603,7 +2615,7 @@ const Dashboard = () => {
 
                             <p>Phone Number</p>
 
-                            {phone_verified ? (
+                            {has_verified_phone_number ? (
                               <svg
                                 width="16"
                                 height="16"
@@ -2692,7 +2704,7 @@ const Dashboard = () => {
 
                             <p>KYC Verification</p>
 
-                            {kyc_verified ? (
+                            {has_completed_kyc ? (
                               <svg
                                 width="16"
                                 height="16"

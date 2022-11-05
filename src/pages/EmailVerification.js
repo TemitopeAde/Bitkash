@@ -1,12 +1,11 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from "react-helmet";
 
 import "./register.css";
-import { fetchUser } from "../state/action-creators";
 import AuthHeader from "../components/AuthHeader";
 
 const animations = {
@@ -17,10 +16,18 @@ const animations = {
 
 const EmailVerification = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const { email } = userData;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const unverified = useSelector((state) => state.auth.unverifiedUser);
+
+  console.log(isAuthenticated)
+
+  if (isAuthenticated) {
+    return <Navigate to="/user-dashboard" />;
+  }
+
   
-  
-  if (window.innerWidth >= 820) {
+
+  if (window.innerWidth >= 820 && unverified) {
     return (
       <motion.div
         variants={animations}
@@ -76,9 +83,9 @@ const EmailVerification = () => {
                   A link has been sent to your email{" "}
                   <a
                     style={{ color: "#ff9924", textDecoration: "none" }}
-                    href={`mailto:${email}`}
+                    href={`mailto:${userData?.email}`}
                   >
-                    {email}
+                    {userData?.email}
                   </a>{" "}
                 </p>
               </Box>
@@ -89,7 +96,7 @@ const EmailVerification = () => {
     );
   }
 
-  if (window.innerWidth <= 820) {
+  if (window.innerWidth <= 820 && unverified) {
     return (
       <motion.div
         variants={animations}
@@ -151,10 +158,9 @@ const EmailVerification = () => {
                       A link has been sent to your email{" "}
                       <a
                         style={{ color: "#ff9924", textDecoration: "none" }}
-            
-                        href={`mailto:${email}`}
+                        href={`mailto:${userData?.email}`}
                       >
-                        {email}
+                        {userData?.email}
                       </a>
                     </p>
                   </Box>
@@ -166,6 +172,10 @@ const EmailVerification = () => {
       </motion.div>
     );
   }
+
+  
+
+  
 };
 
 export default EmailVerification;

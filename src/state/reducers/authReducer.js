@@ -28,6 +28,8 @@ import {
 const initialState = {
   isAuthenticated: false,
   phoneAndEmailVerified: false,
+  unverifiedUser: true,
+  token: null,
   loading: true,
   message: "",
   userDetails: {},
@@ -83,13 +85,13 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGIN_SUCCESS) {
-    const { payload } = action;
-    localStorage.setItem("token", payload.token);
+    const {payload} = action;
     return {
       ...state,
       isAuthenticated: true,
       loading: false,
-      // token: payload.token,
+      userDetails: payload,
+      token: payload.token_details.token
     };
   }
 
@@ -107,18 +109,15 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGOUT) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("uid");
+    
     localStorage.removeItem("userData");
-    localStorage.removeItem("paymentDetails");
-    localStorage.removeItem("response");
-    localStorage.removeItem("user");
+  
     return {
       ...state,
       isAuthenticated: false,
       loading: false,
-      token: null,
       userDetails: {},
+      token: null
     };
   }
 

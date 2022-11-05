@@ -23,7 +23,7 @@ const animations = {
 const Login = ({ children }) => {
   const width = window.innerWidth;
   const initialValues = {
-    email: "adesiyantope2014@gmail.com",
+    email: "",
     password: "",
   };
 
@@ -42,11 +42,10 @@ const Login = ({ children }) => {
     } else if (values.password.length < 8) {
       errors.password = "Password length is too short";
     }
-    console.log(errors)
-
+    
     return errors;
   };
-  // console.log(validate)
+  
 
   const dispatch = useDispatch();
 
@@ -54,13 +53,12 @@ const Login = ({ children }) => {
     dispatch(login(values));
   };
 
-  const [passwordShown, setPasswordShown] = useState(true);
+  const [passwordShown, setPasswordShown] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.loader.loading);
-
   const message = useSelector((state) => state.auth.message);
 
-  console.log(message);
+ 
 
   const togglePassword = (e) => {
     e.preventDefault();

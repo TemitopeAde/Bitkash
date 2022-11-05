@@ -43,7 +43,6 @@ import ChangePhoneNumber from "./pages/ChangeNumber";
 import { getAllTransactions } from "./state/action-creators";
 
 function App() {
-  
   useEffect(() => {
     getAllTransactions();
   }, []);
@@ -54,16 +53,28 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/kyc-verification" element={<Signup />} />
-        {/* <Route element={<ProtectedRoute />}> */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/buy-bitcoin" element={<Buy />} />
+          <Route path="/transaction-history" element={<History />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/banks" element={<Banks />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/update-email" element={<ChangeEmail />} />
+          <Route path="/update-phone" element={<ChangePhoneNumber />} />
+          <Route path="/user-dashboard" element={<Dashboard />} />
+          <Route path="/payment-details" element={<BuyConfirm />} />
+          <Route path="/pasword-and-security" element={<Security />} />
+          <Route path="/two-factor-authentication" element={<TwoFactor />} />
+          <Route path="/goggle-authenticator" element={<GoogleAuth />} />
+          <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="/email-verification" element={<EmailVerification />} />
+          <Route path="/logout" element={<Logout />} />
+        </Route>
 
-        {/* </Route> */}
-        <Route path="/buy-bitcoin" element={<Buy />} />
-        <Route path="/transaction-history" element={<History />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
         <Route path="/user/verify/:uid" element={<EmailAndPhone />} />
-        
         <Route path="/register" element={<Register />} />
         <Route path="/registration" element={<Register />} />
         <Route
@@ -72,19 +83,13 @@ function App() {
         />
         <Route path="/email-and-password-sent" element={<PhoneOTP />} />
         <Route path="/success-page" element={<SucessRegistrationPage />} />
-        <Route path="/user-dashboard" element={<Dashboard />} />
-        <Route path="/payment-details" element={<BuyConfirm />} />
-        <Route path="/pasword-and-security" element={<Security />} />
-        <Route path="/two-factor-authentication" element={<TwoFactor />} />
-        <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/phone-verification" element={<PhoneVerification />} />
         <Route
           path="/verification-successful"
           element={<VerificationSuccessful />}
         />
-        <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/notification" element={<Notification />} />
-        <Route path="/email-verification" element={<EmailVerification />} />
+
         <Route
           path="/recover-password/:token"
           element={<RecoverPasswordConfirm />}
@@ -93,11 +98,6 @@ function App() {
           path="/password-reset-link-sent"
           element={<PasswordResetLink />}
         />
-        <Route path="/activities" element={<Activities />} />
-        <Route path="/banks" element={<Banks />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/update-email" element={<ChangeEmail />} />
-        <Route path="/update-phone" element={<ChangePhoneNumber />} />
       </Routes>
     </AnimatePresence>
   );
