@@ -3,7 +3,7 @@ import clx from "../utils/clx";
 
 export default function Text({ as, weight = "normal", classname, children }) {
   const H1classes = clx(
-    "tw-text-4xl lg:tw-text-[54px] tw-font-bold tw-font-circular",
+    "tw-text-[30px] lg:tw-text-[54px] tw-font-bold tw-font-circular",
     weight === "normal" && "tw-font-normal",
     weight === "medium" && "tw-font-medium",
     weight === "semi-bold" && "tw-font-semibold",
@@ -11,7 +11,7 @@ export default function Text({ as, weight = "normal", classname, children }) {
     classname
   );
   const H2classes = clx(
-    "tw-text-3xl lg:tw-text-[54px] tw-font-bold tw-font-poppins leading-[1.5] lg:tw-leading-normal",
+    "tw-text-[30px] lg:tw-text-[54px] tw-font-bold tw-font-poppins leading-[1.5] lg:tw-leading-normal",
     weight === "normal" && "tw-font-normal",
     weight === "medium" && "tw-font-medium",
     weight === "semi-bold" && "tw-font-semibold",
@@ -27,7 +27,7 @@ export default function Text({ as, weight = "normal", classname, children }) {
     classname
   );
   const H4classes = clx(
-    "tw-text-xl lg:tw-text-2xl tw-font-bold font-circular leading-[1.5] lg:leading-normal",
+    "tw-text-[24px] lg:tw-text-[32px] tw-font-bold font-circular leading-[1.5] lg:leading-normal",
     weight === "normal" && "tw-font-normal",
     weight === "medium" && "tw-font-medium",
     weight === "semi-bold" && "tw-font-semibold",
@@ -35,7 +35,7 @@ export default function Text({ as, weight = "normal", classname, children }) {
     classname
   );
   const H5classes = clx(
-    "tw-text-lg lg:tw-text-xl tw-font-bold font-circular leading-[1.5] lg:leading-normal",
+    "tw-text-[16px] lg:tw-text-[24px] tw-font-bold font-circular leading-[1.5] lg:leading-normal",
     weight === "normal" && "tw-font-normal",
     weight === "medium" && "tw-font-medium",
     weight === "semi-bold" && "tw-font-semibold",
@@ -51,7 +51,7 @@ export default function Text({ as, weight = "normal", classname, children }) {
     classname
   );
   const classes = clx(
-    "tw-text-base tw-font-medium tw-font-poppins tw-py-1 tw-m-0",
+    "tw-text-[14px] lg:tw-text-[16px] tw-font-medium tw-font-poppins tw-py-1 tw-m-0",
     weight === "normal" && "tw-font-normal",
     weight === "medium" && "tw-font-medium",
     weight === "semi-bold" && "tw-font-semibold",

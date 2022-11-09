@@ -10,10 +10,13 @@ export default function CookiesWrapper() {
   return (
     <StaticLayout>
       <div>
-        <Section classname='tw-flex tw-flex-col-reverse lg:tw-flex-row tw-min-h-[400px]'>
-          <div className='tw-flex-1 tw-flex tw-items-center tw-py-6 lg:tw-py-0'>
-            <div>
-              <Text as='h1'>
+        <Section
+          background='tw-bg-secondary-main lg:tw-bg-transparent'
+          classname='tw-flex tw-flex-col-reverse lg:tw-flex-row lg:tw-min-h-[400px]'
+        >
+          <div className='tw-flex-1 tw-flex tw-items-center md:tw-justify-center tw-py-6 lg:tw-py-0'>
+            <div className='tw-text-white lg:tw-text-black'>
+              <Text as='h1' classname='tw-text-center lg:tw-text-left'>
                 Cookie Policy for{" "}
                 <span className='tw-text-primary-main tw-leading-relaxed'>
                   Bitkash
@@ -25,7 +28,7 @@ export default function CookiesWrapper() {
               </Text>
             </div>
           </div>
-          <div className='tw-flex-1 tw-flex tw-justify-end'>
+          <div className='tw-hidden tw-flex-1 lg:tw-flex tw-justify-end'>
             <div className='tw-w-[80%]'>
               <img src='/images/cookies-hero.png' alt='' />
             </div>
@@ -33,12 +36,12 @@ export default function CookiesWrapper() {
         </Section>
 
         <Section
-          background='tw-bg-secondary-main'
+          background='lg:tw-bg-secondary-main'
           classname='tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-4'
         >
           <Card
             outerHeading='What Are Cookies'
-            classname='tw-border-white tw-text-white'
+            classname='tw-border-primary-main lg:tw-border-white lg:tw-text-white'
           >
             As is common practice with almost all professional websites, this
             site uses cookies, which are tiny files that are downloaded to your
@@ -50,7 +53,7 @@ export default function CookiesWrapper() {
           </Card>
           <Card
             outerHeading='How We Use Cookies'
-            classname='tw-border-white tw-text-white'
+            classname='tw-border-primary-main lg:tw-border-white lg:tw-text-white'
           >
             We use cookies for a variety of reasons, detailed below.
             Unfortunately, in most cases, there are no industry standard options
@@ -61,7 +64,7 @@ export default function CookiesWrapper() {
           </Card>
           <Card
             outerHeading='Disabling Cookies'
-            classname='tw-border-white tw-text-white'
+            classname='tw-border-primary-main lg:tw-border-white lg:tw-text-white'
           >
             You can prevent the setting of cookies by adjusting the settings on
             your browser (see your browser help for how to do this). Be aware
@@ -73,16 +76,16 @@ export default function CookiesWrapper() {
             Generator.
           </Card>
           <Card
-            outerHeading='How We Use Cookies'
-            classname='tw-border-white tw-text-white'
+            outerHeading='Nothing'
+            transparentHeading
+            classname='tw-border-primary-main lg:tw-border-white lg:tw-text-white tw-w-full tw-flex tw-justify-center tw-items-center tw-min-h-[200px] lg:tw-min-h-fit tw-bg-primary-main lg:tw-bg-transparent'
+            fullWidth
           >
-            We use cookies for a variety of reasons, detailed below.
-            Unfortunately, in most cases, there are no industry standard options
-            for disabling cookies without completely disabling the functionality
-            and features they add to this site. It is recommended that you leave
-            on all cookies if you are not sure whether you need them or not in
-            case they are used to provide a service that you use.
+            <Text as='h1' classname='tw-text-white'>The Cookies We Set</Text>
           </Card>
+          {/* <div className="tw-border-[1px] tw-border-white tw-rounded-xl tw-h-[240px] tw-place-self-end tw-w-full">
+
+          </div> */}
         </Section>
 
         <Section classname='tw-flex tw-flex-col tw-gap-6'>
@@ -139,10 +142,10 @@ export default function CookiesWrapper() {
           </Card>
         </Section>
 
-        <Section>
+        <Section background='tw-bg-pink-light'>
           <Card
             outerHeading='Third-Party Cookies'
-            classname='tw-border-secondary-main/70 tw-rounded-3xl'
+            classname='tw-border-primary-main tw-rounded-3xl'
             darkHeading
             withTriangle
           >
@@ -227,7 +230,9 @@ export default function CookiesWrapper() {
           </Text>
           <Text as='p' classname='tw-py-3'>
             For more general information on cookies, please read the{" "}
-            <span className='tw-text-primary-main'>Cookies Policy article.</span>{" "}
+            <span className='tw-text-primary-main'>
+              Cookies Policy article.
+            </span>{" "}
             However, if you are still looking for more information, then you can
             contact us through one of our preferred contact methods:
             contact@bitkash.com

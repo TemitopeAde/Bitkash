@@ -10,7 +10,7 @@ export default function AboutWrapper({ classname, children }) {
   return (
     <StaticLayout>
       <div>
-        <Section>
+        <Section background='tw-bg-secondary-main lg:tw-bg-white tw-text-white lg:tw-text-black'>
           <div>
             <Text as='h2' classname='tw-text-center tw-py-2'>
               About Us
@@ -25,7 +25,7 @@ export default function AboutWrapper({ classname, children }) {
               </span>
             </Text>
           </div>
-          <div className='tw-border-[10px] tw-border-primary-main tw-my-4'>
+          <div className='tw-hidden lg:tw-block tw-border-[10px] tw-border-primary-main tw-my-4'>
             <img src='/images/about-img.png' alt='meeting-session' />
           </div>
         </Section>

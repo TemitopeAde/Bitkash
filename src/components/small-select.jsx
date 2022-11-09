@@ -24,11 +24,11 @@ export default function SmallSelect({
         onClick={() => setOpen((state) => !state)}
       />
       {isOpen && (
-        <div className='tw-absolute tw-bg-white tw-top-[100%] tw-w-full tw-h-fit tw-shadow-md tw-left-0 tw-rounded-lg'>
+        <div className='tw-absolute tw-z-[1000] tw-bg-white tw-top-[100%] tw-w-full tw-h-fit tw-shadow-md tw-left-0 tw-rounded-lg'>
           {options.map((option, index) => (
             <p
               key={option}
-              className={`tw-py-2 tw-px-3 tw-my-0 tw-cursor-pointer tw-select-none 
+              className={`tw-py-2 tw-px-3 tw-h-fit tw-my-0 tw-cursor-pointer tw-select-none 
                   ${
                     option === "Verified"
                       ? "tw-text-[#0BC56B]"

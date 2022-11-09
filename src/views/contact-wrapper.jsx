@@ -15,7 +15,7 @@ export default function ContactWrapper() {
     <StaticLayout>
       <div className=''>
         <Section
-          background='tw-h-[550px] lg:tw-h-[90vh] tw-rounded-b-[100px] tw-relative'
+          background='tw-bg-secondary-main lg:tw-bg-transparent tw-h-[450px] lg:tw-h-[90vh] lg:tw-rounded-b-[100px] tw-relative'
           classname=''
         >
           <img
@@ -26,16 +26,16 @@ export default function ContactWrapper() {
           <img
             src='/images/contact-hero-mobile.png'
             alt='hero-background'
-            className='lg:tw-hidden tw-w-[100%] tw-h-full tw-absolute tw-inset-0'
+            className='tw-hidden tw-w-[100%] tw-h-full tw-absolute tw-inset-0'
           />
-          <div className='tw-p-4 tw-w-full md:tw-w-[70%] lg:tw-w-fit tw-h-fit tw-absolute tw-top-[50%] tw-left-[50%] tw-translate-x-[-50%] tw-translate-y-[-50%]'>
-            <Text as='h1' classname='tw-text-center tw-text-white'>
+          <div className='tw-text-white tw-p-4 tw-w-full md:tw-w-[70%] lg:tw-w-fit tw-h-fit tw-absolute tw-top-[50%] tw-left-[50%] tw-translate-x-[-50%] tw-translate-y-[-50%]'>
+            <Text as='h1' classname='tw-text-center'>
               Contact Us
             </Text>
-            <Text as='h2' classname='tw-text-center tw-text-white tw-pt-3'>
+            <Text as='h1' classname='tw-text-center tw-pt-3 tw-leading-normal'>
               We’d Love To Hear From You
             </Text>
-            <Text as='article' classname='tw-py-3 tw-text-white tw-text-center'>
+            <Text as='article' classname='tw-py-3 tw-text-center'>
               One of our major focus points at Bitkash is customer satisfaction;
               your satisfaction. Our support team is available all day and every
               day to ensure that you receive the help you need when you need it.
@@ -45,7 +45,7 @@ export default function ContactWrapper() {
         <Section classname='tw-flex tw-flex-col lg:tw-flex-row tw-gap-5 tw-px-0'>
           <div className='tw-flex-1 tw-px-3 lg:tw-px-0'>
             <div>
-              <Text as='h5' classname='font-circular'>
+              <Text as='h1' classname='font-circular'>
                 Contact Us If:
               </Text>
               <ul className='tw-py-2 tw-leading-relaxed'>
@@ -59,7 +59,7 @@ export default function ContactWrapper() {
               </ul>
             </div>
             <div className='tw-my-10 tw-hidden lg:tw-block'>
-              <Text as='h5' classname='font-circular'>
+              <Text as='h1' classname='font-circular'>
                 We Are Available Via:
               </Text>
               <ul className='tw-py-2 tw-leading-relaxed'>
@@ -89,7 +89,7 @@ export default function ContactWrapper() {
               classname='tw-px-3 tw-w-full lg:tw-px-4 lg:tw-w-[70%] tw-h-full before:tw-hidden lg:before:tw-block tw-bg-transparent lg:tw-bg-primary-main'
             >
               <div>
-                <Text as='h4' classname='tw-py-2 tw-text-secondary-main'>
+                <Text as='h5' classname='tw-py-2 tw-text-secondary-main'>
                   Contact Us
                 </Text>
                 <Text as='p' className='tw-text-2xl tw-text-white'>

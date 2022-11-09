@@ -3,6 +3,7 @@ import clx from "../utils/clx";
 import Button from "./button";
 import Links from "../constants/links";
 import LinkContainer from "./link-container";
+import Text from "./text";
 
 export default function Footer({ classname, children }) {
   const classes = clx("tw-w-[100%]", classname);
@@ -11,9 +12,9 @@ export default function Footer({ classname, children }) {
       <div className='lg:tw-h-[70vh] tw-bg-[#292D32]'>
         <div className='lg:tw-w-[90%] tw-py-6 tw-px-3 lg:tw-px-0 lg:tw-py-0 tw-mx-auto tw-h-full tw-flex tw-flex-col lg:tw-flex-row'>
           <div className='tw-flex-1 tw-flex tw-flex-col tw-justify-center'>
-            <p className='tw-text-primary-main tw-text-xl tw-font-semibold'>
+            <Text as='h5' classname='tw-text-primary-main tw-font-semibold'>
               Subscribe
-            </p>
+            </Text>
             <h1 className='tw-text-white tw-text-2xl lg:tw-text-5xl tw-leading-normal tw-font-bold tw-font-circular lg:w-[80%]'>
               Stay informed never miss an <span>update!</span>
             </h1>
@@ -36,7 +37,7 @@ export default function Footer({ classname, children }) {
         </div>
       </div>
 
-      <div className='tw-bg-primary-main'>
+      <div className='tw-bg-[#292D32] tw-border-t-2 tw-border-primary-main'>
         <div className='lg:tw-w-[90%] tw-px-3 tw-mx-auto tw-py-14 tw-flex'>
           <div className='lg:tw-w-[35%]'>
             <div className='tw-w-[200px]'>

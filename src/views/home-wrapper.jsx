@@ -163,32 +163,56 @@ export default function HomeWrapper() {
             us
           </Text>
           <div className='tw-px-4 lg:tw-px-0 tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-6 lg:tw-gap-4 tw-py-4'>
-            <Card type='why' heading='Easy to use'>
+            <Card
+              type='why'
+              icon={<img src='/images/easy-to-use.png' alt='easy to use' />}
+              heading='Easy to use'
+            >
               Our platform is designed for ease-of-use. There are no complicated
               dashboards or processes. You’ve got the money and we’ve got the
               coins.
             </Card>
-            <Card type='why' heading='Safe and secure'>
+            <Card
+              type='why'
+              icon={<img src='/images/safe-and-secure.png' alt='easy to use' />}
+              heading='Safe and secure'
+            >
               Bitkash is one of the safest mediums to purchase crypto online.
               We’re a real team made of real people with a real setup that is
               designed to protect you and your assets. Learn more
             </Card>
-            <Card type='why' heading='Beginner-Friendly '>
+            <Card
+              type='why'
+              icon={<img src='/images/beginner-friendly.png' alt='easy to use' />}
+              heading='Beginner-Friendly '
+            >
               Have zero crypto experience? It doesn’t matter! Get started by
               checking out our Getting Started Page or checking out our FAQs. If
               you need any more assistance, we’d love to chat with you.
             </Card>
-            <Card type='why' heading='Seamless and Fast Processes'>
+            <Card
+              type='why'
+              icon={<img src='/images/seamless-processes.png' alt='easy to use' />}
+              heading='Seamless and Fast Processes'
+            >
               Time is money and Bitkash takes this literally. You can transact
               with us with just a few clicks of the button and be rest assured
               that your transaction will be processed in minutes. Learn more
             </Card>
-            <Card type='why' heading='24/7 Customer Support '>
+            <Card
+              type='why'
+              icon={<img src='/images/customer-support.png' alt='easy to use' />}
+              heading='24/7 Customer Support '
+            >
               Bitkash runs on your schedule. Our customer service operations are
               designed to give you confidence and trust in our firm. We’re
               always available and eager to help. chat with us
             </Card>
-            <Card type='why' heading='Our Newsletter'>
+            <Card
+              type='why'
+              icon={<img src='/images/newsletter.png' alt='easy to use' />}
+              heading='Our Newsletter'
+            >
               When you join the Bitkash family and optionally sign up for our
               Newsletter, we give you an inner look at just what makes us who we
               are. From helpful crypto tips to important crypto news, and even

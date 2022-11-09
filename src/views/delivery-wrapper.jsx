@@ -15,7 +15,7 @@ export default function DeliveryWrapper() {
             <div className='tw-hidden lg:tw-block tw-w-[70%]'>
               <img src='/images/delivery-hero.png' alt='' />
             </div>
-            <div className='lg:tw-hidden tw-mx-auto tw-w-[70%] tw-py-6'>
+            <div className='last:tw-hidden tw-mx-auto tw-w-[70%] tw-py-6'>
               <img src='/images/delivery-hero-mobile.png' alt='' />
             </div>
           </div>

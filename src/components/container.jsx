@@ -31,7 +31,9 @@ export default function Container({
                 : "tw-bg-primary-main"
             } tw-py-3 lg:tw-py-4 tw-px-3 lg:tw-px-6 tw-rounded-t-xl tw-text-lg tw-font-semibold tw-text-white`}
           >
-            <Text as='h5'>{heading}</Text>
+            <Text as='h5' classname='lg:tw-text-[32px]'>
+              {heading}
+            </Text>
           </div>
           <div
             className={`tw-border-[1px] tw-border-primary-main tw-rounded-b-xl tw-w-full ${

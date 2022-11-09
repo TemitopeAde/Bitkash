@@ -5,30 +5,28 @@ import Label from "../components/label";
 import Search from "../components/search";
 import Section from "../components/section";
 import StaticLayout from "../layout/static-layout";
-import clx from "../utils/clx";
 import ProhibitedActivities from "../constants/prohibited-activities";
 import UserGenerated from "../constants/user-generated";
 import Text from "../components/text";
 
 export default function TermsAndConditionsWrapper(classname, children) {
-  const classes = clx("", classname);
   return (
     <StaticLayout>
       <div>
         <Section
-          background='tw-bg-primary-main'
+          background='tw-bg-secondary-main lg:tw-bg-primary-main'
           classname='tw-flex tw-flex-col-reverse lg:tw-flex-row lg:tw-h-[80vh]'
         >
-          <div className='tw-flex tw-items-center tw-py-6'>
-            <Text as='h1' classname='tw-text-white lg:tw-w-[80%]'>
+          <div className='tw-flex tw-items-center md:tw-justify-center tw-py-6'>
+            <Text as='h1' classname='tw-text-white lg:tw-w-[80%] tw-text-center lg:tw-text-left'>
               Terms and Conditions for{" "}
-              <span className='tw-leading-relaxed tw-text-secondary-main lg:tw-text-white'>
+              <span className='tw-leading-relaxed tw-text-primary-main lg:tw-text-white'>
                 Bikash{" "}
               </span>
               Usage
             </Text>
           </div>
-          <div className='tw-flex tw-items-center tw-justify-end'>
+          <div className='tw-hidden lg:tw-flex tw-items-center tw-justify-end'>
             <div className='tw-w-[70%] tw-mx-auto lg:tw-w-full'>
               <img src='/images/terms-hero.png' alt='' />
             </div>

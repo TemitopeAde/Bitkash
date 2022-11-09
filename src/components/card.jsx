@@ -6,8 +6,10 @@ export default function Card({
   classname,
   type,
   heading,
+  transparentHeading,
   icon,
   number,
+  fullWidth,
   withTriangle,
   innerHeading,
   outerHeading,
@@ -15,14 +17,14 @@ export default function Card({
   children,
 }) {
   const classes = clx(
-    "tw-flex-1 tw-p-4 tw-border-[1px] tw-border-primary-main tw-w-fit lg:tw-text-lg tw-font-medium tw-min-h-fit tw-rounded-xl",
+    "tw-flex-1 tw-p-4 tw-border-[1px] tw-border-primary-main tw-w-fit lg:tw-text-lg tw-font-medium tw-min-h-fit tw-rounded-xl tw-relative",
     classname
   );
   switch (type) {
     case "why":
       return (
-        <div className='tw-p-4 tw-flex tw-flex-col lg:fklex-row tw-border-[1px] tw-border-primary-main tw-rounded-lg tw-shadow-sm'>
-          <div className='tw-min-w-fit tw-place-self-center'>{icon}</div>
+        <div className='tw-p-4 tw-flex tw-flex-col lg:tw-flex-row tw-border-[1px] tw-gap-3 tw-border-primary-main tw-rounded-lg tw-shadow-sm'>
+          <div className='tw-min-w-fit tw-place-self-center lg:tw-place-self-start tw-pt-4'>{icon}</div>
           <div>
             <Text
               as='h4'
@@ -51,23 +53,21 @@ export default function Card({
           >
             {heading}
           </Text>
-          <p className='tw-m-0  tw-text-center tw-font-poppins'>{children}</p>
+          <Text as='p' classname='tw-m-0  tw-text-center tw-font-poppins'>{children}</Text>
         </div>
       );
     default:
       return (
         <>
-          <div className='tw-w-fit tw-h-full tw-flex tw-flex-col'>
-            {outerHeading && (
-              <Text
-                as='h4'
-                classname={`tw-text-center ${
-                  darkHeading ? "tw-text-secondary-main" : "tw-text-primary-main"
-                }`}
-              >
-                {outerHeading}
-              </Text>
-            )}
+          <div className={`${fullWidth ? 'tw-w-full' : 'tw-w-fit'} tw-h-full tw-flex tw-flex-col`}>
+            <Text
+              as='h4'
+              classname={`tw-text-center ${
+                darkHeading ? "tw-text-secondary-main" : "tw-text-primary-main"
+              } ${transparentHeading && "tw-text-transparent"}`}
+            >
+              {outerHeading}
+            </Text>
             {withTriangle && (
               <div className='tw-w-[20px] tw-mx-auto tw-pb-2'>
                 <img src='/images/triangle.png' alt='' />
@@ -79,7 +79,9 @@ export default function Card({
                   {innerHeading}
                 </Text>
               )}
-              <Text as='article'>{children}</Text>
+              <Text as='article' classname='tw-text-[13px] lg:tw-text-[13px]'>
+                {children}
+              </Text>
             </div>
           </div>
         </>

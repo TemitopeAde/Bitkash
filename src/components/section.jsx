@@ -3,7 +3,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import clx from "../utils/clx";
 
-export default function Section({ background, url, classname, children }) {
+export default function Section({ animation='fade-up', background, url, classname, children }) {
 
   React.useEffect(() => {
     Aos.init()
@@ -16,8 +16,8 @@ export default function Section({ background, url, classname, children }) {
   );
   return (
     <section
-      data-aos='fade-up'
-      data-aos-delay={500}
+      data-aos={animation}
+      data-aos-delay={300}
       className={`tw-w-full ${background}`}
       style={{ backgroundImage: url }}
     >

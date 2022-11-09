@@ -19,14 +19,14 @@ export default function RefundWrapper() {
                 className='tw-object-fill tw-h-full'
               />
             </div>
-            <div className='lg:tw-hidden tw-py-6'>
+            <div className='tw-hidden tw-py-6'>
               <img
                 src='/images/refund-hero-mobile.png'
                 alt=''
                 className='tw-object-fill tw-h-full'
               />
             </div>
-            <Text as='article' classname='lg:tw-hidden tw-text-white tw-py-4'>
+            <Text as='article' classname='lg:tw-hidden tw-text-white tw-py-4 tw-text-center lg:tw-text-left'>
               Bitkash does not offer refunds for completed transactions. A
               transaction is considered completed when Bitkash.io successfully
               pays the purchased cryptocurrency to the specified wallet. We are
@@ -35,8 +35,8 @@ export default function RefundWrapper() {
             </Text>
           </div>
           <div className='tw-flex-1 tw-flex tw-items-center tw-justify-center'>
-            <div className='tw-w-[95%]'>
-              <Text as='h1' classname='tw-text-white'>
+            <div className='tw-w-[95%] tw-text-center lg:tw-text-left'>
+              <Text as='h1' classname='tw-text-white tw-mb-6'>
                 <span className='tw-text-primary-main tw-leading-relaxed'>
                   Bitkash
                 </span>{" "}

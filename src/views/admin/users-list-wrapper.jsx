@@ -58,7 +58,7 @@ export default function UsersListWrapper() {
     <AdminLayout>
       <ModalContext.Provider value={setModalOpen}>
         <div className='tw-bg-pink-light'>
-          <Section classname='tw-pb-1'>
+          <div className='tw-pb-1 lg:tw-w-[90%] tw-mx-auto tw-py-10 tw-px-3 lg:tw-px-0'>
             <div className='tw-flex tw-justify-between'>
               <Text as='h4'>Users</Text>
               <div className='tw-w-[60%] tw-flex tw-items-center tw-gap-3'>
@@ -74,7 +74,7 @@ export default function UsersListWrapper() {
                 />
               </div>
             </div>
-          </Section>
+          </div>
           <Section classname='tw-py-0'>
             <UsersTable tableInstance={tableInstance} />
           </Section>
