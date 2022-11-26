@@ -64,7 +64,7 @@ export default function UsersListWrapper() {
               <div className='tw-w-[60%] tw-flex tw-items-center tw-gap-3'>
                 <Search
                   value={state.globalFilter}
-                  onChange={setGlobalFilter}
+                  onchange={({target})=>setGlobalFilter(target.value)}
                   placeholder='Search here'
                   classname='tw-bg-white tw-flex-1 tw-border-primary-main tw-border-[0.7px]'
                 />

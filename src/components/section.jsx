@@ -11,7 +11,7 @@ export default function Section({ animation='fade-up', background, url, classnam
   })
 
   const classes = clx(
-    "lg:tw-w-[90%] tw-mx-auto tw-py-10 tw-px-3 lg:tw-px-0",
+    "tw-w-[90%] tw-mx-auto tw-py-10 tw-px-3 lg:tw-px-0",
     classname
   );
   return (

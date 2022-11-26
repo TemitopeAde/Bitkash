@@ -22,7 +22,7 @@ export const AdminTableColumns = [
   },
   {
     Header: "Delete",
-    Cell:DeleteProfile
     // accessor: "id",
+    Cell:DeleteProfile
   },
 ];

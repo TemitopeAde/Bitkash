@@ -11,7 +11,7 @@ export default function Footer({ classname, children }) {
   return (
     <div className={classes}>
       <div className='lg:tw-h-fit tw-bg-[#292D32]'>
-        <div className='lg:tw-w-[90%] tw-py-6 tw-px-3 lg:tw-px-0 lg:tw-py-[100px] tw-mx-auto tw-h-full tw-flex tw-flex-col lg:tw-flex-row lg:tw-items-start lg:tw-gap-x-[30px]'>
+        <div className='tw-w-[90%] tw-py-6 tw-px-3 lg:tw-px-0 lg:tw-py-[100px] tw-mx-auto tw-h-full tw-flex tw-flex-col lg:tw-flex-row lg:tw-items-start lg:tw-gap-x-[30px]'>
           <div className='tw-flex-1 tw-flex tw-flex-col tw-justify-center'>
             <Text as='h5' classname='tw-text-primary-main tw-font-semibold'>
               Subscribe
@@ -39,7 +39,7 @@ export default function Footer({ classname, children }) {
       </div>
 
       <div className='tw-bg-[#292D32] tw-border-t-2 tw-border-primary-main'>
-        <div className='lg:tw-w-[90%] tw-px-3 tw-mx-auto tw-py-14 tw-flex'>
+        <div className='tw-w-[90%] tw-px-3 tw-mx-auto tw-py-14 tw-flex'>
           <div className='lg:tw-w-[35%]'>
             <div className='tw-w-[200px]'>
               <img

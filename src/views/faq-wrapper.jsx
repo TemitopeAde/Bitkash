@@ -85,7 +85,6 @@ export function FAQuestions() {
   const [filteredFAQ, setFilteredFAQ] = React.useState()
   const [activeQuestion, setActiveQuestion] = React.useState(1);
 
-  console.log(search)
   React.useEffect(() => {
     if (search) {
       setFilteredFAQ(FAQ.filter((faq) =>faq.heading.toLowerCase().includes(search.toLowerCase())));

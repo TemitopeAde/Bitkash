@@ -139,19 +139,28 @@ export default function HomeWrapper() {
             <div className='tw-flex-1 tw-flex tw-flex-col lg:tw-flex-row tw-gap-6 lg:tw-space-x-[30px] xl:tw-space-x-[5px] xl:tw-gap-0 tw-justify-around tw-items-center'>
               <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
                 <Text as='h2'>100%</Text>
-                <Text as='p' classname='tw-py-0 tw-pt-2'>
+                <Text
+                  as='p'
+                  classname='tw-py-0 tw-pt-2 tw-text-center lg:tw-text-left'
+                >
                   Support
                 </Text>
               </div>
               <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
                 <Text as='h2'>50,000+</Text>
-                <Text as='p' classname='tw-py-0 tw-pt-2'>
+                <Text
+                  as='p'
+                  classname='tw-py-0 tw-pt-2 tw-text-center lg:tw-text-left'
+                >
                   Transactions
                 </Text>
               </div>
               <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
                 <Text as='h2'>500+</Text>
-                <Text as='p' classname='tw-py-0 tw-pt-2'>
+                <Text
+                  as='p'
+                  classname='tw-py-0 tw-pt-2 tw-text-center lg:tw-text-left'
+                >
                   Customers
                 </Text>
               </div>
@@ -235,7 +244,10 @@ export default function HomeWrapper() {
         >
           <div className='tw-hidden tw-flex-1 lg:tw-flex tw-items-center'>
             <div>
-              <Text as='h1' classname='tw-py-3 tw-leading-normal tw-font-[poppins]'>
+              <Text
+                as='h1'
+                classname='tw-py-3 tw-leading-normal tw-font-[poppins]'
+              >
                 Get Started Now and Join The{" "}
                 <span className='tw-text-primary-main'>Bitkash</span> Family
                 With Your First Purchase

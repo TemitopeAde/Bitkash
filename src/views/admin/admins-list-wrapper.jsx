@@ -35,11 +35,17 @@ export default function AdminsListWrapper() {
               <div className='tw-w-[60%] tw-flex tw-items-center tw-gap-3'>
                 <Search
                   value={state.globalFilter}
-                  onChange={setGlobalFilter}
+                  onchange={({ target }) => setGlobalFilter(target.value)}
                   placeholder='Search here'
                   classname='tw-bg-white tw-flex-1 tw-border-primary-main tw-border-[0.7px]'
                 />
-                <Button iconLeft={<FiPlusCircle />} classname='tw-min-h-full' href='/admin/add-admin'>Add Admin</Button>
+                <Button
+                  iconLeft={<FiPlusCircle />}
+                  classname='tw-min-h-full'
+                  href='/admin/add-admin'
+                >
+                  Add Admin
+                </Button>
               </div>
             </div>
           </Section>
@@ -91,7 +97,7 @@ export default function AdminsListWrapper() {
                     setUserDeleted(false);
                   }}
                 >
-                  users
+                  admins
                 </span>
               </Text>
             </div>

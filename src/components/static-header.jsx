@@ -11,7 +11,7 @@ export default function Header({ classname, children }) {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const router = useLocation();
   const classes = clx(
-    "lg:tw-w-[90%] tw-mx-auto tw-py-4 tw-px-3 lg:tw-px-0 tw-h-[90px] lg:tw-h-[120px] tw-flex tw-items-center tw-justify-between",
+    "tw-w-[90%] tw-mx-auto tw-py-4 tw-px-3 lg:tw-px-0 tw-h-[90px] lg:tw-h-[120px] tw-flex tw-items-center tw-justify-between",
     classname
   );
   return (
