@@ -44,7 +44,8 @@
     "tailwindcss": "^3.1.8",
     "uninstall": "^0.0.0",
     "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

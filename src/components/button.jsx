@@ -10,6 +10,7 @@ export default function Button({
   iconRight,
   color,
   href,
+  type,
   onclick,
   children,
 }) {
@@ -54,10 +55,10 @@ export default function Button({
     );
   }
   return (
-    <div className={classes} onClick={onclick}>
+    <button type={type} className={classes} onClick={onclick}>
       {iconLeft && iconLeft}
       {children}
       {iconRight && iconRight}
-    </div>
+    </button>
   );
 }
