@@ -5,7 +5,7 @@ import clx from "../utils/clx";
 
 export default function StaticLayout({ classname, children }) {
   const classes = clx(
-    "tw-min-h-[calc(100vh-90px)] lg:tw-min-h-[calc(100vh-120px)] tw-mt-[90px] lg:tw-mt-[120px]",
+    "tw-min-h-[calc(100vh-290px)] lg:tw-min-h-[calc(100vh-120px)] tw-mt-[90px] lg:tw-mt-[120px]",
     classname
   );
   return (

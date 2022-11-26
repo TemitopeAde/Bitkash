@@ -35,7 +35,10 @@ export default function AboutWrapper({ classname, children }) {
           background='tw-bg-pink-light'
         >
           <div className='tw-flex-1'>
-            <Text as='h3' classname='tw-hidden lg:tw-block tw-text-primary-main'>
+            <Text
+              as='h3'
+              classname='tw-hidden lg:tw-block tw-text-primary-main'
+            >
               The Beginning
             </Text>
             <Text as='p' classname='tw-py-2'>
@@ -80,7 +83,7 @@ export default function AboutWrapper({ classname, children }) {
               <img src='/images/mission-img.png' alt='our mission' />
             </div>
           </div>
-          <div className='tw-flex-1 tw-flex tw-justify-center lg:tw-justify-start tw-items-center '>
+          <div className='tw-flex-1 tw-flex tw-flex-col tw-justify-center lg:tw-justify-start tw-items-start'>
             <div>
               <Text as='h2' classname='tw-hidden lg:tw-block tw-py-3'>
                 Our Mission
@@ -90,10 +93,20 @@ export default function AboutWrapper({ classname, children }) {
                 to purchase Bitcoin at the best rates.
               </Text>
             </div>
+            <div className='tw-pt-[30px]'>
+              <Text as='h2' classname='tw-py-2 tw-text-center lg:tw-text-left'>
+                Our Vision
+              </Text>
+              <Text as='article' classname='tw-py-4'>
+                We envision a world with financial inclusion; where businesses
+                and individuals have easy and readily available access to
+                cryptocurrency for business transactions.
+              </Text>
+            </div>
           </div>
         </Section>
 
-        <Section
+        {/* <Section
           classname='tw-flex tw-flex-col lg:tw-flex-row'
           background='tw-bg-primary-main'
         >
@@ -112,13 +125,13 @@ export default function AboutWrapper({ classname, children }) {
               <img src='/images/vision-img.png' alt='' />
             </div>
           </div>
-        </Section>
+        </Section> */}
 
         <Section>
           <Text as='h2' classname='tw-text-center tw-py-8'>
             Our Partners
           </Text>
-          <div className='tw-border-y-2 tw-border-primary-main tw-grid tw-grid-cols-2 tw-gap-6 lg:tw-gap-4 lg:tw-grid-cols-5 lg:tw-place-items-center tw-py-4'>
+          <div className='tw-border-y-2 tw-border-primary-main tw-grid tw-grid-cols-2 tw-gap-6 md:tw-grid-cols-3 lg:tw-gap-4 lg:tw-grid-cols-5 lg:tw-place-items-center tw-py-4'>
             <img
               src='/images/chase-logo.png'
               alt='chase-logo'
@@ -151,7 +164,7 @@ export default function AboutWrapper({ classname, children }) {
           <Text as='h2' classname='tw-text-center tw-py-8'>
             Our Numbers
           </Text>
-          <div className='tw-px-4 lg:tw-px-0 tw-grid tw-grid-cols-1 tw-place-items-center tw-gap-4 lg:tw-gap-0 lg:tw-grid-cols-3'>
+          <div className='tw-px-4 lg:tw-px-0 tw-grid tw-grid-cols-1 tw-place-items-center tw-gap-4 lg:tw-gap-0 md:tw-grid-cols-2 lg:tw-grid-cols-3'>
             <div className='tw-border-2 tw-border-primary-main tw-rounded-lg tw-w-[300px] tw-h-[150px] tw-flex tw-items-center tw-justify-center tw-flex-col'>
               <Text as='h2' classname='tw-py-2'>
                 2

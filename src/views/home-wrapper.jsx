@@ -129,33 +129,35 @@ export default function HomeWrapper() {
           </div>
         </Section>
 
-        <Section classname='tw-flex tw-flex-col lg:tw-flex-row tw-items-center'>
-          <div>
-            <Text as='h2' classname='tw-text-primary-main tw-py-8'>
-              Why Choose Bitkash?
-            </Text>
-          </div>
-          <div className='tw-flex-1 tw-flex tw-flex-col lg:tw-flex-row tw-gap-6 lg:tw-gap-0 tw-justify-around tw-items-center'>
-            <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
-              <Text as='h2'>100%</Text>
-              <Text as='p' classname='tw-py-0 tw-pt-2'>
-                Support
+        <div className='tw-bg-pink-light'>
+          <Section classname='tw-flex tw-flex-col lg:tw-flex-row tw-items-center lg:tw-gap-x-8 xl:tw-gap-x-6'>
+            <div>
+              <Text as='h2' classname='tw-text-primary-main tw-py-8'>
+                Why Choose Bitkash?
               </Text>
             </div>
-            <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
-              <Text as='h2'>50,000+</Text>
-              <Text as='p' classname='tw-py-0 tw-pt-2'>
-                Transactions
-              </Text>
+            <div className='tw-flex-1 tw-flex tw-flex-col lg:tw-flex-row tw-gap-6 lg:tw-space-x-[30px] xl:tw-space-x-[5px] xl:tw-gap-0 tw-justify-around tw-items-center'>
+              <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
+                <Text as='h2'>100%</Text>
+                <Text as='p' classname='tw-py-0 tw-pt-2'>
+                  Support
+                </Text>
+              </div>
+              <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
+                <Text as='h2'>50,000+</Text>
+                <Text as='p' classname='tw-py-0 tw-pt-2'>
+                  Transactions
+                </Text>
+              </div>
+              <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
+                <Text as='h2'>500+</Text>
+                <Text as='p' classname='tw-py-0 tw-pt-2'>
+                  Customers
+                </Text>
+              </div>
             </div>
-            <div className='tw-border-b-2 lg:tw-border-b-0 lg:tw-border-l-2 tw-border-primary-main tw-px-3 tw-font-poppins'>
-              <Text as='h2'>500+</Text>
-              <Text as='p' classname='tw-py-0 tw-pt-2'>
-                Customers
-              </Text>
-            </div>
-          </div>
-        </Section>
+          </Section>
+        </div>
 
         <Section>
           <Text as='h2' classname='tw-text-center tw-py-8'>
@@ -183,7 +185,9 @@ export default function HomeWrapper() {
             </Card>
             <Card
               type='why'
-              icon={<img src='/images/beginner-friendly.png' alt='easy to use' />}
+              icon={
+                <img src='/images/beginner-friendly.png' alt='easy to use' />
+              }
               heading='Beginner-Friendly '
             >
               Have zero crypto experience? It doesn’t matter! Get started by
@@ -192,7 +196,9 @@ export default function HomeWrapper() {
             </Card>
             <Card
               type='why'
-              icon={<img src='/images/seamless-processes.png' alt='easy to use' />}
+              icon={
+                <img src='/images/seamless-processes.png' alt='easy to use' />
+              }
               heading='Seamless and Fast Processes'
             >
               Time is money and Bitkash takes this literally. You can transact
@@ -201,7 +207,9 @@ export default function HomeWrapper() {
             </Card>
             <Card
               type='why'
-              icon={<img src='/images/customer-support.png' alt='easy to use' />}
+              icon={
+                <img src='/images/customer-support.png' alt='easy to use' />
+              }
               heading='24/7 Customer Support '
             >
               Bitkash runs on your schedule. Our customer service operations are
@@ -227,7 +235,7 @@ export default function HomeWrapper() {
         >
           <div className='tw-hidden tw-flex-1 lg:tw-flex tw-items-center'>
             <div>
-              <Text as='h1' classname='tw-py-3 tw-leading-normal'>
+              <Text as='h1' classname='tw-py-3 tw-leading-normal tw-font-[poppins]'>
                 Get Started Now and Join The{" "}
                 <span className='tw-text-primary-main'>Bitkash</span> Family
                 With Your First Purchase

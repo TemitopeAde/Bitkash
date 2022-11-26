@@ -41,7 +41,7 @@ export function Label({title, children}) {
       return (
         <div>
                   <Text as='p' classname='tw-py-[2px] tw-text-primary-main' weight='medium'>{ title}</Text>
-                  <Text as='p' classname='tw-py-[0px]' weight='semi-bold'>{children}</Text>
+                  <Text as='p' classname='tw-py-[0px]' weight='medium'>{children}</Text>
         </div>
       );
 }

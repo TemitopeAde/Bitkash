@@ -1,16 +1,17 @@
 import React from "react";
 import clx from "../utils/clx";
 import Button from "./button";
-import Links from "../constants/links";
+import Links, { bitkash, buyBitcoin, contacts, legacyPolicy } from "../constants/links";
 import LinkContainer from "./link-container";
 import Text from "./text";
+import { Link } from "react-router-dom";
 
 export default function Footer({ classname, children }) {
   const classes = clx("tw-w-[100%]", classname);
   return (
     <div className={classes}>
-      <div className='lg:tw-h-[70vh] tw-bg-[#292D32]'>
-        <div className='lg:tw-w-[90%] tw-py-6 tw-px-3 lg:tw-px-0 lg:tw-py-0 tw-mx-auto tw-h-full tw-flex tw-flex-col lg:tw-flex-row'>
+      <div className='lg:tw-h-fit tw-bg-[#292D32]'>
+        <div className='lg:tw-w-[90%] tw-py-6 tw-px-3 lg:tw-px-0 lg:tw-py-[100px] tw-mx-auto tw-h-full tw-flex tw-flex-col lg:tw-flex-row lg:tw-items-start lg:tw-gap-x-[30px]'>
           <div className='tw-flex-1 tw-flex tw-flex-col tw-justify-center'>
             <Text as='h5' classname='tw-text-primary-main tw-font-semibold'>
               Subscribe
@@ -81,10 +82,58 @@ export default function Footer({ classname, children }) {
             </div>
           </div>
           <div className='tw-hidden lg:tw-flex tw-flex-1 tw-gap-6 tw-pl-10 tw-justify-between'>
-            <LinkContainer heading='Buy Bitcoin' links={Links.buyBitcoin} />
-            <LinkContainer heading='Bitkash' links={Links.bitkash} />
+            <LinkContainer heading='Buy Bitcoin'>
+              {buyBitcoin.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.route}
+                  className='tw-no-underline'
+                >
+                  <li className='min-w-fit tw-text-white tw-tracking-wide'>
+                    {link.label}
+                  </li>
+                </Link>
+              ))}
+            </LinkContainer>
+            <LinkContainer heading='Bitkash'>
+              {bitkash.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.route}
+                  className='tw-no-underline'
+                >
+                  <li className='min-w-fit tw-text-white tw-tracking-wide'>
+                    {link.label}
+                  </li>
+                </Link>
+              ))}
+            </LinkContainer>
+            <LinkContainer heading='Legal Terms'>
+              {legacyPolicy.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.route}
+                  className='tw-no-underline'
+                >
+                  <li className='min-w-fit tw-text-white tw-tracking-wide'>
+                    {link.label}
+                  </li>
+                </Link>
+              ))}
+            </LinkContainer>
+            <LinkContainer heading='Contact'>
+              {contacts.map((contact) => (
+                <li
+                  key={contact.label}
+                  className='min-w-fit tw-text-white tw-tracking-wide'
+                >
+                  {contact.label}
+                </li>
+              ))}
+            </LinkContainer>
+            {/* <LinkContainer heading='Bitkash' links={Links.bitkash} />
             <LinkContainer heading='Legal Terms' links={Links.legacyPolicy} />
-            <LinkContainer heading='Contact' links={Links.contact} />
+            <LinkContainer heading='Contact' links={Links.contact} /> */}
           </div>
         </div>
       </div>

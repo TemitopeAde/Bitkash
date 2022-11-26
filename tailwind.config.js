@@ -6,7 +6,7 @@ module.exports = {
     "./src/components/**/*.{js,jsx,ts,tsx}",
     "./src/views/**/*.{js,jsx,ts,tsx}",
   ],
-  // important: true
+  important: true,
   theme: {
     extend: {
       colors: {

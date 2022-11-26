@@ -40,7 +40,7 @@ export default function FAQWrapper({ classname, children }) {
               <Container
                 type='with-outline'
                 outlineBottom
-                classname='before:tw-hidden lg:before:tw-block tw-bg-transparent lg:tw-bg-primary-main tw-p-0 lg:tw-p-4'
+                classname='before:tw-hidden lg:before:tw-block tw-bg-[transparent] lg:tw-bg-primary-main tw-p-0 lg:tw-p-4'
               >
                 <div>
                   <Text
@@ -72,18 +72,42 @@ export default function FAQWrapper({ classname, children }) {
             </div>
           </div>
         </Section>
+        <FAQWrapper.FAQuestions />
+      </div>
+    </StaticLayout>
+  );
+}
 
-        <Section>
+
+export function FAQuestions() {
+  
+  const [search, setSearch] = React.useState()
+  const [filteredFAQ, setFilteredFAQ] = React.useState()
+  const [activeQuestion, setActiveQuestion] = React.useState(1);
+
+  console.log(search)
+  React.useEffect(() => {
+    if (search) {
+      setFilteredFAQ(FAQ.filter((faq) =>faq.heading.toLowerCase().includes(search.toLowerCase())));
+    } else (
+      setFilteredFAQ(FAQ)
+    )
+  }, [filteredFAQ, search])
+  return (
+    <Section>
           <div className='tw-hidden tw-w-full tw-py-6'>
             <img src='/images/faq-hero.png' alt='faq-hero' />
           </div>
-          <Search placeholder='Search Frequently asked questions here' />
+          <Search placeholder='Search Frequently asked questions here' onchange={({target})=>setSearch(target.value)} />
           <div className=''>
-            {FAQ.map((question) => (
+            {filteredFAQ?.map((question) => (
               <Container
                 key={question.id}
                 type='accordion'
-                variant={question.id % 2 !== 0 ? "primary" : "secondary"}
+                // variant={question.id % 2 !== 0 ? "primary" : "secondary"}
+                variant='primary'
+                isQuestionOpen={question.id === activeQuestion}
+                onclick={() => setActiveQuestion(question.id)}
                 classname='tw-my-10'
                 heading={question.heading}
               >
@@ -92,7 +116,8 @@ export default function FAQWrapper({ classname, children }) {
             ))}
           </div>
         </Section>
-      </div>
-    </StaticLayout>
-  );
+  )
 }
+
+
+FAQWrapper.FAQuestions = FAQuestions
