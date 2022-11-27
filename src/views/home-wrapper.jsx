@@ -173,7 +173,7 @@ export default function HomeWrapper() {
             Why Our <span className='tw-text-primary-main'>Customer</span> Love
             us
           </Text>
-          <div className='tw-px-4 lg:tw-px-0 tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-6 lg:tw-gap-4 tw-py-4'>
+          <div className='tw-px-4 lg:tw-px-0 tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-6 lg:tw-gap-8 tw-py-4'>
             <Card
               type='why'
               icon={<img src='/images/easy-to-use.png' alt='easy to use' />}

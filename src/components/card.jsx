@@ -23,7 +23,7 @@ export default function Card({
   switch (type) {
     case "why":
       return (
-        <div className='tw-p-4 tw-flex tw-flex-col lg:tw-flex-row tw-border-[1px] tw-gap-3 tw-border-primary-main tw-rounded-lg tw-shadow-sm'>
+        <div className='tw-p-4 lg:tw-p-10 tw-flex tw-flex-col lg:tw-flex-row tw-border-[1px] tw-gap-3 tw-border-primary-main tw-rounded-lg tw-shadow-sm'>
           <div className='tw-min-w-fit tw-place-self-center lg:tw-place-self-start tw-pt-4'>{icon}</div>
           <div>
             <Text
