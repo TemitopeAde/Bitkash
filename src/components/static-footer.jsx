@@ -49,15 +49,18 @@ export default function Footer({ classname, children }) {
               />
             </div>
             <p className='tw-text-white tw-py-3 tw-leading-loose'>
-              Bitkash.io is a fast-rising global cryptocurrency broker that is
-              dedicated to Bitcoin. Recognizing the bureaucracy of
-              cryptocurrency, Bitkash.io believes that everyone must be a part
-              of the decentralized tw-blockchain
+              Bitkash is a team of professional cryptocurrency enthusiasts
+              situated all around the globe. We are a brokerage firm steadfastly
+              committed to making it easy and foolproof to purchase
+              cryptocurrency anywhere in the world.
             </p>
             <div className='lg:tw-hidden tw-flex tw-flex-wrap tw-gap-3 tw-py-3'>
               {["Home", "About", "Contact", "How to buy Bitcoins"].map(
                 (link) => (
-                  <span key={link} className='tw-font-medium w-[33.333%]'>
+                  <span
+                    key={link}
+                    className='tw-font-medium w-[33.333%] tw-text-white'
+                  >
                     {link}
                   </span>
                 )
