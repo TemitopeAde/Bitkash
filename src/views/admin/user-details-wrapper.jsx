@@ -39,7 +39,7 @@ export default function UserDetailsWrapper({ classname, children }) {
           {activeTab === 1 && (
             <div>
               <UserDetailsCard />
-              <Button size='medium' classname='tw-mx-auto tw-my-10' onclick={()=>setModalOpen(true)}>
+              <Button size='medium' classname='tw-w-fit tw-mx-auto tw-my-10' onclick={()=>setModalOpen(true)}>
                 Delete User
               </Button>
             </div>

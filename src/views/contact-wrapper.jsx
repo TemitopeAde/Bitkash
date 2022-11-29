@@ -134,7 +134,7 @@ export function ContactForm() {
     console.log(values);
   };
 
-  const validate = Yup.object({
+  const validationSchema = Yup.object({
     fullName: Yup.string().required("Full name is required"),
     email: Yup.string()
       .email("Invalid email address")
@@ -145,7 +145,9 @@ export function ContactForm() {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema:validate,
+    validationSchema,
+    validateOnBlur: false,
+    validateOnChange: true
   });
 
   console.log(formik.errors.email);
@@ -174,6 +176,8 @@ export function ContactForm() {
               placeholder='Enter your full name'
               value={formik.values.fullName}
               onchange={formik.handleChange}
+              onblur={formik.handleBlur}
+              errorMessage={formik.errors.fullName}
             />
             <Input
               type='email'
@@ -182,6 +186,8 @@ export function ContactForm() {
               placeholder='Enter your email address'
               value={formik.values.email}
               onchange={formik.handleChange}
+              onblur={formik.handleBlur}
+              errorMessage={formik.errors.email}
             />
             <TextArea
               name='message'
@@ -189,6 +195,8 @@ export function ContactForm() {
               placeholder='Enter your email address'
               value={formik.values.message}
               onchange={formik.handleChange}
+              onblur={formik.handleBlur}
+              errorMessage={formik.errors.message}
             />
             <Button
               type='submit'

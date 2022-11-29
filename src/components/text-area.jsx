@@ -4,6 +4,8 @@ import clx from "../utils/clx";
 export default function TextArea({
   name,
   label,
+  onblur,
+  errorMessage,
   placeholder,
   value,
   onchange,
@@ -26,9 +28,11 @@ export default function TextArea({
         rows='5'
         value={value}
         onChange={onchange}
+        onBlur={onblur}
         placeholder={placeholder}
         className='tw-outline-none tw-border-none tw-rounded-md tw-px-3 tw-py-2 tw-my-0 tw-bg-white tw-text-secondary-main'
       ></textarea>
+      <p className="tw-text-red-500">{errorMessage}</p>
     </div>
   );
 }

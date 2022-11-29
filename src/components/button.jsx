@@ -53,12 +53,19 @@ export default function Button({
         </div>
       </Link>
     );
-  }
-  return (
-    <button type={type} className={classes} onClick={onclick}>
+  } else if (type) {
+    return (
+      <button type={type} className={classes} onClick={onclick}>
+        {iconLeft && iconLeft}
+        {children}
+        {iconRight && iconRight}
+      </button>
+    );
+  }else return (
+    <div className={classes} onClick={onclick}>
       {iconLeft && iconLeft}
       {children}
       {iconRight && iconRight}
-    </button>
+    </div>
   );
 }
