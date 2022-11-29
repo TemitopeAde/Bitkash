@@ -88,6 +88,7 @@ export function FAQuestions() {
 
   const handleOpen = (index) => {
     setActiveQuestion(index)
+    setOpen(true)
     if (index === activeQuestion && isOpen) {
       setOpen(false)
     } else if (index === activeQuestion && !isOpen) {
