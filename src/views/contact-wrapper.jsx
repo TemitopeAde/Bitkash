@@ -124,11 +124,11 @@ export default function ContactWrapper() {
 }
 
 export function ContactForm() {
-  const [initialValues] = React.useState({
+  const initialValues = {
     fullName: "",
     email: "",
     message: "",
-  });
+  }
 
   const onSubmit = (values) => {
     console.log(values);
@@ -147,7 +147,7 @@ export function ContactForm() {
     onSubmit,
     validationSchema,
     validateOnBlur: false,
-    validateOnChange: true
+    validateOnChange: false
   });
 
   console.log(formik.errors.email);

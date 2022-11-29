@@ -17,7 +17,13 @@ export default function Footer({ classname, children }) {
               Subscribe
             </Text>
             <h1 className='tw-text-white tw-text-2xl lg:tw-text-5xl tw-leading-normal tw-font-bold tw-font-circular lg:w-[80%]'>
-              Stay informed never miss an <span>update!</span>
+              Stay informed never miss an{" "}
+              <span className='tw-relative'>
+                update!
+                <div className="tw-absolute tw-right-0 tw-bottom-[-10px] lg:tw-bottom-[-20px] tw-w-full">
+                  <img src='/images/bottom-vector.png' alt='' className="tw-w-full tw-object-fill" />
+                </div>
+              </span>
             </h1>
           </div>
           <div className='tw-flex-1 tw-flex tw-flex-col lg:tw-gap-12 tw-justify-center tw-text-white tw-font-poppins'>
