@@ -84,6 +84,16 @@ export function FAQuestions() {
   const [search, setSearch] = React.useState()
   const [filteredFAQ, setFilteredFAQ] = React.useState()
   const [activeQuestion, setActiveQuestion] = React.useState(1);
+  const [isOpen, setOpen] = React.useState(true)
+
+  const handleOpen = (index) => {
+    setActiveQuestion(index)
+    if (index === activeQuestion && isOpen) {
+      setOpen(false)
+    } else if (index === activeQuestion && !isOpen) {
+      setOpen(true)
+    }
+  }
 
   React.useEffect(() => {
     if (search) {
@@ -105,8 +115,8 @@ export function FAQuestions() {
                 type='accordion'
                 // variant={question.id % 2 !== 0 ? "primary" : "secondary"}
                 variant='primary'
-                isQuestionOpen={question.id === activeQuestion}
-                onclick={() => setActiveQuestion(question.id)}
+                isQuestionOpen={question.id === activeQuestion && isOpen}
+                onclick={() => handleOpen(question.id)}
                 classname='tw-my-10'
                 heading={question.heading}
               >
