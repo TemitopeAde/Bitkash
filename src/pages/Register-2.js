@@ -48,7 +48,6 @@ const Register2 = ({
               <Stack>
                 <p className="step-one mb-3">Step 2 of 2</p>
                 <p className="step-one-title mb-5">Address info</p>
-                
               </Stack>
 
               <Box className="register-form-grid">
@@ -63,7 +62,11 @@ const Register2 = ({
                         onChange={handleChange}
                         value={formData.country}
                       >
-                        <option disabled>select country</option>
+                        <option disabled value="">
+                          Select country
+                        </option>
+                        <option>United Kingdom</option>
+                        <option>United States</option>
                         <option>Afghanistan</option>
                         <option>Aland Islands</option>
                         <option>Albania</option>
@@ -360,7 +363,7 @@ const Register2 = ({
                       <input
                         id="register-zip"
                         type="number"
-                        className="form-control"zipCode
+                        className="form-control"
                         name="zip_code"
                         onChange={handleChange}
                         value={formData.zip_code}
@@ -399,7 +402,6 @@ const Register2 = ({
                         onChange={handleChanges}
                         style={{ transform: "scale(1.4)" }}
                         id="register-2-check"
-                        
                       />
 
                       <label htmlFor="register-2-check">

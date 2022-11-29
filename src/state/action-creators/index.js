@@ -443,6 +443,8 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
   
   const url = "https://bitkash.herokuapp.com/transactions/create";
 
+  console.log(getState().auth.token);
+
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -611,6 +613,7 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     swift_or_bic_code,
     routing_number,
     postal_code,
+    bank_account_type,
   } = data;
 
   dispatch({
@@ -627,7 +630,10 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     routing_number,
     postal_code,
     swift_or_bic_code,
+    bank_account_type,
   });
+
+  console.log(body)
 
   await axios
     .post(url, body, config)

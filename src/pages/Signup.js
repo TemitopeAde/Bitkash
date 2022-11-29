@@ -160,13 +160,13 @@ const Signup = ({ children }) => {
     const payload = {
       currency: "usa",
       acc_type: values.accountType,
-      acc_option: values.businessType,
-      acc_owner: values.accountHolderName,
-      bank_name: values.bankName,
-      acc_number: values.accountNumber,
+      account_type: values.businessType,
+      account_holder_name: values.accountHolderName,
+      name: values.bankName,
+      account_number: values.accountNumber,
       routing_number: values.routingNumber,
-      zip_code: values.zipCode,
-      swift_code: values.swiftCode2,
+      postal_code: values.zipCode,
+      swift_or_bic_code: values.swiftCode2,
     };
     dispatch(handleKycUsd(payload));
     handleOpen();
@@ -671,8 +671,8 @@ const Signup = ({ children }) => {
                                           : "form-control"
                                       }
                                     >
-                                      <option>USD</option>
-                                      <option>EUR</option>
+                                      <option>Checkings</option>
+                                      <option>Savings</option>
                                     </Field>
                                     <ErrorMessage
                                       name="accountType"
@@ -842,8 +842,6 @@ const Signup = ({ children }) => {
           <Box>
             <Box mt="8rem">
               <h3>Login</h3>
-
-              
             </Box>
           </Box>
         </div>

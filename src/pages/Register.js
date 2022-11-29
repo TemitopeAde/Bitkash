@@ -29,19 +29,19 @@ const Register = () => {
   const form1 = useRef();
   const form2 = useRef();
   const [formData, setFormData] = useState({
-    first_name: "temitope",
-    email: "adesiyantope2014@gmail.com",
-    password: "123456789",
-    confirm_password: "123456789",
-    currency: "USD",
-    last_name: "adesiyan",
-    phone_number: "2347038347584",
-    preferred_language: "ENG",
-    country: "jjs",
-    state: "osu",
-    city: "drr",
-    zip_code: "23412",
-    street_address: "nnnnnnnnnnnnnnnnn",
+    first_name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+    currency: "",
+    last_name: "",
+    phone_number: "",
+    preferred_language: "",
+    country: "",
+    state: "",
+    city: "",
+    zip_code: "",
+    street_address: "",
   });
 
   
@@ -110,7 +110,7 @@ const Register = () => {
     } else if (/[a-zA-Z]/.test(values.zip_code)) {
       errors.zip_code = "Enter a valid zip code";
     } else if (values.zip_code.length !== 5) {
-      errors.zipCode = "Enter a valid zip code";
+      errors.zip_Code = "Enter a valid zip code";
     }
 
     if (!values.city) {
@@ -192,6 +192,7 @@ const Register = () => {
                     handleSubmit={handleSubmit}
                     errors={errors}
                   />
+                  
                 </Box>
                 <Box
                   ref={form2}

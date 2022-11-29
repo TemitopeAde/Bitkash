@@ -110,13 +110,15 @@
     box-shadow: none !important;
 }
 
-
+.register-one-form .form-control {
+    /* width: 50%; */
+}
 
 .react-tel-input .form-control {
     border: 1px solid #FF9924 !important;
     margin-left: 2rem !important;
     height: 50px !important;
-    width: 88% !important;
+    width: 92% !important;
     padding-left: 0 !important;
 }
 
@@ -315,12 +317,13 @@ select.form-control {
 }
 
 .form-one {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     opacity: 0;
     visibility: hidden;
     transition: .7s;
     display: none;
+    margin-right: 20%;
 }
 
 .form-two {
@@ -330,6 +333,7 @@ select.form-control {
     visibility: hidden;
     transition: .7s;
     display: none;
+    left: 38%;
 }
 
 .form-toggle {

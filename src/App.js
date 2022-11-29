@@ -41,6 +41,7 @@ import Logout from "./pages/Logout";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhoneNumber from "./pages/ChangeNumber";
 import { getAllTransactions } from "./state/action-creators";
+import Reg from "./pages/Registration";
 
 function App() {
   useEffect(() => {
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reg" element={<Reg />} />
         <Route path="/kyc-verification" element={<Signup />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/buy-bitcoin" element={<Buy />} />

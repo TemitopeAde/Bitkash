@@ -116,7 +116,7 @@ const Dashboard = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
   const [currency, setCurrency] = React.useState("USD");
 
-  console.log(userDetails)
+  // console.log(userDetails)
 
   const {
     first_name,
@@ -126,7 +126,7 @@ const Dashboard = () => {
     last_name,
   } = userDetails;
 
-  console.log(userDetails);
+  // console.log(userDetails);
 
   useEffect(() => {
     // dispatch(fetchUser(id));
