@@ -25,7 +25,7 @@ export default function AddAdminWrapper() {
 
   const onSubmit = (values, { resetForm }) => {
     console.log("Form Values", values);
-    // resetForm();
+    resetForm();
     // console.log(values.account_type);
   };
 

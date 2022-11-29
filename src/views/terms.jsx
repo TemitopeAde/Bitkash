@@ -18,7 +18,7 @@ export default function TermsAndConditionsWrapper(classname, children) {
           classname='tw-flex tw-flex-col-reverse lg:tw-flex-row lg:tw-h-[80vh]'
         >
           <div className='tw-flex tw-items-center md:tw-justify-center tw-py-6'>
-            <Text as='h1' classname='tw-text-white lg:tw-w-[80%] tw-text-center lg:tw-text-left'>
+            <Text as='h1' classname='tw-text-white tw-text-center lg:tw-text-left'>
               Terms and Conditions for{" "}
               <span className='tw-leading-relaxed tw-text-primary-main lg:tw-text-white'>
                 Bikash{" "}
