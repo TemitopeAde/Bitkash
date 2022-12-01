@@ -118,13 +118,7 @@ const Dashboard = () => {
 
   console.log(userDetails)
 
-  const {
-    email,
-    first_name,
-    has_verified_email,
-    last_name,
-    phone_number
-  } = userDetails;
+
 
   // console.log(userDetails);
 
@@ -420,7 +414,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>Email</p>
-                                  {has_verified_email ? (
+                                  {/* {has_verified_email ? (
                                     <svg
                                       width="16"
                                       height="16"
@@ -473,7 +467,7 @@ const Dashboard = () => {
                                         strokeLinejoin="round"
                                       />
                                     </svg>
-                                  )}
+                                  )} */}
                                 </Stack>
                                 <Stack
                                   alignItems="center"
@@ -2538,7 +2532,7 @@ const Dashboard = () => {
 
                             <p>Email</p>
 
-                            {has_verified_email ? (
+                            {/* {has_verified_email ? (
                               <svg
                                 width="16"
                                 height="16"
@@ -2591,7 +2585,7 @@ const Dashboard = () => {
                                   strokeLinejoin="round"
                                 />
                               </svg>
-                            )}
+                            )} */}
                           </Stack>
                           <Stack
                             alignItems="center"
