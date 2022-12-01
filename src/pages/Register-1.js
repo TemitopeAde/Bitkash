@@ -147,7 +147,7 @@ const Register1 = ({
                 onChange={handleChange}
               />
               <p className="form-error">{errors?.confirm_password}</p>
-              <Box position="absolute" sx={{ right: "20px", top: "7px" }}>
+              <Box position="absolute" sx={{ right: "20px", top: "14px" }}>
                 {passwordShown ? (
                   <button
                     style={{

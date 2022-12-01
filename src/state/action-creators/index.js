@@ -29,7 +29,7 @@ import {
   KYC_USD_FAILED,
   KYC_USD_SUCCESS,
   OTP_FAILED,
-  OTP_SUCCESS
+  OTP_SUCCESS,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -104,8 +104,6 @@ export const register = (data) => async (dispatch) => {
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
-
-      
     })
     .catch((error) => {
       // console.log(error)
@@ -140,7 +138,7 @@ export const login = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       // const user = data.data.data;
       // const payload = {
       //   email_verified: user.has_verified_email,
@@ -169,7 +167,6 @@ export const login = (data) => async (dispatch, getState) => {
     });
 };
 
-
 export const logout = () => async (dispatch, getState) => {
   localStorage.removeItem("paymentDetails");
 
@@ -185,12 +182,8 @@ export const logout = () => async (dispatch, getState) => {
     dispatch({
       type: HIDE_LOADER,
     });
-  }, [5])
-
-  
+  }, [5]);
 };
-
-
 
 export const recoverPassword = (data) => async (dispatch) => {
   const config = {
@@ -233,8 +226,6 @@ export const recoverPassword = (data) => async (dispatch) => {
     });
 };
 
-
-
 export const verifyEmail = (uid) => async (dispatch) => {
   const config = {
     headers: {
@@ -242,26 +233,19 @@ export const verifyEmail = (uid) => async (dispatch) => {
     },
   };
 
-
   const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/user/${uid}`;
 
-  const body = JSON.stringify({ uid });
-
   await axios
-    .post(url, body, config)
+    .get(url, {}, config)
     .then((data) => {
       console.log(data);
-      
     })
     .catch((errors) => {
       console.log(errors);
-
-    })
+    });
 };
 
-export const changePassword = (data) => async (dispatch) => {
-
-}
+export const changePassword = (data) => async (dispatch) => {};
 
 export const submitNewPassword = (data) => async (dispatch) => {
   const config = {
@@ -314,7 +298,8 @@ export const submitOTP = (data) => async (dispatch) => {
     },
   };
 
-  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/verify-sms-otp";
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/auth/verify-sms-otp";
   const { token, uid } = data;
 
   const body = JSON.stringify({
@@ -332,7 +317,7 @@ export const submitOTP = (data) => async (dispatch) => {
       console.log(data);
       dispatch({
         type: OTP_SUCCESS,
-        payload: data.data.message
+        payload: data.data.message,
       });
     })
     .catch((err) => {
@@ -356,17 +341,13 @@ export const sendOtp = (uid) => async (dispatch) => {
   };
 
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/send-sms-otp";
-  
+
   const data = { uid };
 
   await axios
     .post(url, data, config)
-    .then((data) => {
-      
-    })
-    .catch((errors) => {
-      
-    });
+    .then((data) => {})
+    .catch((errors) => {});
 };
 
 export const changeNumber = (data) => async (dispatch) => {
@@ -463,7 +444,6 @@ export const fetchUser = (data) => async (dispatch) => {
 };
 
 export const BuyBitcoin = (data) => async (dispatch, getState) => {
-  
   const url = "https://bitkash.herokuapp.com/transactions/create";
 
   console.log(getState().auth.token);
@@ -474,8 +454,6 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
       // Authorization: `Bearer ${getState().auth.token}`,
     },
   };
-
-  
 
   const {
     payment_type,
@@ -656,7 +634,7 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     bank_account_type,
   });
 
-  console.log(body)
+  console.log(body);
 
   await axios
     .post(url, body, config)
