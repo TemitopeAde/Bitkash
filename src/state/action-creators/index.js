@@ -99,10 +99,13 @@ export const register = (data) => async (dispatch) => {
         phone_number: phone_number,
       });
       localStorage.setItem("userData", user);
+      
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
       });
+
+      
     })
     .catch((error) => {
       // console.log(error)
@@ -137,15 +140,16 @@ export const login = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      const user = data.data.data;
-      const payload = {
-        email_verified: user.has_verified_email,
-        phoneNumber: user.has_verified_phone_number,
-        kyc_verified: user.has_completed_kyc,
-        firstName: user.first_name,
-        lastName: user.lastName,
-      };
-      localStorage.setItem("user", JSON.stringify(payload))
+      console.log(data)
+      // const user = data.data.data;
+      // const payload = {
+      //   email_verified: user.has_verified_email,
+      //   phoneNumber: user.has_verified_phone_number,
+      //   kyc_verified: user.has_completed_kyc,
+      //   firstName: user.first_name,
+      //   lastName: user.lastName,
+      // };
+      // localStorage.setItem("user", JSON.stringify(payload))
       dispatch({
         type: LOGIN_SUCCESS,
         payload: data.data.data,

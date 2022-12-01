@@ -32,7 +32,7 @@ const Register = () => {
     first_name: "",
     email: "",
     password: "",
-    confirm_password: "",
+    confirm_password: "123456789",
     currency: "",
     last_name: "",
     phone_number: "",

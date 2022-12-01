@@ -17,9 +17,11 @@ const animations = {
 const EmailVerification = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const unverified = useSelector((state) => state.auth.unverifiedUser);
+  // const unverified = useSelector((state) => state.auth.unverifiedUser);
 
-  console.log(isAuthenticated)
+  // console.log(isAuthenticated)
+
+  
 
   
   if (window.innerWidth >= 820) {

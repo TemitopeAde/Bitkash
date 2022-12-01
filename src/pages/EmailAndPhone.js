@@ -24,6 +24,7 @@ const EmailAndPhone = ({ children }) => {
   // const userDetails = JSON.parse(localStorage.getItem("user"));
   const verified = useSelector((state) => state.auth.phoneAndEmailVerified);
   const loading = useSelector((state) => state.loader.loading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   
   const handleSendOtp = (e) => {
     e.preventDefault();
@@ -51,6 +52,10 @@ const EmailAndPhone = ({ children }) => {
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/login" />
   }
 
   if (verified) {
