@@ -21,7 +21,7 @@ const animations = {
 const EmailAndPhone = ({ children }) => {
   const [Otp, setOtp] = useState("");
   const [phoneNumber] = useState("");
-  const userDetails = JSON.parse(localStorage.getItem("user"));
+  // const userDetails = JSON.parse(localStorage.getItem("user"));
   const verified = useSelector((state) => state.auth.phoneAndEmailVerified);
   const loading = useSelector((state) => state.loader.loading);
   
@@ -30,10 +30,8 @@ const EmailAndPhone = ({ children }) => {
     dispatch(sendOtp(uid));
   };
 
-  console.log(verified)
-
   const { uid } = useParams();
-
+  
   const dispatch = useDispatch();
   const payload = {
     token: Otp,
@@ -47,7 +45,7 @@ const EmailAndPhone = ({ children }) => {
 
   useEffect(() => {
     dispatch(sendOtp(uid));
-    dispatch(fetchUser(uid));
+    dispatch(fetchUser("uid"));
   }, []);
 
 
@@ -89,7 +87,7 @@ const EmailAndPhone = ({ children }) => {
                       style={{ textDecoration: "none" }}
                       className="color-yellow"
                     >
-                      {userDetails?.phone_number}
+                      {/* {userDetails?.phone_number} */}
                     </span>
                   </p>
                 </Box>

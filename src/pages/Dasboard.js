@@ -116,10 +116,10 @@ const Dashboard = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
   const [currency, setCurrency] = React.useState("USD");
 
-  // console.log(userDetails)
+  console.log(userDetails)
 
   const {
-    first_name,
+    // first_name,
     has_completed_kyc,
     has_verified_email,
     has_verified_phone_number,
@@ -178,7 +178,7 @@ const Dashboard = () => {
                           <Box>
                             <Stack>
                               <h6 className="name-account">
-                                Hello <span>{first_name}</span> {last_name}
+                                {/* Hello <span>{first_name}</span> {last_name} */}
                               </h6>
                               <p className="welcome-account">
                                 Welcome to your dashboard
@@ -695,7 +695,7 @@ const Dashboard = () => {
                         <Box>
                           <Stack spacing={2}>
                             <h6 className="name-account">
-                              Hello <span>{first_name}</span> {last_name}
+                              {/* Hello <span>{first_name}</span> {last_name} */}
                             </h6>
                             <p className="welcome-account">
                               Welcome to your dashboard
