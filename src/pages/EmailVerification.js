@@ -22,10 +22,8 @@ const EmailVerification = () => {
   console.log(isAuthenticated)
 
   if (isAuthenticated) {
-    return <Navigate to="/user-dashboard" />;
+    return <Navigate to="/email-verification" />;
   }
-
-  
 
   if (window.innerWidth >= 820 && unverified) {
     return (
