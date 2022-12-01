@@ -42,12 +42,16 @@
     padding: .7rem 1rem;
     text-decoration: none;
     border-radius: 5px;
-    width: 367px;
     text-align: center;
-    font-size: 30px;
-    height: 64px;
+    font-size: 21px;
     font-family: 'Poppins';
     font-weight: 500;
+    
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-flex-container {
