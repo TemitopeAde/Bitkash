@@ -31,7 +31,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     first_name: "",
     email: "",
-    password: "",
+    password: "123456789",
     confirm_password: "123456789",
     currency: "",
     last_name: "",
