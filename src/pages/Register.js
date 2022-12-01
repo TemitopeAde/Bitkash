@@ -125,12 +125,17 @@ const Register = () => {
 
     return errors;
   };
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const emailVerificationSent = useSelector(
+    (state) => state.auth.emailVerificationSent
+  );
+  const isAuthenticated = useSelector((state) => state.loader.isAuthenticated);
   const loader = useSelector((state) => state.loader.loading);
   const message = useSelector((state) => state.auth.message);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  console.log(formData);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
@@ -152,7 +157,7 @@ const Register = () => {
     return <Spinner />;
   }
 
-  if (width > 820 && !isAuthenticated) {
+  if (width > 820) {
     return (
       <motion.div
         variants={animations}
@@ -220,11 +225,15 @@ const Register = () => {
     );
   }
 
-  // if (isAuthenticated) {
-  //   return <Navigate to="/email-verification" />;
-  // }
+  if (emailVerificationSent) {
+    return <Navigate to="/email-verification" />;
+  }
 
-  if (width <= 820 && !isAuthenticated) {
+  if (emailVerificationSent && isAuthenticated) {
+    return <Navigate to="/user-dashboard" />;
+  }
+
+  if (width <= 820) {
     return (
       <Box>
         <Helmet>
@@ -374,7 +383,9 @@ const Register = () => {
                             value={formData.confirm_password}
                             onChange={handleChange}
                           />
-                          <p className="form-error">{errors?.confirm_password}</p>
+                          <p className="form-error">
+                            {errors?.confirm_password}
+                          </p>
                           <Box
                             position="absolute"
                             sx={{ right: "20px", top: "7px" }}
@@ -414,6 +425,9 @@ const Register = () => {
                           onChange={handleChange}
                           value={formData.currency}
                         >
+                          <option disabled value="">
+                            Select currency
+                          </option>
                           <option>EUR</option>
                           <option>USD</option>
                         </select>
@@ -425,15 +439,20 @@ const Register = () => {
                         </label>
                         <select
                           className="form-control"
-                          name="language"
+                          name="preferred_language"
                           id="register-language"
                           onChange={handleChange}
-                          value={formData.language}
+                          value={formData.preferred_language}
                         >
+                          <option disabled value="">
+                            Select Preffered language
+                          </option>
                           <option>ENG</option>
                           <option>FRA</option>
                         </select>
-                        <p className="form-error">{errors?.language}</p>
+                        <p className="form-error">
+                          {errors?.preferred_language}
+                        </p>
                       </div>
                       <div className="register-last-name mobile-register-field">
                         <button
@@ -785,12 +804,12 @@ const Register = () => {
                         <label htmlFor="register-street">Street address</label>
                         <textarea
                           id="register-street"
-                          name="streetAddress"
+                          name="street_address"
                           className="form-control"
                           onChange={handleChange}
-                          value={formData.streetAddress}
+                          value={formData.street_address}
                         ></textarea>
-                        <p className="form-error">{errors?.streetAddress}</p>
+                        <p className="form-error">{errors?.street_address}</p>
                       </div>
 
                       <div
@@ -857,6 +876,7 @@ const Register = () => {
       </Box>
     );
   }
+
 };
 
 export default Register;

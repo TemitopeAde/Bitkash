@@ -37,6 +37,7 @@ const initialState = {
   kycStatus: "",
   kycUsd: false,
   logoutStatus: false,
+  emailVerificationSent: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -45,7 +46,7 @@ const authReducer = (state = initialState, action) => {
     localStorage.setItem("token", payload.token);
     return {
       ...state,
-      isAuthenticated: true,
+      emailVerificationSent: true,
       loading: false,
     };
   }
