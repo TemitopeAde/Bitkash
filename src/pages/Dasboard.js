@@ -113,19 +113,10 @@ export const mobiledata = {
 const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userDetails =  localStorage.getItem("user")
   const [currency, setCurrency] = React.useState("USD");
+  const userDetails = useSelector((state) => state.auth.userDetails);
 
-  console.log(userDetails)
-
-
-
-  // console.log(userDetails);
-
-  useEffect(() => {
-    // dispatch(fetchUser(id));
-  }, []);
-
+  
   const options = {
     type: "loop",
     autoplay: true,
@@ -138,7 +129,6 @@ const Dashboard = () => {
     setCurrency(e.target.value);
   }
 
-  
 
   if (window.innerWidth > 820) {
     return (
@@ -182,9 +172,12 @@ const Dashboard = () => {
                                 adipisicing elit. Eligendi sed nemo tenetur ad
                                 in error nesciunt.
                               </p>
-                              <button className="btn verify-account-button">
-                                Verify account
-                              </button>
+
+                              {userDetails?.has_completed_kyc && (
+                                <button className="btn verify-account-button">
+                                  Verify account
+                                </button>
+                              )}
                             </Stack>
                           </Box>
                           <Box>
@@ -414,7 +407,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>Email</p>
-                                  {/* {has_verified_email ? (
+                                  {userDetails?.has_verified_email ? (
                                     <svg
                                       width="16"
                                       height="16"
@@ -467,7 +460,7 @@ const Dashboard = () => {
                                         strokeLinejoin="round"
                                       />
                                     </svg>
-                                  )} */}
+                                  )}
                                 </Stack>
                                 <Stack
                                   alignItems="center"
@@ -492,7 +485,7 @@ const Dashboard = () => {
 
                                   <p>Phone Number</p>
 
-                                  {/* {has_verified_phone_number ? (
+                                  {userDetails?.has_verified_phone_number ? (
                                     <svg
                                       width="16"
                                       height="16"
@@ -545,7 +538,7 @@ const Dashboard = () => {
                                         strokeLinejoin="round"
                                       />
                                     </svg>
-                                  )} */}
+                                  )}
                                 </Stack>
                                 <Stack
                                   alignItems="center"
@@ -580,7 +573,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>KYC Verification</p>
-                                  {/* {has_completed_kyc ? (
+                                  {userDetails?.has_completed_kyc ? (
                                     <svg
                                       width="15"
                                       height="15"
@@ -637,7 +630,7 @@ const Dashboard = () => {
                                         strokeLinejoin="round"
                                       />
                                     </svg>
-                                  )} */}
+                                  )}
                                 </Stack>
                               </Stack>
 
@@ -2532,7 +2525,7 @@ const Dashboard = () => {
 
                             <p>Email</p>
 
-                            {/* {has_verified_email ? (
+                            {userDetails?.has_verified_email ? (
                               <svg
                                 width="16"
                                 height="16"
@@ -2585,7 +2578,7 @@ const Dashboard = () => {
                                   strokeLinejoin="round"
                                 />
                               </svg>
-                            )} */}
+                            )}
                           </Stack>
                           <Stack
                             alignItems="center"
@@ -2609,7 +2602,7 @@ const Dashboard = () => {
 
                             <p>Phone Number</p>
 
-                            {/* {has_verified_phone_number ? (
+                            {userDetails?.has_verified_phone_number ? (
                               <svg
                                 width="16"
                                 height="16"
@@ -2662,7 +2655,7 @@ const Dashboard = () => {
                                   strokeLinejoin="round"
                                 />
                               </svg>
-                            )} */}
+                            )}
                           </Stack>
                           <Stack
                             alignItems="center"
@@ -2698,7 +2691,7 @@ const Dashboard = () => {
 
                             <p>KYC Verification</p>
 
-                            {/* {has_completed_kyc ? (
+                            {userDetails?.has_completed_kyc ? (
                               <svg
                                 width="16"
                                 height="16"
@@ -2751,7 +2744,7 @@ const Dashboard = () => {
                                   strokeLinejoin="round"
                                 />
                               </svg>
-                            )} */}
+                            )}
                           </Stack>
                         </Box>
 

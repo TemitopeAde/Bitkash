@@ -138,16 +138,11 @@ export const login = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data);
-      // const user = data.data.data;
-      // const payload = {
-      //   email_verified: user.has_verified_email,
-      //   phoneNumber: user.has_verified_phone_number,
-      //   kyc_verified: user.has_completed_kyc,
-      //   firstName: user.first_name,
-      //   lastName: user.lastName,
-      // };
-      // localStorage.setItem("user", JSON.stringify(payload))
+      
+      const user = data.data.data;
+      console.log(user);
+      localStorage.setItem("user", JSON.stringify(user))
+
       dispatch({
         type: LOGIN_SUCCESS,
         payload: data.data.data,
@@ -451,7 +446,7 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${getState().auth.token}`,
+      Authorization: `Bearer ${getState().auth.token}`,
     },
   };
 

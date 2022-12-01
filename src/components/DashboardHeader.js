@@ -6,10 +6,11 @@ import user from "../assets/images/ellipse.png";
 
 const DashboardHeader = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const currentUser = localStorage.getItem("user");
-  const userDetails = JSON.parse(currentUser);
 
-  
+  const userDetails = useSelector((state) => state.auth.userDetails);
+
+  console.log(userDetails);
+
   return (
     <div>
       {isAuthenticated && (
@@ -20,9 +21,14 @@ const DashboardHeader = () => {
                 <img className="user" src={user} alt="" />
                 <Stack>
                   <h6>
-                    {userDetails?.firstName} {userDetails?.lastName}
+                    {userDetails?.first_name} {userDetails?.last_name}
                   </h6>
-                  <p>Verified</p>
+
+                  {userDetails?.has_completed_kyc ? (
+                    <p>Verified</p>
+                  ) : (
+                    <p>Unverified</p>
+                  )}
                 </Stack>
                 <Box paddingTop="6px">
                   <svg

@@ -37,7 +37,8 @@ const initialState = {
   kycStatus: "",
   kycUsd: false,
   logoutStatus: false,
-  emailVerificationSent: false
+  emailVerificationSent: false,
+  token: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -90,6 +91,7 @@ const authReducer = (state = initialState, action) => {
       isAuthenticated: true,
       loading: false,
       userDetails: payload,
+      token: payload.token_details.token
     };
   }
 
