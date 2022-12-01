@@ -21,12 +21,12 @@ const animations = {
 const Signup = ({ children }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loader.loading);
-  const kycUsdStatus = useSelector((state) => state.auth.kycStatus);
-  const kycUsd = useSelector((state) => state.auth.kycUsd);
+  
+  const userDetails = useSelector((state) => state.auth.userDetails);
 
   const message = localStorage.getItem("kycStatus");
   const width = window.innerWidth;
-  console.log(message);
+  // console.log(message);
 
   const style = {
     position: "absolute",
@@ -53,13 +53,13 @@ const Signup = ({ children }) => {
 
   const initialValuesUsd = {
     businessType: "",
-    accountHolderName: "eee",
-    bankName: "eee",
-    accountNumber: "4444",
-    routingNumber: "333",
-    accountType: "usd",
-    zipCode: "123",
-    swiftCode2: "1234",
+    accountHolderName: "",
+    bankName: "",
+    accountNumber: "",
+    routingNumber: "",
+    accountType: "",
+    zipCode: "",
+    swiftCode2: "",
   };
 
   const validateUsd = (values) => {
@@ -73,12 +73,16 @@ const Signup = ({ children }) => {
       errors.accountHolderName = "Account holder name is required";
     }
 
+    if (!values.accountNumber) {
+      errors.accountNumber = "Account number is required";
+    }
+
     if (!values.bankName) {
       errors.bankName = "Bank name is required";
     }
 
     if (!values.swiftCode2) {
-      errors.swiftCode = "SWIFT/BIC Code is required";
+      errors.swiftCode2 = "SWIFT/BIC Code is required";
     }
 
     if (!values.routingNumber) {
@@ -92,6 +96,8 @@ const Signup = ({ children }) => {
     if (!values.zipCode) {
       errors.zipCode = "Zip code is required";
     }
+
+    console.log(errors)
 
     return errors;
   };
@@ -139,27 +145,29 @@ const Signup = ({ children }) => {
       errors.bankBranchName = "Bank branch name is required";
     }
 
+    console.log(errors)
+
     return errors;
   };
 
   const initialValuesEur = {
     businessType: "",
-    accountHolderName: "Timothy a",
-    bankName: "Chase bank",
-    swiftCode: "myeuro",
-    accountType: "business",
-    zipCode: "df3432",
-    bankAddress: "main street",
-    bankCity: "millwall london",
-    iban: "2244224",
-    bankBranchName: "manchester",
-    accountNumber: "83783983",
+    accountHolderName: "",
+    bankName: "",
+    swiftCode: "",
+    accountType: "",
+    zipCode: "",
+    bankAddress: "",
+    bankCity: "",
+    iban: "",
+    bankBranchName: "",
+    accountNumber: "",
   };
 
   const submitFormUsd = (values) => {
     const payload = {
-      currency: "usa",
-      acc_type: values.accountType,
+      // currency: "usa",
+      bank_account_type: values.accountType,
       account_type: values.businessType,
       account_holder_name: values.accountHolderName,
       name: values.bankName,
@@ -168,26 +176,27 @@ const Signup = ({ children }) => {
       postal_code: values.zipCode,
       swift_or_bic_code: values.swiftCode2,
     };
+
+    console.log(payload)
     dispatch(handleKycUsd(payload));
-    handleOpen();
+    // handleOpen();
   };
 
   const submitFormEur = (values) => {
     const payload = {
-      currency: "eur",
-      acc_type: values.accountType,
-      acc_owner: values.accountHolderName,
-      bank_name: values.bankName,
-      bank_branch_name: values.bankBranchName,
-      Iban: values.iban,
-      swift_code: values.swiftCode,
+      account_type: values.businessType,
+      account_holder_name: values.accountHolderName,
+      name: values.bankName,
+      branch_name: values.bankBranchName,
+      iban: values.iban,
+      swift_or_bic_code: values.swiftCode,
       bank_address: values.bankAddress,
       bank_city: values.bankCity,
-      zip_code: values.zipCode,
+      postal_code: values.zipCode,
     };
-
+    console.log(payload)
     dispatch(handleKycEuro(payload));
-    handleOpen();
+    // handleOpen();
   };
 
   const [open, setOpen] = React.useState(false);
@@ -394,21 +403,20 @@ const Signup = ({ children }) => {
                                   </Box>
                                   <Box>
                                     <label htmlFor="swift-code">
-                                      Account Number
+                                      SWIFT/BIC Code
                                     </label>
                                     <Field
                                       id="swift-code"
-                                      name="accountNumber"
+                                      name="swiftCode"
                                       className={
-                                        errors.accountNumber &&
-                                        touched.accountNumber
+                                        errors.swiftCode && touched.swiftCode
                                           ? "form-control input-error"
                                           : "form-control"
                                       }
                                       onBlur={handleBlur}
                                     />
                                     <ErrorMessage
-                                      name="accountNumber"
+                                      name="swiftCode"
                                       component="span"
                                       className="error"
                                     />
@@ -626,7 +634,7 @@ const Signup = ({ children }) => {
                                       }
                                     />
                                     <ErrorMessage
-                                      name="bankName"
+                                      name="accountNumber"
                                       component="span"
                                       className="error"
                                     />
@@ -657,9 +665,7 @@ const Signup = ({ children }) => {
 
                                 <Box className="form-input">
                                   <Box>
-                                    <label htmlFor="">
-                                      Select account type
-                                    </label>
+                                    <label htmlFor="">Account type</label>
                                     <Field
                                       as="select"
                                       name="accountType"
@@ -671,6 +677,9 @@ const Signup = ({ children }) => {
                                           : "form-control"
                                       }
                                     >
+                                      <option disabled value="">
+                                        Select account type
+                                      </option>
                                       <option>Checkings</option>
                                       <option>Savings</option>
                                     </Field>
@@ -717,7 +726,7 @@ const Signup = ({ children }) => {
                                       }
                                     />
                                     <ErrorMessage
-                                      name="swiftCode"
+                                      name="swiftCode2"
                                       component="span"
                                       className="error"
                                     />

@@ -138,10 +138,9 @@ export const login = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      
       const user = data.data.data;
       console.log(user);
-      localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("user", JSON.stringify(user));
 
       dispatch({
         type: LOGIN_SUCCESS,
@@ -589,15 +588,17 @@ export const deleteTransaction = (data) => async (dispatch, getState) => {
 };
 
 export const handleKycUsd = (data) => async (dispatch, getState) => {
-  const token = localStorage.getItem("token");
   const url =
     "https://bitkash-backend.herokuapp.com/api/v1/transactions/add-usd-bank";
+
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${getState().auth.token}`,
     },
   };
+
+  console.log(getState().auth.token);
 
   const {
     currency,
@@ -635,6 +636,7 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     .post(url, body, config)
     .then((data) => {
       // localStorage.setItem("kycStatus", data.data.message);
+      console.log(data);
       dispatch({
         type: KYC_USD_SUCCESS,
         payload: data.data.message,
@@ -642,6 +644,7 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     })
     .catch((err) => {
       // localStorage.setItem("kycStatus", err.message);
+      console.log(err);
       dispatch({
         type: KYC_USD_FAILED,
         payload: err.message,
@@ -660,38 +663,35 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
 };
 
 export const handleKycEuro = (data) => async (dispatch, getState) => {
-  const token = localStorage.getItem("token");
   const url = "https://bitkash.herokuapp.com/account/create-eur-acc";
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${getState().auth.token}`,
     },
   };
   const {
-    currency,
-    acc_type,
-    acc_owner,
-    bank_name,
-    bank_branch_name,
-    Iban,
-    swift_code,
+    account_type,
+    account_holder_name,
+    name,
+    branch_name,
+    iban,
+    swift_or_bic_code,
     bank_address,
     bank_city,
-    zip_code,
-    // acc_number
+    postal_code,
   } = data;
+
   const body = JSON.stringify({
-    currency,
-    acc_type,
-    acc_owner,
-    bank_name,
-    bank_branch_name,
-    Iban,
-    swift_code,
+    account_type,
+    account_holder_name,
+    name,
+    branch_name,
+    iban,
+    swift_or_bic_code,
     bank_address,
     bank_city,
-    zip_code,
+    postal_code,
   });
 
   dispatch({
@@ -701,7 +701,7 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      // console.log(data);
+      console.log(data);
       // localStorage.setItem("kycStatus", data.data.message);
       dispatch({
         type: KYC_EURO_SUCCESS,
