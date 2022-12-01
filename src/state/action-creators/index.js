@@ -93,6 +93,7 @@ export const register = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
+      // console.log("submitted")
       const user = JSON.stringify({
         email: email,
         phone_number: phone_number,
@@ -104,6 +105,7 @@ export const register = (data) => async (dispatch) => {
       });
     })
     .catch((error) => {
+      // console.log(error)
       dispatch({
         type: SIGNUP_FAIL,
         payload: error,

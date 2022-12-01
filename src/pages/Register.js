@@ -135,7 +135,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(formData);
+  console.log(emailVerificationSent);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
@@ -157,7 +157,7 @@ const Register = () => {
     return <Spinner />;
   }
 
-  if (width > 820) {
+  if (width > 820 && !emailVerificationSent) {
     return (
       <motion.div
         variants={animations}
@@ -197,7 +197,6 @@ const Register = () => {
                     handleSubmit={handleSubmit}
                     errors={errors}
                   />
-                  
                 </Box>
                 <Box
                   ref={form2}
@@ -233,7 +232,7 @@ const Register = () => {
     return <Navigate to="/user-dashboard" />;
   }
 
-  if (width <= 820) {
+  if (width <= 820 && !emailVerificationSent) {
     return (
       <Box>
         <Helmet>

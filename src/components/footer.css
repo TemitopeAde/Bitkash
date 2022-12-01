@@ -40,6 +40,7 @@
     transition: .7s;
 }
 
+
 .footer a:hover {
     text-decoration: underline;
     color: #FAFAFA;
@@ -51,7 +52,6 @@
     font-size: 16px;
     line-height: 36px;
     letter-spacing: -0.02em;
-    font-family: 'Lexend Deca'
 }
 
 .footer2 {
