@@ -84,8 +84,6 @@ export const register = (data) => async (dispatch) => {
     confirm_password,
   });
 
-  console.log(body);
-
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/register";
 
   dispatch({

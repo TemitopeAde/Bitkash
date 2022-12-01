@@ -29,7 +29,6 @@ const initialState = {
   isAuthenticated: false,
   phoneAndEmailVerified: false,
   unverifiedUser: true,
-  token: null,
   loading: true,
   message: "",
   userDetails: {},
@@ -48,7 +47,6 @@ const authReducer = (state = initialState, action) => {
       ...state,
       isAuthenticated: true,
       loading: false,
-      token: payload.token,
     };
   }
 
@@ -91,7 +89,6 @@ const authReducer = (state = initialState, action) => {
       isAuthenticated: true,
       loading: false,
       userDetails: payload,
-      token: payload.token_details.token
     };
   }
 
