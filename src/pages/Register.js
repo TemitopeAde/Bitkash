@@ -220,9 +220,9 @@ const Register = () => {
     );
   }
 
-  if (isAuthenticated) {
-    return <Navigate to="/email-verification" />;
-  }
+  // if (isAuthenticated) {
+  //   return <Navigate to="/email-verification" />;
+  // }
 
   if (width <= 820 && !isAuthenticated) {
     return (
