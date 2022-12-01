@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import OTPInput from "otp-input-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { sendOtp, submitOTP, fetchUser, loginFn } from "../state/action-creators";
+import { sendOtp, submitOTP, verifyEmail} from "../state/action-creators";
 
 import "./register.css";
 import Header from "../components/Header";
@@ -31,7 +31,7 @@ const EmailAndPhone = ({ children }) => {
     dispatch(sendOtp(uid));
   };
 
-  console.log(verified);
+  
   const { uid } = useParams();
   
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const EmailAndPhone = ({ children }) => {
 
   useEffect(() => {
     dispatch(sendOtp(uid));
-    // dispatch(fetchUser("uid"));
+    dispatch(verifyEmail(uid));
   }, []);
 
 

@@ -169,11 +169,6 @@ export const login = (data) => async (dispatch, getState) => {
     });
 };
 
-export const loginFn = () => async (dispatch, getState) => {
-  dispatch({
-    type: LOGIN_SUCCESS,
-  });
-}
 
 export const logout = () => async (dispatch, getState) => {
   localStorage.removeItem("paymentDetails");
@@ -194,6 +189,8 @@ export const logout = () => async (dispatch, getState) => {
 
   
 };
+
+
 
 export const recoverPassword = (data) => async (dispatch) => {
   const config = {
@@ -234,6 +231,32 @@ export const recoverPassword = (data) => async (dispatch) => {
         type: HIDE_LOADER,
       });
     });
+};
+
+
+
+export const verifyEmail = (uid) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/user/${uid}`;
+
+  const body = JSON.stringify({ uid });
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      console.log(data);
+      
+    })
+    .catch((errors) => {
+      console.log(errors);
+
+    })
 };
 
 export const changePassword = (data) => async (dispatch) => {
