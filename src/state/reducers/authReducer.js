@@ -71,7 +71,7 @@ const authReducer = (state = initialState, action) => {
     console.log(action.type)
     return {
       ...state,
-      phoneAndEmailVerified: true,
+      phoneAndEmailVerified: true
     };
   }
 

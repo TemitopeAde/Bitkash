@@ -99,7 +99,7 @@ export const register = (data) => async (dispatch) => {
         phone_number: phone_number,
       });
       localStorage.setItem("userData", user);
-      
+
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: data.data,
@@ -311,10 +311,6 @@ export const submitOTP = (data) => async (dispatch) => {
         type: OTP_SUCCESS,
         payload: data.data.message
       });
-
-      dispatch({
-        type: LOGIN_SUCCESS
-      })
     })
     .catch((err) => {
       console.log(err);
