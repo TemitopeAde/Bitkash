@@ -22,7 +22,7 @@ const EmailVerification = () => {
   console.log(isAuthenticated)
 
   
-  if (window.innerWidth >= 820 && unverified) {
+  if (window.innerWidth >= 820) {
     return (
       <motion.div
         variants={animations}
@@ -91,7 +91,7 @@ const EmailVerification = () => {
     );
   }
 
-  if (window.innerWidth <= 820 && unverified) {
+  if (window.innerWidth <= 820) {
     return (
       <motion.div
         variants={animations}
