@@ -21,10 +21,7 @@ const EmailVerification = () => {
 
   console.log(isAuthenticated)
 
-  if (isAuthenticated) {
-    return <Navigate to="/email-verification" />;
-  }
-
+  
   if (window.innerWidth >= 820 && unverified) {
     return (
       <motion.div
@@ -170,8 +167,6 @@ const EmailVerification = () => {
       </motion.div>
     );
   }
-
-  
 
   
 };
