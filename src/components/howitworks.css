@@ -1,5 +1,5 @@
 .section-2 {
-    background-color: var(--dark-background);
+    background-color: #292D32;
     padding: 5.5rem;
 }
 
@@ -13,9 +13,8 @@
 }
 
 .flex-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -33,7 +32,7 @@
     flex-direction: column;
     color: var(--white);
     text-align: center;
-    background-image: url("../assets/images/background.png");
+    /* background-image: url("../assets/images/background.png"); */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -65,8 +64,21 @@
 }
 
 
+
+
 .text-number {
-    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 50%;
+    color: black;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
 }
 
 .flexitems h3 {
@@ -78,22 +90,42 @@
     line-height: 64px;
 }
 
+.flexitems h3 {
+    color: white;
+    margin-top: 2rem;
+}
+
+.flexitems {
+    padding: 1rem;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.text-number h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 30px;
+    /* identical to box height, or 94% */
+
+    text-align: center;
+
+    color: #514847;
+}
+
 @media screen and (min-width: 1366px) {
     .number img {
         top: 110px;
         left: -39px;
     }
 
-    .flexitems {
-        
-    }
+    .flexitems {}
 }
 
 
 @media screen and (min-width: 1920px) {
-    .flexitems {
-        
-    }
+    .flexitems {}
 
     .number img {
         top: 115px;
@@ -122,20 +154,15 @@
 
 @media screen and (max-width: 820px) {
     .flex-box {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .title {
         font-size: 24px;
     }
 
-    .flexitems {
-        padding: 1rem;
-        border: 1px solid white;
-        background: none;
-        border-radius: 5px;
-        position: relative;
-    }
+
 
     .flexitems .number img {
         display: none;
@@ -145,10 +172,7 @@
         padding: 5rem 1rem;
     }
 
-    .flexitems h3 {
-        color: white;
-        margin-top: 2rem;
-    }
+
 
     .flexitems .text-number h6 {
         margin: 0;
@@ -158,20 +182,7 @@
         gap: 60px
     }
 
-    .text-number {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        border-radius: 50%;
-        color: black;
-        width: 75px;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: 0;
-    }
+
 
     .text-number h6 {
         font-family: 'Poppins';
@@ -181,9 +192,9 @@
         line-height: 30px;
         /* identical to box height, or 94% */
 
-    text-align: center;
+        text-align: center;
 
-    color: #514847;
+        color: #514847;
 
-}
+    }
 }

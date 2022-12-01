@@ -1,15 +1,17 @@
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr repeat(4, 1fr);
-    gap: 50px;
+    gap: 20px;
     font-family: 'Poppins';
 
 }
 
 .footer {
-    padding: 2rem;
-    background: #F16A23;
+    padding: 7rem;
+    /* background: #F16A23; */
     color: #fff;
+    background: #292D32;
+    border-top: 3px solid #FF9924;
 }
 
 .footer .logo {

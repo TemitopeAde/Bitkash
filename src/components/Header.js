@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log(isAuthenticated)
+  console.log(isAuthenticated);
 
   const [showNav, setShowNav] = useState(false);
 
@@ -129,13 +129,16 @@ const Header = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
+                  <Link to="/">About Us</Link>
+                </li>
+                <li>
                   <Link to="/">Contact Us</Link>
                 </li>
                 <li>
-                  <Link to="/">FAQs</Link>
+                  <Link to="/">How to buy Bitcoins</Link>
                 </li>
                 <li>
-                  <Link to="/">How to buy Bitcoins</Link>
+                  <Link to="/">FAQs</Link>
                 </li>
               </ul>
             </div>
@@ -191,10 +194,10 @@ const Header = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/">Contact Us</Link>
+                  <Link to="/">About Us</Link>
                 </li>
                 <li>
-                  <Link to="/">FAQs</Link>
+                  <Link to="/">Contact Us</Link>
                 </li>
                 <li>
                   <Link to="/">How to buy Bitcoins</Link>

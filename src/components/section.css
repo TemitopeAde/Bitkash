@@ -18,8 +18,8 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 40px;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .phone-img {
@@ -34,7 +34,7 @@
 }
 
 #section-one-text {
-    line-height: 40px;
+    line-height: 24px;
     text-align: right;
 }
 

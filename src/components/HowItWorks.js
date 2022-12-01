@@ -1,8 +1,7 @@
 import { Box, Container } from "@mui/material";
 import React from "react";
-import One from "../assets/images/one.png";
-import Two from "../assets/images/two.png";
-import Three from "../assets/images/three.png";
+import { Link } from "react-router-dom";
+
 
 import "./howitworks.css";
 
@@ -14,9 +13,6 @@ const HowItWorks = () => {
 
         <div className="mt-5 flex-box">
           <div className="flexitems">
-            <div className="number">
-              <img src={One} alt="one" />
-            </div>
             <div className="text-number">
               <h6>1</h6>
             </div>
@@ -24,13 +20,13 @@ const HowItWorks = () => {
             <p>
               Here’s where we get to know you and welcome you to the Bitkash
               family. Don’t worry your details are a hundred percent safe with
-              us. Learn more.
+              us.{" "}
+              <Link style={{ color: "#ff9924", textDecoration: 'none' }} to="/">
+                Learn more.
+              </Link>
             </p>
           </div>
           <div className="flexitems">
-            <div className="number">
-              <img src={Two} alt="one" />
-            </div>
             <div className="text-number">
               <h6>2</h6>
             </div>
@@ -41,9 +37,6 @@ const HowItWorks = () => {
             </p>
           </div>
           <div className="flexitems">
-            <div className="number">
-              <img src={Three} alt="one" />
-            </div>
             <div className="text-number">
               <h6>3</h6>
             </div>

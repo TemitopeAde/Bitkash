@@ -53,8 +53,8 @@ const Newsletter = () => {
 
         <Box>
           <Stack className="form-box" spacing={6}>
-            <h6 style={{ color: "#f5f5f5" }} className="mb-5">
-              Sign Up For Our Free Newsletter. Once a week, we’ll send you
+            <h6 style={{ color: "#f5f5f5", fontSize: '13px', lineHeight: '24px' }} className="mb-5">
+              Sign Up For Our Free Newsletter. Once a week, we will send you
               Bitkash updates, news, and tips about crypto trading. Sign up to
               never miss an update or promotional offer. We promise not to bore
               you.
