@@ -11,7 +11,12 @@ import { transactionReducer } from "./transactionReducer";
 const authPersistConfig = {
   key: "auth",
   storage: storage,
-  whitelist: ["isAuthenticated", "userDetails", "emailVerificationSent"]
+  whitelist: [
+    "isAuthenticated",
+    "userDetails",
+    "emailVerificationSent",
+    "phoneAndEmailVerified",
+  ],
 };
 
 const reducers = combineReducers({

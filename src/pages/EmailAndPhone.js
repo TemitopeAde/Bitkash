@@ -31,6 +31,7 @@ const EmailAndPhone = ({ children }) => {
     dispatch(sendOtp(uid));
   };
 
+  console.log(verified);
   const { uid } = useParams();
   
   const dispatch = useDispatch();
@@ -46,16 +47,12 @@ const EmailAndPhone = ({ children }) => {
 
   useEffect(() => {
     dispatch(sendOtp(uid));
-    dispatch(fetchUser("uid"));
+    // dispatch(fetchUser("uid"));
   }, []);
 
 
   if (loading) {
     return <Spinner />;
-  }
-
-  if (verified) {
-    return <Navigate to="/login" />;
   }
 
   if (verified) {
