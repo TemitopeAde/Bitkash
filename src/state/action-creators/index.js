@@ -306,7 +306,7 @@ export const submitOTP = (data) => async (dispatch) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data, "");
+      console.log(data);
       dispatch({
         type: OTP_SUCCESS,
         payload: data.data.message
