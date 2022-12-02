@@ -22,7 +22,8 @@ import {
   KYC_EURO_SUCCESS,
   KYC_EURO_FAILED,
   OTP_SUCCESS,
-  OTP_FAILED
+  OTP_FAILED,
+  RESET_STATE
 } from "../action-creators/types";
 
 const initialState = {
@@ -194,23 +195,31 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === KYC_EURO_SUCCESS) {
-    const {payload} = action
+   
     return {
       ...state,
       showModal: true,
-      kycMessage: payload
+      kycMessage: "Hurray! you are almost there",
     };
 
   }
 
   if (action.type === KYC_EURO_FAILED) {
-    const {payload} = action
+    
     return {
       ...state,
       showModal: true,
-      kycMessage: payload
+      kycMessage: "Unauthorized",
     };
   }
+
+  if (action.type === RESET_STATE) {
+    return {
+      ...state,
+      showModal: false
+    }
+  }
+
 
   return state;
 };

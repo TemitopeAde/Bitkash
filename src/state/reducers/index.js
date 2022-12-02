@@ -17,7 +17,7 @@ const authPersistConfig = {
     "emailVerificationSent",
     "phoneAndEmailVerified",
     "token",
-    "showModal",
+    // "showModal",
   ],
 };
 

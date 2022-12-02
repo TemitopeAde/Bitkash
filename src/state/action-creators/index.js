@@ -30,6 +30,7 @@ import {
   KYC_USD_SUCCESS,
   OTP_FAILED,
   OTP_SUCCESS,
+  RESET_STATE,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -663,7 +664,8 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
 };
 
 export const handleKycEuro = (data) => async (dispatch, getState) => {
-  const url = "https://bitkash.herokuapp.com/account/create-eur-acc";
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/transactions/add-euro-bank";
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -694,24 +696,26 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     postal_code,
   });
 
+  console.log(body)
+
   dispatch({
     type: SHOW_LOADER,
   });
-
+  console.log(getState().auth);
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       dispatch({
         type: KYC_EURO_SUCCESS,
-        payload: data.data,
+        payload: data.data.message,
       });
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response.data);
       dispatch({
         type: KYC_EURO_FAILED,
-        payload: err.message,
+        payload: err.response.data,
       });
     })
     .then(() => {
@@ -719,11 +723,9 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
         type: HIDE_LOADER,
       });
     })
-    // .then(() => {
-    //   dispatch({
-    //     type: SHOW_MODAL,
-    //   });
-    // });
+    
+
+  
 };
 
 export const handleFileSubmit = (data) => async (dispatch, getState) => {

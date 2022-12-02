@@ -42,6 +42,7 @@ import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhoneNumber from "./pages/ChangeNumber";
 import { getAllTransactions } from "./state/action-creators";
 import Reg from "./pages/Registration";
+import Modal from "./components/Modal";
 
 function App() {
   useEffect(() => {
@@ -77,6 +78,7 @@ function App() {
         
 
         <Route path="/payment" element={<Payment />} />
+        <Route path="/bank-added" element={<Modal />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
         <Route path="/user/verify/:uid" element={<EmailAndPhone />} />
