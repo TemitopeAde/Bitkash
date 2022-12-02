@@ -145,7 +145,7 @@ const Signup = ({ children }) => {
       errors.bankBranchName = "Bank branch name is required";
     }
 
-    console.log(errors)
+    
 
     return errors;
   };
@@ -166,9 +166,8 @@ const Signup = ({ children }) => {
 
   const submitFormUsd = (values) => {
     const payload = {
-      // currency: "usa",
       bank_account_type: values.accountType,
-      account_type: values.businessType,
+      account_type: values.businessType.toUpperCase(),
       account_holder_name: values.accountHolderName,
       name: values.bankName,
       account_number: values.accountNumber,
