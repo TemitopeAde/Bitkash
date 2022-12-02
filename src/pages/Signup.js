@@ -9,7 +9,7 @@ import Modal from "@mui/material/Modal";
 import "../components/Auth/auth.css";
 import { handleKycEuro, handleKycUsd } from "../state/action-creators";
 import Spinner from "../components/Spinner";
-import { useEffect } from "react";
+
 
 const animations = {
   initial: { opacity: 0, x: 20 },
@@ -22,11 +22,12 @@ const Signup = ({ children }) => {
   const loading = useSelector((state) => state.loader.loading);
 
   const userDetails = useSelector((state) => state.auth.userDetails);
+  const kycMessage = useSelector((state) => state.auth.kycMessage);
+
   const modal = useSelector((state) => state.auth.showModal);
 
-  const message = localStorage.getItem("kycStatus");
-  const width = window.innerWidth;
-  console.log(modal);
+  
+  console.log(kycMessage);
 
   const style = {
     position: "absolute",
@@ -798,7 +799,7 @@ const Signup = ({ children }) => {
                           color: "#000000",
                         }}
                       >
-                        Hurray! you are almost there
+                        {kycMessage}
                       </h6>
                       <p
                         style={{

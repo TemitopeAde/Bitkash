@@ -36,7 +36,8 @@ const initialState = {
   showPay: false,
   logoutStatus: false,
   emailVerificationSent: false,
-  token: null
+  token: null,
+  kycMessage: ""
 };
 
 const authReducer = (state = initialState, action) => {
@@ -173,32 +174,41 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === KYC_USD_FAILED) {
+    const {payload} = action
     return {
       ...state,
       showModal: true,
+      kycMessage: payload
     };
   }
 
   if (action.type === KYC_USD_SUCCESS) {
+
+    const { payload } = action;
     return {
       ...state,
-      showModal: true
+      showModal: true,
+      kycMessage: payload
     };
     
   }
 
   if (action.type === KYC_EURO_SUCCESS) {
+    const {payload} = action
     return {
       ...state,
       showModal: true,
+      kycMessage: payload
     };
 
   }
 
   if (action.type === KYC_EURO_FAILED) {
+    const {payload} = action
     return {
       ...state,
       showModal: true,
+      kycMessage: payload
     };
   }
 
