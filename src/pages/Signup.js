@@ -137,15 +137,15 @@ const Signup = ({ children }) => {
       errors.iban = "IBAN is required";
     }
 
-    if (!values.accountNumber) {
-      errors.accountNumber = "Account number is required";
-    }
+    // if (!values.accountNumber) {
+    //   errors.accountNumber = "Account number is required";
+    // }
 
     if (!values.bankBranchName) {
       errors.bankBranchName = "Bank branch name is required";
     }
 
-    
+    console.log(errors)
 
     return errors;
   };
@@ -166,14 +166,14 @@ const Signup = ({ children }) => {
 
   const submitFormUsd = (values) => {
     const payload = {
-      bank_account_type: values.accountType,
+      bank_account_type: values.accountType.toUpperCase(),
       account_type: values.businessType.toUpperCase(),
       account_holder_name: values.accountHolderName,
       name: values.bankName,
-      account_number: values.accountNumber,
-      routing_number: values.routingNumber,
-      postal_code: values.zipCode,
-      swift_or_bic_code: values.swiftCode2,
+      account_number: values.accountNumber.toString(),
+      routing_number: values.routingNumber.toString(),
+      postal_code: values.zipCode.toString(),
+      swift_or_bic_code: values.swiftCode2.toString(),
     };
 
     console.log(payload)
@@ -183,15 +183,15 @@ const Signup = ({ children }) => {
 
   const submitFormEur = (values) => {
     const payload = {
-      account_type: values.businessType,
+      account_type: values.businessType.toUpperCase(),
       account_holder_name: values.accountHolderName,
       name: values.bankName,
       branch_name: values.bankBranchName,
-      iban: values.iban,
-      swift_or_bic_code: values.swiftCode,
+      iban: values.iban.toString(),
+      swift_or_bic_code: values.swiftCode.toString(),
       bank_address: values.bankAddress,
       bank_city: values.bankCity,
-      postal_code: values.zipCode,
+      postal_code: values.zipCode.toString(),
     };
     console.log(payload)
     dispatch(handleKycEuro(payload));
