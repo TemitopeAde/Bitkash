@@ -701,8 +701,7 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data);
-      // localStorage.setItem("kycStatus", data.data.message);
+      console.log(data)
       dispatch({
         type: KYC_EURO_SUCCESS,
         payload: data.data,
@@ -710,7 +709,6 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     })
     .catch((err) => {
       console.log(err);
-      // localStorage.setItem("kycStatus", err.message);
       dispatch({
         type: KYC_EURO_FAILED,
         payload: err.message,
@@ -721,11 +719,11 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
         type: HIDE_LOADER,
       });
     })
-    .then(() => {
-      dispatch({
-        type: SHOW_MODAL,
-      });
-    });
+    // .then(() => {
+    //   dispatch({
+    //     type: SHOW_MODAL,
+    //   });
+    // });
 };
 
 export const handleFileSubmit = (data) => async (dispatch, getState) => {

@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Modal from "@mui/material/Modal";
-import { Link } from "react-router-dom";
 
 import "../components/Auth/auth.css";
 import { handleKycEuro, handleKycUsd } from "../state/action-creators";
 import Spinner from "../components/Spinner";
-import AuthHeader from "../components/AuthHeader";
+import { useEffect } from "react";
 
 const animations = {
   initial: { opacity: 0, x: 20 },
@@ -21,12 +20,13 @@ const animations = {
 const Signup = ({ children }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loader.loading);
-  
+
   const userDetails = useSelector((state) => state.auth.userDetails);
+  const modal = useSelector((state) => state.auth.showModal);
 
   const message = localStorage.getItem("kycStatus");
   const width = window.innerWidth;
-  // console.log(message);
+  console.log(modal);
 
   const style = {
     position: "absolute",
@@ -37,8 +37,8 @@ const Signup = ({ children }) => {
     height: "50%",
     p: 4,
     bgcolor: "#FFF9F1",
-    border: "2px solid #FF9924",
-    borderRadius: "20px",
+    border: "1px solid #FF9924",
+    borderRadius: "20px"
   };
 
   const defaultValue = () => {
@@ -97,7 +97,7 @@ const Signup = ({ children }) => {
       errors.zipCode = "Zip code is required";
     }
 
-    console.log(errors)
+    console.log(errors);
 
     return errors;
   };
@@ -145,7 +145,7 @@ const Signup = ({ children }) => {
       errors.bankBranchName = "Bank branch name is required";
     }
 
-    console.log(errors)
+    console.log(errors);
 
     return errors;
   };
@@ -176,7 +176,7 @@ const Signup = ({ children }) => {
       swift_or_bic_code: values.swiftCode2.toString(),
     };
 
-    console.log(payload)
+    console.log(payload);
     dispatch(handleKycUsd(payload));
     // handleOpen();
   };
@@ -193,14 +193,16 @@ const Signup = ({ children }) => {
       bank_city: values.bankCity,
       postal_code: values.zipCode.toString(),
     };
-    console.log(payload)
+    console.log(payload);
     dispatch(handleKycEuro(payload));
     // handleOpen();
   };
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [open, setOpen] = React.useState(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  console.log(modal)
 
   if (loading) return <Spinner />;
 
@@ -755,60 +757,62 @@ const Signup = ({ children }) => {
             </Box>
           </Box>
 
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%",
-                  textAlign: "center",
-                }}
-              >
-                <Stack spacing={3}>
-                  <Box>
-                    <svg
-                      width="83"
-                      height="83"
-                      viewBox="0 0 83 83"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M55.8638 6.90137H26.9484C14.3885 6.90137 6.90088 14.389 6.90088 26.9489V55.8298C6.90088 68.4242 14.3885 75.9118 26.9484 75.9118H55.8293C68.3892 75.9118 75.8768 68.4242 75.8768 55.8643V26.9489C75.9113 14.389 68.4237 6.90137 55.8638 6.90137ZM57.8996 33.4704L38.3351 53.0348C37.852 53.5179 37.1965 53.7939 36.5063 53.7939C35.8162 53.7939 35.1606 53.5179 34.6776 53.0348L24.9126 43.2699C23.9119 42.2692 23.9119 40.613 24.9126 39.6123C25.9132 38.6117 27.5695 38.6117 28.5701 39.6123L36.5063 47.5485L54.242 29.8128C55.2427 28.8122 56.8989 28.8122 57.8996 29.8128C58.9002 30.8135 58.9002 32.4352 57.8996 33.4704Z"
-                        fill="#FF9924"
-                      />
-                    </svg>
-                  </Box>
+          {modal && (
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  <Stack spacing={3}>
+                    <Box>
+                      <svg
+                        width="83"
+                        height="83"
+                        viewBox="0 0 83 83"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M55.8638 6.90137H26.9484C14.3885 6.90137 6.90088 14.389 6.90088 26.9489V55.8298C6.90088 68.4242 14.3885 75.9118 26.9484 75.9118H55.8293C68.3892 75.9118 75.8768 68.4242 75.8768 55.8643V26.9489C75.9113 14.389 68.4237 6.90137 55.8638 6.90137ZM57.8996 33.4704L38.3351 53.0348C37.852 53.5179 37.1965 53.7939 36.5063 53.7939C35.8162 53.7939 35.1606 53.5179 34.6776 53.0348L24.9126 43.2699C23.9119 42.2692 23.9119 40.613 24.9126 39.6123C25.9132 38.6117 27.5695 38.6117 28.5701 39.6123L36.5063 47.5485L54.242 29.8128C55.2427 28.8122 56.8989 28.8122 57.8996 29.8128C58.9002 30.8135 58.9002 32.4352 57.8996 33.4704Z"
+                          fill="#FF9924"
+                        />
+                      </svg>
+                    </Box>
 
-                  <Box>
-                    <h6
-                      style={{
-                        fontSize: "32px",
-                        lineHeight: "40px",
-                        color: "#000000",
-                      }}
-                    >
-                      {message}
-                    </h6>
-                    <p
-                      style={{
-                        fontFamily: "Poppins",
-                        fontSize: "16px",
-                        fontWeight: "400",
-                      }}
-                    >
-                      Your account number is under review
-                    </p>
-                  </Box>
+                    <Box>
+                      <h6
+                        style={{
+                          fontSize: "32px",
+                          lineHeight: "40px",
+                          color: "#000000",
+                        }}
+                      >
+                        Hurray! you are almost there
+                      </h6>
+                      <p
+                        style={{
+                          fontFamily: "Poppins",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                        }}
+                      >
+                        You're almost done. A KYC link will be sent to your mail
+                        in 3 minutes
+                      </p>
+                    </Box>
 
-                  <p>
+                    {/* <p>
                     Go to{" "}
                     <Link
                       style={{
@@ -820,42 +824,19 @@ const Signup = ({ children }) => {
                     >
                       Banks
                     </Link>{" "}
-                  </p>
-                </Stack>
+                  </p> */}
+                  </Stack>
+                </Box>
               </Box>
-            </Box>
-          </Modal>
+            </Modal>
+          )}
         </Box>
       </motion.div>
     );
   }
 
-  if (width <= 820) {
-    return (
-      <motion.div
-        variants={animations}
-        initial="initial"
-        animate="animate"
-        transition={{ duration: 0.3 }}
-      >
-        <Helmet>
-          <title>Sign up</title>
-          <meta name="description" content="App Description" />
-          <meta name="theme-color" content="#008f68" />
-          <body class="mobile-background" />
-        </Helmet>
-
-        <div className="mobile-register-page">
-          <AuthHeader />
-          <Box>
-            <Box mt="8rem">
-              <h3>Login</h3>
-            </Box>
-          </Box>
-        </div>
-      </motion.div>
-    );
-  }
+  
+  
 };
 
 export default Signup;
