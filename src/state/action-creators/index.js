@@ -31,6 +31,8 @@ import {
   OTP_FAILED,
   OTP_SUCCESS,
   RESET_STATE,
+  GET_USER_BANKS_SUCCESS,
+  GET_USER_BANKS_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -696,7 +698,7 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
     postal_code,
   });
 
-  console.log(body)
+  console.log(body);
 
   dispatch({
     type: SHOW_LOADER,
@@ -722,10 +724,7 @@ export const handleKycEuro = (data) => async (dispatch, getState) => {
       dispatch({
         type: HIDE_LOADER,
       });
-    })
-    
-
-  
+    });
 };
 
 export const handleFileSubmit = (data) => async (dispatch, getState) => {
@@ -781,8 +780,7 @@ export const getAllAccount = () => async (dispatch, getState) => {
 };
 
 export const getUserBank = () => async (dispatch, getState) => {
-  const id = localStorage.getItem("uid");
-  const url = `https://bitkash.herokuapp.com/account/get/${id}`;
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/transactions/banks`;
 
   const config = {
     headers: {
@@ -790,9 +788,29 @@ export const getUserBank = () => async (dispatch, getState) => {
       Authorization: `Bearer ${getState().auth.token}`,
     },
   };
-
+  dispatch({
+    type: SHOW_LOADER,
+  });
   await axios
     .get(url, config)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => {
+      console.log(data);
+
+      dispatch({
+        type: GET_USER_BANKS_SUCCESS,
+        payload: data.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+
+      dispatch({
+        type: GET_USER_BANKS_FAILED,
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
 };

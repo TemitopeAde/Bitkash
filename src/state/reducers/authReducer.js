@@ -23,7 +23,9 @@ import {
   KYC_EURO_FAILED,
   OTP_SUCCESS,
   OTP_FAILED,
-  RESET_STATE
+  RESET_STATE,
+  GET_USER_BANKS_FAILED,
+  GET_USER_BANKS_SUCCESS,
 } from "../action-creators/types";
 
 const initialState = {
@@ -33,15 +35,30 @@ const initialState = {
   loading: true,
   message: "",
   userDetails: {},
+  userBanks: [],
   showModal: false,
   showPay: false,
   logoutStatus: false,
   emailVerificationSent: false,
   token: null,
-  kycMessage: ""
+  kycMessage: "",
 };
 
 const authReducer = (state = initialState, action) => {
+  if (action.type === GET_USER_BANKS_SUCCESS) {
+    return {
+      ...state,
+      userBanks: action.payload,
+    };
+  }
+
+   if (action.type === GET_USER_BANKS_FAILED) {
+     return {
+       ...state,
+       userBanks: []
+     };
+   }
+
   if (action.type === SIGNUP_SUCCESS) {
     const { payload } = action;
     localStorage.setItem("token", payload.token);
@@ -69,10 +86,10 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === OTP_SUCCESS) {
-    console.log(action.type)
+    console.log(action.type);
     return {
       ...state,
-      phoneAndEmailVerified: true
+      phoneAndEmailVerified: true,
     };
   }
 
@@ -85,13 +102,13 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGIN_SUCCESS) {
-    const {payload} = action;
+    const { payload } = action;
     return {
       ...state,
       isAuthenticated: true,
       loading: false,
       userDetails: payload,
-      token: payload.token_details.token
+      token: payload.token_details.token,
     };
   }
 
@@ -109,15 +126,14 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGOUT) {
-    
     localStorage.removeItem("userData");
-  
+
     return {
       ...state,
       isAuthenticated: false,
       loading: false,
       userDetails: {},
-      token: null
+      token: null,
     };
   }
 
@@ -175,37 +191,32 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === KYC_USD_FAILED) {
-    const {payload} = action
-    return {
-      ...state,
-      showModal: true,
-      kycMessage: payload
-    };
-  }
-
-  if (action.type === KYC_USD_SUCCESS) {
-
     const { payload } = action;
     return {
       ...state,
       showModal: true,
-      kycMessage: payload
+      kycMessage: payload,
     };
-    
+  }
+
+  if (action.type === KYC_USD_SUCCESS) {
+    const { payload } = action;
+    return {
+      ...state,
+      showModal: true,
+      kycMessage: payload,
+    };
   }
 
   if (action.type === KYC_EURO_SUCCESS) {
-   
     return {
       ...state,
       showModal: true,
       kycMessage: "Hurray! you are almost there",
     };
-
   }
 
   if (action.type === KYC_EURO_FAILED) {
-    
     return {
       ...state,
       showModal: true,
@@ -216,10 +227,9 @@ const authReducer = (state = initialState, action) => {
   if (action.type === RESET_STATE) {
     return {
       ...state,
-      showModal: false
-    }
+      showModal: false,
+    };
   }
-
 
   return state;
 };

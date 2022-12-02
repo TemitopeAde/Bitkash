@@ -1,11 +1,5 @@
-import {
-  Box,
-  Button,
-  Container,
-  Modal,
-  Stack
-} from "@mui/material";
-import React from "react";
+import { Box, Button, Container, Modal, Stack } from "@mui/material";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,10 +7,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 
 import "./history.css";
+import SpinnerTwo from "./SpinnerTwo";
 
-const Bank = () => {
+const Bank = ({ userBanks }) => {
   const navigate = useNavigate();
 
   const style = {
@@ -32,48 +29,32 @@ const Bank = () => {
     borderRadius: "20px",
   };
 
-  const rows = [
-    {
-      currency: "USD",
-      payment_method: "SWIFT",
-      bank_name: "Transfer",
-      account_number: "49399432222",
-    },
-    {
-      currency: "USD",
-      payment_method: "SWIFT",
-      bank_name: "Transfer",
-      account_number: "49399432222",
-    },
-    {
-      currency: "USD",
-      payment_method: "SWIFT",
-      bank_name: "Transfer",
-      account_number: "49399432222",
-    },
-    {
-      currency: "USD",
-      payment_method: "SWIFT",
-      bank_name: "Transfer",
-      account_number: "49399432222",
-    },
-    {
-      currency: "USD",
-      payment_method: "SWIFT",
-      bank_name: "Transfer",
-      account_number: "49399432222",
-    },
-    {
-      currency: "USD",
-      payment_method: "SWIFT",
-      bank_name: "Transfer",
-      account_number: "49399432222",
-    },
-  ];
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
+
+  // Simulate fetching items from another resources.
+  // (This could be items from props; or items loaded in a local state
+  // from an API endpoint with useEffect and useState)
+  const endOffset = itemOffset + 5;
+  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const currentItems = userBanks?.slice(itemOffset, endOffset);
+  console.log(currentItems);
+  const pageCount = Math.ceil(userBanks?.length / 5);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * 5) % userBanks?.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const loading = useSelector((state) => state.loader.loading);
 
   const handleEdit = () => {
     handleOpen();
@@ -188,7 +169,6 @@ const Bank = () => {
                   />
                 </svg>
                 <span
-                  
                   style={{
                     marginLeft: "10px",
                     color: "white",
@@ -214,86 +194,104 @@ const Bank = () => {
                   <TableHead>
                     <TableRow sx={{ fontWeight: "bolder" }}>
                       <TableCell align="right">Currency</TableCell>
-                      <TableCell align="right">Payment methods</TableCell>
+                      {/* <TableCell align="right">Payment methods</TableCell> */}
                       <TableCell align="right">Bank name</TableCell>
                       <TableCell align="right">Account no/IBAN</TableCell>
-
+                      <TableCell align="right">Status</TableCell>
                       <TableCell align="right">Delete</TableCell>
                     </TableRow>
                   </TableHead>
-                  <TableBody>
-                    {rows.map((row, index) => (
-                      <TableRow
-                        key={index}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell align="right">{row.currency}</TableCell>
-                        <TableCell align="right">
-                          {row.payment_method}
-                        </TableCell>
-                        <TableCell align="right">{row.bank_name}</TableCell>
-                        <TableCell align="right">
-                          {row.account_number}
-                        </TableCell>
 
-                        <TableCell align="right">
-                          <button
-                            style={{ background: "none", border: "none" }}
-                            onClick={handleDelete}
+                  {loading ? (
+                    <SpinnerTwo />
+                  ) : (
+                    <TableBody>
+                      {currentItems.map((row, index) => (
+                        <TableRow
+                          key={index}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell align="right">{row.currency}</TableCell>
+                          {/* <TableCell align="right">
+                            {row.payment_method}
+                          </TableCell> */}
+                          <TableCell align="right">{row.name}</TableCell>
+                          <TableCell align="right">{row.iban}</TableCell>
+
+                          <TableCell
+                            align="right"
+                            style={{ textTransform: "capitalize" }}
                           >
-                            <svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                            {row.status.toLowerCase()}
+                          </TableCell>
+
+                          <TableCell align="right">
+                            <button
+                              style={{ background: "none", border: "none" }}
+                              onClick={handleDelete}
                             >
-                              <path
-                                d="M21 5.97998C17.67 5.64998 14.32 5.47998 10.98 5.47998C9 5.47998 7.02 5.57998 5.04 5.77998L3 5.97998"
-                                stroke="#FF0202"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <path
-                                d="M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97"
-                                stroke="#FF0202"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <path
-                                d="M18.8504 9.14014L18.2004 19.2101C18.0904 20.7801 18.0004 22.0001 15.2104 22.0001H8.79039C6.00039 22.0001 5.91039 20.7801 5.80039 19.2101L5.15039 9.14014"
-                                stroke="#FF0202"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <path
-                                d="M10.3301 16.5H13.6601"
-                                stroke="#FF0202"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <path
-                                d="M9.5 12.5H14.5"
-                                stroke="#FF0202"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M21 5.97998C17.67 5.64998 14.32 5.47998 10.98 5.47998C9 5.47998 7.02 5.57998 5.04 5.77998L3 5.97998"
+                                  stroke="#FF0202"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  d="M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97"
+                                  stroke="#FF0202"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  d="M18.8504 9.14014L18.2004 19.2101C18.0904 20.7801 18.0004 22.0001 15.2104 22.0001H8.79039C6.00039 22.0001 5.91039 20.7801 5.80039 19.2101L5.15039 9.14014"
+                                  stroke="#FF0202"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  d="M10.3301 16.5H13.6601"
+                                  stroke="#FF0202"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  d="M9.5 12.5H14.5"
+                                  stroke="#FF0202"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  )}
                 </Table>
               </TableContainer>
             </Box>
+
+            <ReactPaginate
+              nextLabel="Next"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              pageCount={pageCount}
+              renderOnZeroPageCount={null}
+            />
           </Box>
         </Container>
 
