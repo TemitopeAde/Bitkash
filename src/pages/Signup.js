@@ -280,7 +280,7 @@ const Signup = ({ children }) => {
                                   <Box>
                                     <Field
                                       type="radio"
-                                      value="individual"
+                                      value="INDIVIDUAL"
                                       name="businessType"
                                       id="individual-input"
                                       onBlur={handleBlur}
@@ -298,7 +298,7 @@ const Signup = ({ children }) => {
                                   <Box>
                                     <Field
                                       type="radio"
-                                      value="business"
+                                      value="BUSINESS"
                                       name="businessType"
                                       id="business-input"
                                       onBlur={handleBlur}
