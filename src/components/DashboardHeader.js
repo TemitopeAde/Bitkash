@@ -9,7 +9,6 @@ const DashboardHeader = () => {
 
   const userDetails = useSelector((state) => state.auth.userDetails);
 
-  console.log(userDetails);
 
   return (
     <div>

@@ -6,11 +6,9 @@ import { Helmet } from "react-helmet";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Modal from "../components/Modal";
 
-
 import "../components/Auth/auth.css";
 import { handleKycEuro, handleKycUsd } from "../state/action-creators";
 import Spinner from "../components/Spinner";
-
 
 const animations = {
   initial: { opacity: 0, x: 20 },
@@ -21,21 +19,6 @@ const animations = {
 const Signup = ({ children }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loader.loading);
-  const state = useSelector((state) => state.auth);
-  console.log(state);
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "50%",
-    height: "50%",
-    p: 4,
-    bgcolor: "#FFF9F1",
-    border: "1px solid #FF9924",
-    borderRadius: "20px"
-  };
 
   const defaultValue = () => {
     const value = "usd";
@@ -93,8 +76,6 @@ const Signup = ({ children }) => {
       errors.zipCode = "Zip code is required";
     }
 
-    
-
     return errors;
   };
 
@@ -141,8 +122,6 @@ const Signup = ({ children }) => {
       errors.bankBranchName = "Bank branch name is required";
     }
 
-   
-
     return errors;
   };
 
@@ -172,9 +151,7 @@ const Signup = ({ children }) => {
       swift_or_bic_code: values.swiftCode2.toString(),
     };
 
-    
     dispatch(handleKycUsd(payload));
-    
   };
 
   const submitFormEur = (values) => {
@@ -190,10 +167,8 @@ const Signup = ({ children }) => {
       postal_code: values.zipCode.toString(),
     };
     dispatch(handleKycEuro(payload));
-   
   };
 
-  
   if (loading) return <Spinner />;
 
   if (window.innerWidth >= 820) {
@@ -746,16 +721,12 @@ const Signup = ({ children }) => {
               </Box>
             </Box>
           </Box>
-          
+
           <Modal />
-         
         </Box>
       </motion.div>
     );
   }
-
-  
-  
 };
 
 export default Signup;

@@ -26,6 +26,8 @@ import {
   RESET_STATE,
   GET_USER_BANKS_FAILED,
   GET_USER_BANKS_SUCCESS,
+  TRANSACTION_HISTORY_SUCCESS,
+  TRANSACTION_HISTORY_FAILED,
 } from "../action-creators/types";
 
 const initialState = {
@@ -36,6 +38,7 @@ const initialState = {
   message: "",
   userDetails: {},
   userBanks: [],
+  transactionsHistory: [],
   showModal: false,
   showPay: false,
   logoutStatus: false,
@@ -45,6 +48,26 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
+
+  if (action.type === TRANSACTION_HISTORY_FAILED) {
+    const {payload} = action
+
+    return {
+      ...state,
+      transactionsHistory: []
+    };
+  }
+
+
+  if (action.type === TRANSACTION_HISTORY_SUCCESS) {
+    const { payload } = action;
+
+    return {
+      ...state,
+      transactionsHistory: payload,
+    };
+  }
+
   if (action.type === GET_USER_BANKS_SUCCESS) {
     return {
       ...state,
@@ -134,6 +157,8 @@ const authReducer = (state = initialState, action) => {
       loading: false,
       userDetails: {},
       token: null,
+      transactionsHistory: [],
+      userBanks: [],
     };
   }
 

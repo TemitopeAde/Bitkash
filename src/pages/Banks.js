@@ -3,13 +3,11 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import "./dashboard.css";
 import Sidebar from "../components/Sidebar";
 import Bank from "../components/Banks";
 import { getUserBank } from "../state/action-creators";
 import DashboardHeader from "../components/DashboardHeader";
-
 
 const animations = {
   initial: { opacity: 0 },
@@ -27,11 +25,9 @@ const Banks = () => {
   const dispatch = useDispatch();
   const userBanks = useSelector((state) => state.auth.userBanks);
   const loading = useSelector((state) => state.loader.loading);
-  console.log(userBanks)
 
   useEffect(() => {
-   
-    dispatch(getUserBank())
+    dispatch(getUserBank());
   }, []);
 
   // if (loading) return <SpinnerTwo />;
@@ -58,8 +54,6 @@ const Banks = () => {
             transition={{ duration: 1 }}
           >
             <Bank userBanks={userBanks} />
-
-           
           </motion.div>
         </Box>
       </Box>

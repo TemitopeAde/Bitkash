@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import React, {useEffect} from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllTransactions } from "../state/action-creators";
+
+
 
 import "./dashboard.css";
 import History from "../components/History";
@@ -26,14 +26,10 @@ const animation = {
 
 const Histories = () => {
   
-  const transactionHistory = useSelector((state) => state.transactions.history);
-  const loader = useSelector((state) => state.loader.loading)
-  const dispatch = useDispatch();
+ 
   
 
-  useEffect(() => {
-    // dispatch(getAllTransactions());
-  }, []);
+  
 
   return (
     <>
@@ -63,7 +59,7 @@ const Histories = () => {
               animate="animate"
               transition={{ duration: 1 }}
             >
-              <History loading = {loader} historyData = {transactionHistory} />
+              <History />
             </motion.div>
           </Box>
         </Box>

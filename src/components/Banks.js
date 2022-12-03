@@ -7,14 +7,17 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ReactPaginate from "react-paginate";
+import { getUserBank } from "../state/action-creators";
 
 import "./history.css";
 import SpinnerTwo from "./SpinnerTwo";
+import { deleteBank } from "../state/action-creators/index";
 
 const Bank = ({ userBanks }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const style = {
     position: "absolute",
@@ -29,25 +32,16 @@ const Bank = ({ userBanks }) => {
     borderRadius: "20px",
   };
 
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
+  //
   const [itemOffset, setItemOffset] = useState(0);
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + 5;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = userBanks?.slice(itemOffset, endOffset);
-  console.log(currentItems);
   const pageCount = Math.ceil(userBanks?.length / 5);
 
-  // Invoke when user click to request another page.
+  
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 5) % userBanks?.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
@@ -60,7 +54,10 @@ const Bank = ({ userBanks }) => {
     handleOpen();
   };
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    dispatch(deleteBank(id));
+    dispatch(getUserBank());
+  };
 
   return (
     <>
@@ -189,26 +186,26 @@ const Bank = ({ userBanks }) => {
                 borderRadius: "10px",
               }}
             >
-              <TableContainer>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow sx={{ fontWeight: "bolder" }}>
-                      <TableCell align="right">Currency</TableCell>
-                      {/* <TableCell align="right">Payment methods</TableCell> */}
-                      <TableCell align="right">Bank name</TableCell>
-                      <TableCell align="right">Account no/IBAN</TableCell>
-                      <TableCell align="right">Status</TableCell>
-                      <TableCell align="right">Delete</TableCell>
-                    </TableRow>
-                  </TableHead>
+              {loading ? (
+                <SpinnerTwo />
+              ) : (
+                <TableContainer>
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow sx={{ fontWeight: "bolder" }}>
+                        <TableCell align="right">Currency</TableCell>
+                        {/* <TableCell align="right">Payment methods</TableCell> */}
+                        <TableCell align="right">Bank name</TableCell>
+                        <TableCell align="right">Account no/IBAN</TableCell>
+                        <TableCell align="right">Status</TableCell>
+                        <TableCell align="right">Delete</TableCell>
+                      </TableRow>
+                    </TableHead>
 
-                  {loading ? (
-                    <SpinnerTwo />
-                  ) : (
                     <TableBody>
                       {currentItems.map((row, index) => (
                         <TableRow
-                          key={index}
+                          key={row.id}
                           sx={{
                             "&:last-child td, &:last-child th": { border: 0 },
                           }}
@@ -230,7 +227,7 @@ const Bank = ({ userBanks }) => {
                           <TableCell align="right">
                             <button
                               style={{ background: "none", border: "none" }}
-                              onClick={handleDelete}
+                              onClick={() => handleDelete(row.id)}
                             >
                               <svg
                                 width="24"
@@ -280,9 +277,9 @@ const Bank = ({ userBanks }) => {
                         </TableRow>
                       ))}
                     </TableBody>
-                  )}
-                </Table>
-              </TableContainer>
+                  </Table>
+                </TableContainer>
+              )}
             </Box>
 
             <ReactPaginate

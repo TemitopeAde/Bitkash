@@ -496,7 +496,8 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
 };
 
 export const getAllTransactions = () => async (dispatch, getState) => {
-  const url = "https://bitkash.herokuapp.com/transactions/get/all";
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/transactions/summary";
+
   const options = {
     method: "GET",
     headers: {
@@ -511,14 +512,16 @@ export const getAllTransactions = () => async (dispatch, getState) => {
   await axios
     .get(url, options)
     .then((data) => {
-      console.log("success");
+      console.log("data");
+
       dispatch({
         type: TRANSACTION_HISTORY_SUCCESS,
         payload: data.data,
       });
     })
     .catch((err) => {
-      console.log("failed");
+      console.log(err);
+
       dispatch({
         type: TRANSACTION_HISTORY_FAILED,
         payload: err,
@@ -547,6 +550,39 @@ export const getTransaction = (data) => async (dispatch, getState) => {
 
   await axios
     .get(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+
+
+export const deleteBank = (bank_id) => async (dispatch, getState) => {
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+    data: { bank_id: bank_id },
+  };
+  
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .request(
+      "https://bitkash-backend.herokuapp.com/api/v1/transactions/banks",
+      options
+    )
     .then((data) => {
       console.log(data);
     })
@@ -748,36 +784,6 @@ export const handleFileSubmit = (data) => async (dispatch, getState) => {
     });
 };
 
-export const getAccount = () => async (dispatch, getState) => {
-  const url = "https://bitkash.herokuapp.com/account/get-account";
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${getState().auth.token}`,
-    },
-  };
-
-  await axios
-    .get(url, config)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-};
-
-export const getAllAccount = () => async (dispatch, getState) => {
-  const url = "https://bitkash.herokuapp.com/account/all-account";
-  console.log(getState().auth.token);
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${getState().auth.token}`,
-    },
-  };
-
-  await axios
-    .get(url, config)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-};
 
 export const getUserBank = () => async (dispatch, getState) => {
   const url = `https://bitkash-backend.herokuapp.com/api/v1/transactions/banks`;

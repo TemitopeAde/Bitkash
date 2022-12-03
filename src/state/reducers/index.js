@@ -18,7 +18,7 @@ const authPersistConfig = {
     "phoneAndEmailVerified",
     "userBanks",
     "token",
-    // "showModal",
+    "transactionsHistory",
   ],
 };
 
