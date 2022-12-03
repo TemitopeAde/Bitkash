@@ -23,21 +23,13 @@ const animations = {
 const Login = ({ children }) => {
   const width = window.innerWidth;
   const initialValues = {
-<<<<<<< HEAD
-    email: "adesiyantope2014@gmail.com",
-=======
     email: "",
->>>>>>> master
     password: "",
   };
 
   const validate = (values) => {
     let errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     if (!values.email) {
       errors.email = "Email is required";
     } else if (!regex.test(values.email)) {
@@ -46,14 +38,6 @@ const Login = ({ children }) => {
 
     if (!values.password) {
       errors.password = "Password is required";
-<<<<<<< HEAD
-    } else if (values.password.length < 6) {
-      errors.password = "Password length is too short";
-    }
-
-    return errors;
-  };
-=======
     } else if (values.password.length < 8) {
       errors.password = "Password length is too short";
     }
@@ -61,7 +45,6 @@ const Login = ({ children }) => {
     return errors;
   };
   
->>>>>>> master
 
   const dispatch = useDispatch();
 
@@ -69,20 +52,12 @@ const Login = ({ children }) => {
     dispatch(login(values));
   };
 
-<<<<<<< HEAD
-  const [passwordShown, setPasswordShown] = useState(true);
-=======
   const [passwordShown, setPasswordShown] = useState(false);
->>>>>>> master
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.loader.loading);
   const message = useSelector((state) => state.auth.message);
 
-<<<<<<< HEAD
-  console.log(message);
-=======
  
->>>>>>> master
 
   const togglePassword = (e) => {
     e.preventDefault();
@@ -94,11 +69,7 @@ const Login = ({ children }) => {
   }
 
   if (isAuthenticated) {
-<<<<<<< HEAD
-    return <Navigate to="/buy" />;
-=======
     return <Navigate to="/user-dashboard" />;
->>>>>>> master
   }
 
   if (!isAuthenticated && width > 820) {
@@ -119,11 +90,7 @@ const Login = ({ children }) => {
           <Box position="relative">
             <Box className="register-sidebar">
               <Box className="register-title">
-<<<<<<< HEAD
-                <h3>Sign up</h3>
-=======
                 <h3>Log in</h3>
->>>>>>> master
               </Box>
             </Box>
 
@@ -173,21 +140,13 @@ const Login = ({ children }) => {
                                 <label htmlFor="email">Email</label>
                                 <Field
                                   type="email"
-<<<<<<< HEAD
-                                  // className="form-control"
-=======
->>>>>>> master
                                   name="email"
                                   value={values.email}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                                   className={
-<<<<<<< HEAD
-                                    errors.email && touched.email
-=======
                                     errors.email &&
                                     touched.email
->>>>>>> master
                                       ? "input-error form-control"
                                       : "form-control"
                                   }
@@ -202,10 +161,6 @@ const Login = ({ children }) => {
                               <Box position="relative">
                                 <Field
                                   type={passwordShown ? "text" : "password"}
-<<<<<<< HEAD
-                                  // className="form-control"
-=======
->>>>>>> master
                                   name="password"
                                   value={values.password}
                                   onChange={handleChange}
@@ -264,10 +219,6 @@ const Login = ({ children }) => {
                                 <button
                                   onClick={() => handleSubmit}
                                   type="submit"
-<<<<<<< HEAD
-                                  // className="btn-lg btn btn-wide"
-=======
->>>>>>> master
                                   className={
                                     dirty && isValid
                                       ? "btn login-btn"
@@ -406,10 +357,6 @@ const Login = ({ children }) => {
                             <label htmlFor="email">Email</label>
                             <Field
                               type="email"
-<<<<<<< HEAD
-                              // className="form-control"
-=======
->>>>>>> master
                               name="email"
                               value={values.email}
                               onChange={handleChange}

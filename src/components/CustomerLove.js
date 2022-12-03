@@ -12,13 +12,9 @@ const CustomerLove = () => {
   return (
     <Box className="customer">
       <Container>
-<<<<<<< HEAD
-        <h3 className="cust-title text-center">Why Our Customer Love us</h3>
-=======
         <h3 className="cust-title text-center">
           Why Our <span style={{ color: '#ff9424'}}>Customer {""}</span>Love us
         </h3>
->>>>>>> master
 
         <div className="customer-flex">
           <div className="customer-items">

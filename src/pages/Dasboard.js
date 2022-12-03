@@ -19,18 +19,10 @@ import { useSelector, useDispatch } from "react-redux";
 import shield from "../assets/images/shield.png";
 import curate from "../assets/images/cuate.png";
 import "./dashboard.css";
-<<<<<<< HEAD
-import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
-import cuate2 from "../assets/images/cuate2.png";
-import Sidebar from "../components/Sidebar";
-import { fetchUser } from "../state/action-creators/index";
-=======
 import cuate2 from "../assets/images/cuate2.png";
 import Sidebar from "../components/Sidebar";
 import { fetchUser } from "../state/action-creators/index";
 import DashboardHeader from "../components/DashboardHeader";
->>>>>>> master
 
 ChartJS.register(
   CategoryScale,
@@ -121,26 +113,10 @@ export const mobiledata = {
 const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-<<<<<<< HEAD
-  const userDetails = useSelector((state) => state.auth.userDetails);
-  const [currency, setCurrency] = React.useState("USD");
-  // console.log(currency)
-
-  const { email_verified, kyc_verified, lastName, phone_verified, firstName } =
-    userDetails;
-
-  useEffect(() => {
-    const id = localStorage.getItem("uid");
-    console.log(id);
-    dispatch(fetchUser(id));
-  }, []);
-
-=======
   const [currency, setCurrency] = React.useState("USD");
   const userDetails = useSelector((state) => state.auth.userDetails);
 
   
->>>>>>> master
   const options = {
     type: "loop",
     autoplay: true,
@@ -153,10 +129,6 @@ const Dashboard = () => {
     setCurrency(e.target.value);
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   if (window.innerWidth > 820) {
     return (
       <Box className="dashboard">
@@ -170,28 +142,7 @@ const Dashboard = () => {
           <Sidebar />
 
           <Box className="dashboard-content">
-<<<<<<< HEAD
-            <Box className="dashboard-header">
-              <Container
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <Box className="dashboard-container">
-                  <Stack spacing={2} direction="row">
-                    <img className="user" src={user} alt="" />
-                    <Stack>
-                      <h6>Olubanjo Oluseyi</h6>
-                      <p>Verified</p>
-                    </Stack>
-                    <Box paddingTop="6px">
-                      <img className="notify" src={notification} alt="" />
-                    </Box>
-                  </Stack>
-                </Box>
-              </Container>
-            </Box>
-=======
             <DashboardHeader />
->>>>>>> master
 
             <Box className="dashboard-inner py-5 dashboard-inner-white">
               <Container className="buy-padding dashboard-padding">
@@ -210,11 +161,7 @@ const Dashboard = () => {
                           <Box>
                             <Stack>
                               <h6 className="name-account">
-<<<<<<< HEAD
-                                Hello <span>{firstName}</span> {lastName}
-=======
                                 {/* Hello <span>{first_name}</span> {last_name} */}
->>>>>>> master
                               </h6>
                               <p className="welcome-account">
                                 Welcome to your dashboard
@@ -224,18 +171,12 @@ const Dashboard = () => {
                                 adipisicing elit. Eligendi sed nemo tenetur ad
                                 in error nesciunt.
                               </p>
-<<<<<<< HEAD
-                              <button className="btn verify-account-button">
-                                Verify account
-                              </button>
-=======
 
                               {userDetails?.has_completed_kyc && (
                                 <button className="btn verify-account-button">
                                   Verify account
                                 </button>
                               )}
->>>>>>> master
                             </Stack>
                           </Box>
                           <Box>
@@ -316,12 +257,6 @@ const Dashboard = () => {
                           }}
                           className="transactions-number"
                         >
-<<<<<<< HEAD
-                          <Box style={{ display: 'flex', justifyContent: 'space-between'}}>
-                            <h6>Fiat Transactions</h6>
-                            <form>
-                              <select value={currency}  onChange={handleChange} className="fiat-btn">
-=======
                           <Box
                             style={{
                               display: "flex",
@@ -335,20 +270,13 @@ const Dashboard = () => {
                                 onChange={handleChange}
                                 className="fiat-btn"
                               >
->>>>>>> master
                                 <option>$ USD</option>
                                 <option>€ EUR</option>
                               </select>
                             </form>
                           </Box>
-<<<<<<< HEAD
-                          
-                         {currency === "USD" ? <p>$20k</p> : <p>€20k</p>}
-                          
-=======
 
                           {currency === "USD" ? <p>$20k</p> : <p>€20k</p>}
->>>>>>> master
                         </Box>
                         <Box
                           padding=".7rem 1.5rem"
@@ -478,11 +406,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>Email</p>
-<<<<<<< HEAD
-                                  {email_verified ? (
-=======
                                   {userDetails?.has_verified_email ? (
->>>>>>> master
                                     <svg
                                       width="16"
                                       height="16"
@@ -560,11 +484,7 @@ const Dashboard = () => {
 
                                   <p>Phone Number</p>
 
-<<<<<<< HEAD
-                                  {phone_verified ? (
-=======
                                   {userDetails?.has_verified_phone_number ? (
->>>>>>> master
                                     <svg
                                       width="16"
                                       height="16"
@@ -652,11 +572,7 @@ const Dashboard = () => {
                                   </svg>
 
                                   <p>KYC Verification</p>
-<<<<<<< HEAD
-                                  {kyc_verified ? (
-=======
                                   {userDetails?.has_completed_kyc ? (
->>>>>>> master
                                     <svg
                                       width="15"
                                       height="15"
@@ -765,11 +681,7 @@ const Dashboard = () => {
                         <Box>
                           <Stack spacing={2}>
                             <h6 className="name-account">
-<<<<<<< HEAD
-                              Hello <span>{firstName}</span> {lastName}
-=======
                               {/* Hello <span>{first_name}</span> {last_name} */}
->>>>>>> master
                             </h6>
                             <p className="welcome-account">
                               Welcome to your dashboard
@@ -2612,11 +2524,7 @@ const Dashboard = () => {
 
                             <p>Email</p>
 
-<<<<<<< HEAD
-                            {email_verified ? (
-=======
                             {userDetails?.has_verified_email ? (
->>>>>>> master
                               <svg
                                 width="16"
                                 height="16"
@@ -2693,11 +2601,7 @@ const Dashboard = () => {
 
                             <p>Phone Number</p>
 
-<<<<<<< HEAD
-                            {phone_verified ? (
-=======
                             {userDetails?.has_verified_phone_number ? (
->>>>>>> master
                               <svg
                                 width="16"
                                 height="16"
@@ -2786,11 +2690,7 @@ const Dashboard = () => {
 
                             <p>KYC Verification</p>
 
-<<<<<<< HEAD
-                            {kyc_verified ? (
-=======
                             {userDetails?.has_completed_kyc ? (
->>>>>>> master
                               <svg
                                 width="16"
                                 height="16"

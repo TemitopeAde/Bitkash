@@ -48,10 +48,6 @@ const Register2 = ({
               <Stack>
                 <p className="step-one mb-3">Step 2 of 2</p>
                 <p className="step-one-title mb-5">Address info</p>
-<<<<<<< HEAD
-                
-=======
->>>>>>> master
               </Stack>
 
               <Box className="register-form-grid">
@@ -66,15 +62,11 @@ const Register2 = ({
                         onChange={handleChange}
                         value={formData.country}
                       >
-<<<<<<< HEAD
-                        <option disabled>select country</option>
-=======
                         <option disabled value="">
                           Select country
                         </option>
                         <option>United Kingdom</option>
                         <option>United States</option>
->>>>>>> master
                         <option>Afghanistan</option>
                         <option>Aland Islands</option>
                         <option>Albania</option>
@@ -333,11 +325,7 @@ const Register2 = ({
                         <option>Zambia</option>
                         <option>Zimbabwe</option>
                       </select>
-<<<<<<< HEAD
-                      <p className="form-error">{errors?.currency}</p>
-=======
                       <p className="form-error">{errors?.country}</p>
->>>>>>> master
                     </div>
                     <div className="register-last-name">
                       <label htmlFor="register-state">State/County</label>
@@ -376,19 +364,11 @@ const Register2 = ({
                         id="register-zip"
                         type="number"
                         className="form-control"
-<<<<<<< HEAD
-                        name="zipCode"
-                        onChange={handleChange}
-                        value={formData.zipCode}
-                      />
-                      <p className="form-error">{errors?.zipCode}</p>
-=======
                         name="zip_code"
                         onChange={handleChange}
                         value={formData.zip_code}
                       />
                       <p className="form-error">{errors?.zip_code}</p>
->>>>>>> master
                     </div>
                   </div>
                   <div
@@ -399,21 +379,12 @@ const Register2 = ({
                       <label htmlFor="register-street">Street address</label>
                       <textarea
                         id="register-street"
-<<<<<<< HEAD
-                        name="streetAddress"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={formData.streetAddress}
-                      ></textarea>
-                      <p className="form-error">{errors?.streetAddress}</p>
-=======
                         name="street_address"
                         className="form-control"
                         onChange={handleChange}
                         value={formData.street_address}
                       ></textarea>
                       <p className="form-error">{errors?.street_address}</p>
->>>>>>> master
                     </div>
                   </div>
                   <div
@@ -431,10 +402,6 @@ const Register2 = ({
                         onChange={handleChanges}
                         style={{ transform: "scale(1.4)" }}
                         id="register-2-check"
-<<<<<<< HEAD
-                        
-=======
->>>>>>> master
                       />
 
                       <label htmlFor="register-2-check">

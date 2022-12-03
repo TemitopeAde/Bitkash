@@ -110,11 +110,7 @@
     right: 0px;
     left: 300px;
     background: rgba(255, 223, 184, 0.2);
-<<<<<<< HEAD
-    bottom: 0;
-=======
     /* bottom: 0; */
->>>>>>> master
 }
 
 .disabled-btns {
@@ -178,10 +174,7 @@ ul {
     gap: 10px;
     transition: all .5s;
     margin: 0;
-<<<<<<< HEAD
-=======
     font-size: 1rem;
->>>>>>> master
 }
 
 .nav-icons a p {
@@ -196,12 +189,6 @@ ul {
     color: black;
 }
 
-<<<<<<< HEAD
-.nav-icons a:hover path {
-    stroke: #000000;
-}
-
-=======
 .nav-icons a:hover path,
 .active svg path {
     stroke: #000000 !important;
@@ -211,7 +198,6 @@ ul {
 
 
 
->>>>>>> master
 .nav-icons p {
     margin: 0;
 }

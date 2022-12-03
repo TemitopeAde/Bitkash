@@ -29,41 +29,6 @@ const Register = () => {
   const form1 = useRef();
   const form2 = useRef();
   const [formData, setFormData] = useState({
-<<<<<<< HEAD
-    firstName: "djkw",
-    email: "adesiyantope2014@gmail.com",
-    password: "123456",
-    password2: "123456",
-    currency: "USD",
-    lastName: "mkkee3",
-    phone: "2347038347584",
-    language: "ENG",
-    country: "jjs",
-    state: "osu",
-    city: "drr",
-    zipCode: "23412",
-    streetAddress: "nnnnnnnnnnnnnnnnn",
-    role: 1,
-    terms: false,
-  });
-  const {
-    firstName,
-    email,
-    password,
-    password2,
-    currency,
-    lastName,
-    phone,
-    language,
-    country,
-    state,
-    city,
-    zipCode,
-    streetAddress,
-    terms,
-  } = formData;
-
-=======
     first_name: "",
     email: "",
     password: "123456789",
@@ -80,7 +45,6 @@ const Register = () => {
   });
 
   
->>>>>>> master
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(formData));
@@ -97,22 +61,6 @@ const Register = () => {
       errors.email = "Invalid Email";
     }
 
-<<<<<<< HEAD
-    if (!values.firstName) {
-      errors.firstName = "Firstname is required";
-    } else if (values.firstName.length < 2) {
-      errors.firstName = "Firstname is too short";
-    } else if (/\d/.test(values.firstName)) {
-      errors.firstName = "Firstname should not contain number";
-    }
-
-    if (!values.lastName) {
-      errors.LastName = "Lastname is required";
-    } else if (values.lastName.length < 2) {
-      errors.lastName = "Lastname is too short";
-    } else if (/\d/.test(values.firstName)) {
-      errors.lastName = "Lastname should not contain number";
-=======
     if (!values.first_name) {
       errors.first_name = "Firstname is required";
     } else if (values.first_name.length < 2) {
@@ -127,29 +75,10 @@ const Register = () => {
       errors.last_name = "Lastname is too short";
     } else if (/\d/.test(values.last_name)) {
       errors.last_name = "Lastname should not contain number";
->>>>>>> master
     }
 
     if (!values.password) {
       errors.password = "Password is required";
-<<<<<<< HEAD
-    } else if (values.password.length < 6) {
-      errors.password = "Password length is too short";
-    }
-
-    if (!values.phone) {
-      errors.password = "Phone number is required";
-    } else if (values.phone.length > 13) {
-      errors.password = "Enter a valid phone number";
-    }
-
-    if (!values.password2) {
-      errors.password2 = "Password is required";
-    } else if (values.password2.length < 6) {
-      errors.password2 = "Password length is too short";
-    } else if (values.password !== values.password2) {
-      errors.password2 = "Passwords do not match";
-=======
     } else if (values.password.length < 8) {
       errors.password = "Password length is too short";
     }
@@ -166,7 +95,6 @@ const Register = () => {
       errors.confirm_password = "Password length is too short";
     } else if (values.password !== values.confirm_password) {
       errors.confirm_password = "Passwords do not match";
->>>>>>> master
     }
 
     if (!values.state) {
@@ -177,21 +105,12 @@ const Register = () => {
       errors.country = "Select your home country";
     }
 
-<<<<<<< HEAD
-    if (!values.zipCode) {
-      errors.zipCode = "Enter your zip code";
-    } else if (/[a-zA-Z]/.test(values.zipCode)) {
-      errors.zipCode = "Enter a valid zip code";
-    } else if (values.zipCode.length !== 5) {
-      errors.zipCode = "Enter a valid zip code";
-=======
     if (!values.zip_code) {
       errors.zip_code = "Enter your zip code";
     } else if (/[a-zA-Z]/.test(values.zip_code)) {
       errors.zip_code = "Enter a valid zip code";
     } else if (values.zip_code.length !== 5) {
       errors.zip_Code = "Enter a valid zip code";
->>>>>>> master
     }
 
     if (!values.city) {
@@ -200,40 +119,24 @@ const Register = () => {
       errors.city = "Enter a valid city";
     }
 
-<<<<<<< HEAD
-    if (!values.streetAddress) {
-      errors.streetAddress = "Enter your street address";
-    }
-
-    if (values.terms === false) {
-      errors.terms = "Kindly accept the terms and conditions";
-=======
     if (!values.street_address) {
       errors.street_address = "Enter your street address";
->>>>>>> master
     }
 
     return errors;
   };
-<<<<<<< HEAD
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-=======
   const emailVerificationSent = useSelector(
     (state) => state.auth.emailVerificationSent
   );
   const isAuthenticated = useSelector((state) => state.loader.isAuthenticated);
->>>>>>> master
   const loader = useSelector((state) => state.loader.loading);
   const message = useSelector((state) => state.auth.message);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-<<<<<<< HEAD
-=======
   console.log(emailVerificationSent);
 
->>>>>>> master
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
 
@@ -254,11 +157,7 @@ const Register = () => {
     return <Spinner />;
   }
 
-<<<<<<< HEAD
-  if (width > 820 && !isAuthenticated) {
-=======
   if (width > 820 && !emailVerificationSent) {
->>>>>>> master
     return (
       <motion.div
         variants={animations}
@@ -295,10 +194,6 @@ const Register = () => {
                     setFormData={setFormData}
                     handleChange={handleChange}
                     setForm={setForm}
-<<<<<<< HEAD
-                    phone={phone}
-=======
->>>>>>> master
                     handleSubmit={handleSubmit}
                     errors={errors}
                   />
@@ -329,14 +224,6 @@ const Register = () => {
     );
   }
 
-<<<<<<< HEAD
-  if (isAuthenticated) {
-    return <Navigate to="/email-verification" />;
-  }
-
-  if (width <= 820) {
-    console.log("small screen");
-=======
   if (emailVerificationSent) {
     return <Navigate to="/email-verification" />;
   }
@@ -346,7 +233,6 @@ const Register = () => {
   }
 
   if (width <= 820 && !emailVerificationSent) {
->>>>>>> master
     return (
       <Box>
         <Helmet>
@@ -391,38 +277,19 @@ const Register = () => {
                       <div className="register-name mobile-register-field">
                         <label htmlFor="first-name">First name</label>
                         <input
-<<<<<<< HEAD
-                          name="firstName"
-=======
                           name="first_name"
->>>>>>> master
                           className="form-control"
                           id="first-name"
                           type="text"
                           onChange={handleChange}
-<<<<<<< HEAD
-                          value={formData.firstName}
-                        />
-                        <p className="form-error">{errors?.firstName}</p>
-=======
                           value={formData.first_name}
                         />
                         <p className="form-error">{errors?.first_name}</p>
->>>>>>> master
                       </div>
                       <div className="register-last-name mobile-register-field">
                         <label htmlFor="last-name">Last name</label>
                         <input
                           className="form-control"
-<<<<<<< HEAD
-                          name="lastName"
-                          id="last-name"
-                          type="text"
-                          onChange={handleChange}
-                          value={formData.lastName}
-                        />
-                        <p className="form-error">{errors?.LastName}</p>
-=======
                           name="last_name"
                           id="last-name"
                           type="text"
@@ -430,7 +297,6 @@ const Register = () => {
                           value={formData.last_name}
                         />
                         <p className="form-error">{errors?.last_name}</p>
->>>>>>> master
                       </div>
                       <div className="register-name mobile-register-field">
                         <label htmlFor="register-email-address">Email</label>
@@ -449,17 +315,6 @@ const Register = () => {
 
                         <PhoneInput
                           inputProps={{
-<<<<<<< HEAD
-                            name: "phone",
-                          }}
-                          country={"us"}
-                          value={formData.phone}
-                          onChange={(e) =>
-                            setFormData({ ...formData, phone: e })
-                          }
-                        />
-                        <p className="form-error">{errors?.phone}</p>
-=======
                             name: "phone_number",
                           }}
                           country={"us"}
@@ -469,7 +324,6 @@ const Register = () => {
                           }
                         />
                         <p className="form-error">{errors?.phone_number}</p>
->>>>>>> master
                       </div>
                       <div className="register-name mobile-register-field">
                         <label htmlFor="register-password">Password</label>
@@ -521,16 +375,6 @@ const Register = () => {
 
                         <Box position="relative">
                           <input
-<<<<<<< HEAD
-                            name="password2"
-                            className="form-control"
-                            type={passwordShown ? "text" : "password"}
-                            id="regsiter-confirm-password"
-                            value={formData.password2}
-                            onChange={handleChange}
-                          />
-                          <p className="form-error">{errors?.password2}</p>
-=======
                             name="confirm_password"
                             className="form-control"
                             type={passwordShown ? "text" : "password"}
@@ -541,7 +385,6 @@ const Register = () => {
                           <p className="form-error">
                             {errors?.confirm_password}
                           </p>
->>>>>>> master
                           <Box
                             position="absolute"
                             sx={{ right: "20px", top: "7px" }}
@@ -581,12 +424,9 @@ const Register = () => {
                           onChange={handleChange}
                           value={formData.currency}
                         >
-<<<<<<< HEAD
-=======
                           <option disabled value="">
                             Select currency
                           </option>
->>>>>>> master
                           <option>EUR</option>
                           <option>USD</option>
                         </select>
@@ -598,17 +438,6 @@ const Register = () => {
                         </label>
                         <select
                           className="form-control"
-<<<<<<< HEAD
-                          name="language"
-                          id="register-language"
-                          onChange={handleChange}
-                          value={formData.language}
-                        >
-                          <option>ENG</option>
-                          <option>FRA</option>
-                        </select>
-                        <p className="form-error">{errors?.language}</p>
-=======
                           name="preferred_language"
                           id="register-language"
                           onChange={handleChange}
@@ -623,7 +452,6 @@ const Register = () => {
                         <p className="form-error">
                           {errors?.preferred_language}
                         </p>
->>>>>>> master
                       </div>
                       <div className="register-last-name mobile-register-field">
                         <button
@@ -948,16 +776,7 @@ const Register = () => {
                         <p className="form-error">{errors?.state}</p>
                       </div>
                       <div className="register-city  mobile-register-field">
-<<<<<<< HEAD
-                        <label
-                          
-                          htmlFor="register-city"
-                        >
-                          City
-                        </label>
-=======
                         <label htmlFor="register-city">City</label>
->>>>>>> master
                         <input
                           id="register-city"
                           type="text"
@@ -974,39 +793,22 @@ const Register = () => {
                           id="register-zip"
                           type="number"
                           className="form-control"
-<<<<<<< HEAD
-                          name="zipCode"
-                          onChange={handleChange}
-                          value={formData.zipCode}
-                        />
-                        <p className="form-error">{errors?.zipCode}</p>
-=======
                           name="zip_code"
                           onChange={handleChange}
                           value={formData.zip_code}
                         />
                         <p className="form-error">{errors?.zip_code}</p>
->>>>>>> master
                       </div>
                       <div className="register-name  mobile-register-field">
                         <label htmlFor="register-street">Street address</label>
                         <textarea
                           id="register-street"
-<<<<<<< HEAD
-                          name="streetAddress"
-                          className="form-control"
-                          onChange={handleChange}
-                          value={formData.streetAddress}
-                        ></textarea>
-                        <p className="form-error">{errors?.streetAddress}</p>
-=======
                           name="street_address"
                           className="form-control"
                           onChange={handleChange}
                           value={formData.street_address}
                         ></textarea>
                         <p className="form-error">{errors?.street_address}</p>
->>>>>>> master
                       </div>
 
                       <div
@@ -1073,10 +875,6 @@ const Register = () => {
       </Box>
     );
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 };
 
 export default Register;

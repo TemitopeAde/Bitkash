@@ -15,13 +15,8 @@ const Hero = () => {
               Buy <span>Bitcoin</span> The Fast and Secure Way
             </h4>
             <p>
-<<<<<<< HEAD
-              With Bitkash, you can buy cryptocurrency through your bank. We
-              make it easy, fast, and 100% secure. Bitkash is one of the
-=======
               With Bitkash, you can buy cryptocurrency through your bank. <br />We
               make it easy, fast, and 100% secure. Bitkash is one of the <br />
->>>>>>> master
               fastest-growing brokerage firms worldwide.
             </p>
             <Link to="/register">Get Started Now</Link>

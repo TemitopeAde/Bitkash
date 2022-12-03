@@ -110,23 +110,15 @@
     box-shadow: none !important;
 }
 
-<<<<<<< HEAD
-
-=======
 .register-one-form .form-control {
     /* width: 50%; */
 }
->>>>>>> master
 
 .react-tel-input .form-control {
     border: 1px solid #FF9924 !important;
     margin-left: 2rem !important;
     height: 50px !important;
-<<<<<<< HEAD
-    width: 88% !important;
-=======
     width: 92% !important;
->>>>>>> master
     padding-left: 0 !important;
 }
 
@@ -325,20 +317,13 @@ select.form-control {
 }
 
 .form-one {
-<<<<<<< HEAD
-    position: absolute;
-=======
     /* position: absolute; */
->>>>>>> master
     top: 0;
     opacity: 0;
     visibility: hidden;
     transition: .7s;
     display: none;
-<<<<<<< HEAD
-=======
     margin-right: 20%;
->>>>>>> master
 }
 
 .form-two {
@@ -348,10 +333,7 @@ select.form-control {
     visibility: hidden;
     transition: .7s;
     display: none;
-<<<<<<< HEAD
-=======
     left: 38%;
->>>>>>> master
 }
 
 .form-toggle {
@@ -612,14 +594,11 @@ label {
         border-radius: 10px;
     }
 
-<<<<<<< HEAD
-=======
     .phone-otp-flex input {
         width: 60px !important;
         height: 60px !important;
     }
 
->>>>>>> master
 }
 
 

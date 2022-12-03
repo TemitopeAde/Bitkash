@@ -14,13 +14,8 @@
 .hero-flex-new h4 {
     font-family: 'Circular Std';
     font-style: normal;
-<<<<<<< HEAD
-    font-weight: 700;
-    font-size: 64px;
-=======
     font-weight: 800;
     font-size: 54px;
->>>>>>> master
     line-height: 80px;
     /* or 125% */
 
@@ -34,13 +29,8 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-<<<<<<< HEAD
-    font-size: 30px;
-    line-height: 45px;
-=======
     font-size: 16px;
     line-height: 24px;
->>>>>>> master
     /* or 150% */
     color: #FFFFFF;
 
@@ -52,14 +42,6 @@
     padding: .7rem 1rem;
     text-decoration: none;
     border-radius: 5px;
-<<<<<<< HEAD
-    width: 364px;
-    text-align: center;
-    font-size: 30px;
-    height: 70px;
-    font-family: 'Poppins';
-    font-weight: 500;
-=======
     text-align: center;
     font-size: 21px;
     font-family: 'Poppins';
@@ -70,7 +52,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
->>>>>>> master
 }
 
 .hero-flex-container {
@@ -89,11 +70,7 @@
 .hero-flex-new {
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
-    gap: 30px;
-=======
     gap: 34px;
->>>>>>> master
 }
 
 

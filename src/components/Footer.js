@@ -13,9 +13,6 @@ const Footer = () => {
         <Box className="footer-grid">
           <Box>
             <Stack spacing={5}>
-<<<<<<< HEAD
-              <img className="logo" src={Logo} alt="logo" />
-=======
               <div>
                 <svg
                   width="261"
@@ -82,7 +79,6 @@ const Footer = () => {
                   />
                 </svg>
               </div>
->>>>>>> master
 
               <h6 className="text">
                 Bitkash.io is a fast-rising global cryptocurrency broker that is
@@ -93,15 +89,6 @@ const Footer = () => {
 
               <Stack className="social-icons" spacing={3} direction="row">
                 <Link to="/">
-<<<<<<< HEAD
-                  <img src={instagram} alt="instagram" />
-                </Link>
-                <Link to="/">
-                  <img src={facebook} alt="facebook" />
-                </Link>
-                <Link to="/">
-                  <img src={phone} alt="telephone" />
-=======
                   <svg
                     width="24"
                     height="24"
@@ -171,18 +158,13 @@ const Footer = () => {
                       strokeMiterlimit="10"
                     />
                   </svg>
->>>>>>> master
                 </Link>
               </Stack>
             </Stack>
           </Box>
           <Box>
             <Stack spacing={1} className="footer-flex-mobile">
-<<<<<<< HEAD
-              <Link style={{ color: "#46494D", fontWeight: "700" }} to="/">
-=======
               <Link style={{ color: " #FF9924", fontWeight: "700" }} to="/">
->>>>>>> master
                 Buy Bitcoin
               </Link>
               <Link to="/">Get started</Link>
@@ -192,13 +174,9 @@ const Footer = () => {
           </Box>
           <Box className="hide">
             <Stack spacing={1}>
-<<<<<<< HEAD
-              <Link style={{ color: "#46494D", fontWeight: "700" }} to="/">Bitkash</Link>
-=======
               <Link style={{ color: "#FF9924", fontWeight: "700" }} to="/">
                 Bitkash
               </Link>
->>>>>>> master
               <Link to="/">FAQ</Link>
               <Link to="/">About Us</Link>
               <Link to="/">Delivery Policy</Link>
@@ -206,13 +184,9 @@ const Footer = () => {
           </Box>
           <Box className="hide">
             <Stack spacing={1}>
-<<<<<<< HEAD
-              <Link style={{ color: "#46494D", fontWeight: "700" }} to="/">Legal Terms</Link>
-=======
               <Link style={{ color: "#FF9924", fontWeight: "700" }} to="/">
                 Legal Terms
               </Link>
->>>>>>> master
               <Link to="/">Privacy policy</Link>
               <Link to="/">Refund and Cancellation Policy</Link>
               <Link to="/">Risk and Safety Policy</Link>
@@ -220,13 +194,9 @@ const Footer = () => {
           </Box>
           <Box className="hide">
             <Stack spacing={1}>
-<<<<<<< HEAD
-              <Link style={{ color: "#46494D", fontWeight: "700" }} to="/">Contact</Link>
-=======
               <Link style={{ color: "#FF9924", fontWeight: "700" }} to="/">
                 Contact
               </Link>
->>>>>>> master
               <a href="mailto:contact@bitkash.com">contact@bitkash.com</a>
               <Link to="/">No 14, London, UK</Link>
               <a href="tel:+123456789">123456789</a>

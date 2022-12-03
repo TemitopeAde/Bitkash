@@ -99,11 +99,7 @@
     }
 
     .mobile-navlist,
-<<<<<<< HEAD
-    .hamburger { 
-=======
     .hamburger {
->>>>>>> master
         display: block;
     }
     .mobile-navlist.toggle {

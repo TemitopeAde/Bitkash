@@ -1,20 +1,9 @@
 import { Box, Container, Stack } from "@mui/material";
 import React, { useState } from "react";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
-
-import "./dashboard.css";
-import logo from "../assets/icons/header-white.png";
-import icon1 from "../assets/icons/note-2.png";
-import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
-=======
 import { Helmet } from "react-helmet";
 
 import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
->>>>>>> master
 import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
 import phone from "../assets/images/phone-gray.png";
@@ -139,11 +128,7 @@ const PhoneOTP = () => {
                           A 4 digit OTP code has been sent to this number{" "}
                           <a
                             style={{ color: "#ff9924" }}
-<<<<<<< HEAD
-                            href="tel:++1234567890"
-=======
                             href="tel:+1234567890"
->>>>>>> master
                           >
                             +1234567890
                           </a>

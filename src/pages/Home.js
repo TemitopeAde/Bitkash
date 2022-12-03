@@ -11,13 +11,6 @@ import Footer from "../components/Footer";
 import Footer2 from "../components/Footer2";
 import Header from "../components/Header";
 import { motion } from "framer-motion";
-<<<<<<< HEAD
-import axios from "axios";
-import { useEffect } from "react";
-
-
-=======
->>>>>>> master
 
 const animations = {
   initial: { opacity: 0 },
@@ -25,16 +18,7 @@ const animations = {
   exit: { opacity: 0 },
 };
 
-<<<<<<< HEAD
-
-
-
 const Home = () => {
-
-  
-=======
-const Home = () => {
->>>>>>> master
   return (
     <motion.div
       variants={animations}
@@ -44,11 +28,7 @@ const Home = () => {
     >
       <Box>
         <Header />
-<<<<<<< HEAD
-        <Hero  />
-=======
         <Hero />
->>>>>>> master
         <SectionOne />
         <HowItWorks />
         <NeedUs />
@@ -60,12 +40,6 @@ const Home = () => {
       </Box>
     </motion.div>
   );
-<<<<<<< HEAD
-  
-}
-
-=======
 };
->>>>>>> master
 
 export default Home;

@@ -4,11 +4,7 @@
 }
 
 .register-content {
-<<<<<<< HEAD
-    padding-right: 30%;
-=======
     padding-right: 20%;
->>>>>>> master
 }
 
 .form-control {
@@ -33,11 +29,7 @@ body {
 }
 
 .otp-submit {
-<<<<<<< HEAD
-    width: 250px;
-=======
     width: 151px;
->>>>>>> master
     background-color: #FF9924;
     height: 50px;
     font-family: 'Poppins';
