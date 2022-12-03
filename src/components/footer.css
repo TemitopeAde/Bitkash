@@ -1,15 +1,27 @@
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr repeat(4, 1fr);
+<<<<<<< HEAD
     gap: 50px;
+=======
+    gap: 20px;
+>>>>>>> master
     font-family: 'Poppins';
 
 }
 
 .footer {
+<<<<<<< HEAD
     padding: 2rem;
     background: #F16A23;
     color: #fff;
+=======
+    padding: 7rem;
+    /* background: #F16A23; */
+    color: #fff;
+    background: #292D32;
+    border-top: 3px solid #FF9924;
+>>>>>>> master
 }
 
 .footer .logo {
@@ -38,8 +50,15 @@
     transition: .7s;
 }
 
+<<<<<<< HEAD
 .footer a:hover {
     color: #000;
+=======
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #FAFAFA;
+>>>>>>> master
 }
 
 .footer .text {
@@ -48,7 +67,10 @@
     font-size: 16px;
     line-height: 36px;
     letter-spacing: -0.02em;
+<<<<<<< HEAD
     font-family: 'Lexend Deca'
+=======
+>>>>>>> master
 }
 
 .footer2 {

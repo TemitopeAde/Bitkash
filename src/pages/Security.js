@@ -1,15 +1,26 @@
+<<<<<<< HEAD
 import { Box, Container, Stack } from "@mui/material";
+=======
+import { Box, Container } from "@mui/material";
+>>>>>>> master
 import React, { useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+<<<<<<< HEAD
 
 import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
+=======
+import { Navigate } from "react-router-dom";
+
+import "./dashboard.css";
+>>>>>>> master
 import MobileNav from "../components/mobileNav";
 import key from "../assets/images/key-square.png";
 import edit from "../assets/images/edit-2.png";
 import profile from "../assets/images/profile.png";
+<<<<<<< HEAD
 import tick from "../assets/images/tick-circle.png";
 import Sidebar from "../components/Sidebar";
 
@@ -31,6 +42,45 @@ const Security = () => {
     fileRef.current.click();
   };
 
+=======
+import Sidebar from "../components/Sidebar";
+import DashboardHeader from "../components/DashboardHeader";
+
+const Security = () => {
+  const [tab, setTab] = useState(0);
+  const [image, setImage] = useState("");
+  const formRef = useRef(null);
+  const fileRef = useRef(null);
+  const btnRef = useRef(null);
+  const uploadRef = useRef(null);
+  const currentUser = localStorage.getItem("user");
+  const userDetails = JSON.parse(currentUser);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  console.log(image.name);
+
+  const handleClick = (e) => {
+    fileRef.current.click();
+  };
+
+  const handleChange = (e) => {
+    // console.log(e.target.files);
+    setImage(e.target.files[0]);
+    // formRef.current.submit();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image.name);
+    console.log(formData);
+  };
+
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/login" />
+  // }
+
+>>>>>>> master
   if (window.innerWidth > 820) {
     return (
       <Box>
@@ -45,6 +95,7 @@ const Security = () => {
             <Sidebar />
 
             <Box className="dashboard-content">
+<<<<<<< HEAD
               <Box className="dashboard-header">
                 <Container
                   style={{ display: "flex", justifyContent: "flex-end" }}
@@ -91,6 +142,9 @@ const Security = () => {
                   </Box>
                 </Container>
               </Box>
+=======
+              <DashboardHeader />
+>>>>>>> master
 
               <Box
                 className="dashboard-inner py-5 dashboard-padding"
@@ -186,8 +240,24 @@ const Security = () => {
                               </button>
                             </Box>
 
+<<<<<<< HEAD
                             <form action="" className="profile-form-2">
                               <input type="file" id="my-file" ref={fileRef} />
+=======
+                            <form
+                              className="profile-form-2"
+                              ref={formRef}
+                              encType="multipart/form-data"
+                              onSubmit={handleSubmit}
+                            >
+                              <input
+                                type="file"
+                                id="my-file"
+                                ref={fileRef}
+                                onChange={handleChange}
+                              />
+                              <button type="submit">Submit</button>
+>>>>>>> master
                             </form>
                           </Box>
                           <Box>
@@ -208,22 +278,38 @@ const Security = () => {
                         <div className="profile-flex-items">
                           <div>
                             <h6>First name:</h6>
+<<<<<<< HEAD
                             <p>Oluseyi</p>
                           </div>
                           <div>
                             <h6>Last name:</h6>
                             <p>Olubanjo</p>
+=======
+                            <p>{userDetails?.firstName}</p>
+                          </div>
+                          <div>
+                            <h6>Last name:</h6>
+                            <p>{userDetails?.lastName}</p>
+>>>>>>> master
                           </div>
                         </div>
 
                         <div className="profile-flex-items">
                           <div>
                             <h6>Phone number:</h6>
+<<<<<<< HEAD
                             <p>4443</p>
                           </div>
                           <div>
                             <h6>Email address:</h6>
                             <p>Oluseyi@gmail.com</p>
+=======
+                            <p>{userDetails?.phone}</p>
+                          </div>
+                          <div>
+                            <h6>Email address:</h6>
+                            <p>{userDetails?.email}</p>
+>>>>>>> master
                           </div>
                         </div>
                       </div>
@@ -365,7 +451,11 @@ const Security = () => {
                           }}
                         >
                           <h6>Email Verification</h6>
+<<<<<<< HEAD
                           {email_verified ? (
+=======
+                          {userDetails?.email_verified ? (
+>>>>>>> master
                             <svg
                               width="16"
                               height="16"
@@ -436,7 +526,11 @@ const Security = () => {
                           }}
                         >
                           <h6>Phone number</h6>
+<<<<<<< HEAD
                           {phone_verified ? (
+=======
+                          {userDetails?.phone_verified ? (
+>>>>>>> master
                             <svg
                               width="16"
                               height="16"
@@ -507,7 +601,11 @@ const Security = () => {
                           }}
                         >
                           <h6>KYC</h6>
+<<<<<<< HEAD
                           {kyc_verified ? (
+=======
+                          {userDetails?.kyc_verified ? (
+>>>>>>> master
                             <svg
                               width="15"
                               height="15"

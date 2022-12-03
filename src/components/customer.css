@@ -1,6 +1,10 @@
 .customer {
     font-family: 'Poppins';
+<<<<<<< HEAD
     padding: 5rem;
+=======
+    padding: 8.5rem;
+>>>>>>> master
 }
 
 .customer .cust-title {
@@ -14,6 +18,10 @@
     display: flex;
     justify-content: flex-start;
     column-gap: 20px;
+<<<<<<< HEAD
+=======
+    align-items: baseline;
+>>>>>>> master
 }
 
 .customer-flex {
@@ -25,7 +33,11 @@
 }
 
 .customer-items {
+<<<<<<< HEAD
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+=======
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+>>>>>>> master
     padding: 3rem;
     border-radius: 10px;
     border: 1px solid #F16A23;

@@ -1,10 +1,20 @@
 import { useEffect } from "react";
+<<<<<<< HEAD
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import "./index.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+=======
+import { Routes, Route, useParams } from "react-router-dom";
+
+import Home from "./pages/Home";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+>>>>>>> master
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Buy from "./pages/Buy";
@@ -15,7 +25,11 @@ import EmailConfirmation from "./pages/Email-confirmation";
 import Register from "./pages/Register";
 import { AnimatePresence } from "framer-motion";
 import VerificationComplete from "./pages/Verification-complete";
+<<<<<<< HEAD
 // import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
+=======
+import UpdateEmailAndPhoneInput from "./pages/UpdateEmailandPhoneInput";
+>>>>>>> master
 import SucessRegistrationPage from "./pages/SucessRegistrationPage";
 import Dashboard from "./pages/Dasboard";
 import BuyConfirm from "./pages/BuyConfirm";
@@ -27,6 +41,12 @@ import PhoneOTP from "./pages/PhoneOTP";
 import VerificationSuccessful from "./pages/Verification-successful";
 import ChangePassword from "./pages/ChangePassword";
 import Notification from "./pages/Notification";
+<<<<<<< HEAD
+=======
+
+import { useSelector } from "react-redux";
+import ProtectedRoute from "./ProtectedRoute";
+>>>>>>> master
 import EmailVerification from "./pages/EmailVerification";
 import EmailAndPhone from "./pages/EmailAndPhone";
 import RecoverPasswordConfirm from "./pages/RecoverPasswordConfirm";
@@ -37,6 +57,7 @@ import Logout from "./pages/Logout";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhoneNumber from "./pages/ChangeNumber";
 import { getAllTransactions } from "./state/action-creators";
+<<<<<<< HEAD
 import Test from "./pages/test";
 import About from "./pages/about";
 import Contact from "./pages/contact";
@@ -51,6 +72,10 @@ import UsersList from "./pages/admin/users-list";
 import UserDetails from "./pages/admin/user-details";
 import AdminsList from "./pages/admin/admins-list";
 import AddAdmin from "./pages/admin/add-admin";
+=======
+import Reg from "./pages/Registration";
+import Modal from "./components/Modal";
+>>>>>>> master
 
 function App() {
   useEffect(() => {
@@ -60,6 +85,7 @@ function App() {
   return (
     <AnimatePresence>
       <Routes>
+<<<<<<< HEAD
         <Route exact path='/home' element={<Home />} />
         <Route exact path='/' element={<Homepage />} />
         <Route path='/test' element={<Test />} />
@@ -125,6 +151,61 @@ function App() {
         <Route path='/logout' element={<Logout />} />
         <Route path='/update-email' element={<ChangeEmail />} />
         <Route path='/update-phone' element={<ChangePhoneNumber />} />
+=======
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/reg" element={<Reg />} />
+        <Route path="/kyc-verification" element={<Signup />} />
+        {/* <Route element={<ProtectedRoute />}> */}
+
+        {/* </Route> */}
+
+        <Route path="/buy-bitcoin" element={<Buy />} />
+        <Route path="/transaction-history" element={<History />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/banks" element={<Banks />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/update-email" element={<ChangeEmail />} />
+        <Route path="/update-phone" element={<ChangePhoneNumber />} />
+        <Route path="/user-dashboard" element={<Dashboard />} />
+        <Route path="/payment-details" element={<BuyConfirm />} />
+        <Route path="/pasword-and-security" element={<Security />} />
+        <Route path="/two-factor-authentication" element={<TwoFactor />} />
+        <Route path="/goggle-authenticator" element={<GoogleAuth />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/email-verification" element={<EmailVerification />} />
+        <Route path="/logout" element={<Logout />} />
+        
+
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/bank-added" element={<Modal />} />
+        <Route path="/recover-password" element={<RecoverPassword />} />
+        <Route path="/email-confirmation" element={<EmailConfirmation />} />
+        <Route path="/user/verify/:uid" element={<EmailAndPhone />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/registration" element={<Register />} />
+        <Route
+          path="/verification-complete"
+          element={<VerificationComplete />}
+        />
+        <Route path="/email-and-password-sent" element={<PhoneOTP />} />
+        <Route path="/success-page" element={<SucessRegistrationPage />} />
+        <Route path="/phone-verification" element={<PhoneVerification />} />
+        <Route
+          path="/verification-successful"
+          element={<VerificationSuccessful />}
+        />
+        <Route path="/notification" element={<Notification />} />
+
+        <Route
+          path="/recover-password/:token"
+          element={<RecoverPasswordConfirm />}
+        />
+        <Route
+          path="/password-reset-link-sent"
+          element={<PasswordResetLink />}
+        />
+>>>>>>> master
       </Routes>
     </AnimatePresence>
   );

@@ -1,3 +1,40 @@
+<<<<<<< HEAD
+=======
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 2px solid #FF3D00;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    border: 2px solid #FFF;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+>>>>>>> master
 .buy-bitcoin {
     padding: 5rem;
     background-color: rgba(241, 106, 35, 0.06);
@@ -57,6 +94,10 @@
     padding: 5rem;
     font-family: 'Poppins';
     background: #292D32;
+<<<<<<< HEAD
+=======
+    padding-top: 8rem;
+>>>>>>> master
 }
 
 .newsletter-flex {
@@ -75,7 +116,11 @@
     font-size: 16px;
     line-height: 60px;
     letter-spacing: -0.03em;
+<<<<<<< HEAD
     color: #F16A23;
+=======
+    color: #FF9924;
+>>>>>>> master
 }
 
 .para-news {
@@ -120,7 +165,11 @@
     width: 28%;
     height: 54px;
     bottom: 10px;
+<<<<<<< HEAD
     background: #F16A23;
+=======
+    background: #FF9924;
+>>>>>>> master
     border-radius: 8px;
     color: #fff;
     border: none;

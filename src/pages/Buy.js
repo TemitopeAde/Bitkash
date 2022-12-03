@@ -1,6 +1,10 @@
 import { Box, Container, Stack } from "@mui/material";
 import React, { useEffect } from "react";
+<<<<<<< HEAD
 import { Link, Navigate } from "react-router-dom";
+=======
+import { Navigate } from "react-router-dom";
+>>>>>>> master
 import { Helmet } from "react-helmet";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +17,10 @@ import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import { BuyBitcoin } from "../state/action-creators";
 import Spinner from '../components/Spinner';
+<<<<<<< HEAD
+=======
+import DashboardHeader from "../components/DashboardHeader";
+>>>>>>> master
 
 
 const Buy = () => {
@@ -41,8 +49,11 @@ const Buy = () => {
       reciept_wallet: values.wallet,
       fiat_amount: values.price,
       crypto_amount: equivalent,
+<<<<<<< HEAD
       // currency: values.currency,
       // networkType: values.networkType,
+=======
+>>>>>>> master
       payment_type: "transfer",
       transaction_status: "approved"
     };
@@ -118,9 +129,15 @@ const Buy = () => {
     }
   }, [values]);
 
+<<<<<<< HEAD
   // if (!isAuthenticated) {
   //   return <Navigate to="/login" />;
   // }
+=======
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+>>>>>>> master
 
   if (showPay) {
     return <Navigate to="/payment-details" />;
@@ -144,6 +161,7 @@ const Buy = () => {
             <Sidebar />
 
             <Box className="dashboard-content">
+<<<<<<< HEAD
               <Box className="dashboard-header">
                 <Container
                   style={{ display: "flex", justifyContent: "flex-end" }}
@@ -190,6 +208,9 @@ const Buy = () => {
                   </Box>
                 </Container>
               </Box>
+=======
+              <DashboardHeader />
+>>>>>>> master
 
               <Box
                 className="dashboard-inner py-5 dashboard-padding"

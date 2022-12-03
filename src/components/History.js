@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Box, Container, Stack } from "@mui/material";
+=======
+import { Box, Container, ListItemIcon, Stack } from "@mui/material";
+>>>>>>> master
 import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -15,6 +19,7 @@ import ReactPaginate from "react-paginate";
 import axios from "axios";
 
 const History = () => {
+<<<<<<< HEAD
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -33,6 +38,25 @@ const History = () => {
 
     console.log(filtered);
   }, [search, to, from]);
+=======
+  const [items, setItems] = useState([]);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 6;
+
+  const [search, setSearch] = useState("");
+  const [from, setFrom] = useState("");
+  const [dropdown, setDropdown] = useState("");
+  const [to, setTo] = useState("");
+  console.log(search)
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, items]);
+>>>>>>> master
 
   useEffect(() => {
     const fetchHistory = () => {
@@ -48,6 +72,7 @@ const History = () => {
       axios
         .get(url, options)
         .then((data) => {
+<<<<<<< HEAD
           setLoaded(true);
           setItems(data.data.data);
         })
@@ -55,11 +80,36 @@ const History = () => {
           setLoaded(true);
           setError(error);
         });
+=======
+          setItems(data.data.data);
+        })
+        .catch((err) => {});
+>>>>>>> master
     };
 
     fetchHistory();
   }, []);
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    const filtered = items.filter((item) =>
+      search
+        ? item.reciept_wallet.toLowerCase().includes(search.toLowerCase())
+        : items
+    );
+
+    setItems(filtered);
+  }, [search]);
+
+  
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+  };
+
+>>>>>>> master
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -79,9 +129,14 @@ const History = () => {
   function Items() {
     return (
       <>
+<<<<<<< HEAD
         {/* {console.log(filteredData)} */}
         {items &&
           items?.map((row, index) => (
+=======
+        {currentItems &&
+          currentItems?.map((row, index) => (
+>>>>>>> master
             <TableRow
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -100,6 +155,35 @@ const History = () => {
               </TableCell>
             </TableRow>
           ))}
+<<<<<<< HEAD
+=======
+
+        {/* {currentItems
+          ?.filter((item) => {
+            return search.toLowerCase() === ""
+              ? item
+              : item.reciept_wallet.toLowerCase().includes(search.toLowerCase());
+          })
+          .map((row, index) => (
+            <TableRow
+              key={index}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell align="right">{row._id}</TableCell>
+              <TableCell align="right">{row.createdAt}</TableCell>
+              <TableCell align="right">{row.payment_type}</TableCell>
+              <TableCell align="right">{row.crypto_amount}</TableCell>
+              <TableCell align="right">{row.fiat_amount}</TableCell>
+              <TableCell align="right">{row.reciept_wallet}</TableCell>
+              <TableCell
+                className={row.status === "Declined" ? "declined" : "approved"}
+                align="right"
+              >
+                {row.transaction_status}
+              </TableCell>
+            </TableRow>
+          ))} */}
+>>>>>>> master
       </>
     );
   }
@@ -189,7 +273,11 @@ const History = () => {
           </Box>
         </Box>
 
+<<<<<<< HEAD
         {/* {currentItems?.length > 1 && (
+=======
+        {currentItems?.length > 1 && (
+>>>>>>> master
           <Box className="history-pagination">
             <ReactPaginate
               breakLabel="..."
@@ -201,7 +289,11 @@ const History = () => {
               renderOnZeroPageCount={null}
             />
           </Box>
+<<<<<<< HEAD
         )} */}
+=======
+        )}
+>>>>>>> master
       </Container>
     </Box>
   );

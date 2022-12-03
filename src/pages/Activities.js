@@ -7,6 +7,10 @@ import Sidebar from "../components/Sidebar";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import Activity from "../components/Activities";
+<<<<<<< HEAD
+=======
+import DashboardHeader from "../components/DashboardHeader";
+>>>>>>> master
 
 const animations = {
   initial: { opacity: 0 },
@@ -34,6 +38,7 @@ const Activities = () => {
         </motion.div>
 
         <Box className="dashboard-content">
+<<<<<<< HEAD
           <Box className="dashboard-header">
             <Container
               style={{ display: "flex", justifyContent: "flex-end" }}
@@ -88,6 +93,9 @@ const Activities = () => {
               </motion.div>
             </Container>
           </Box>
+=======
+          <DashboardHeader />
+>>>>>>> master
 
           <motion.div
             variants={animations}

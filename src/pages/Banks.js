@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import { Box, Container, Stack } from "@mui/material";
+=======
+import { Box } from "@mui/material";
+>>>>>>> master
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
+<<<<<<< HEAD
 import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
@@ -10,6 +15,15 @@ import Sidebar from "../components/Sidebar";
 import Bank from "../components/Banks";
 import { getAccount } from "../state/action-creators";
 import { getUserBank, getAllAccount } from "../state/action-creators";
+=======
+
+import "./dashboard.css";
+import Sidebar from "../components/Sidebar";
+import Bank from "../components/Banks";
+import { getUserBank } from "../state/action-creators";
+import DashboardHeader from "../components/DashboardHeader";
+
+>>>>>>> master
 
 const animations = {
   initial: { opacity: 0 },
@@ -25,6 +39,7 @@ const animation = {
 
 const Banks = () => {
   const dispatch = useDispatch();
+<<<<<<< HEAD
 
   useEffect(() => {
     // dispatch(getAllAccount());
@@ -32,6 +47,19 @@ const Banks = () => {
     dispatch(getUserBank())
   }, []);
 
+=======
+  const userBanks = useSelector((state) => state.auth.userBanks);
+  const loading = useSelector((state) => state.loader.loading);
+  console.log(userBanks)
+
+  useEffect(() => {
+   
+    dispatch(getUserBank())
+  }, []);
+
+  // if (loading) return <SpinnerTwo />;
+
+>>>>>>> master
   return (
     <Box className="dashboard">
       <Box className="dashboard-grid">
@@ -45,6 +73,7 @@ const Banks = () => {
         </motion.div>
 
         <Box className="dashboard-content">
+<<<<<<< HEAD
           <Box className="dashboard-header">
             <Container
               style={{ display: "flex", justifyContent: "flex-end" }}
@@ -71,6 +100,9 @@ const Banks = () => {
               </motion.div>
             </Container>
           </Box>
+=======
+          <DashboardHeader />
+>>>>>>> master
 
           <motion.div
             variants={animations}
@@ -78,7 +110,13 @@ const Banks = () => {
             animate="animate"
             transition={{ duration: 1 }}
           >
+<<<<<<< HEAD
             <Bank />
+=======
+            <Bank userBanks={userBanks} />
+
+           
+>>>>>>> master
           </motion.div>
         </Box>
       </Box>

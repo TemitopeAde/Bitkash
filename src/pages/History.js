@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Box, Container, Stack } from "@mui/material";
+=======
+import { Box } from "@mui/material";
+>>>>>>> master
 import React, {useEffect} from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
@@ -6,10 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactions } from "../state/action-creators";
 
 import "./dashboard.css";
+<<<<<<< HEAD
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import History from "../components/History";
 import Sidebar from "../components/Sidebar";
+=======
+import History from "../components/History";
+import Sidebar from "../components/Sidebar";
+import DashboardHeader from "../components/DashboardHeader";
+>>>>>>> master
 
 const animations = {
   initial: { opacity: 0 },
@@ -30,7 +40,11 @@ const Histories = () => {
   const transactionHistory = useSelector((state) => state.transactions.history);
   const loader = useSelector((state) => state.loader.loading)
   const dispatch = useDispatch();
+<<<<<<< HEAD
   console.log(transactionHistory, "trans history")
+=======
+  
+>>>>>>> master
 
   useEffect(() => {
     // dispatch(getAllTransactions());
@@ -56,6 +70,7 @@ const Histories = () => {
           </motion.div>
 
           <Box className="dashboard-content">
+<<<<<<< HEAD
             <Box className="dashboard-header">
               <Container
                 style={{ display: "flex", justifyContent: "flex-end" }}
@@ -82,6 +97,9 @@ const Histories = () => {
                 </motion.div>
               </Container>
             </Box>
+=======
+            <DashboardHeader />
+>>>>>>> master
 
             <motion.div
               variants={animations}

@@ -36,7 +36,11 @@ const RecoverPasswordConfirm = () => {
     return errors;
   };
 
+<<<<<<< HEAD
   const { token, id } = useParams();
+=======
+  const { token } = useParams();
+>>>>>>> master
   console.log(token);
 
   const initialValues = {
@@ -56,8 +60,13 @@ const RecoverPasswordConfirm = () => {
   const submitForm = (values) => {
     const payload = {
       password: values.password,
+<<<<<<< HEAD
       token: token,
       id: id,
+=======
+      recover_token: token,
+      confirm_password: values.password,
+>>>>>>> master
     };
 
     dispatch(submitNewPassword(payload));
