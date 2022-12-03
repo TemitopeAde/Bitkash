@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 
 import Home from "./pages/Home";
+import "./index.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AOS from "aos";
@@ -41,6 +42,20 @@ import Logout from "./pages/Logout";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhoneNumber from "./pages/ChangeNumber";
 import { getAllTransactions } from "./state/action-creators";
+import Test from "./pages/test";
+import About from "./pages/about";
+import Contact from "./pages/contact";
+import FAQ from "./pages/faq";
+import Refund from "./pages/refund";
+import DeliveryPolicy from "./pages/delivery";
+import CookiesPolicy from "./pages/cookies";
+import Homepage from "./pages/homepage";
+import TermsAndConditions from "./pages/terms-conditions";
+import AdminDashboard from "./pages/admin/dashboard";
+import UsersList from "./pages/admin/users-list";
+import UserDetails from "./pages/admin/user-details";
+import AdminsList from "./pages/admin/admins-list";
+import AddAdmin from "./pages/admin/add-admin";
 import Reg from "./pages/Registration";
 import Modal from "./components/Modal";
 
@@ -52,7 +67,27 @@ function App() {
   return (
     <AnimatePresence>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path='/home' element={<Home />} />
+        <Route exact path='/' element={<Homepage />} />
+        <Route path='/test' element={<Test />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/faq' element={<FAQ />} />
+        <Route path='/refund' element={<Refund />} />
+        <Route path='/delivery-policy' element={<DeliveryPolicy />} />
+        <Route path='/cookies-policy' element={<CookiesPolicy />} />
+        <Route path='/terms' element={<TermsAndConditions />} />
+
+        {/* Amin Routes */}
+        <Route path='/admin'>
+          <Route index element={<AdminDashboard />} />
+          <Route path='users-list' element={<UsersList />} />
+          <Route path='user-details' element={<UserDetails />} />
+          <Route path='admins-list' element={<AdminsList />} />
+          <Route path='add-admin' element={<AddAdmin />} />
+        </Route>
+
+        
         <Route path="/login" element={<Login />} />
         <Route path="/reg" element={<Reg />} />
         <Route path="/kyc-verification" element={<Signup />} />

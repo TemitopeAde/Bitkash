@@ -1,0 +1,86 @@
+[
+      {
+            "id":1,
+            "name":"Olubanjo Oluseyi",
+            "registration_date":"19/04/2023",
+            "registration_status":"Verified",
+            "total_transactions":"20.5"
+      },
+      {
+        "id": 2,
+        "name": "Oloko Opeyemi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 3,
+        "name": "Fayelu Olatubosun",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 4,
+        "name": "Fagbamila Faith",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 5,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Verified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 6,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 7,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Verified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 8,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Verified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 9,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 10,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 11,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      },
+      {
+        "id": 12,
+        "name": "Olubanjo Oluseyi",
+        "registration_date": "19/04/2023",
+        "registration_status": "Unverified",
+        "total_transactions": "20.5"
+      }
+]

@@ -129,7 +129,6 @@ const Dashboard = () => {
     setCurrency(e.target.value);
   }
 
-
   if (window.innerWidth > 820) {
     return (
       <Box className="dashboard">

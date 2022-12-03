@@ -1,3 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  @font-face {
+    font-family: 'Circular std';
+    src: url('./fonts/FontsFree-Net-CircularStd-Bold.ttf');
+  }
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+.admin-tr{
+  border: 2px;
+  -moz-border: 2px;
+  -webkit-border: 2px;
+}
+
+
+table.rounded-corners{
+  table-layout: fixed;
+}
+
+table.rounded-corners tbody tr:first-child td:first-child {
+ border-top-left-radius: 10px;
+ border: 2px solid black;
+  -moz-border: 2px solid black;
+  -webkit-border: 2px solid black;
+}
+
+table.rounded-corners tbody tr:last-child td:first-child {
+ border-bottom-left-radius: 10px;
+}
+
+table.rounded-corners tbody tr:first-child td:last-child {
+ border-top-right-radius: 10px;
+}
+
+table.rounded-corners tbody tr:last-child td:last-child {
+ border-bottom-right-radius: 10px;
+}
+
+/* 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +57,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

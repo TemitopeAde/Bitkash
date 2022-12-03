@@ -30,7 +30,6 @@ const Login = ({ children }) => {
   const validate = (values) => {
     let errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
     if (!values.email) {
       errors.email = "Email is required";
     } else if (!regex.test(values.email)) {
