@@ -39,7 +39,6 @@ const Bank = ({ userBanks }) => {
   const currentItems = userBanks?.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(userBanks?.length / 5);
 
-  
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 5) % userBanks?.length;
     setItemOffset(newOffset);
@@ -133,6 +132,9 @@ const Bank = ({ userBanks }) => {
                   height: "50px",
                   width: "186px",
                   border: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
                 onClick={() => navigate("/kyc-verification")}
               >

@@ -314,7 +314,7 @@ const Sidebar = () => {
                 Security
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to="/activities"
                 style={({ isActive }) =>
@@ -359,7 +359,7 @@ const Sidebar = () => {
                 </svg>
                 Activities
               </NavLink>
-            </li>
+            </li> */}
 
             {isAuthenticated && (
               <li>

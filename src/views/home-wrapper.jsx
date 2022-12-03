@@ -4,8 +4,10 @@ import Card from "../components/card";
 import Section from "../components/section";
 import Text from "../components/text";
 import StaticLayout from "../layout/static-layout";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeWrapper() {
+  const navigate = useNavigate();
   return (
     <StaticLayout>
       <div>
@@ -44,6 +46,7 @@ export default function HomeWrapper() {
                   fastest-growing brokerage firms worldwide.
                 </Text>
                 <Button
+                  onclick={() => navigate("/login")}
                   variant='primary'
                   size='large'
                   classname='tw-hidden lg:tw-block tw-px-16'

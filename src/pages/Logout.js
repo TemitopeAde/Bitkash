@@ -35,15 +35,15 @@ const Logout = () => {
 
               <Box
                 className="dashboard-inner py-5 dashboard-padding"
-                sx={{ background: "none", top: "90px !important" }}
+                sx={{ background: "none !important", top: "90px !important" }}
               >
                 <Container>
-                  <Box className="security-box active">
-                    <Box className="p-5">
-                      <Box>
+                  <Box className="security-box active" style={{background: 'none'}}>
+                    <Box className="">
+                      <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                         <Stack
                           spacing={5}
-                          sx={{ textAlign: "center", padding: "6rem" }}
+                          sx={{ textAlign: "center", padding: "4rem 8.5rem", alignItems: 'center', display: 'inline-flex' }}
                           className="logout-container"
                         >
                           <Box>
@@ -86,9 +86,10 @@ const Logout = () => {
                           </Box>
                           <p
                             style={{
-                              fontSize: "24px",
+                              fontSize: "16px",
                               lineHeight: "30px",
                               color: "#000",
+                              fontWeight: '400'
                             }}
                           >
                             Are you sure you want to logout?
@@ -101,8 +102,8 @@ const Logout = () => {
                                 style={{
                                   background: "#ff9924",
                                   border: "none",
-                                  height: "64px",
-                                  width: "224px",
+                                  height: "50px",
+                                  width: "146px",
                                   color: "#fff",
                                   fontSize: "24px",
                                   fontFamily: "Poppins",
@@ -115,8 +116,8 @@ const Logout = () => {
                                 style={{
                                   background: "transparent",
                                   border: "1px solid #ff9924",
-                                  height: "64px",
-                                  width: "224px",
+                                  height: "50px",
+                                  width: "146px",
                                   color: "#000",
                                   fontSize: "24px",
                                   fontFamily: "Poppins",

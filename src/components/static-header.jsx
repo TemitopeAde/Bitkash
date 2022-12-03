@@ -1,14 +1,19 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import clx from "../utils/clx";
 import Button from "./button";
 import { navLink } from "../constants/navlink";
 import { Link } from "react-router-dom";
 import Text from "./text";
+import { useSelector } from "react-redux";
+import { logout } from '../state/action-creators/index';
+import { useDispatch } from "react-redux";
 
 export default function Header({ classname, children }) {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
   const router = useLocation();
   const classes = clx(
     "tw-w-[90%] tw-mx-auto tw-py-4 tw-h-[90px] lg:tw-h-[120px] tw-flex tw-items-center tw-justify-between",
@@ -30,9 +35,8 @@ export default function Header({ classname, children }) {
               >
                 <span
                   key={link.id}
-                  className={`tw-font-semibold ${
-                    router.pathname === link.route && "tw-text-primary-main"
-                  }`}
+                  className={`tw-font-semibold ${router.pathname === link.route && "tw-text-primary-main"
+                    }`}
                 >
                   {link.label}
                 </span>
@@ -40,12 +44,21 @@ export default function Header({ classname, children }) {
             ))}
           </div>
           <div className='tw-flex tw-items-center tw-gap-2'>
-            <Button variant='text' color='primary'>
-              Login
-            </Button>
-            <Button variant='secondary' size='medium'>
-              Get Started
-            </Button>
+
+            {isAuthenticated ? <Button onclick={() => {
+              navigate("/user-dashboard")
+            }} variant='secondary' size='medium'>
+              Dashboard
+            </Button> : <div style={{display: 'flex'}}>
+
+              <Button onclick={() => navigate("/login")} variant='text' color='primary'>
+                Login
+              </Button>
+              <Button onclick={() => navigate("/user-dashboard")} variant='secondary' size='medium'>
+                Get Started
+              </Button>
+            </div>}
+
           </div>
         </div>
         {/* Mobile Hamburger */}
@@ -59,10 +72,9 @@ export default function Header({ classname, children }) {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:tw-hidden tw-fixed tw-bg-black/10 tw-w-full tw-h-screen tw-inset-0 ${
-          isMenuOpen ? "tw-ml-0" : "tw-ml-[-100%]"
-        } tw-duration-300`}
-        onClick={({target, currentTarget}) => target===currentTarget && setMenuOpen(false)}
+        className={`lg:tw-hidden tw-fixed tw-bg-black/10 tw-w-full tw-h-screen tw-inset-0 ${isMenuOpen ? "tw-ml-0" : "tw-ml-[-100%]"
+          } tw-duration-300`}
+        onClick={({ target, currentTarget }) => target === currentTarget && setMenuOpen(false)}
       >
         <div className='tw-w-[70%] md:tw-w-[40%] tw-h-full tw-bg-white tw-p-4'>
           <div className='tw-w-[180px]'>

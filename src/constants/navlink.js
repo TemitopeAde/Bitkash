@@ -16,27 +16,13 @@ export const navLink = [
   },
   {
     id: 4,
-    label: "Cookies Policy",
-    route: "/cookies-policy",
+    label: "How to buy Bitcoins",
+    route: "/",
   },
+
   {
     id: 5,
     label: "FAQs",
     route: "/faq",
   },
-  {
-    id: 6,
-    label: "Terms",
-    route: "/terms",
-  },
-//   {
-//     id: 7,
-//     label: "Delivery Policy",
-//     route: "/delivery-policy",
-//   },
-//   {
-//     id: 8,
-//     label: "Refund",
-//     route: "/refund",
-//   },
 ];

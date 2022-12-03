@@ -28,6 +28,7 @@ import {
   GET_USER_BANKS_SUCCESS,
   TRANSACTION_HISTORY_SUCCESS,
   TRANSACTION_HISTORY_FAILED,
+  LOGOUT_FAILED,
 } from "../action-creators/types";
 
 const initialState = {
@@ -161,6 +162,12 @@ const authReducer = (state = initialState, action) => {
       userBanks: [],
     };
   }
+
+   if (action.type === LOGOUT_FAILED) {
+     
+   }
+
+  
 
   if (action.type === RECOVER_PASSWORD_FAILED) {
     const { payload } = action;

@@ -158,7 +158,8 @@ const Buy = () => {
                     >
                       <Box>
                         <h4 className="mb-4">
-                          You are buying Bitcoin at <span>${bitcoin}</span>{" "}
+                          You are buying Bitcoin at{" "}
+                          <span>${bitcoin?.toLocaleString()}</span>{" "}
                         </h4>
                         <p>
                           The Bitcoin exchange rate will refresh in 10 minutes

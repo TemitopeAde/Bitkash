@@ -20,8 +20,7 @@ const Security = () => {
   const fileRef = useRef(null);
   const btnRef = useRef(null);
   const uploadRef = useRef(null);
-  const currentUser = localStorage.getItem("user");
-  const userDetails = JSON.parse(currentUser);
+  const userDetails = useSelector((state) => state.auth.userDetails);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   console.log(image.name);
@@ -190,18 +189,18 @@ const Security = () => {
                         <div className="profile-flex-items">
                           <div>
                             <h6>First name:</h6>
-                            <p>{userDetails?.firstName}</p>
+                            <p>{userDetails?.first_name}</p>
                           </div>
                           <div>
                             <h6>Last name:</h6>
-                            <p>{userDetails?.lastName}</p>
+                            <p>{userDetails?.last_name}</p>
                           </div>
                         </div>
 
                         <div className="profile-flex-items">
                           <div>
                             <h6>Phone number:</h6>
-                            <p>{userDetails?.phone}</p>
+                            <p>{userDetails?.phone_number}</p>
                           </div>
                           <div>
                             <h6>Email address:</h6>
@@ -281,6 +280,7 @@ const Security = () => {
                             sx={{
                               display: "grid",
                               gridTemplateColumns: "3fr 1fr",
+                              gap: '2rem'
                             }}
                           >
                             <p>
@@ -312,10 +312,7 @@ const Security = () => {
 
                       <Box>
                         <h5>DELETE ACCOUNT</h5>
-                        <p>
-                          Lorem ipsum dolor, sit amet consectetur adipisicing
-                          elit. Adipisci.
-                        </p>
+                        <p>Are you sure you want to delete your account?</p>
                         <button
                           style={{
                             width: "190px",
@@ -347,7 +344,7 @@ const Security = () => {
                           }}
                         >
                           <h6>Email Verification</h6>
-                          {userDetails?.email_verified ? (
+                          {userDetails?.has_verified_email ? (
                             <svg
                               width="16"
                               height="16"
@@ -402,11 +399,11 @@ const Security = () => {
                             </svg>
                           )}
                         </Box>
-
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Ab beatae veritatis omnis tempora sint quas
-                        </p>
+                        {userDetails?.has_verified_email ? (
+                          <p>Your email has been verified</p>
+                        ) : (
+                          <p>Your email has not been verified</p>
+                        )}
                       </Box>
                       <Box>
                         <Box
@@ -418,7 +415,7 @@ const Security = () => {
                           }}
                         >
                           <h6>Phone number</h6>
-                          {userDetails?.phone_verified ? (
+                          {userDetails?.has_verified_phone_number ? (
                             <svg
                               width="16"
                               height="16"
@@ -473,11 +470,11 @@ const Security = () => {
                             </svg>
                           )}
                         </Box>
-
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Ab beatae veritatis omnis tempora sint quas
-                        </p>
+                        {userDetails?.has_verified_phone_number ? (
+                          <p>Your phone number has been verified</p>
+                        ) : (
+                          <p>Your phone number has not been verified</p>
+                        )}
                       </Box>
                       <Box>
                         <Box
@@ -489,7 +486,7 @@ const Security = () => {
                           }}
                         >
                           <h6>KYC</h6>
-                          {userDetails?.kyc_verified ? (
+                          {userDetails?.has_completed_kyc ? (
                             <svg
                               width="15"
                               height="15"
@@ -548,11 +545,11 @@ const Security = () => {
                             </svg>
                           )}
                         </Box>
-
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Ab beatae veritatis omnis tempora sint quas
-                        </p>
+                        {userDetails?.has_completed_kyc ? (
+                          <p>You have completed the KYC verification</p>
+                        ) : (
+                          <p>You have not completed the KYC verification</p>
+                        )}
                       </Box>
                     </Box>
                   </Box>

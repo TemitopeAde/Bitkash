@@ -33,6 +33,7 @@ import {
   RESET_STATE,
   GET_USER_BANKS_SUCCESS,
   GET_USER_BANKS_FAILED,
+  LOGOUT_FAILED
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -165,21 +166,33 @@ export const login = (data) => async (dispatch, getState) => {
 };
 
 export const logout = () => async (dispatch, getState) => {
-  localStorage.removeItem("paymentDetails");
-
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/logout";
   dispatch({
     type: SHOW_LOADER,
   });
-
-  dispatch({
-    type: LOGOUT,
-  });
-
-  setTimeout(() => {
-    dispatch({
-      type: HIDE_LOADER,
+  await axios
+    .post(url, {}, config)
+    .then((data) => {
+      dispatch({
+        type: LOGOUT,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: LOGOUT_FAILED,
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: LOGOUT,
+      });
     });
-  }, [5]);
 };
 
 export const recoverPassword = (data) => async (dispatch) => {
@@ -496,7 +509,8 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
 };
 
 export const getAllTransactions = () => async (dispatch, getState) => {
-  const url = "https://bitkash-backend.herokuapp.com/api/v1/transactions/summary";
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/transactions/summary";
 
   const options = {
     method: "GET",
@@ -563,8 +577,6 @@ export const getTransaction = (data) => async (dispatch, getState) => {
     });
 };
 
-
-
 export const deleteBank = (bank_id) => async (dispatch, getState) => {
   const options = {
     method: "DELETE",
@@ -573,7 +585,7 @@ export const deleteBank = (bank_id) => async (dispatch, getState) => {
     },
     data: { bank_id: bank_id },
   };
-  
+
   dispatch({
     type: SHOW_LOADER,
   });
@@ -783,7 +795,6 @@ export const handleFileSubmit = (data) => async (dispatch, getState) => {
       console.log(err);
     });
 };
-
 
 export const getUserBank = () => async (dispatch, getState) => {
   const url = `https://bitkash-backend.herokuapp.com/api/v1/transactions/banks`;
