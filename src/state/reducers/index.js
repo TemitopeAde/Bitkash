@@ -19,6 +19,7 @@ const authPersistConfig = {
     "userBanks",
     "token",
     "transactionsHistory",
+    "userNotifications",
   ],
 };
 

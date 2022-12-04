@@ -1,18 +1,26 @@
 import { Box, Container, Stack } from "@mui/material";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
 import { Helmet } from "react-helmet";
 
 import "./dashboard.css";
-import logo from "../assets/icons/header-white.png";
-import icon1 from "../assets/icons/note-2.png";
 import user from "../assets/images/ellipse.png";
 import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
-import close from "../assets/images/close-circle.png";
+
 import Sidebar from "../components/Sidebar";
+import { getNotifications } from "../state/action-creators";
+import { useDispatch, useSelector } from "react-redux";
 
 const Notification = () => {
+  const dispatch = useDispatch();
+  const allNotifications = useSelector((state) => state.auth.userNotifications);
+  console.log(allNotifications)
+
+  useEffect(() => {
+    dispatch(getNotifications())
+  }, [])
+
+
   if (window.innerWidth > 820) {
     return (
       <Box>
@@ -76,13 +84,42 @@ const Notification = () => {
 
               <Box
                 className="dashboard-inner py-5 dashboard-padding"
-                sx={{ background: "none" }}
+                sx={{ background: "none !important" }}
               >
                 <Container>
                   <Box>
                     <Box className="title-flex mb-3">
-                      <img src={notification} alt="" className="icon" />
-                      <h4 className="title">Notification</h4>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12.0196 2.91C8.7096 2.91 6.0196 5.6 6.0196 8.91V11.8C6.0196 12.41 5.7596 13.34 5.4496 13.86L4.2996 15.77C3.5896 16.95 4.0796 18.26 5.3796 18.7C9.6896 20.14 14.3396 20.14 18.6496 18.7C19.8596 18.3 20.3896 16.87 19.7296 15.77L18.5796 13.86C18.2796 13.34 18.0196 12.41 18.0196 11.8V8.91C18.0196 5.61 15.3196 2.91 12.0196 2.91Z"
+                          stroke="#4C4C4C"
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M13.8699 3.2C13.5599 3.11 13.2399 3.04 12.9099 3C11.9499 2.88 11.0299 2.95 10.1699 3.2C10.4599 2.46 11.1799 1.94 12.0199 1.94C12.8599 1.94 13.5799 2.46 13.8699 3.2Z"
+                          stroke="#4C4C4C"
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M15.0195 19.06C15.0195 20.71 13.6695 22.06 12.0195 22.06C11.1995 22.06 10.4395 21.72 9.89953 21.18C9.35953 20.64 9.01953 19.88 9.01953 19.06"
+                          stroke="#4C4C4C"
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                        />
+                      </svg>
+
+                      <h4 className="title">Notifications</h4>
                     </Box>
                   </Box>
 
@@ -95,7 +132,63 @@ const Notification = () => {
                           gap: "1rem",
                         }}
                       >
-                        <Box className="notification-sent">
+                        {allNotifications?.map((items, index) => {
+                          return (
+                            <Box
+                              className="notification-sent"
+                              key={items.notificationRef}
+                            >
+                              <Box>
+                                <h6>
+                                  <span style={{ fontWeight: "600" }}>
+                                    {items.message} {""} on
+                                  </span>
+                                  <span style={{ color: "#ff9924" }}>
+                                    {items.created_at}
+                                  </span>
+                                </h6>
+                              </Box>
+                              <Box>
+                                <button
+                                  type="button"
+                                  style={{ background: "none", border: "none" }}
+                                  onClick={() => {}}
+                                >
+                                  <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                      stroke="#292D32"
+                                      strokeWidth="1.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                    <path
+                                      d="M9.16992 14.83L14.8299 9.17001"
+                                      stroke="#292D32"
+                                      strokeWidth="1.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                    <path
+                                      d="M14.8299 14.83L9.16992 9.17001"
+                                      stroke="#292D32"
+                                      strokeWidth="1.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+                                </button>
+                              </Box>
+                            </Box>
+                          );
+                        })}
+                        {/* <Box className="notification-sent">
                           <Box>
                             <h6>
                               You sent{" "}
@@ -111,90 +204,38 @@ const Notification = () => {
                               type="button"
                               style={{ background: "none", border: "none" }}
                             >
-                              <img src={close} alt="" className="icon" />
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                  stroke="#292D32"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  d="M9.16992 14.83L14.8299 9.17001"
+                                  stroke="#292D32"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  d="M14.8299 14.83L9.16992 9.17001"
+                                  stroke="#292D32"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
                             </button>
                           </Box>
-                        </Box>
-                        <Box className="notification-sent">
-                          <Box>
-                            <h6>
-                              You sent{" "}
-                              <span style={{ fontWeight: "600" }}>1btc</span> to
-                              123wgfehfkthn576584846mnfvkmv on{" "}
-                              <span style={{ color: "#ff9924" }}>
-                                24-06-2022
-                              </span>{" "}
-                            </h6>
-                          </Box>
-                          <Box>
-                            <button
-                              type="button"
-                              style={{ background: "none", border: "none" }}
-                            >
-                              <img src={close} alt="" className="icon" />
-                            </button>
-                          </Box>
-                        </Box>
-                        <Box className="notification-sent">
-                          <Box>
-                            <h6>
-                              You sent{" "}
-                              <span style={{ fontWeight: "600" }}>1btc</span> to
-                              123wgfehfkthn576584846mnfvkmv on{" "}
-                              <span style={{ color: "#ff9924" }}>
-                                24-06-2022
-                              </span>{" "}
-                            </h6>
-                          </Box>
-                          <Box>
-                            <button
-                              type="button"
-                              style={{ background: "none", border: "none" }}
-                            >
-                              <img src={close} alt="" className="icon" />
-                            </button>
-                          </Box>
-                        </Box>
-                        <Box className="notification-sent">
-                          <Box>
-                            <h6>
-                              You sent{" "}
-                              <span style={{ fontWeight: "600" }}>1btc</span> to
-                              123wgfehfkthn576584846mnfvkmv on{" "}
-                              <span style={{ color: "#ff9924" }}>
-                                24-06-2022
-                              </span>{" "}
-                            </h6>
-                          </Box>
-                          <Box>
-                            <button
-                              type="button"
-                              style={{ background: "none", border: "none" }}
-                            >
-                              <img src={close} alt="" className="icon" />
-                            </button>
-                          </Box>
-                        </Box>
-                        <Box className="notification-sent">
-                          <Box>
-                            <h6>
-                              You sent{" "}
-                              <span style={{ fontWeight: "600" }}>1btc</span> to
-                              123wgfehfkthn576584846mnfvkmv on{" "}
-                              <span style={{ color: "#ff9924" }}>
-                                24-06-2022
-                              </span>{" "}
-                            </h6>
-                          </Box>
-                          <Box>
-                            <button
-                              type="button"
-                              style={{ background: "none", border: "none" }}
-                            >
-                              <img src={close} alt="" className="icon" />
-                            </button>
-                          </Box>
-                        </Box>
+                        </Box> */}
                       </Box>
                     </Box>
                   </Box>

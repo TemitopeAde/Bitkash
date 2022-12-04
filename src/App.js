@@ -67,50 +67,48 @@ function App() {
   return (
     <AnimatePresence>
       <Routes>
-        <Route exact path='/home' element={<Home />} />
-        <Route exact path='/' element={<Homepage />} />
-        <Route path='/test' element={<Test />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/faq' element={<FAQ />} />
-        <Route path='/refund' element={<Refund />} />
-        <Route path='/delivery-policy' element={<DeliveryPolicy />} />
-        <Route path='/cookies-policy' element={<CookiesPolicy />} />
-        <Route path='/terms' element={<TermsAndConditions />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/" element={<Homepage />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/refund" element={<Refund />} />
+        <Route path="/delivery-policy" element={<DeliveryPolicy />} />
+        <Route path="/cookies-policy" element={<CookiesPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
 
         {/* Amin Routes */}
-        <Route path='/admin'>
+        <Route path="/admin">
           <Route index element={<AdminDashboard />} />
-          <Route path='users-list' element={<UsersList />} />
-          <Route path='user-details' element={<UserDetails />} />
-          <Route path='admins-list' element={<AdminsList />} />
-          <Route path='add-admin' element={<AddAdmin />} />
+          <Route path="users-list" element={<UsersList />} />
+          <Route path="user-details" element={<UserDetails />} />
+          <Route path="admins-list" element={<AdminsList />} />
+          <Route path="add-admin" element={<AddAdmin />} />
         </Route>
 
-        
         <Route path="/login" element={<Login />} />
         <Route path="/reg" element={<Reg />} />
         <Route path="/kyc-verification" element={<Signup />} />
-        {/* <Route element={<ProtectedRoute />}> */}
 
-        {/* </Route> */}
-
-        <Route path="/buy-bitcoin" element={<Buy />} />
-        <Route path="/transaction-history" element={<History />} />
-        <Route path="/activities" element={<Activities />} />
-        <Route path="/banks" element={<Banks />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/update-email" element={<ChangeEmail />} />
-        <Route path="/update-phone" element={<ChangePhoneNumber />} />
-        <Route path="/user-dashboard" element={<Dashboard />} />
-        <Route path="/payment-details" element={<BuyConfirm />} />
-        <Route path="/pasword-and-security" element={<Security />} />
-        <Route path="/two-factor-authentication" element={<TwoFactor />} />
-        <Route path="/goggle-authenticator" element={<GoogleAuth />} />
-        <Route path="/change-password" element={<ChangePassword />} />
-        <Route path="/email-verification" element={<EmailVerification />} />
-        <Route path="/logout" element={<Logout />} />
-        
+        <Route element={<ProtectedRoute />}>
+          <Route path="/buy-bitcoin" element={<Buy />} />
+          <Route path="/transaction-history" element={<History />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/banks" element={<Banks />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/update-email" element={<ChangeEmail />} />
+          <Route path="/update-phone" element={<ChangePhoneNumber />} />
+          <Route path="/user-dashboard" element={<Dashboard />} />
+          <Route path="/payment-details" element={<BuyConfirm />} />
+          <Route path="/pasword-and-security" element={<Security />} />
+          <Route path="/two-factor-authentication" element={<TwoFactor />} />
+          <Route path="/goggle-authenticator" element={<GoogleAuth />} />
+          <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="/email-verification" element={<EmailVerification />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/notification" element={<Notification />} />
+        </Route>
 
         <Route path="/payment" element={<Payment />} />
         <Route path="/bank-added" element={<Modal />} />
@@ -130,7 +128,6 @@ function App() {
           path="/verification-successful"
           element={<VerificationSuccessful />}
         />
-        <Route path="/notification" element={<Notification />} />
 
         <Route
           path="/recover-password/:token"

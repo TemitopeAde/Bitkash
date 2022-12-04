@@ -33,7 +33,11 @@ import {
   RESET_STATE,
   GET_USER_BANKS_SUCCESS,
   GET_USER_BANKS_FAILED,
-  LOGOUT_FAILED
+  LOGOUT_FAILED,
+  NOTIFICATION_FAILED,
+  NOTIFICATION_SUCCESS,
+  NOTIFICATION_MARK_AS_READ_FAILED,
+  NOTIFICATION_MARK_AS_READ
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -833,3 +837,73 @@ export const getUserBank = () => async (dispatch, getState) => {
       });
     });
 };
+
+export const getNotifications = () => async (dispatch, getState) => {
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/notifications`;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+  dispatch({
+    type: SHOW_LOADER,
+  });
+  await axios
+    .get(url, config)
+    .then((data) => {
+      console.log(data);
+      dispatch({
+        type: NOTIFICATION_SUCCESS,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: NOTIFICATION_FAILED,
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+
+
+export const markNotificationsAsRead = (notificationRef) => async (dispatch, getState) => {
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/notifications/${notificationRef}`;
+  var options = {
+    "Content-Type": "application/json",
+    method: "patch",
+    Authorization: `Bearer ${getState().auth.token}`,
+  };
+  
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .patch(url, options)
+    .then((data) => {
+      console.log(data);
+      dispatch({
+        type: NOTIFICATION_MARK_AS_READ,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: NOTIFICATION_MARK_AS_READ_FAILED,
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+

@@ -29,6 +29,8 @@ import {
   TRANSACTION_HISTORY_SUCCESS,
   TRANSACTION_HISTORY_FAILED,
   LOGOUT_FAILED,
+  NOTIFICATION_SUCCESS,
+  NOTIFICATION_FAILED
 } from "../action-creators/types";
 
 const initialState = {
@@ -46,13 +48,27 @@ const initialState = {
   emailVerificationSent: false,
   token: null,
   kycMessage: "",
+  userNotifications: [],
+  
 };
 
 const authReducer = (state = initialState, action) => {
 
-  if (action.type === TRANSACTION_HISTORY_FAILED) {
-    const {payload} = action
+  if (action.type === NOTIFICATION_SUCCESS) {
+    return {
+      ...state,
+      userNotifications: action.payload
+    }
+  }
 
+  if (action.type === NOTIFICATION_SUCCESS) {
+    return {
+      ...state,
+      userNotifications: []
+    };
+  }
+
+  if (action.type === TRANSACTION_HISTORY_FAILED) {
     return {
       ...state,
       transactionsHistory: []
