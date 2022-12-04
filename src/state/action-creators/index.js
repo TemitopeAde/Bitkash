@@ -179,11 +179,13 @@ export const logout = () => async (dispatch, getState) => {
   await axios
     .post(url, {}, config)
     .then((data) => {
+      console.log(data)
       dispatch({
         type: LOGOUT,
       });
     })
     .catch((err) => {
+      console.log(err)
       dispatch({
         type: LOGOUT_FAILED,
       });

@@ -150,8 +150,6 @@ const authReducer = (state = initialState, action) => {
   }
 
   if (action.type === LOGOUT) {
-    localStorage.removeItem("userData");
-
     return {
       ...state,
       isAuthenticated: false,
