@@ -1,23 +1,26 @@
 import { Box, Container, Stack } from "@mui/material";
 import React, {useEffect} from "react";
 import { Helmet } from "react-helmet";
+import { format } from "date-fns";
 
 import "./dashboard.css";
 import user from "../assets/images/ellipse.png";
-import notification from "../assets/images/notification.png";
 import MobileNav from "../components/mobileNav";
 
 import Sidebar from "../components/Sidebar";
-import { getNotifications } from "../state/action-creators";
+import {
+  getNotifications,
+  markNotificationsAsRead,
+} from "../state/action-creators";
 import { useDispatch, useSelector } from "react-redux";
 
 const Notification = () => {
   const dispatch = useDispatch();
   const allNotifications = useSelector((state) => state.auth.userNotifications);
-  console.log(allNotifications)
 
   useEffect(() => {
     dispatch(getNotifications())
+    
   }, [])
 
 
@@ -141,10 +144,16 @@ const Notification = () => {
                               <Box>
                                 <h6>
                                   <span style={{ fontWeight: "600" }}>
-                                    {items.message} {""} on
+                                    {items.message} {" "} on {" "}
                                   </span>
+                                  <br />
                                   <span style={{ color: "#ff9924" }}>
-                                    {items.created_at}
+                                    {
+
+                                    format(new
+                                    Date(items.created_at),
+                                    "dd-MM-yyyy")
+                                    }
                                   </span>
                                 </h6>
                               </Box>
@@ -152,7 +161,9 @@ const Notification = () => {
                                 <button
                                   type="button"
                                   style={{ background: "none", border: "none" }}
-                                  onClick={() => {}}
+                                  onClick={() => {
+                                    dispatch(markNotificationsAsRead());
+                                  }}
                                 >
                                   <svg
                                     width="24"
@@ -188,54 +199,6 @@ const Notification = () => {
                             </Box>
                           );
                         })}
-                        {/* <Box className="notification-sent">
-                          <Box>
-                            <h6>
-                              You sent{" "}
-                              <span style={{ fontWeight: "600" }}>1btc</span> to
-                              123wgfehfkthn576584846mnfvkmv on{" "}
-                              <span style={{ color: "#ff9924" }}>
-                                24-06-2022
-                              </span>{" "}
-                            </h6>
-                          </Box>
-                          <Box>
-                            <button
-                              type="button"
-                              style={{ background: "none", border: "none" }}
-                            >
-                              <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-                                  stroke="#292D32"
-                                  strokeWidth="1.5"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                                <path
-                                  d="M9.16992 14.83L14.8299 9.17001"
-                                  stroke="#292D32"
-                                  strokeWidth="1.5"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                                <path
-                                  d="M14.8299 14.83L9.16992 9.17001"
-                                  stroke="#292D32"
-                                  strokeWidth="1.5"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </button>
-                          </Box>
-                        </Box> */}
                       </Box>
                     </Box>
                   </Box>

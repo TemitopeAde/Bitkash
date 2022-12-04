@@ -37,7 +37,7 @@ import {
   NOTIFICATION_FAILED,
   NOTIFICATION_SUCCESS,
   NOTIFICATION_MARK_AS_READ_FAILED,
-  NOTIFICATION_MARK_AS_READ
+  NOTIFICATION_MARK_AS_READ,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -183,13 +183,13 @@ export const logout = () => async (dispatch, getState) => {
   await axios
     .post(url, {}, config)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       dispatch({
         type: LOGOUT,
       });
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       dispatch({
         type: LOGOUT_FAILED,
       });
@@ -856,7 +856,7 @@ export const getNotifications = () => async (dispatch, getState) => {
       console.log(data);
       dispatch({
         type: NOTIFICATION_SUCCESS,
-        payload: data.data.data
+        payload: data.data.data,
       });
     })
     .catch((err) => {
@@ -872,39 +872,36 @@ export const getNotifications = () => async (dispatch, getState) => {
     });
 };
 
+export const markNotificationsAsRead =
+  (notificationRef) => async (dispatch, getState) => {
+    const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/notifications/1`;
 
+    const options = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    };
 
-export const markNotificationsAsRead = (notificationRef) => async (dispatch, getState) => {
-  const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/notifications/${notificationRef}`;
-  var options = {
-    "Content-Type": "application/json",
-    method: "patch",
-    Authorization: `Bearer ${getState().auth.token}`,
-  };
-  
-  dispatch({
-    type: SHOW_LOADER,
-  });
-
-  await axios
-    .patch(url, options)
-    .then((data) => {
-      console.log(data);
-      dispatch({
-        type: NOTIFICATION_MARK_AS_READ,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch({
-        type: NOTIFICATION_MARK_AS_READ_FAILED,
-      });
-    })
-    .then(() => {
-      dispatch({
-        type: HIDE_LOADER,
-      });
+    dispatch({
+      type: SHOW_LOADER,
     });
-};
 
-
+    await axios
+      .patch(url, {}, options)
+      .then((data) => {
+        console.log(data);
+        dispatch({
+          type: NOTIFICATION_MARK_AS_READ,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: NOTIFICATION_MARK_AS_READ_FAILED,
+        });
+      })
+      .then(() => {
+        dispatch({
+          type: HIDE_LOADER,
+        });
+      });
+  };
