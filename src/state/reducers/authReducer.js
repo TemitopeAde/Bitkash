@@ -53,11 +53,11 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-
+  const {payload} = action;
   if (action.type === NOTIFICATION_SUCCESS) {
     return {
       ...state,
-      userNotifications: action.payload
+      userNotifications: payload
     }
   }
 

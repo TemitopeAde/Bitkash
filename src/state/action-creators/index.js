@@ -856,6 +856,7 @@ export const getNotifications = () => async (dispatch, getState) => {
       console.log(data);
       dispatch({
         type: NOTIFICATION_SUCCESS,
+        payload: data.data.data
       });
     })
     .catch((err) => {
