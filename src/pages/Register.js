@@ -135,7 +135,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(emailVerificationSent);
+  console.log(message);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(true);

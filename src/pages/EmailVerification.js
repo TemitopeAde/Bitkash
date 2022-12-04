@@ -44,7 +44,7 @@ const EmailVerification = () => {
 
             <Box className="register-content-items">
               <Box
-                sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+                sx={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: 'center' }}
               >
                 <Box>
                   <svg

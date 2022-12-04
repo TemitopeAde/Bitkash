@@ -98,10 +98,12 @@ export const register = (data) => async (dispatch) => {
     type: SHOW_LOADER,
   });
 
+  console.log(body)
+
   await axios
     .post(url, body, config)
     .then((data) => {
-      // console.log("submitted")
+      console.log(data)
       const user = JSON.stringify({
         email: email,
         phone_number: phone_number,
@@ -114,7 +116,7 @@ export const register = (data) => async (dispatch) => {
       });
     })
     .catch((error) => {
-      // console.log(error)
+      console.log(error)
       dispatch({
         type: SIGNUP_FAIL,
         payload: error,
@@ -874,7 +876,7 @@ export const getNotifications = () => async (dispatch, getState) => {
 
 export const markNotificationsAsRead =
   (notificationRef) => async (dispatch, getState) => {
-    const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/notifications/1`;
+    const url = `https://bitkash-backend.herokuapp.com/api/v1/auth/notifications/${notificationRef}`;
 
     const options = {
       "Content-Type": "application/json",
@@ -886,7 +888,7 @@ export const markNotificationsAsRead =
     });
 
     await axios
-      .patch(url, {}, options)
+      .patch(url, options)
       .then((data) => {
         console.log(data);
         dispatch({

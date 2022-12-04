@@ -162,7 +162,11 @@ const Notification = () => {
                                   type="button"
                                   style={{ background: "none", border: "none" }}
                                   onClick={() => {
-                                    dispatch(markNotificationsAsRead());
+                                    dispatch(
+                                      markNotificationsAsRead(
+                                        items.notificationRef
+                                      )
+                                    );
                                   }}
                                 >
                                   <svg

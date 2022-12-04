@@ -91,7 +91,7 @@ function App() {
         <Route path="/reg" element={<Reg />} />
         <Route path="/kyc-verification" element={<Signup />} />
 
-        <Route element={<ProtectedRoute />}>
+        {/* <Route element={<ProtectedRoute />}> */}
           <Route path="/buy-bitcoin" element={<Buy />} />
           <Route path="/transaction-history" element={<History />} />
           <Route path="/activities" element={<Activities />} />
@@ -108,7 +108,7 @@ function App() {
           <Route path="/email-verification" element={<EmailVerification />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/notification" element={<Notification />} />
-        </Route>
+        {/* </Route> */}
 
         <Route path="/payment" element={<Payment />} />
         <Route path="/bank-added" element={<Modal />} />
