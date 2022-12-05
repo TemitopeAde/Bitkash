@@ -71,7 +71,7 @@ const History = () => {
   function Items() {
     return (
       <>
-        {transactionHistory &&
+        {/* {transactionHistory &&
           transactionHistory?.map((row, index) => (
             <TableRow
               key={index}
@@ -90,7 +90,7 @@ const History = () => {
                 {row.transaction_status}
               </TableCell>
             </TableRow>
-          ))}
+          ))} */}
 
         {/* {currentItems
           ?.filter((item) => {

@@ -1,6 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import React, { useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector, useDispatch } from "react-redux";
@@ -374,8 +374,9 @@ const Buy = () => {
                               {/* <input type="checkbox" /> */}
                               <Field name="toggle" type="checkbox" id="terms" />
                               <label htmlFor="terms" className="checkbox-text">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Animi libero laboriosam neque
+                                Ticking this box means that you're agreeing to
+                                our <Link style={{ color: '#ff992', textDecoration: 'none !important'}} to="/">policies</Link>,{" "}
+                                <Link style={{ color: '#ff992', textDecoration: 'none !important'}} to="/">terms</Link>, and <Link style={{ color: '#ff992', textDecoration: 'none !important'}} to="/">conditions</Link>
                               </label>
                             </Stack>
                             <ErrorMessage

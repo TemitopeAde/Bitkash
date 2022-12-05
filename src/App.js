@@ -91,24 +91,25 @@ function App() {
         <Route path="/reg" element={<Reg />} />
         <Route path="/kyc-verification" element={<Signup />} />
 
-        {/* <Route element={<ProtectedRoute />}> */}
-          <Route path="/buy-bitcoin" element={<Buy />} />
-          <Route path="/transaction-history" element={<History />} />
-          <Route path="/activities" element={<Activities />} />
-          <Route path="/banks" element={<Banks />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/update-email" element={<ChangeEmail />} />
-          <Route path="/update-phone" element={<ChangePhoneNumber />} />
+        <Route element={<ProtectedRoute />}>
           <Route path="/user-dashboard" element={<Dashboard />} />
-          <Route path="/payment-details" element={<BuyConfirm />} />
-          <Route path="/pasword-and-security" element={<Security />} />
-          <Route path="/two-factor-authentication" element={<TwoFactor />} />
-          <Route path="/goggle-authenticator" element={<GoogleAuth />} />
-          <Route path="/change-password" element={<ChangePassword />} />
-          <Route path="/email-verification" element={<EmailVerification />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/notification" element={<Notification />} />
-        {/* </Route> */}
+        </Route>
+        <Route path="/buy-bitcoin" element={<Buy />} />
+        <Route path="/transaction-history" element={<History />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/banks" element={<Banks />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/update-email" element={<ChangeEmail />} />
+        <Route path="/update-phone" element={<ChangePhoneNumber />} />
+
+        <Route path="/payment-details" element={<BuyConfirm />} />
+        <Route path="/pasword-and-security" element={<Security />} />
+        <Route path="/two-factor-authentication" element={<TwoFactor />} />
+        <Route path="/goggle-authenticator" element={<GoogleAuth />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/email-verification" element={<EmailVerification />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/notification" element={<Notification />} />
 
         <Route path="/payment" element={<Payment />} />
         <Route path="/bank-added" element={<Modal />} />

@@ -141,7 +141,7 @@ export const login = (data) => async (dispatch, getState) => {
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/login";
 
   const body = JSON.stringify({ email, password });
-  console.log(body);
+  
   dispatch({
     type: SHOW_LOADER,
   });
@@ -149,7 +149,7 @@ export const login = (data) => async (dispatch, getState) => {
     .post(url, body, config)
     .then((data) => {
       const user = data.data.data;
-      console.log(user);
+      // console.log(user);
       localStorage.setItem("user", JSON.stringify(user));
 
       dispatch({
