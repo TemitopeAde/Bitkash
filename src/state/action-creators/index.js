@@ -198,7 +198,7 @@ export const logout = () => async (dispatch, getState) => {
     })
     .then(() => {
       dispatch({
-        type: LOGOUT,
+        type: HIDE_LOADER,
       });
     });
 };

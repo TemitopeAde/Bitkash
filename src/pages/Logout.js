@@ -7,15 +7,23 @@ import { useNavigate, Navigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { logout } from "../state/action-creators";
 import DashboardHeader from "../components/DashboardHeader";
+import Spinner from "../components/Spinner";
 
 const Logout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loading = useSelector((state) => state.loader.loading);
+
+  console.log(loading)
 
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   if (isAuthenticated) {
     return (
@@ -38,12 +46,26 @@ const Logout = () => {
                 sx={{ background: "none !important", top: "90px !important" }}
               >
                 <Container>
-                  <Box className="security-box active" style={{background: 'none'}}>
+                  <Box
+                    className="security-box active"
+                    style={{ background: "none" }}
+                  >
                     <Box className="">
-                      <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                      <Box
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
                         <Stack
                           spacing={5}
-                          sx={{ textAlign: "center", padding: "4rem 8.5rem", alignItems: 'center', display: 'inline-flex' }}
+                          sx={{
+                            textAlign: "center",
+                            padding: "4rem 8.5rem",
+                            alignItems: "center",
+                            display: "inline-flex",
+                          }}
                           className="logout-container"
                         >
                           <Box>
@@ -89,7 +111,7 @@ const Logout = () => {
                               fontSize: "16px",
                               lineHeight: "30px",
                               color: "#000",
-                              fontWeight: '400'
+                              fontWeight: "400",
                             }}
                           >
                             Are you sure you want to logout?
@@ -142,7 +164,7 @@ const Logout = () => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 };
 
