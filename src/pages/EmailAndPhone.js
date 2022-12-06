@@ -23,8 +23,9 @@ const EmailAndPhone = ({ children }) => {
   const [phoneNumber] = useState("");
   // const userDetails = JSON.parse(localStorage.getItem("user"));
   const verified = useSelector((state) => state.auth.phoneAndEmailVerified);
+  const message = useSelector((state) => state.auth.message);
   const loading = useSelector((state) => state.loader.loading);
-  
+  console.log(verified);
   
   const handleSendOtp = (e) => {
     e.preventDefault();
@@ -32,7 +33,9 @@ const EmailAndPhone = ({ children }) => {
   };
 
   
+  
   const { uid } = useParams();
+  console.log(uid);
   
   const dispatch = useDispatch();
   const payload = {
@@ -55,9 +58,9 @@ const EmailAndPhone = ({ children }) => {
     return <Spinner />;
   }
 
-  // if (verified) {
-  //   return <Navigate to="/login" />;
-  // }
+  if (verified) {
+    return <Navigate to="/login" />;
+  }
 
   if (window.innerWidth > 820) {
     return (
@@ -79,6 +82,11 @@ const EmailAndPhone = ({ children }) => {
             </Box>
 
             <Box className="otp-register register-content-form">
+              {message && (
+                <div className="error-wrap">
+                  <button disabled>{message}</button>
+                </div>
+              )}
               <form>
                 <Box className="otp-number-div mb-5">
                   <h6 className="otp-title">Phone Verification</h6>

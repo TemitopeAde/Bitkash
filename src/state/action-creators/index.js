@@ -343,6 +343,7 @@ export const submitOTP = (data) => async (dispatch) => {
       console.log(err);
       dispatch({
         type: OTP_FAILED,
+        payload: err.response.data.message
       });
     })
     .then(() => {

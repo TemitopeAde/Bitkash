@@ -139,6 +139,7 @@ const authReducer = (state = initialState, action) => {
     return {
       ...state,
       phoneAndEmailVerified: false,
+      message: action.payload
     };
   }
 

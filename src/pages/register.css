@@ -15,25 +15,32 @@
 }
 
 .error-container {
-    background: linear-gradient(90deg, #ff9924, #f16a23);
-    padding: .8rem 0;
-    width: 50%;
-    position: absolute;
-    top: -60px;
-    text-align: center;
+
+
+    background: #f6dede;
+    border-radius: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    border-radius: 5px;
 }
 
-.error-container h6 {
-    margin: 0;
-    color: white;
-    font-weight: bold;
+.error-wrap button {
+    background: #ffede7 !important;
+    color: black;
+    padding: .8rem 1.5rem;
+    border-radius: 150px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+
+    text-align: center;
 }
 
+.error-wrap {
+    margin-bottom: 2rem;
+}
 .register-center {
     align-items: center;
     justify-content: center;
