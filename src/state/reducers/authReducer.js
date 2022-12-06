@@ -49,7 +49,8 @@ const initialState = {
   token: null,
   kycMessage: "",
   userNotifications: [],
-  
+  twoFactor: false,
+  validateOtp: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -141,16 +142,16 @@ const authReducer = (state = initialState, action) => {
     };
   }
 
-  if (action.type === LOGIN_SUCCESS) {
-    const { payload } = action;
-    return {
-      ...state,
-      isAuthenticated: true,
-      loading: false,
-      userDetails: payload,
-      token: payload.token_details.token,
-    };
-  }
+   if (action.type === LOGIN_SUCCESS) {
+     const { payload } = action;
+     return {
+       ...state,
+       isAuthenticated: true,
+       loading: false,
+       userDetails: payload,
+       token: payload.token_details.token,
+     };
+   }
 
   if (action.type === LOGIN_FAIL) {
     const { payload } = action;
@@ -161,7 +162,7 @@ const authReducer = (state = initialState, action) => {
       isAuthenticated: false,
       loading: false,
       token: null,
-      message: payload.response.data.message,
+      // message: payload.response.data.message,
     };
   }
 

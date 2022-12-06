@@ -2,7 +2,7 @@ import { Box, Container } from "@mui/material";
 import React, { useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./dashboard.css";
 import MobileNav from "../components/mobileNav";
@@ -10,16 +10,24 @@ import edit from "../assets/images/edit-2.png";
 import profile from "../assets/images/profile.png";
 import Sidebar from "../components/Sidebar";
 import DashboardHeader from "../components/DashboardHeader";
+import {
+  deleteAcccount,
+  enable2fa,
+  disable2fa,
+} from "../state/action-creators/index";
+import Spinner from "../components/Spinner";
 
 const Security = () => {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(1);
   const [image, setImage] = useState("");
   const formRef = useRef(null);
   const fileRef = useRef(null);
   const btnRef = useRef(null);
   const uploadRef = useRef(null);
   const userDetails = useSelector((state) => state.auth.userDetails);
-
+  const loading = useSelector((state) => state.loader.loading);
+  const dispatch = useDispatch();
+  const [checkbox, setCheckBox] = useState("");
 
   console.log(image.name);
 
@@ -40,8 +48,19 @@ const Security = () => {
     console.log(formData);
   };
 
-  
+  const handle2fa = (e) => {
+    console.log(e);
 
+    if (e.target.checked) {
+      dispatch(enable2fa());
+    } else {
+      console.log("unchecked");
+      dispatch(disable2fa);
+    }
+  };
+  if (loading) {
+    return <Spinner />;
+  }
   if (window.innerWidth > 820) {
     return (
       <Box>
@@ -323,8 +342,15 @@ const Security = () => {
                               unauthorized transaction
                             </p>
                             <div className="checked-box">
-                              <input type="checkbox" id="toggle" />
-                              <label htmlFor="toggle"></label>
+                              <form>
+                                <input
+                                  type="checkbox"
+                                  id="toggle"
+                                  value={checkbox}
+                                  onChange={handle2fa}
+                                />
+                                <label htmlFor="toggle"></label>
+                              </form>
                             </div>
                           </Box>
                         </Box>
@@ -354,6 +380,9 @@ const Security = () => {
                             height: "50px",
                             border: "none",
                             fontSize: "16px",
+                          }}
+                          onClick={() => {
+                            dispatch(deleteAcccount());
                           }}
                         >
                           Delete Account

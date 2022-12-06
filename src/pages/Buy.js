@@ -12,9 +12,8 @@ import MobileNav from "../components/mobileNav";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import { BuyBitcoin } from "../state/action-creators";
-import Spinner from '../components/Spinner';
+import Spinner from "../components/Spinner";
 import DashboardHeader from "../components/DashboardHeader";
-
 
 const Buy = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -43,9 +42,9 @@ const Buy = () => {
       fiat_amount: values.price,
       crypto_amount: equivalent,
       payment_type: "transfer",
-      transaction_status: "approved"
+      transaction_status: "approved",
     };
-    dispatch(BuyBitcoin(payload))
+    dispatch(BuyBitcoin(payload));
   };
 
   const validate = (values) => {
@@ -102,7 +101,9 @@ const Buy = () => {
         });
     };
 
-    fetchBitcoinPrice();
+    setInterval(() => {
+      fetchBitcoinPrice();
+    }, [4000]);
   }, []);
 
   useEffect(() => {
@@ -126,7 +127,7 @@ const Buy = () => {
   }
 
   if (loading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   if (window.innerWidth > 820) {
@@ -375,8 +376,35 @@ const Buy = () => {
                               <Field name="toggle" type="checkbox" id="terms" />
                               <label htmlFor="terms" className="checkbox-text">
                                 Ticking this box means that you're agreeing to
-                                our <Link style={{ color: '#ff992', textDecoration: 'none !important'}} to="/">policies</Link>,{" "}
-                                <Link style={{ color: '#ff992', textDecoration: 'none !important'}} to="/">terms</Link>, and <Link style={{ color: '#ff992', textDecoration: 'none !important'}} to="/">conditions</Link>
+                                our{" "}
+                                <Link
+                                  style={{
+                                    color: "#ff9924",
+                                    textDecoration: "none",
+                                  }}
+                                  to="/"
+                                >
+                                  policies
+                                </Link>
+                                ,{" "}
+                                <Link
+                                  style={{
+                                    color: "#ff9924",
+                                    textDecoration: "none",
+                                  }}
+                                  to="/"
+                                >
+                                  terms
+                                </Link>
+                                , and{" "}
+                                <Link
+                                  style={{
+                                    color: "#ff9924",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  conditions
+                                </Link>
                               </label>
                             </Stack>
                             <ErrorMessage
@@ -430,7 +458,9 @@ const Buy = () => {
               >
                 <h4 className="mb-4">
                   You are buying Bitcoin at{" "}
-                  <span style={{ color: "#ff9924" }}>${bitcoin}</span>{" "}
+                  <span style={{ color: "#ff9924" }}>
+                    ${bitcoin?.toLocaleString()}
+                  </span>{" "}
                 </h4>
                 <p>The Bitcoin exchange rate will refresh in 10 minutes</p>
               </Box>
@@ -587,14 +617,39 @@ const Buy = () => {
                             spacing={5}
                           >
                             <Field name="toggle" type="checkbox" />
-                            <h6 className="checkbox-text">
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit
-                            </h6>
+                            <label htmlFor="terms" className="checkbox-text">
+                              Ticking this box means that you're agreeing to our{" "}
+                              <Link
+                                style={{
+                                  color: "#ff9924",
+                                  textDecoration: "none",
+                                }}
+                                to="/"
+                              >
+                                policies
+                              </Link>
+                              ,{" "}
+                              <Link
+                                style={{
+                                  color: "#ff9924",
+                                  textDecoration: "none",
+                                }}
+                                to="/"
+                              >
+                                terms
+                              </Link>
+                              , and{" "}
+                              <Link
+                                style={{
+                                  color: "#ff9924",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                conditions
+                              </Link>
+                            </label>
                           </Stack>
                         </Box>
-
-                        
 
                         <button
                           onClick={() => handleSubmit}

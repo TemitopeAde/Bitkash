@@ -199,7 +199,9 @@ ul {
 }
 
 
-
+.nav-icons .activeStyle svg path {
+    stroke: #000000 !important;
+}
 
 
 .nav-icons p {
@@ -279,6 +281,10 @@ ul {
 
 
     color: #000000;
+}
+
+.mobile-nav-flex .active svg path {
+    stroke: #FF9924;
 }
 
 .dashboard .dashboard-form {

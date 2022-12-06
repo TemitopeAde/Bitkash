@@ -1,12 +1,25 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import "./mobilenav.css";
 import logo from "../assets/icons/header.png";
 import avatar from "../assets/images/avatar.png";
 
 const MobileNav = () => {
+  let activeStyle = {
+    color: "#ff9924",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: 'column'
+  };
+  let navigationStyles = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  };
   return (
     <Box>
       <Box className="mobile-fixed-nav">
@@ -32,14 +45,11 @@ const MobileNav = () => {
       </Box>
       <Box className="mobile-nav-fixed">
         <Box className="mobile-nav-flex">
-          <Link
-            to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
+          <NavLink
+            to="/user-dashboard"
+            style={({ isActive }) =>
+              isActive ? activeStyle : navigationStyles
+            }
           >
             <svg
               width="22"
@@ -75,15 +85,12 @@ const MobileNav = () => {
             </svg>
 
             <p>Dashboard</p>
-          </Link>
-          <Link
-            to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
+          </NavLink>
+          <NavLink
+            to="/buy-bitcoin"
+            style={({ isActive }) =>
+              isActive ? activeStyle : navigationStyles
+            }
           >
             <svg
               width="20"
@@ -94,53 +101,50 @@ const MobileNav = () => {
             >
               <path
                 d="M15.0335 11.2917C14.6835 11.6334 14.4835 12.125 14.5335 12.65C14.6085 13.55 15.4335 14.2084 16.3335 14.2084H17.9168V15.2C17.9168 16.925 16.5085 18.3334 14.7835 18.3334H6.3585C6.61683 18.1167 6.84183 17.85 7.01683 17.55C7.32516 17.05 7.50016 16.4584 7.50016 15.8334C7.50016 13.9917 6.0085 12.5 4.16683 12.5C3.3835 12.5 2.6585 12.775 2.0835 13.2334V9.59172C2.0835 7.86672 3.49182 6.45837 5.21682 6.45837H14.7835C16.5085 6.45837 17.9168 7.86672 17.9168 9.59172V10.7917H16.2335C15.7668 10.7917 15.3418 10.975 15.0335 11.2917Z"
-                stroke="#FF9924"
+                stroke="black"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M2.0835 10.3417V6.53342C2.0835 5.54175 2.69183 4.65838 3.61683 4.30838L10.2335 1.80838C11.2668 1.41672 12.3752 2.18341 12.3752 3.29174V6.4584"
-                stroke="#FF9924"
+                stroke="black"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M18.7992 11.6418V13.3586C18.7992 13.8169 18.4325 14.1919 17.9658 14.2085H16.3325C15.4325 14.2085 14.6075 13.5502 14.5325 12.6502C14.4825 12.1252 14.6825 11.6335 15.0325 11.2918C15.3408 10.9752 15.7658 10.7919 16.2325 10.7919H17.9658C18.4325 10.8085 18.7992 11.1835 18.7992 11.6418Z"
-                stroke="#FF9924"
+                stroke="black"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M5.8335 10H11.6668"
-                stroke="#FF9924"
+                stroke="black"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M7.50016 15.8333C7.50016 16.4583 7.32516 17.05 7.01683 17.55C6.84183 17.85 6.61683 18.1167 6.3585 18.3333C5.77517 18.8583 5.0085 19.1667 4.16683 19.1667C2.95016 19.1667 1.89183 18.5167 1.31683 17.55C1.0085 17.05 0.833496 16.4583 0.833496 15.8333C0.833496 14.7833 1.31683 13.8417 2.0835 13.2333C2.6585 12.775 3.3835 12.5 4.16683 12.5C6.0085 12.5 7.50016 13.9917 7.50016 15.8333Z"
-                stroke="#FF9924"
+                stroke="black"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M2.86816 15.8329L3.69316 16.6579L5.46816 15.0162"
-                stroke="#FF9924"
+                stroke="black"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
 
             <p>Buy</p>
-          </Link>
-          <Link
-            to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
+          </NavLink>
+          <NavLink
+            to="/transaction-history"
+            style={({ isActive }) =>
+              isActive ? activeStyle : navigationStyles
+            }
           >
             <svg
               width="20"
@@ -196,15 +200,12 @@ const MobileNav = () => {
             </svg>
 
             <p>Transactions</p>
-          </Link>
-          <Link
-            to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
+          </NavLink>
+          <NavLink
+            to="/banks"
+            style={({ isActive }) =>
+              isActive ? activeStyle : navigationStyles
+            }
           >
             <svg
               width="20"
@@ -258,51 +259,36 @@ const MobileNav = () => {
             </svg>
 
             <p>Banks</p>
-          </Link>
-          <Link
-            to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
+          </NavLink>
+          <NavLink
+            to="/pasword-and-security"
+            style={({ isActive }) =>
+              isActive ? activeStyle : navigationStyles
+            }
           >
             <svg
               width="20"
-              height="24"
-              viewBox="0 0 20 24"
+              height="20"
+              viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M18.05 10.44L17.2333 14.62C16.5333 18.23 15.15 19.69 12.55 19.39C12.1333 19.35 11.6833 19.26 11.2 19.12L9.79999 18.72C6.32499 17.73 5.24999 15.67 6.06665 11.49L6.88332 7.30001C7.04999 6.45001 7.24999 5.71001 7.49999 5.10001C8.47499 2.68001 10.1333 2.03001 12.9167 2.82001L14.3083 3.21001C17.8 4.19001 18.8667 6.26001 18.05 10.44Z"
-                stroke="black"
+                d="M9.99967 9.99996C12.3009 9.99996 14.1663 8.13448 14.1663 5.83329C14.1663 3.53211 12.3009 1.66663 9.99967 1.66663C7.69849 1.66663 5.83301 3.53211 5.83301 5.83329C5.83301 8.13448 7.69849 9.99996 9.99967 9.99996Z"
+                stroke="#292D32"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
-                d="M12.5498 19.39C12.0331 19.81 11.3831 20.16 10.5915 20.47L9.2748 20.99C5.96646 22.27 4.2248 21.2 3.1498 17.23L2.08313 13.28C1.01646 9.30998 1.8998 7.20998 5.20813 5.92998L6.5248 5.40998C6.86646 5.27998 7.19146 5.16998 7.4998 5.09998C7.2498 5.70998 7.0498 6.44998 6.88313 7.29998L6.06646 11.49C5.2498 15.67 6.3248 17.73 9.7998 18.72L11.1998 19.12C11.6831 19.26 12.1331 19.35 12.5498 19.39Z"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M10.5332 8.53003L14.5749 9.76003"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9.7168 12.4L12.1335 13.14"
-                stroke="black"
+                d="M17.1585 18.3333C17.1585 15.1083 13.9501 12.5 10.0001 12.5C6.05013 12.5 2.8418 15.1083 2.8418 18.3333"
+                stroke="#292D32"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
 
-            <p>Activities</p>
-          </Link>
+            <p>My Profile</p>
+          </NavLink>
         </Box>
       </Box>
     </Box>

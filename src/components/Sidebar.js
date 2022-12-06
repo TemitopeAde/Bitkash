@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const Sidebar = () => {
   };
 
   let navigationStyles = {};
-  let activeClassName = "underline";
+  // let activeClassName = "underline";
 
   return (
     <div>

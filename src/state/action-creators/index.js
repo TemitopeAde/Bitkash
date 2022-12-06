@@ -98,12 +98,12 @@ export const register = (data) => async (dispatch) => {
     type: SHOW_LOADER,
   });
 
-  console.log(body)
+  console.log(body);
 
   await axios
     .post(url, body, config)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       const user = JSON.stringify({
         email: email,
         phone_number: phone_number,
@@ -116,7 +116,7 @@ export const register = (data) => async (dispatch) => {
       });
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
       dispatch({
         type: SIGNUP_FAIL,
         payload: error,
@@ -141,7 +141,7 @@ export const login = (data) => async (dispatch, getState) => {
   const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/login";
 
   const body = JSON.stringify({ email, password });
-  
+
   dispatch({
     type: SHOW_LOADER,
   });
@@ -170,6 +170,7 @@ export const login = (data) => async (dispatch, getState) => {
       });
     });
 };
+
 
 export const logout = () => async (dispatch, getState) => {
   const config = {
@@ -907,3 +908,121 @@ export const markNotificationsAsRead =
         });
       });
   };
+
+export const enable2fa = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/enable-2fa";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .post(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const disable2fa = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/disable-2fa";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .post(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const deleteAcccount = (data) => async (dispatch, getState) => {
+  const url = "https://bitkash-backend.herokuapp.com/api/v1/auth/delete-user";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .post(url, {}, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};
+
+export const validateOtp = (data) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/auth/verify-user-login-otp";
+
+  const { email, otp } = data;
+  const body = JSON.stringify({
+    email,
+    otp,
+  });
+  dispatch({
+    type: SHOW_LOADER,
+  });
+
+  await axios
+    .post(url, body, config)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};

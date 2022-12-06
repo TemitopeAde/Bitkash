@@ -112,7 +112,6 @@ export const mobiledata = {
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [currency, setCurrency] = React.useState("USD");
   const userDetails = useSelector((state) => state.auth.userDetails);
 
