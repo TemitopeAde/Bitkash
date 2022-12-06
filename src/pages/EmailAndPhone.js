@@ -55,9 +55,9 @@ const EmailAndPhone = ({ children }) => {
     return <Spinner />;
   }
 
-  if (verified) {
-    return <Navigate to="/login" />;
-  }
+  // if (verified) {
+  //   return <Navigate to="/login" />;
+  // }
 
   if (window.innerWidth > 820) {
     return (
