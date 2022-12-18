@@ -29,7 +29,9 @@ const Security = () => {
   const dispatch = useDispatch();
   const [checkbox, setCheckBox] = useState("");
 
-  console.log(image.name);
+  // console.log(image.name);
+
+  
 
   const handleClick = (e) => {
     fileRef.current.click();

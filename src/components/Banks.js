@@ -1,5 +1,5 @@
 import { Box, Button, Container, Modal, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,7 +13,8 @@ import { getUserBank } from "../state/action-creators";
 
 import "./history.css";
 import SpinnerTwo from "./SpinnerTwo";
-import { deleteBank } from "../state/action-creators/index";
+import { deleteBank, toggleLoad } from "../state/action-creators/index";
+
 
 const Bank = ({ userBanks }) => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Bank = ({ userBanks }) => {
 
   //
   const [itemOffset, setItemOffset] = useState(0);
-
+  const [id, setId] = useState();
   const endOffset = itemOffset + 5;
   const currentItems = userBanks?.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(userBanks?.length / 5);
@@ -45,18 +46,20 @@ const Bank = ({ userBanks }) => {
   };
 
   const [open, setOpen] = React.useState(false);
+  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const loading = useSelector((state) => state.loader.loading);
-
-  const handleEdit = () => {
-    handleOpen();
+ 
+  console.log(id)
+ 
+  const handleId = (id) => {
+    setId(id);
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteBank(id));
-    dispatch(getUserBank());
-  };
+  useEffect(() => {
+    dispatch(toggleLoad())
+  }, [])
 
   return (
     <>
@@ -205,6 +208,7 @@ const Bank = ({ userBanks }) => {
                     </TableHead>
 
                     <TableBody>
+                      {console.log(currentItems)}
                       {currentItems.map((row, index) => (
                         <TableRow
                           key={row.id}
@@ -217,7 +221,9 @@ const Bank = ({ userBanks }) => {
                             {row.payment_method}
                           </TableCell> */}
                           <TableCell align="right">{row.name}</TableCell>
-                          <TableCell align="right">{row.iban}</TableCell>
+                          <TableCell align="right">
+                            {row.account_number}
+                          </TableCell>
 
                           <TableCell
                             align="right"
@@ -229,7 +235,12 @@ const Bank = ({ userBanks }) => {
                           <TableCell align="right">
                             <button
                               style={{ background: "none", border: "none" }}
-                              onClick={() => handleDelete(row.id)}
+                              // onClick={() => handleDelete(row.id)}
+                              onClick={() => {
+                                
+                                handleOpen();
+                                handleId(row.id);
+                              }}
                             >
                               <svg
                                 width="24"
@@ -294,7 +305,7 @@ const Bank = ({ userBanks }) => {
           </Box>
         </Container>
 
-        <Button onClick={handleOpen}>Open modal</Button>
+        
       </Box>
 
       <Modal
@@ -321,7 +332,7 @@ const Bank = ({ userBanks }) => {
                   color: "#000000",
                 }}
               >
-                Are you sure you want to edit?
+                Are you sure?
               </h6>
 
               <Stack direction="row" spacing={3} justifyContent="center">
@@ -334,6 +345,12 @@ const Bank = ({ userBanks }) => {
                     color: "#ffffff",
                     fontFamily: "Poppins",
                     fontSize: "16px",
+                  }}
+                  onClick={() => {
+                    handleClose();
+                    dispatch(deleteBank(id));
+                    dispatch(getUserBank());
+                    setOpen(false)
                   }}
                 >
                   Yes
@@ -348,6 +365,7 @@ const Bank = ({ userBanks }) => {
                     fontFamily: "Poppins",
                     fontSize: "16px",
                   }}
+                  onClick={() => handleClose()}
                 >
                   No
                 </button>

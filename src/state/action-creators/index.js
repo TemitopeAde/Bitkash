@@ -1,12 +1,10 @@
 import axios from "axios";
-import { setAlert } from "./alert";
+
 import {
   SIGNUP_SUCCESS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  REMOVE_ALERT,
-  SET_ALERT,
   SIGNUP_FAIL,
   HIDE_LOADER,
   SHOW_LOADER,
@@ -16,21 +14,15 @@ import {
   SUBMIT_NEW_PASSWORD_FAILED,
   PHONE_NUMBER_CHANGED,
   PHONE_NUMBER_CHANGED_FAILED,
-  // FETCH_USER_SUCCESS,
-  // FETCH_USER_FAILED,
   KYC_EURO_SUCCESS,
   KYC_EURO_FAILED,
-  SHOW_MODAL,
   SHOW_PAY_PAGE,
   TRANSACTION_HISTORY_SUCCESS,
   TRANSACTION_HISTORY_FAILED,
-  // FETCH_PRODUCTS,
-  // FETCH_PRODUCTS_FAILED,
   KYC_USD_FAILED,
   KYC_USD_SUCCESS,
   OTP_FAILED,
   OTP_SUCCESS,
-  RESET_STATE,
   GET_USER_BANKS_SUCCESS,
   GET_USER_BANKS_FAILED,
   LOGOUT_FAILED,
@@ -38,6 +30,10 @@ import {
   NOTIFICATION_SUCCESS,
   NOTIFICATION_MARK_AS_READ_FAILED,
   NOTIFICATION_MARK_AS_READ,
+  TOGGLE_LOADING,
+  TOGGLE_LOAD,
+  TOGGLE_LOAD_FALSE,
+  RESET_STATE
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -170,7 +166,6 @@ export const login = (data) => async (dispatch, getState) => {
       });
     });
 };
-
 
 export const logout = () => async (dispatch, getState) => {
   const config = {
@@ -343,7 +338,7 @@ export const submitOTP = (data) => async (dispatch) => {
       console.log(err);
       dispatch({
         type: OTP_FAILED,
-        payload: err.response.data.message
+        payload: err.response.data.message,
       });
     })
     .then(() => {
@@ -691,12 +686,9 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
     bank_account_type,
   });
 
-  console.log(body);
-
   await axios
     .post(url, body, config)
     .then((data) => {
-      // localStorage.setItem("kycStatus", data.data.message);
       console.log(data);
       dispatch({
         type: KYC_USD_SUCCESS,
@@ -704,7 +696,6 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
       });
     })
     .catch((err) => {
-      // localStorage.setItem("kycStatus", err.message);
       console.log(err);
       dispatch({
         type: KYC_USD_FAILED,
@@ -715,13 +706,19 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
       dispatch({
         type: HIDE_LOADER,
       });
-    })
-    .then(() => {
+
       dispatch({
-        type: SHOW_MODAL,
-      });
-    });
+        type: TOGGLE_LOAD
+      })
+    })
+    
 };
+
+export const toggleLoad = () => async (dispatch, getState) => {
+  dispatch({
+    type: RESET_STATE,
+  });
+}
 
 export const handleKycEuro = (data) => async (dispatch, getState) => {
   const url =
@@ -1027,3 +1024,4 @@ export const validateOtp = (data) => async (dispatch) => {
       });
     });
 };
+

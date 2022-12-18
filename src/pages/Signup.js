@@ -19,6 +19,18 @@ const animations = {
 const Signup = ({ children }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loader.loading);
+  const loaded = useSelector((state) => state.loader.loaded);
+  // console.log(`loading is ${loading}`)
+  // console.log(`loaded is ${loaded}`);
+
+  const showModal = useSelector((state) => state.auth.showModal);
+  const [modal, setModal] = useState(showModal);
+
+  console.log(`showModal is ${showModal}`);
+
+  // React.useEffect(() => {
+  //   setModal(false)
+  // }, [loaded])
 
   const defaultValue = () => {
     const value = "usd";
@@ -196,9 +208,9 @@ const Signup = ({ children }) => {
                       Bank Details
                     </h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Mauris in ultricies cras eu arcu sit in laoreet quisque.
-                      Montes.
+                      The KYC process helps us get to know you, and ensure you
+                      are the owner of the bank account you are transferring
+                      fiat from
                     </p>
                   </Box>
                   <div className="mb-3">
@@ -721,8 +733,7 @@ const Signup = ({ children }) => {
               </Box>
             </Box>
           </Box>
-
-          <Modal />
+          {showModal && <Modal setModal={setModal} />}
         </Box>
       </motion.div>
     );

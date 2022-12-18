@@ -30,7 +30,8 @@ import {
   TRANSACTION_HISTORY_FAILED,
   LOGOUT_FAILED,
   NOTIFICATION_SUCCESS,
-  NOTIFICATION_FAILED
+  NOTIFICATION_FAILED,
+  TOGGLE_LOADING,
 } from "../action-creators/types";
 
 const initialState = {
@@ -42,7 +43,7 @@ const initialState = {
   userDetails: {},
   userBanks: [],
   transactionsHistory: [],
-  showModal: false,
+  showModal: true,
   showPay: false,
   logoutStatus: false,
   emailVerificationSent: false,
@@ -50,32 +51,33 @@ const initialState = {
   kycMessage: "",
   userNotifications: [],
   twoFactor: false,
-  validateOtp: false
+  validateOtp: false,
 };
 
 const authReducer = (state = initialState, action) => {
-  const {payload} = action;
+  const { payload } = action;
+
+
   if (action.type === NOTIFICATION_SUCCESS) {
     return {
       ...state,
-      userNotifications: payload
-    }
+      userNotifications: payload,
+    };
   }
 
   if (action.type === NOTIFICATION_SUCCESS) {
     return {
       ...state,
-      userNotifications: []
+      userNotifications: [],
     };
   }
 
   if (action.type === TRANSACTION_HISTORY_FAILED) {
     return {
       ...state,
-      transactionsHistory: []
+      transactionsHistory: [],
     };
   }
-
 
   if (action.type === TRANSACTION_HISTORY_SUCCESS) {
     const { payload } = action;
@@ -93,12 +95,12 @@ const authReducer = (state = initialState, action) => {
     };
   }
 
-   if (action.type === GET_USER_BANKS_FAILED) {
-     return {
-       ...state,
-       userBanks: []
-     };
-   }
+  if (action.type === GET_USER_BANKS_FAILED) {
+    return {
+      ...state,
+      userBanks: [],
+    };
+  }
 
   if (action.type === SIGNUP_SUCCESS) {
     const { payload } = action;
@@ -139,20 +141,20 @@ const authReducer = (state = initialState, action) => {
     return {
       ...state,
       phoneAndEmailVerified: false,
-      message: action.payload
+      message: action.payload,
     };
   }
 
-   if (action.type === LOGIN_SUCCESS) {
-     const { payload } = action;
-     return {
-       ...state,
-       isAuthenticated: true,
-       loading: false,
-       userDetails: payload,
-       token: payload.token_details.token,
-     };
-   }
+  if (action.type === LOGIN_SUCCESS) {
+    const { payload } = action;
+    return {
+      ...state,
+      isAuthenticated: true,
+      loading: false,
+      userDetails: payload,
+      token: payload.token_details.token,
+    };
+  }
 
   if (action.type === LOGIN_FAIL) {
     const { payload } = action;
@@ -179,11 +181,8 @@ const authReducer = (state = initialState, action) => {
     };
   }
 
-   if (action.type === LOGOUT_FAILED) {
-     
-   }
-
-  
+  if (action.type === LOGOUT_FAILED) {
+  }
 
   if (action.type === RECOVER_PASSWORD_FAILED) {
     const { payload } = action;
@@ -253,6 +252,7 @@ const authReducer = (state = initialState, action) => {
       ...state,
       showModal: true,
       kycMessage: payload,
+      loading: false,
     };
   }
 
@@ -261,6 +261,7 @@ const authReducer = (state = initialState, action) => {
       ...state,
       showModal: true,
       kycMessage: "Hurray! you are almost there",
+      loading: false,
     };
   }
 

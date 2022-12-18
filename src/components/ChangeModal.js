@@ -34,7 +34,7 @@ const Modal = () => {
             <Box className="modal-center">
               <img src={mark} alt="" />
               <h3>Hurray! you are almost there</h3>
-              <p>Kindly check your Mail, your KYC link will arrive in 3mins</p>
+              <p>Kindly check your Mail, your KYC link will arrive in 3mins ago</p>
             </Box>
           </Box>
         </Box>

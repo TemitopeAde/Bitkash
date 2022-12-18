@@ -175,11 +175,10 @@ const Register = () => {
 
             <Box className="register-content-form">
               {message && (
-                <div className="error-container">
-                  <h6 className="error-message">{message}</h6>
+                <div className="error-wrap">
+                  <button disabled>{message}</button>
                 </div>
               )}
-
               <form onSubmit={handleSubmit}>
                 <Box
                   ref={form1}
@@ -251,8 +250,8 @@ const Register = () => {
               <Box>
                 <Box>
                   {message && (
-                    <div className="error-container">
-                      <h6 className="error-message">{message}</h6>
+                    <div className="error-wrap">
+                      <button disabled>{message}</button>
                     </div>
                   )}
                   <form onSubmit={handleSubmit}>
