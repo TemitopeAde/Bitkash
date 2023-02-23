@@ -137,10 +137,10 @@ const Histories = () => {
               <div className="filter-container">
                 <div className="filter-form">
                   <div>
-                    <input type="text" placeholder="Search fiat price" />
+                    <input className="form-control" type="text" placeholder="Search fiat price" />
                   </div>
                   <div>
-                    <select name="" placeholder="Filter by">
+                    <select className="form-control" name="" placeholder="Filter by">
                       <option value="">Successful</option>
                       <option value="">Failed</option>
                       <option value="">Pending</option>
