@@ -1238,12 +1238,8 @@ select::-ms-expand {
     .mobile-banks-flex {
         display: grid;
         grid-template-columns: 1.5fr 1.2fr 2fr .5fr;
-        background: #FFF8EE;
-        border-radius: 5px;
-        padding: 1rem;
-        margin-top: 1.5rem;
         align-items: center;
-        margin-bottom: 1.5rem;
+
     }
 
     .mobile-banks-flex h5 {
@@ -1256,5 +1252,49 @@ select::-ms-expand {
 
 
         color: #000000;
+    }
+
+    .mobile-bank-grid {
+        
+
+    }
+
+    .bank-height {
+        height: 62px;
+        overflow: hidden;
+        background: #FFF8EE;
+        border-radius: 5px;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: 0.8s;
+    }
+
+    .bank-height.active {
+        height: 100px;
+    }
+
+
+    .edit-delete-container {
+        display: flex;
+        justify-content: end;
+        margin-right: 67px;
+        gap: 15px;
+        margin-top: 12px;
+    }
+
+    .show-edit.active,
+    .show-edit {
+        transition: .8s;
+    }
+
+    .show-edit {
+        transform: rotateZ(0deg);
+        transform-origin: center;
+    }
+
+    .show-edit.active {
+        transform: rotateZ(90deg);
+        transform-origin: center;
     }
 }

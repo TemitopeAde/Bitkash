@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,6 +26,9 @@ const Banks = () => {
   const dispatch = useDispatch();
   const userBanks = useSelector((state) => state.auth.userBanks);
   const loading = useSelector((state) => state.loader.loading);
+  const [edit, setEdit] = useState(false);
+  const [height, setHeight] = useState(false)
+  console.log(edit, "edit")
 
   useEffect(() => {
     dispatch(getUserBank());
@@ -137,285 +140,311 @@ const Banks = () => {
                 className="banks-mobile-container"
                 style={{ paddingBottom: ".2rem" }}
               >
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
+                <div className={height ? "bank-height active" : "bank-height"}>
+                  <div className="mobile-bank-grid">
+                    <div className="mobile-banks-flex">
+                      <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                      <h5>HSBC UK</h5>
+                      <h5>12345678900</h5>
+                      <button
+                        onClick={() => {
+                          setEdit(!edit);
+                          setHeight(!height);
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                            stroke="#292D32"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                            stroke="#292D32"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={edit ? "show-edit active" : "show-edit"}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="edit-delete-container">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </div>
                 </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
+
+                <div className={height ? "bank-height active" : "bank-height"}>
+                  <div className="mobile-bank-grid">
+                    <div className="mobile-banks-flex">
+                      <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                      <h5>HSBC UK</h5>
+                      <h5>12345678900</h5>
+                      <button
+                        onClick={() => {
+                          setEdit(!edit);
+                          setHeight(!height);
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                            stroke="#292D32"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                            stroke="#292D32"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={edit ? "show-edit active" : "show-edit"}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="edit-delete-container">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </div>
                 </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
+                <div className={height ? "bank-height active" : "bank-height"}>
+                  <div className="mobile-bank-grid">
+                    <div className="mobile-banks-flex">
+                      <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                      <h5>HSBC UK</h5>
+                      <h5>12345678900</h5>
+                      <button
+                        onClick={() => {
+                          setEdit(!edit);
+                          setHeight(!height);
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                            stroke="#292D32"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                            stroke="#292D32"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={edit ? "show-edit active" : "show-edit"}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="edit-delete-container">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </div>
                 </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
+                <div className={height ? "bank-height active" : "bank-height"}>
+                  <div className="mobile-bank-grid">
+                    <div className="mobile-banks-flex">
+                      <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                      <h5>HSBC UK</h5>
+                      <h5>12345678900</h5>
+                      <button
+                        onClick={() => {
+                          setEdit(!edit);
+                          setHeight(!height);
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                            stroke="#292D32"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                            stroke="#292D32"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={edit ? "show-edit active" : "show-edit"}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="edit-delete-container">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </div>
                 </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
+                <div className={height ? "bank-height active" : "bank-height"}>
+                  <div className="mobile-bank-grid">
+                    <div className="mobile-banks-flex">
+                      <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                      <h5>HSBC UK</h5>
+                      <h5>12345678900</h5>
+                      <button
+                        onClick={() => {
+                          setEdit(!edit);
+                          setHeight(!height);
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                            stroke="#292D32"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                            stroke="#292D32"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={edit ? "show-edit active" : "show-edit"}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="edit-delete-container">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </div>
                 </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div className="mobile-banks-flex">
-                  <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
-                  <h5>HSBC UK</h5>
-                  <h5>12345678900</h5>
-                  <button>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
-                        stroke="#292D32"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
-                        stroke="#292D32"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
+                <div className={height ? "bank-height active" : "bank-height"}>
+                  <div className="mobile-bank-grid">
+                    <div className="mobile-banks-flex">
+                      <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                      <h5>HSBC UK</h5>
+                      <h5>12345678900</h5>
+                      <button
+                        onClick={() => {
+                          setEdit(!edit);
+                          setHeight(!height);
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                            stroke="#292D32"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                            stroke="#292D32"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={edit ? "show-edit active" : "show-edit"}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="edit-delete-container">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </div>
+                  <div
+                    className={height ? "bank-height active" : "bank-height"}
+                  >
+                    <div className="mobile-bank-grid">
+                      <div className="mobile-banks-flex">
+                        <h5 style={{ color: "#FF9924" }}>USD-SWIFT</h5>
+                        <h5>HSBC UK</h5>
+                        <h5>12345678900</h5>
+                        <button
+                          onClick={() => {
+                            setEdit(!edit);
+                            setHeight(!height);
+                          }}
+                        >
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18.3334 9.99992C18.3334 5.39755 14.6025 1.66659 10.0001 1.66659C5.39771 1.66659 1.66675 5.39755 1.66675 9.99992C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99992Z"
+                              stroke="#292D32"
+                              strokeMiterlimit="10"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M8.94995 12.9417L11.8833 9.99998L8.94995 7.05832"
+                              stroke="#292D32"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className={
+                                edit ? "show-edit active" : "show-edit"
+                              }
+                            />
+                          </svg>
+                        </button>
+                      </div>
+
+                      <div className="edit-delete-container">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Container>
