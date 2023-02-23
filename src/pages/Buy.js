@@ -82,36 +82,6 @@ const Buy = () => {
     dispatch(getBtcPrice())
   }, [])
 
-  // useEffect(() => {
-  //   const fetchBitcoinPrice = () => {
-  //     const url = "https://api.coingecko.com/api/v3/coins/bitcoin";
-  //     axios
-  //       .get(url)
-  //       .then((data) => {
-  //         setBitcoin(
-  //           data.data.market_data.current_price.usd +
-  //             data.data.market_data.current_price.usd * 0.06
-  //         );
-  //         setUsd(
-  //           data.data.market_data.current_price.usd +
-  //             data.data.market_data.current_price.usd * 0.06
-  //         );
-
-  //         setEuro(
-  //           data.data.market_data.current_price.eur +
-  //             data.data.market_data.current_price.eur * 0.06
-  //         );
-  //       })
-  //       .catch((errors) => {
-  //         console.log(errors);
-  //       });
-  //   };
-
-  //   setInterval(() => {
-  //     fetchBitcoinPrice();
-  //   }, [4000]);
-  // }, []);
-
   useEffect(() => {
     const price = values?.price;
     const eq1 = price / usd;

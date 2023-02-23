@@ -1100,7 +1100,7 @@ select::-ms-expand {
         transform: scale(1.06);
     }
 
-    
+
 
     .filter-container input,
     .filter-container select {
@@ -1169,5 +1169,33 @@ select::-ms-expand {
         justify-content: space-between;
         gap: 1rem;
         margin-top: 1rem;
+    }
+
+    .filter-container ::placeholder,
+    .filter-container select option {
+        font-size: 12px;
+    }
+
+    .svg-image {
+        margin-top: 4rem;
+    }
+
+    .svg-image svg {
+        height: 100%;
+        width: 100%;
+    }
+
+    .empty-history p {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 32px;
+        /* or 200% */
+
+        text-align: center;
+
+        color: #000000;
+        margin-top: 1.5rem;
     }
 }
