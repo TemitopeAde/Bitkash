@@ -1202,4 +1202,59 @@ select::-ms-expand {
     .filter-container select {
         font-size: 12px !important;
     }
+
+    .buy-title-mobile {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .buy-title-mobile .title-div {
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        align-items: center;
+        /* margin-bottom: 1.5rem; */
+    }
+
+    .add-bank-mobile {
+        width: 129px;
+        height: 40px;
+
+
+        background: #FF9924;
+        border-radius: 5px;
+    }
+
+    .banks-mobile h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin-bottom: 0 !important;
+    }
+
+    .mobile-banks-flex {
+        display: grid;
+        grid-template-columns: 1.5fr 1.2fr 2fr .5fr;
+        background: #FFF8EE;
+        border-radius: 5px;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .mobile-banks-flex h5 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 32px;
+        /* identical to box height, or 200% */
+
+
+        color: #000000;
+    }
 }

@@ -28,6 +28,7 @@ const MobileNav = () => {
           p={2}
           alignItems="center"
           justifyContent="space-between"
+          style={{border: "0.5px solid #FF9924"}}
         >
           <Link to="/">
             <img src={logo} alt="logo" id="mobile-logo" />

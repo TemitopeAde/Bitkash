@@ -70,7 +70,7 @@ const Histories = () => {
           <Box className="dashboard-inner" sx={{ paddingTop: "3rem" }}>
             <Container
               className="mobile-padding"
-              style={{ marginTop: "2rem", marginBottom: "1rem" }}
+              style={{ marginTop: "3rem", marginBottom: "1rem" }}
             >
               <div
                 style={{
