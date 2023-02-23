@@ -1168,4 +1168,10 @@ select::-ms-expand {
     .history-box-mobile {
         padding-bottom: 7rem;
     }
+
+    .filter-container .filter-form {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1rem;
+    }
 }

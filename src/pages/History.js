@@ -135,13 +135,17 @@ const Histories = () => {
               </div>
 
               <div className="filter-container">
-                <div>
-                  <input type="text" placeholder="Search fiat price" />
-                  <select name="" placeholder="Filter by">
-                    <option value="">Successful</option>
-                    <option value="">Failed</option>
-                    <option value="">Pending</option>
-                  </select>
+                <div className="filter-form">
+                  <div>
+                    <input type="text" placeholder="Search fiat price" />
+                  </div>
+                  <div>
+                    <select name="" placeholder="Filter by">
+                      <option value="">Successful</option>
+                      <option value="">Failed</option>
+                      <option value="">Pending</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
