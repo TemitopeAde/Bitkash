@@ -146,7 +146,10 @@ const Histories = () => {
                     />
                   </div>
                   <div>
-                    <select className="form-control" placeholder="Filter by">
+                    <select className="form-control">
+                      <option value="none" selected disabled hidden>
+                        Filter by
+                      </option>
                       <option value="">Successful</option>
                       <option value="">Failed</option>
                       <option value="">Pending</option>
@@ -336,7 +339,6 @@ const Histories = () => {
                 <div className="empty-history">
                   <div className="svg-image">
                     <svg
-                      
                       viewBox="0 0 323 241"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -850,7 +852,9 @@ const Histories = () => {
                     </svg>
                   </div>
 
-                  <p style={{ textAlign: "center"}}>Opps! You have not added any bank to your account </p>
+                  <p style={{ textAlign: "center" }}>
+                    Opps! You have not added any bank to your account{" "}
+                  </p>
                 </div>
               )}
             </Container>
