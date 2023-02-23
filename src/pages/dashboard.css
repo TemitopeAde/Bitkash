@@ -1100,12 +1100,7 @@ select::-ms-expand {
         transform: scale(1.06);
     }
 
-    .filter-container div {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
-        margin-top: 1rem;
-    }
+    
 
     .filter-container input,
     .filter-container select {
@@ -1170,8 +1165,9 @@ select::-ms-expand {
     }
 
     .filter-container .filter-form {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
+        display: flex;
+        justify-content: space-between;
         gap: 1rem;
+        margin-top: 1rem;
     }
 }
