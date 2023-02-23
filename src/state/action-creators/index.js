@@ -33,7 +33,10 @@ import {
   TOGGLE_LOADING,
   TOGGLE_LOAD,
   TOGGLE_LOAD_FALSE,
-  RESET_STATE
+  RESET_STATE,
+  BUYBITCOIN_SUCCESS,
+  BTC_PRICE_SUCCESS,
+  BTC_PRICE_FAILED,
 } from "../action-creators/types";
 
 export const showLoader = () => async (dispatch) => {
@@ -459,9 +462,8 @@ export const fetchUser = (data) => async (dispatch) => {
 };
 
 export const BuyBitcoin = (data) => async (dispatch, getState) => {
-  const url = "https://bitkash.herokuapp.com/transactions/create";
-
-  console.log(getState().auth.token);
+  const url =
+    "https://bitkash-backend.herokuapp.com/api/v1/transactions/purchase-btc";
 
   const config = {
     headers: {
@@ -470,20 +472,12 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
     },
   };
 
-  const {
-    payment_type,
-    crypto_amount,
-    fiat_amount,
-    reciept_wallet,
-    transaction_status,
-  } = data;
+  const { quote, rate, quantity } = data;
 
   const body = JSON.stringify({
-    payment_type,
-    crypto_amount,
-    fiat_amount,
-    reciept_wallet,
-    transaction_status,
+    quote,
+    rate,
+    quantity,
   });
 
   dispatch({
@@ -507,10 +501,10 @@ export const BuyBitcoin = (data) => async (dispatch, getState) => {
       dispatch({
         type: SHOW_PAY_PAGE,
       });
-    })
-    .then(() => {
-      localStorage.setItem("paymentDetails", body);
     });
+  // .then(() => {
+  //   localStorage.setItem("paymentDetails", body);
+  // });
 };
 
 export const getAllTransactions = () => async (dispatch, getState) => {
@@ -708,17 +702,16 @@ export const handleKycUsd = (data) => async (dispatch, getState) => {
       });
 
       dispatch({
-        type: TOGGLE_LOAD
-      })
-    })
-    
+        type: TOGGLE_LOAD,
+      });
+    });
 };
 
 export const toggleLoad = () => async (dispatch, getState) => {
   dispatch({
     type: RESET_STATE,
   });
-}
+};
 
 export const handleKycEuro = (data) => async (dispatch, getState) => {
   const url =
@@ -1025,3 +1018,73 @@ export const validateOtp = (data) => async (dispatch) => {
     });
 };
 
+export const BuyBitcoins = (data) => async (dispatch, getState) => {
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/transactions/purchase-btc`;
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  const {
+    payment_type,
+    crypto_amount,
+    fiat_amount,
+    reciept_wallet,
+    transaction_status,
+  } = data;
+
+  const body = JSON.stringify({
+    payment_type,
+    crypto_amount,
+    fiat_amount,
+    reciept_wallet,
+    transaction_status,
+  });
+
+  await axios
+    .post(url)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: BUYBITCOIN_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((errors) => {
+      console.log(errors);
+    });
+};
+
+export const getBtcPrice = (data) => async (dispatch, getState) => {
+  console.log("get price")
+  const url = `https://bitkash-backend.herokuapp.com/api/v1/transactions/btc-price`;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getState().auth.token}`,
+    },
+  };
+
+  await axios
+    .get(url, config)
+    .then((data) => {
+      dispatch({
+        type: BTC_PRICE_SUCCESS,
+        payload: data.data.data.price,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: BTC_PRICE_FAILED,
+      });
+    })
+    .then(() => {
+      dispatch({
+        type: HIDE_LOADER,
+      });
+    });
+};

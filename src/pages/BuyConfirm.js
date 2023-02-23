@@ -19,7 +19,8 @@ const BuyConfirm = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const amount = numberWithCommas(data.fiat_amount);
+  const amount = 3000;
+  
 
   if (window.innerWidth > 820) {
     return (

@@ -32,6 +32,8 @@ import {
   NOTIFICATION_SUCCESS,
   NOTIFICATION_FAILED,
   TOGGLE_LOADING,
+  BTC_PRICE_FAILED,
+  BTC_PRICE_SUCCESS
 } from "../action-creators/types";
 
 const initialState = {
@@ -52,6 +54,7 @@ const initialState = {
   userNotifications: [],
   twoFactor: false,
   validateOtp: false,
+  btcPrice: ""
 };
 
 const authReducer = (state = initialState, action) => {
@@ -278,6 +281,14 @@ const authReducer = (state = initialState, action) => {
       ...state,
       showModal: false,
     };
+  }
+
+  if (action.type === BTC_PRICE_SUCCESS) {
+    const {payload} = action;
+    return {
+      ...state,
+      btcPrice: payload
+    }
   }
 
   return state;

@@ -7,19 +7,21 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 import "./dashboard.css";
-import user from "../assets/images/ellipse.png";
 import MobileNav from "../components/mobileNav";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import { BuyBitcoin } from "../state/action-creators";
 import Spinner from "../components/Spinner";
 import DashboardHeader from "../components/DashboardHeader";
+import { getBtcPrice } from "../state/action-creators";
+
 
 const Buy = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.loader.loading);
   const showPay = useSelector((state) => state.auth.showPay);
-  console.log(showPay);
+  const btcPrice = useSelector((state) => state.auth.btcPrice);
+  console.log(btcPrice, "price");
   const dispatch = useDispatch();
 
   const [bitcoin, setBitcoin] = useState(null);
@@ -38,11 +40,11 @@ const Buy = () => {
 
   const submitForm = (values) => {
     const payload = {
-      reciept_wallet: values.wallet,
-      fiat_amount: values.price,
-      crypto_amount: equivalent,
-      payment_type: "transfer",
-      transaction_status: "approved",
+      quote: values.wallet,
+      rate: values.price,
+      quantity: equivalent,
+      // payment_type: "transfer",
+      // transaction_status: "approved",
     };
     dispatch(BuyBitcoin(payload));
   };
@@ -77,34 +79,38 @@ const Buy = () => {
   };
 
   useEffect(() => {
-    const fetchBitcoinPrice = () => {
-      const url = "https://api.coingecko.com/api/v3/coins/bitcoin";
-      axios
-        .get(url)
-        .then((data) => {
-          setBitcoin(
-            data.data.market_data.current_price.usd +
-              data.data.market_data.current_price.usd * 0.06
-          );
-          setUsd(
-            data.data.market_data.current_price.usd +
-              data.data.market_data.current_price.usd * 0.06
-          );
+    dispatch(getBtcPrice())
+  }, [])
 
-          setEuro(
-            data.data.market_data.current_price.eur +
-              data.data.market_data.current_price.eur * 0.06
-          );
-        })
-        .catch((errors) => {
-          console.log(errors);
-        });
-    };
+  // useEffect(() => {
+  //   const fetchBitcoinPrice = () => {
+  //     const url = "https://api.coingecko.com/api/v3/coins/bitcoin";
+  //     axios
+  //       .get(url)
+  //       .then((data) => {
+  //         setBitcoin(
+  //           data.data.market_data.current_price.usd +
+  //             data.data.market_data.current_price.usd * 0.06
+  //         );
+  //         setUsd(
+  //           data.data.market_data.current_price.usd +
+  //             data.data.market_data.current_price.usd * 0.06
+  //         );
 
-    setInterval(() => {
-      fetchBitcoinPrice();
-    }, [4000]);
-  }, []);
+  //         setEuro(
+  //           data.data.market_data.current_price.eur +
+  //             data.data.market_data.current_price.eur * 0.06
+  //         );
+  //       })
+  //       .catch((errors) => {
+  //         console.log(errors);
+  //       });
+  //   };
+
+  //   setInterval(() => {
+  //     fetchBitcoinPrice();
+  //   }, [4000]);
+  // }, []);
 
   useEffect(() => {
     const price = values?.price;
@@ -160,7 +166,7 @@ const Buy = () => {
                       <Box>
                         <h4 className="mb-4">
                           You are buying Bitcoin at{" "}
-                          <span>${bitcoin?.toLocaleString()}</span>{" "}
+                          <span>${btcPrice?.toLocaleString()}</span>{" "}
                         </h4>
                         <p>
                           The Bitcoin exchange rate will refresh in 10 minutes
