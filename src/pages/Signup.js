@@ -9,6 +9,7 @@ import Modal from "../components/Modal";
 import "../components/Auth/auth.css";
 import { handleKycEuro, handleKycUsd } from "../state/action-creators";
 import Spinner from "../components/Spinner";
+import MobileNav from "../components/mobileNav";
 
 const animations = {
   initial: { opacity: 0, x: 20 },
@@ -735,6 +736,531 @@ const Signup = ({ children }) => {
           </Box>
           {showModal && <Modal setModal={setModal} />}
         </Box>
+      </motion.div>
+    );
+  }
+
+  if (window.innerWidth <= 820) {
+    return (
+      <motion.div
+        variants={animations}
+        initial="initial"
+        animate="animate"
+        transition={{ duration: 0.5 }}
+      >
+        <MobileNav />
+        <div className="banks-kyc container">
+          <h5 style={{ marginBottom: "1rem" }}>
+            To continue with KYC Verification, kindly Register your Bank Details
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in
+            ultricies cras eu arcu sit in laoreet quisque. Montes.
+          </p>
+
+          <div className="mb-3 mt-4">
+            <select
+              value={currency}
+              onChange={handleCurrencyChange}
+              className="form-control change-currency"
+              style={{
+                height: "50px",
+                width: "137px",
+                background: "#FC8218",
+                color: "#000000",
+              }}
+            >
+              <option value="eur"> £ EUR</option>
+              <option value="usd">$ USD</option>
+            </select>
+          </div>
+
+          <div>
+            {currency === "eur" ? (
+              <motion.div
+                variants={animations}
+                initial="initial"
+                animate="animate"
+                transition={{ duration: 0.4 }}
+              >
+                <Formik
+                  initialValues={initialValuesEur}
+                  onSubmit={submitFormEur}
+                  validate={validateEur}
+                >
+                  {(formik) => {
+                    const {
+                      values,
+                      handleChange,
+                      handleSubmit,
+                      errors,
+                      touched,
+                      handleBlur,
+                      isValid,
+                      dirty,
+                    } = formik;
+
+                    return (
+                      <Form>
+                        <Box className="mt-3">
+                          <Box
+                            className="signup-grid"
+                            style={{ rowGap: "1rem", paddingBottom: "6rem" }}
+                          >
+                            <Box className="form-input radio-input radio-form-input">
+                              <Box>
+                                <Field
+                                  type="radio"
+                                  value="INDIVIDUAL"
+                                  name="businessType"
+                                  id="individual-input"
+                                  onBlur={handleBlur}
+                                  className={
+                                    errors.businessType && touched.businessType
+                                      ? "input-error"
+                                      : ""
+                                  }
+                                />
+                                <label htmlFor="individual-input">
+                                  Individual
+                                </label>
+                              </Box>
+                              <Box>
+                                <Field
+                                  type="radio"
+                                  value="BUSINESS"
+                                  name="businessType"
+                                  id="business-input"
+                                  onBlur={handleBlur}
+                                  className={
+                                    errors.businessType && touched.businessType
+                                      ? "input-error"
+                                      : ""
+                                  }
+                                />
+                                <label htmlFor="business-input">Business</label>
+                              </Box>
+
+                              <ErrorMessage
+                                name="businessType"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="holder-name">
+                                Account Holders Name
+                              </label>
+                              <Field
+                                id="holder-name"
+                                name="accountHolderName"
+                                className={
+                                  errors.accountHolderName &&
+                                  touched.accountHolderName
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="accountHolderName"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="bank-name">Bank Name</label>
+                              <Field
+                                id="bank-name"
+                                name="bankName"
+                                className={
+                                  errors.bankName && touched.bankName
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="bankName"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="bank-branch-name">
+                                Bank branch name
+                              </label>
+                              <Field
+                                id="bank-branch-name"
+                                name="bankBranchName"
+                                className={
+                                  errors.bankBranchName &&
+                                  touched.bankBranchName
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="bankBranchName"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="iban">IBAN</label>
+                              <Field
+                                id="iban"
+                                name="iban"
+                                className={
+                                  errors.iban && touched.iban
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="iban"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="swift-code">SWIFT/BIC Code</label>
+                              <Field
+                                id="swift-code"
+                                name="swiftCode"
+                                className={
+                                  errors.swiftCode && touched.swiftCode
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="swiftCode"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="bank-address">Bank Address</label>
+
+                              <Field
+                                name="bankAddress"
+                                id="bankAddress"
+                                rows="3"
+                                component="textarea"
+                                className={
+                                  errors.bankAddress && touched.bankAddress
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="bankAddress"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="bank-city">Bank City</label>
+                              <Field
+                                id="bank-city"
+                                name="bankCity"
+                                className={
+                                  errors.bankCity && touched.bankCity
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="bankCity"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box className="form-zip">
+                              <label htmlFor="zip-code">Zip/Postal Code</label>
+                              <Field
+                                id="zip-code"
+                                name="zipCode"
+                                className={
+                                  errors.zipCode && touched.zipCode
+                                    ? "form-control input-error"
+                                    : "form-control"
+                                }
+                                onBlur={handleBlur}
+                              />
+                              <ErrorMessage
+                                name="zipCode"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                          </Box>
+                          <button
+                            type="submit"
+                            className={
+                              dirty && isValid
+                                ? "btn btn-primary submit"
+                                : "btn btn-primary submit disabled-btn"
+                            }
+                            disabled={!(dirty && isValid)}
+                          >
+                            Save
+                          </button>
+                        </Box>
+                      </Form>
+                    );
+                  }}
+                </Formik>
+              </motion.div>
+            ) : (
+              <Box className="mt-2">
+                <motion.div
+                  variants={animations}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ duration: 0.5 }}
+                >
+                  <Formik
+                    initialValues={initialValuesUsd}
+                    validate={validateUsd}
+                    onSubmit={submitFormUsd}
+                  >
+                    {(formik) => {
+                      const {
+                        values,
+                        handleChange,
+                        handleSubmit,
+                        errors,
+                        touched,
+                        handleBlur,
+                        isValid,
+                        dirty,
+                      } = formik;
+
+                      return (
+                        <Form>
+                          <Box
+                            className="signup-grid"
+                            style={{ rowGap: "1rem", paddingBottom: '6rem' }}
+                          >
+                            <Box className="form-input radio-input radio-form-input">
+                              <Box>
+                                <Field
+                                  type="radio"
+                                  name="businessType"
+                                  value="individual"
+                                  id="individual-input"
+                                  onBlur={handleBlur}
+                                  className={
+                                    errors.businessType && touched.businessType
+                                      ? "input-error"
+                                      : ""
+                                  }
+                                />
+
+                                <label htmlFor="individual-input">
+                                  Individuals
+                                </label>
+                              </Box>
+                              <Box>
+                                <Field
+                                  type="radio"
+                                  name="businessType"
+                                  value="business"
+                                  id="business-input"
+                                  onBlur={handleBlur}
+                                />
+
+                                <label htmlFor="business-input">Business</label>
+                              </Box>
+                              <ErrorMessage
+                                name="businessType"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="holder-name">
+                                Account Holders Name
+                              </label>
+                              <Field
+                                id="holder-name"
+                                name="accountHolderName"
+                                type="text"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.accountHolderName &&
+                                  touched.accountHolderName
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="accountHolderName"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="bank-name">Bank Name</label>
+                              <Field
+                                id="bank-name"
+                                name="bankName"
+                                type="text"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.bankName && touched.bankName
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="bankName"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="bank-2-branch-name">
+                                Account Number
+                              </label>
+                              <Field
+                                id="bank-2-branch-name"
+                                name="accountNumber"
+                                type="text"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.accountNumber && touched.accountNumber
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="accountNumber"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="routing-number">
+                                Routing Number
+                              </label>
+                              <Field
+                                id="routing-number"
+                                name="routingNumber"
+                                type="number"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.routingNumber && touched.routingNumber
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="routingNumber"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="">Account type</label>
+                              <Field
+                                as="select"
+                                name="accountType"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.accountType && touched.accountType
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              >
+                                <option disabled value="">
+                                  Select account type
+                                </option>
+                                <option>Checkings</option>
+                                <option>Savings</option>
+                              </Field>
+                              <ErrorMessage
+                                name="accountType"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                            <Box>
+                              <label htmlFor="zip-postal">
+                                Zip/Postal Code
+                              </label>
+                              <Field
+                                type="number"
+                                id="zip-postal"
+                                name="zipCode"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.zipCode && touched.zipCode
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="zipCode"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+
+                            <Box>
+                              <label htmlFor="">SWIFT/BIC Code</label>
+                              <Field
+                                type="number"
+                                name="swiftCode2"
+                                onBlur={handleBlur}
+                                className={
+                                  errors.swiftCode2 && touched.swiftCode2
+                                    ? "input-error form-control"
+                                    : "form-control"
+                                }
+                              />
+                              <ErrorMessage
+                                name="swiftCode2"
+                                component="span"
+                                className="error"
+                              />
+                            </Box>
+                          </Box>
+
+                          <button
+                            type="submit"
+                            className={
+                              dirty && isValid
+                                ? "btn btn-primary submit mt-4"
+                                : "btn btn-primary submit disabled-btn mt-4"
+                            }
+                            disabled={!(dirty && isValid)}
+                          >
+                            Save
+                          </button>
+                        </Form>
+                      );
+                    }}
+                  </Formik>
+                </motion.div>
+              </Box>
+            )}
+          </div>
+        </div>
       </motion.div>
     );
   }

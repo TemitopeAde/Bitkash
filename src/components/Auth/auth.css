@@ -299,6 +299,15 @@ h3 {
         grid-template-columns: 1fr;
 
     }
+
+    .banks-kyc {
+        background: #FFF8EE;
+        padding-top: 7rem;
+    }
+
+    .banks-kyc.container h5 {
+        margin-bottom: 0.7rem !important;
+    }
 }
 
 

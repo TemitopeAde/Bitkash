@@ -1,7 +1,8 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Modal } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./dashboard.css";
 import Sidebar from "../components/Sidebar";
@@ -26,12 +27,10 @@ const Banks = () => {
   const dispatch = useDispatch();
   const userBanks = useSelector((state) => state.auth.userBanks);
   const loading = useSelector((state) => state.loader.loading);
-  const [edit, setEdit] = useState(false);
   const [height, setHeight] = useState(null);
+  const navigate = useNavigate();
 
   const toggle = (index) => {
-    
-
     if ( height === index) {
       return setHeight(null)
     }
@@ -181,10 +180,15 @@ const Banks = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <h5 style={{ margin: 0 }}>Banks</h5>
+                  <h5 style={{ margin: 0, fontWeight: "600", fontSize: "18px" }}>Banks</h5>
                 </div>
                 <div>
-                  <button className="add-bank-mobile">Add bank</button>
+                  <button
+                    onClick={() => navigate("/kyc-verification")}
+                    className="add-bank-mobile"
+                  >
+                    Add bank
+                  </button>
                 </div>
               </div>
 
@@ -195,7 +199,9 @@ const Banks = () => {
                 {banks.map((item, index) => {
                   return (
                     <div
-                      className={height === index ? "bank-height active" : "bank-height"}
+                      className={
+                        height === index ? "bank-height active" : "bank-height"
+                      }
                       key={index}
                     >
                       <div className="mobile-bank-grid">
@@ -224,7 +230,9 @@ const Banks = () => {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 className={
-                                  height === index ? "show-edit active" : "show-edit"
+                                  height === index
+                                    ? "show-edit active"
+                                    : "show-edit"
                                 }
                               />
                             </svg>

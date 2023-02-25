@@ -1,4 +1,4 @@
-import { Box, Button, Container, Modal, Stack } from "@mui/material";
+import { Box, Container, Modal, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -235,9 +235,8 @@ const Bank = ({ userBanks }) => {
                           <TableCell align="right">
                             <button
                               style={{ background: "none", border: "none" }}
-                              // onClick={() => handleDelete(row.id)}
                               onClick={() => {
-                                
+                            
                                 handleOpen();
                                 handleId(row.id);
                               }}
