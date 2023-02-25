@@ -805,7 +805,7 @@ const Signup = ({ children }) => {
                         <Box className="mt-3">
                           <Box
                             className="signup-grid"
-                            style={{ rowGap: "1rem", paddingBottom: "6rem" }}
+                            style={{ rowGap: "1rem", paddingBottom: "7.5rem" }}
                           >
                             <Box className="form-input radio-input radio-form-input">
                               <Box>
@@ -1004,18 +1004,20 @@ const Signup = ({ children }) => {
                                 className="error"
                               />
                             </Box>
+                            <Box className="mobile-bank-btn">
+                              <button
+                                type="submit"
+                                className={
+                                  dirty && isValid
+                                    ? "btn btn-primary submit"
+                                    : "btn btn-primary submit disabled-btn"
+                                }
+                                disabled={!(dirty && isValid)}
+                              >
+                                Save
+                              </button>
+                            </Box>
                           </Box>
-                          <button
-                            type="submit"
-                            className={
-                              dirty && isValid
-                                ? "btn btn-primary submit"
-                                : "btn btn-primary submit disabled-btn"
-                            }
-                            disabled={!(dirty && isValid)}
-                          >
-                            Save
-                          </button>
                         </Box>
                       </Form>
                     );
@@ -1051,7 +1053,7 @@ const Signup = ({ children }) => {
                         <Form>
                           <Box
                             className="signup-grid"
-                            style={{ rowGap: "1rem", paddingBottom: '6rem' }}
+                            style={{ rowGap: "1rem", paddingBottom: "7.5rem" }}
                           >
                             <Box className="form-input radio-input radio-form-input">
                               <Box>
@@ -1239,19 +1241,22 @@ const Signup = ({ children }) => {
                                 className="error"
                               />
                             </Box>
+                            <Box className="mobile-bank-btn">
+                              <button
+                                type="submit"
+                                className={
+                                  dirty && isValid
+                                    ? "btn btn-primary submit"
+                                    : "btn btn-primary submit disabled-btn"
+                                }
+                                disabled={!(dirty && isValid)}
+                              >
+                                Save
+                              </button>
+                            </Box>
                           </Box>
 
-                          <button
-                            type="submit"
-                            className={
-                              dirty && isValid
-                                ? "btn btn-primary submit mt-4"
-                                : "btn btn-primary submit disabled-btn mt-4"
-                            }
-                            disabled={!(dirty && isValid)}
-                          >
-                            Save
-                          </button>
+              
                         </Form>
                       );
                     }}

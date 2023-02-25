@@ -288,7 +288,7 @@ h3 {
 
     .form-input.radio-input label:before {
         left: 20px;
-        top: 11.5px;
+        top: 19.5px;
     }
 
     .form-input.radio-input input[type="radio"]:checked+label:after {
@@ -307,6 +307,27 @@ h3 {
 
     .banks-kyc.container h5 {
         margin-bottom: 0.7rem !important;
+    }
+
+    .form-input.radio-input input[type="radio"]:checked+label:after {
+        top: 22.5px;
+    }
+
+    .signup-grid label {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000;
+    }
+
+    .mobile-bank-btn button {
+        background: #FF9924 !important;
+        border: 1px solid #FC8218 !important;
+        border-radius: 5px;
+        width: 129px !important;
+        height: 40px !important;
     }
 }
 
