@@ -1303,12 +1303,11 @@ select::-ms-expand {
         line-height: 32px;
         color: #000000;
         text-decoration: none;
-        padding: 1rem 0;
+        padding: 1rem;
         border-bottom: 0.5px solid #FF9924;
     }
 
     .profile-cont-mobile {
-        padding: 1rem;
         background: #FFF8EE;
         border-radius: 5px;
     }
