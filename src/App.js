@@ -58,6 +58,7 @@ import AdminsList from "./pages/admin/admins-list";
 import AddAdmin from "./pages/admin/add-admin";
 import Reg from "./pages/Registration";
 import Modal from "./components/Modal";
+import EditBank from "./pages/EditBank";
 
 function App() {
   useEffect(() => {
@@ -110,6 +111,7 @@ function App() {
         <Route path="/email-verification" element={<EmailVerification />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/edit-bank" element={<EditBank />} />
 
         <Route path="/payment" element={<Payment />} />
         <Route path="/bank-added" element={<Modal />} />

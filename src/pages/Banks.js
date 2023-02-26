@@ -1,4 +1,4 @@
-import { Box, Container, Modal } from "@mui/material";
+import { Box, Container, Modal, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
 import Sidebar from "../components/Sidebar";
 import Bank from "../components/Banks";
-import { getUserBank } from "../state/action-creators";
+import { getUserBank } from "../state/action-creators/index";
 import DashboardHeader from "../components/DashboardHeader";
 import MobileNav from "../components/mobileNav";
+import { deleteBank, toggleLoad } from "../state/action-creators/index";
 
 const animations = {
   initial: { opacity: 0 },
@@ -28,62 +29,41 @@ const Banks = () => {
   const userBanks = useSelector((state) => state.auth.userBanks);
   const loading = useSelector((state) => state.loader.loading);
   const [height, setHeight] = useState(null);
-  const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = useState(null);
 
+  const navigate = useNavigate();
+  const [id, setId] = useState();
   const toggle = (index) => {
-    if ( height === index) {
-      return setHeight(null)
+    if (height === index) {
+      return setHeight(null);
     }
 
-    setHeight(index)
+    setHeight(index);
   };
-
-  const banks = [
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-    {
-      currency: "USD-SWIFT",
-      country: "HSBC UK",
-      amount: "1245566654",
-    },
-  ];
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "90%",
+    height: "206px",
+    p: 4,
+    bgcolor: "#FFF9F1",
+    border: "2px solid #FF9924",
+    borderRadius: "20px",
+  };
 
   useEffect(() => {
     dispatch(getUserBank());
   }, []);
+
+  const handleOpen = () => setOpen(true);
+  const handleCloses = () => setOpen(false);
+
+  const handleId = (id) => {
+    setId(id);
+  };
 
   // if (loading) return <SpinnerTwo />;
 
@@ -180,7 +160,11 @@ const Banks = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <h5 style={{ margin: 0, fontWeight: "600", fontSize: "18px" }}>Banks</h5>
+                  <h5
+                    style={{ margin: 0, fontWeight: "600", fontSize: "18px" }}
+                  >
+                    Banks
+                  </h5>
                 </div>
                 <div>
                   <button
@@ -196,19 +180,19 @@ const Banks = () => {
                 className="banks-mobile-container"
                 style={{ paddingBottom: ".2rem" }}
               >
-                {banks.map((item, index) => {
+                {userBanks.map((item, index) => {
                   return (
                     <div
                       className={
                         height === index ? "bank-height active" : "bank-height"
                       }
-                      key={index}
+                      key={item.id}
                     >
                       <div className="mobile-bank-grid">
                         <div className="mobile-banks-flex">
-                          <h5 style={{ color: "#FF9924" }}>{item.currency}</h5>
-                          <h5>{item.country}</h5>
-                          <h5>{item.amount}</h5>
+                          <h5 style={{ color: "#FF9924" }}>{item.name}</h5>
+                          <h5>{item.currency}</h5>
+                          <h5>{item.account_number}</h5>
                           <button onClick={() => toggle(index)}>
                             <svg
                               width="20"
@@ -240,8 +224,24 @@ const Banks = () => {
                         </div>
 
                         <div className="edit-delete-container">
-                          <button>Edit</button>
-                          <button>Delete</button>
+                          <button
+                            onClick={() => {
+                              setValue("edit");
+                              handleOpen();
+                              handleId(item.id);
+                            }}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => {
+                              handleOpen();
+                              handleId(item.id);
+                              setValue("delete");
+                            }}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -251,6 +251,175 @@ const Banks = () => {
             </Container>
           </Box>
         </Box>
+
+        <Modal
+          open={open}
+          onClose={handleCloses}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          {value === "delete" ? (
+            <Box sx={style}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
+                  textAlign: "center",
+                }}
+              >
+                <Stack spacing={3}>
+                  <h6
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: "500",
+                      lineHeight: "24px",
+                      color: "#000000",
+                    }}
+                  >
+                    Are you sure you want to delete bank details
+                  </h6>
+
+                  <Stack direction="row" spacing={3} justifyContent="center">
+                    <button
+                      style={{
+                        width: "89px",
+                        height: "40px",
+                        background: "#ff9924",
+                        border: "1px solid #ff9925",
+
+                        color: "#ffffff",
+                        fontFamily: "Poppins",
+                        fontSize: "14px",
+                      }}
+                      onClick={() => {
+                        handleCloses();
+                        dispatch(deleteBank(id));
+                        dispatch(getUserBank());
+                        setOpen(false);
+                      }}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      style={{
+                        width: "89px",
+                        height: "40px",
+                        background: "#ff9924",
+                        border: "1px solid #ff9925",
+
+                        color: "#ffffff",
+                        fontFamily: "Poppins",
+                        fontSize: "14px",
+                      }}
+                      onClick={() => handleCloses()}
+                    >
+                      No
+                    </button>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Box>
+          ) : (
+            <Box sx={style}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
+                  textAlign: "center",
+                }}
+              >
+                <Stack spacing={3}>
+                  <h6
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: "500",
+                      lineHeight: "24px",
+                      color: "#000000",
+                    }}
+                  >
+                    Are you sure you want to edit bank details
+                  </h6>
+
+                  <Stack direction="row" spacing={3} justifyContent="center">
+                    <button
+                      style={{
+                        width: "89px",
+                        height: "40px",
+                        background: "#ff9924",
+                        border: "1px solid #ff9925",
+
+                        color: "#ffffff",
+                        fontFamily: "Poppins",
+                        fontSize: "14px",
+                      }}
+                      onClick={() => {
+                        handleCloses();
+                        dispatch(deleteBank(id));
+                        dispatch(getUserBank());
+                        setOpen(false);
+                      }}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      style={{
+                        width: "89px",
+                        height: "40px",
+                        background: "#ff9924",
+                        border: "1px solid #ff9925",
+
+                        color: "#ffffff",
+                        fontFamily: "Poppins",
+                        fontSize: "14px",
+                      }}
+                      onClick={() => handleCloses()}
+                    >
+                      No
+                    </button>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Box>
+          )}
+        </Modal>
+
+        <Modal
+          // open={openModal}
+          // onClose={handleOnClose}
+          // open={true}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%",
+                textAlign: "center",
+              }}
+            >
+              <Stack spacing={3}>
+                <h6
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "500",
+                    lineHeight: "24px",
+                    color: "#000000",
+                  }}
+                >
+                  Hurray!
+                </h6>
+                <p style={{ marginTop: '10px', fontWeight: "400", fontSize: '16'}}>You have successfully deleted your bank details</p>
+              </Stack>
+            </Box>
+          </Box>
+        </Modal>
       </Box>
     );
   }

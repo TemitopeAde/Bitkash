@@ -1254,10 +1254,7 @@ select::-ms-expand {
         color: #000000;
     }
 
-    .mobile-bank-grid {
-        
-
-    }
+    .mobile-bank-grid {}
 
     .bank-height {
         height: 62px;
@@ -1296,5 +1293,23 @@ select::-ms-expand {
     .show-edit.active {
         transform: rotateZ(90deg);
         transform-origin: center;
+    }
+
+    .profile-cont-mobile a {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 32px;
+        color: #000000;
+        text-decoration: none;
+        padding: 1rem 0;
+        border-bottom: 0.5px solid #FF9924;
+    }
+
+    .profile-cont-mobile {
+        padding: 1rem;
+        background: #FFF8EE;
+        border-radius: 5px;
     }
 }

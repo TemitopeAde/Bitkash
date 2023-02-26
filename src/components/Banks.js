@@ -38,6 +38,7 @@ const Bank = ({ userBanks }) => {
   const [id, setId] = useState();
   const endOffset = itemOffset + 5;
   const currentItems = userBanks?.slice(itemOffset, endOffset);
+  console.log(userBanks, "current")
   const pageCount = Math.ceil(userBanks?.length / 5);
 
   const handlePageClick = (event) => {
@@ -51,7 +52,6 @@ const Bank = ({ userBanks }) => {
   const handleClose = () => setOpen(false);
   const loading = useSelector((state) => state.loader.loading);
  
-  console.log(id)
  
   const handleId = (id) => {
     setId(id);

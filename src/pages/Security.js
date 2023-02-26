@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {Link} from 'react-router-dom'
 
 import "./dashboard.css";
 import MobileNav from "../components/mobileNav";
@@ -649,8 +650,270 @@ const Security = () => {
         <MobileNav />
 
         <Box>
-          <Box className="dashboard-inner py-5">
-            <Container className="mobile-padding"></Container>
+          <Box className="dashboard-inner" sx={{ paddingTop: "3rem" }}>
+            <Container
+              className="mobile-padding banks-mobile"
+              style={{ marginTop: "3rem" }}
+            >
+              <div className="buy-title-mobile">
+                <div className="title-div">
+                  <h5
+                    style={{ margin: 0, fontWeight: "600", fontSize: "18px" }}
+                  >
+                    My Profile
+                  </h5>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <div className="profile-cont-mobile">
+                  <Link
+                    to="/"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        gap: "10px",
+                      }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.00002 8.00016C9.84097 8.00016 11.3334 6.50778 11.3334 4.66683C11.3334 2.82588 9.84097 1.3335 8.00002 1.3335C6.15907 1.3335 4.66669 2.82588 4.66669 4.66683C4.66669 6.50778 6.15907 8.00016 8.00002 8.00016Z"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M13.7268 14.6667C13.7268 12.0867 11.1601 10 8.0001 10C4.8401 10 2.27344 12.0867 2.27344 14.6667"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+
+                      <h6>Profile</h6>
+                    </div>
+                    <div>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18.3333 9.99992C18.3333 5.39755 14.6024 1.66659 10 1.66659C5.39762 1.66659 1.66666 5.39755 1.66666 9.99992C1.66666 14.6023 5.39762 18.3333 10 18.3333C14.6024 18.3333 18.3333 14.6023 18.3333 9.99992Z"
+                          stroke="#292D32"
+                          strokeMiterlimit="10"
+                          strokelinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8.95 12.9417L11.8833 9.99998L8.95 7.05832"
+                          stroke="#292D32"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        gap: "10px",
+                      }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.00002 8.00016C9.84097 8.00016 11.3334 6.50778 11.3334 4.66683C11.3334 2.82588 9.84097 1.3335 8.00002 1.3335C6.15907 1.3335 4.66669 2.82588 4.66669 4.66683C4.66669 6.50778 6.15907 8.00016 8.00002 8.00016Z"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M13.7268 14.6667C13.7268 12.0867 11.1601 10 8.0001 10C4.8401 10 2.27344 12.0867 2.27344 14.6667"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+
+                      <h6>Profile</h6>
+                    </div>
+                    <div>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18.3333 9.99992C18.3333 5.39755 14.6024 1.66659 10 1.66659C5.39762 1.66659 1.66666 5.39755 1.66666 9.99992C1.66666 14.6023 5.39762 18.3333 10 18.3333C14.6024 18.3333 18.3333 14.6023 18.3333 9.99992Z"
+                          stroke="#292D32"
+                          strokeMiterlimit="10"
+                          strokelinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8.95 12.9417L11.8833 9.99998L8.95 7.05832"
+                          stroke="#292D32"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        gap: "10px",
+                      }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.00002 8.00016C9.84097 8.00016 11.3334 6.50778 11.3334 4.66683C11.3334 2.82588 9.84097 1.3335 8.00002 1.3335C6.15907 1.3335 4.66669 2.82588 4.66669 4.66683C4.66669 6.50778 6.15907 8.00016 8.00002 8.00016Z"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M13.7268 14.6667C13.7268 12.0867 11.1601 10 8.0001 10C4.8401 10 2.27344 12.0867 2.27344 14.6667"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+
+                      <h6>Profile</h6>
+                    </div>
+                    <div>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18.3333 9.99992C18.3333 5.39755 14.6024 1.66659 10 1.66659C5.39762 1.66659 1.66666 5.39755 1.66666 9.99992C1.66666 14.6023 5.39762 18.3333 10 18.3333C14.6024 18.3333 18.3333 14.6023 18.3333 9.99992Z"
+                          stroke="#292D32"
+                          strokeMiterlimit="10"
+                          strokelinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8.95 12.9417L11.8833 9.99998L8.95 7.05832"
+                          stroke="#292D32"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        gap: "10px",
+                      }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.00002 8.00016C9.84097 8.00016 11.3334 6.50778 11.3334 4.66683C11.3334 2.82588 9.84097 1.3335 8.00002 1.3335C6.15907 1.3335 4.66669 2.82588 4.66669 4.66683C4.66669 6.50778 6.15907 8.00016 8.00002 8.00016Z"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M13.7268 14.6667C13.7268 12.0867 11.1601 10 8.0001 10C4.8401 10 2.27344 12.0867 2.27344 14.6667"
+                          stroke="#292D32"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+
+                      <h6>Profile</h6>
+                    </div>
+                    <div>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18.3333 9.99992C18.3333 5.39755 14.6024 1.66659 10 1.66659C5.39762 1.66659 1.66666 5.39755 1.66666 9.99992C1.66666 14.6023 5.39762 18.3333 10 18.3333C14.6024 18.3333 18.3333 14.6023 18.3333 9.99992Z"
+                          stroke="#292D32"
+                          strokeMiterlimit="10"
+                          strokelinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8.95 12.9417L11.8833 9.99998L8.95 7.05832"
+                          stroke="#292D32"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </Container>
           </Box>
         </Box>
       </Box>
