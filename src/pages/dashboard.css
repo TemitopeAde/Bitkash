@@ -1318,4 +1318,14 @@ select::-ms-expand {
         background: #FF9924;
         border-radius: 5px;
     }
+
+    .securities p,
+    .securities h5,
+    .securities h6 {
+        margin-bottom: .5rem !important;
+    }
+
+    .checked-box {
+        justify-self: end;
+    }
 }

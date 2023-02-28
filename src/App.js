@@ -60,6 +60,7 @@ import Reg from "./pages/Registration";
 import Modal from "./components/Modal";
 import EditBank from "./pages/EditBank";
 import Profile from "./pages/Profile";
+import Securities from "./pages/Securities";
 
 function App() {
   useEffect(() => {
@@ -108,6 +109,7 @@ function App() {
         <Route path="/pasword-and-security" element={<Security />} />
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
         <Route path="/user-profile" element={<Profile />} />
+        <Route path="/security" element={<Securities />} />
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/email-verification" element={<EmailVerification />} />
