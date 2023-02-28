@@ -59,6 +59,7 @@ import AddAdmin from "./pages/admin/add-admin";
 import Reg from "./pages/Registration";
 import Modal from "./components/Modal";
 import EditBank from "./pages/EditBank";
+import Profile from "./pages/Profile";
 
 function App() {
   useEffect(() => {
@@ -106,6 +107,7 @@ function App() {
         <Route path="/payment-details" element={<BuyConfirm />} />
         <Route path="/pasword-and-security" element={<Security />} />
         <Route path="/two-factor-authentication" element={<TwoFactor />} />
+        <Route path="/user-profile" element={<Profile />} />
         <Route path="/goggle-authenticator" element={<GoogleAuth />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/email-verification" element={<EmailVerification />} />

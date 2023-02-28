@@ -668,7 +668,7 @@ const Security = () => {
               <div className="mt-4">
                 <div className="profile-cont-mobile">
                   <Link
-                    to="/"
+                    to="/user-profile"
                     style={{
                       display: "flex",
                       justifyContent: "space-between",

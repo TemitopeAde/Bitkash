@@ -1311,4 +1311,11 @@ select::-ms-expand {
         background: #FFF8EE;
         border-radius: 5px;
     }
+
+    .profile-submit {
+        width: 129px;
+        height: 40px;
+        background: #FF9924;
+        border-radius: 5px;
+    }
 }
